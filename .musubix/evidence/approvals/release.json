@@ -181,7 +181,7 @@
     "references/2609.01481.md": "ce9d9e1ac571841540cfe265e988085193655967d1ef235009f432d9934307b7",
     "references/2609.01481v1.pdf": "df751fdde08a18788eba2653a65c51dabdefdc89dcb28f6f612721e4bf57243b",
     "scripts/check-package.mjs": "517d4cc35efcd0c30433af52edbc24d381e16ffcfb8a280dd4bf7e74a333dfeb",
-    "scripts/release-attestation.mjs": "845ee648f41371c07ab123329ba9a32e8a832d4897c5b91044ad75ea3c3bc8cd",
+    "scripts/release-attestation.mjs": "20aeee3f1123b337d552f5fd41b08080efb36465f7514784cf49c7af64acc6a9",
     "scripts/release-prepare.mjs": "61d027b308d8b094c51680aaacee0dd3ffbecbb9e34098c11f1cfc0dd2e36e30",
     "scripts/release-publish.mjs": "be05292662e6f3a169f238231574c97dc70d41fc7a036bfe86b284e43eadaff4",
     "scripts/release-version.mjs": "c57970a5dc7e3f86437237be2dc2f430bf510b7cfd61685f84fe43b27bdf22e8",
@@ -292,7 +292,7 @@
     "tsconfig.json": "b6af14dbfc589cfa05cae4aa39b195f2322cf39d4b4efb5e2e69d0936de4f658",
     "vitest.config.ts": "de93cfef2bbba7cc82f688892ff2452784228b9768a443a9c06b42bcc5b00081"
   },
-  "artifactSha256": "ad248457657157821ca1e99bc227ff5acf1c7b16d93e43a2812527f425d65c54",
+  "artifactSha256": "68fc91fdb6c3d2ccc5a90d1dd8bf41388998f6082df065fb89279547e5deabb4",
   "approver": "nahisaho",
-  "approvedAt": "2026-09-16T02:30:24.424Z"
+  "approvedAt": "2026-09-16T03:47:14.746Z"
 }

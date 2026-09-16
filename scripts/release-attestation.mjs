@@ -77,8 +77,11 @@ export async function createGithubAttestation(outputDirectory = 'release-assets'
     writeFileSync(privateKeyPath, privateKey.export({ type: 'pkcs8', format: 'pem' }), { mode: 0o600 });
     chmodSync(privateKeyPath, 0o600);
     writeFileSync(publicKeyPath, publicKey.export({ type: 'spki', format: 'pem' }));
+    const config = previousConfig
+      ? JSON.parse(previousConfig.toString('utf8'))
+      : { schemaVersion: 1 };
     writeFileSync(configPath, `${JSON.stringify({
-      schemaVersion: 1,
+      ...config,
       attestation: {
         mode: 'ci-required',
         repository: 'nahisaho/musubix4',
