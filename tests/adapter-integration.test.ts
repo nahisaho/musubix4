@@ -45,6 +45,9 @@ describe('built-in adapter executable contracts', () => {
     'executes and normalizes a targeted Vitest test',
     async () => {
       const root = await fixture({
+        'vitest.config.ts': `import { defineConfig } from 'vitest/config';
+export default defineConfig({});
+`,
         'tests/adapter.test.ts': `import { expect, test } from 'vitest';
 test('TEST-ADAPTER-VITEST-001 selected', () => expect(2 + 2).toBe(4));
 test('unrelated failure', () => expect(true).toBe(false));

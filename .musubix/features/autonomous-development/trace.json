@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-16T01:39:45.111Z",
+  "generatedAt": "2026-09-16T02:07:17.833Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -7345,7 +7345,7 @@
     "scripts/run-full-tests.mjs": "dea88f204d339ff376df2246bef6fa7a21814ff285b26ad9a1e09ed73414714b",
     "scripts/run-hoh-tdd.mjs": "78a91ef0a983595b80b151b65b07a89bb95254fe8cced18cd910c3b5319f2a92",
     "scripts/smoke-package.mjs": "0c07366d618477ae251a0577569cd5cd0c4ce9f9c5c7c2ea6142f2bb3dfc669c",
-    "tests/adapter-integration.test.ts": "42c350b4c3498d2dca32943731521ae8c2d52921f560039c0f7719b060bd4972",
+    "tests/adapter-integration.test.ts": "0b8974d0ca31559722d40f9e25d42e2ce3d60ef2206b77d4b000264b1eb153d1",
     "tests/adapter-pattern-recognition.test.ts": "72ca71cc538e4a56c9ce596cfe48928cd023ccc42e3e8964e157a30b340f4c15",
     "tests/approval-domain-scoping.test.ts": "9ade56ddcc9f56462e5a4cc04263ef6bf0ac2552f8f4c442b2522cba7781c20e",
     "tests/approval.test.ts": "ce4ac6e65e9b0758a6d394b7452b2cc35b513be904f583dc21e64ed2f215c7b0",

@@ -188,7 +188,7 @@
     "scripts/run-full-tests.mjs": "dea88f204d339ff376df2246bef6fa7a21814ff285b26ad9a1e09ed73414714b",
     "scripts/run-hoh-tdd.mjs": "78a91ef0a983595b80b151b65b07a89bb95254fe8cced18cd910c3b5319f2a92",
     "scripts/smoke-package.mjs": "0c07366d618477ae251a0577569cd5cd0c4ce9f9c5c7c2ea6142f2bb3dfc669c",
-    "tests/adapter-integration.test.ts": "42c350b4c3498d2dca32943731521ae8c2d52921f560039c0f7719b060bd4972",
+    "tests/adapter-integration.test.ts": "0b8974d0ca31559722d40f9e25d42e2ce3d60ef2206b77d4b000264b1eb153d1",
     "tests/adapter-pattern-recognition.test.ts": "72ca71cc538e4a56c9ce596cfe48928cd023ccc42e3e8964e157a30b340f4c15",
     "tests/approval-domain-scoping.test.ts": "9ade56ddcc9f56462e5a4cc04263ef6bf0ac2552f8f4c442b2522cba7781c20e",
     "tests/approval.test.ts": "ce4ac6e65e9b0758a6d394b7452b2cc35b513be904f583dc21e64ed2f215c7b0",
@@ -292,7 +292,7 @@
     "tsconfig.json": "b6af14dbfc589cfa05cae4aa39b195f2322cf39d4b4efb5e2e69d0936de4f658",
     "vitest.config.ts": "de93cfef2bbba7cc82f688892ff2452784228b9768a443a9c06b42bcc5b00081"
   },
-  "artifactSha256": "d41ba4cc99a7a3267b21acda310cc531639185036dcf6ead7f68c39e1e37f2ea",
+  "artifactSha256": "929425eaa0edd0efa0202904cfede90495a7ba389aeab97364de7cb184b9eeb9",
   "approver": "nahisaho",
-  "approvedAt": "2026-09-16T01:39:43.874Z"
+  "approvedAt": "2026-09-16T02:07:16.611Z"
 }
