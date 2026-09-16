@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-16T02:07:17.833Z",
+  "generatedAt": "2026-09-16T02:30:25.604Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -7338,7 +7338,7 @@
     "packages/domain/src/requirements.ts": "db7ef761793b1047d8e492578775d3d92fc20eb55762ea76b60a5b51117d494a",
     "packages/domain/src/types.ts": "4abf51d198404c414b7c3cf857e260abfb800633744d9709cdd53423a565201f",
     "scripts/check-package.mjs": "517d4cc35efcd0c30433af52edbc24d381e16ffcfb8a280dd4bf7e74a333dfeb",
-    "scripts/release-attestation.mjs": "e25170676700be59de82859cd0af8df09ae8d22a53ad531bc4823d0e6240731a",
+    "scripts/release-attestation.mjs": "845ee648f41371c07ab123329ba9a32e8a832d4897c5b91044ad75ea3c3bc8cd",
     "scripts/release-prepare.mjs": "61d027b308d8b094c51680aaacee0dd3ffbecbb9e34098c11f1cfc0dd2e36e30",
     "scripts/release-publish.mjs": "be05292662e6f3a169f238231574c97dc70d41fc7a036bfe86b284e43eadaff4",
     "scripts/release-version.mjs": "c57970a5dc7e3f86437237be2dc2f430bf510b7cfd61685f84fe43b27bdf22e8",

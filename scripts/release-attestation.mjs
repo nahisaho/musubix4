@@ -12,11 +12,25 @@ const configPath = resolve(root, '.musubix/config.json');
 const attestationPath = resolve(root, '.musubix/evidence/attestation.json');
 
 function runCli(args) {
-  return execFileSync(process.execPath, [resolve(root, 'dist/packages/cli/src/main.js'), ...args], {
-    cwd: root,
-    encoding: 'utf8',
-    maxBuffer: 16 * 1024 * 1024,
-  });
+  try {
+    return execFileSync(process.execPath, [resolve(root, 'dist/packages/cli/src/main.js'), ...args], {
+      cwd: root,
+      encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
+    });
+  } catch (cause) {
+    const stdout = cause && typeof cause === 'object' && 'stdout' in cause
+      ? String(cause.stdout ?? '').trim()
+      : '';
+    const stderr = cause && typeof cause === 'object' && 'stderr' in cause
+      ? String(cause.stderr ?? '').trim()
+      : '';
+    throw new Error([
+      `CLI command failed: ${args.join(' ')}`,
+      stdout && `stdout:\n${stdout}`,
+      stderr && `stderr:\n${stderr}`,
+    ].filter(Boolean).join('\n'), { cause });
+  }
 }
 
 function requiredEnvironment(name) {
