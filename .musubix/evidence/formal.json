@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-16T01:39:49.216Z",
+  "totalRequirements": 24,
+  "modeledRequirements": 1,
+  "modeledFraction": 0.041666666666666664,
+  "result": {
+    "valid": true,
+    "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
+    "assumptions": [
+      "Exact normalized subject/response pairs denote the same Boolean proposition.",
+      "Explicit Formal JSON fields use only their documented closed-world constraint semantics.",
+      "Temporal constraints model one nonnegative integer response delay in milliseconds within the intersection of declared afterMs/withinMs intervals, not scheduling or liveness.",
+      "Numeric ms/s/min values share an exact millisecond dimension; bytes/kib/mib values share an exact byte dimension; other and incompatible units remain separate.",
+      "State transitions require one target for each declared from-state/event pair; undeclared transitions are unconstrained.",
+      "Copilot supplies candidate requirements; deterministic checks do not establish their truth."
+    ],
+    "literals": [],
+    "constraints": [
+      {
+        "requirement": "REQ-AUTONOMOUS-DEVELOPMENT-016",
+        "constraint": {
+          "kind": "conditional",
+          "condition": "approval.all-evidence-admissible",
+          "consequence": "approval.decision-approved",
+          "conditionValue": false,
+          "consequenceValue": false
+        }
+      }
+    ],
+    "unsupported": [
+      "REQ-AUTONOMOUS-DEVELOPMENT-001",
+      "REQ-AUTONOMOUS-DEVELOPMENT-002",
+      "REQ-AUTONOMOUS-DEVELOPMENT-003",
+      "REQ-AUTONOMOUS-DEVELOPMENT-004",
+      "REQ-AUTONOMOUS-DEVELOPMENT-005",
+      "REQ-AUTONOMOUS-DEVELOPMENT-006",
+      "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "REQ-AUTONOMOUS-DEVELOPMENT-008",
+      "REQ-AUTONOMOUS-DEVELOPMENT-009",
+      "REQ-AUTONOMOUS-DEVELOPMENT-010",
+      "REQ-AUTONOMOUS-DEVELOPMENT-011",
+      "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "REQ-AUTONOMOUS-DEVELOPMENT-015",
+      "REQ-AUTONOMOUS-DEVELOPMENT-017",
+      "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "REQ-AUTONOMOUS-DEVELOPMENT-019",
+      "REQ-RELEASE-V010-DOCS-001",
+      "REQ-RELEASE-V010-DOCS-002",
+      "REQ-RELEASE-V010-DOCS-003",
+      "REQ-RELEASE-V010-DOCS-004",
+      "REQ-RELEASE-V010-DOCS-005"
+    ],
+    "diagnostics": [
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-002 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-003 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-004 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-005 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-006 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-007 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-008 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-009 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-010 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-011 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-012 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-013 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-014 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-015 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-017 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-018 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-019 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELEASE-V010-DOCS-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELEASE-V010-DOCS-002 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELEASE-V010-DOCS-003 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELEASE-V010-DOCS-004 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-RELEASE-V010-DOCS-005 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      }
+    ],
+    "consistency": "consistent",
+    "solver": {
+      "requested": "none",
+      "name": "none",
+      "command": "",
+      "version": "",
+      "status": "not-requested",
+      "durationMs": 0,
+      "output": "Solver execution disabled."
+    }
+  },
+  "fingerprints": {
+    ".musubix/features/autonomous-development/requirements.md": "bff61115dab122776d912656a4f7dcb3029abf718492135bcd1c8d1cbec00729",
+    ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c"
+  }
+}

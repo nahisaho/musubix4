@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "command": ["status", "--json"],
+  "exitStatus": 0,
+  "outputKeys": ["valid", "requirements", "design", "trace", "graph", "commands"],
+  "diagnosticCodes": []
+}

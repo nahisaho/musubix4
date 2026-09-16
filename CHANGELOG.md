@@ -1,0 +1,44 @@
+# Changelog
+
+## 0.1.0 - 2026-09-16
+
+Initial public release of musubix4.
+
+### Skills
+
+- Repository-local `sdd-change`, requirements, design, implementation,
+  traceability, quality, knowledge, formal/Code Graph, and issue-reporting
+  Skills extend GitHub Copilot CLI without replacing its native development,
+  review, or subagent capabilities.
+- Explicit requirements, design, and release approvals bind reviewed artifact
+  manifests before development crosses protected boundaries.
+
+### Deterministic evidence
+
+- EARS requirements, design validation, ADRs, typed trace links, and
+  bidirectional impact analysis.
+- Structured TDD Red/Green/Refactor records tied to authoritative TEST IDs.
+- TypeScript Code Graph indexing, dependency-cycle gates, optional formal
+  consistency checks, input fingerprints, and a fail-closed quality gate.
+- Repository, CLI, metadata, README, CHANGELOG, and packed npm archive version
+  consistency checks.
+
+### Distribution
+
+- `musubix4` npm package for project-local CLI and Skill installation.
+- GitHub Copilot CLI plugin and marketplace metadata for native Skill loading.
+- Node.js 20 or later, TypeScript, and the MIT License.
+
+### Limitations
+
+- musubix4 does not replace GitHub Copilot or add another agent runtime.
+- Traceability and SAT results do not prove implementation correctness.
+- A passing quality gate proves only the evidence required by the configured
+  repository policy; it is not a universal correctness or security guarantee.
+- Process and filesystem restrictions are not an operating-system sandbox.
+
+<!--
+@id CODE-RELEASE-V010-DOCS-003
+@implements REQ-RELEASE-V010-DOCS-003
+@design DES-RELEASE-V010-DOCS-002
+-->

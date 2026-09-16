@@ -1,0 +1,30 @@
+{
+  "model": "gpt-5.4",
+  "budget": {
+    "aiCredits": 100
+  },
+  "approval": {
+    "mode": "verified-auto",
+    "boundaryAttemptLimit": 3,
+    "maxManifestBytes": 16777216,
+    "maxManifestPaths": 2000
+  },
+  "commands": {
+    "build": ["npm", "run", "build"],
+    "test": ["npm", "test", "--", "--maxWorkers=2"]
+  },
+  "dependencyProvisioning": {
+    "lockfilePath": "package-lock.json",
+    "command": ["npm", "ci", "--ignore-scripts", "--cache", ".musubix4-disposable/npm-cache"],
+    "writablePaths": ["node_modules", ".musubix4-disposable"]
+  },
+  "qaChecks": {
+    "build": ["npm", "run", "build"],
+    "focused-test": ["npx", "vitest", "run", "tests/autonomous-seven-check-qa.test.ts", "--maxWorkers=1"],
+    "static-validation": ["npm", "run", "typecheck"],
+    "trace": ["npx", "musubix4", "trace", "check", "--strict", "--json"],
+    "dependency-cycle": ["npx", "musubix4", "graph", "gate", "--json"],
+    "structured-contract": ["npx", "vitest", "run", "tests/autonomous-seven-check-orchestration.test.ts", "--maxWorkers=1"],
+    "inherited-compatibility": ["npx", "vitest", "run", "tests/hoh-lifecycle.test.ts", "--maxWorkers=1", "-t", "TEST-CLI-COMPATIBILITY-001"]
+  }
+}

@@ -1,0 +1,36 @@
+---
+schemaVersion: 1
+feature: release-v010-docs
+---
+# v0.1.0 release documentation design / v0.1.0 リリース文書設計
+
+## DES-RELEASE-V010-DOCS-001: Bilingual entry-point documents
+Responsibilities: Replace the English and Japanese README files with concise, independently readable entry points that share the same product scope, installation routes, SDD workflow, verification commands, links, and limitations while retaining their required language-specific headings and release markers.
+Interfaces: `README.md`; `README-ja.md`; repository-relative cross-language links and links to `CHANGELOG.md` and `LICENSE`; `tests/release-documents.test.ts`.
+Constraints: The documents shall be newly structured rather than preserving the existing long-form section order; examples shall use only the native GitHub Copilot CLI and the repository-local `musubix4` CLI; both languages shall describe the same npm and plugin alternatives without instructing users to install both; both shall carry the exact prepublication caveat and equivalent Evidence reference tokens; limitations shall state through the exact required fragments that musubix4 neither replaces Copilot nor proves behavior from SAT or trace links; `tests/release-documents.test.ts` shall assert every required heading, command and evidence token, caveat, limitation fragment, and link, that the release marker is the first non-empty line after `# musubix4`, and that the language-specific release marker occurs exactly once.
+Requirements: REQ-RELEASE-V010-DOCS-001 REQ-RELEASE-V010-DOCS-002
+ADRs: ADR-0010
+Depends-On: DES-RELEASE-V010-DOCS-003
+
+## DES-RELEASE-V010-DOCS-002: Initial changelog baseline
+Responsibilities: Replace the prerelease-development history with one approved v0.1.0 release entry and make its exact dated heading the immutable trailing baseline consumed by the release verifier.
+Interfaces: `CHANGELOG.md`; `tests/fixtures/changelog-release-headings.json`; `scripts/release-version.mjs#verifyDocuments`; `tests/release-documents.test.ts`; the approved fixture SHA-256 embedded in REQ-AUTONOMOUS-DEVELOPMENT-019.
+Constraints: The fixture retains `schemaVersion: 1`, the approved serialization and digest, and exactly one heading; repository and packed verification continue to require a dated first stable heading matching the root package authority; future releases may prepend headings but cannot silently replace the v0.1.0 baseline; `tests/release-documents.test.ts` shall assert the exact baseline heading, required section labels and capability terms, and that no other semantic-version or prerelease heading exists.
+Requirements: REQ-AUTONOMOUS-DEVELOPMENT-019 REQ-RELEASE-V010-DOCS-003
+ADRs: ADR-0010
+Depends-On: DES-RELEASE-V010-DOCS-003
+
+## DES-RELEASE-V010-DOCS-003: Release-version synchronization
+Responsibilities: Set 0.1.0 in the root package authority and every governed workspace, lockfile, plugin, and marketplace surface, then prove repository, built-CLI, and packed-archive consistency.
+Interfaces: `package.json`; `package-lock.json`; `packages/*/package.json`; `plugin.json`; `.github/plugin/marketplace.json`; `packages/cli/src/version.ts`; `scripts/release-version.mjs`; `tests/release-version-consistency.test.ts`; `tests/cli-package.test.ts`.
+Constraints: Root `package.json` remains the sole runtime authority; no implementation source may introduce a second version literal except focused test fixtures that intentionally assert 0.1.0 or stale 0.1.18 rejection; version metadata shall be updated with `npm version 0.1.0 --workspaces --include-workspace-root --no-git-tag-version`, and the resulting manifest/lockfile diff shall be limited to version fields; existing archive streaming, workspace set equality, CLI invocation, and README/CHANGELOG marker checks remain fail-closed; after every governed surface is final, the release approval manifest shall be independently reviewed and re-recorded before release preparation.
+Requirements: REQ-AUTONOMOUS-DEVELOPMENT-019 REQ-RELEASE-V010-DOCS-004
+ADRs: ADR-0010
+
+## DES-RELEASE-V010-DOCS-004: Shipped Skill and workflow identity
+Responsibilities: Replace inherited musubix3 command/product references in every packaged SDD Skill, reject stale musubix3 command positions in working-tree and packed UTF-8 text surfaces, and derive each newly recorded workflow event version from the same root package authority used by the CLI and release verifier.
+Interfaces: `.github/skills/sdd-*/SKILL.md`; root `package.json#/files`; generated npm archive; `packages/analysis/src/package-version.ts`; `packages/analysis/src/index.ts`; `packages/analysis/src/workflow.ts#recordWorkflow`; `packages/cli/src/version.ts`; `packages/cli/src/main.ts` asset-root consumers; `scripts/release-version.mjs#verifyPackedReleaseVersions`; `tests/release-documents.test.ts`; `tests/p3-workflow-provenance.test.ts`.
+Constraints: Skill prose and commands may reference only musubix4 as the installed CLI. The working-tree identity test resolves file and directory entries from `/files`, skips an absent generated `dist` entry because build output is covered by archive verification, requires every other configured entry to exist, requires the normative non-empty member set, and treats a file as text only when fatal UTF-8 decoding succeeds and its bytes contain no NUL; the markdown inline/fenced-shell grammar applies only to `.md` files, while the `npx` package-argument rule applies to every selected text file. The scanner tokenizes the `npx` command without shell execution, recognizes `--` and supported options, checks both `-p`/`--package` values and the executable package argument, removes an optional unscoped version suffix, and rejects every normalized package name beginning with `musubix` unless it is exactly `musubix4`; option values that are commands are not treated as executable package arguments. `verifyPackedReleaseVersions` retains the six mandatory version targets and additionally streams every regular archive entry for the same fatal-UTF-8/no-NUL classification and stale-command scan; it rejects unsafe or duplicate paths, fails verification rather than truncating when any scanned entry exceeds 1048576 bytes or cumulative scanned content exceeds 16777216 bytes, and keeps extraction forbidden. A shared analysis-layer package-version resolver performs the bounded named-root search from its own module location, independently of evidence root and cwd, and is exported from `packages/analysis/src/index.ts`; CLI version reporting and init/upgrade/plugin asset-root resolution delegate to it without an analysis-to-CLI dependency. `recordWorkflow` resolves the authority before loading or writing evidence, so root/version failures produce no partial mutation and surface through the existing `CLI_ERROR` envelope with exit code 2; successful append preserves historical events byte-for-value and introduces no independent release literal. `tests/release-documents.test.ts` creates an empty isolated evidence root outside the package root, records one event, and asserts that the sole event uses the root package version; direct resolver tests retain existing source, built, symlink, and working-directory independence coverage.
+Requirements: REQ-AUTONOMOUS-DEVELOPMENT-019 REQ-RELEASE-V010-DOCS-005
+ADRs: ADR-0010
+Depends-On: DES-AUTONOMOUS-DEVELOPMENT-016 DES-RELEASE-V010-DOCS-003

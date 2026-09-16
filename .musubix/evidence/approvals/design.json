@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "stage": "design",
+  "artifacts": {
+    ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
+    ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
+    ".musubix/decisions/ADR-0002.md": "51a753300754ae4da56777b39528b7a5a7ab07c3f10b96cb73938846277cf2c7",
+    ".musubix/decisions/ADR-0003.md": "4321a14a1153431dac39bd53183fb0b70c603282c31cf2b19c3525969cba145b",
+    ".musubix/decisions/ADR-0004.md": "3f5ea74084c79e0b74864bc2dfe267c9f8337a562f528a1aa9384c09aac6035b",
+    ".musubix/decisions/ADR-0005.md": "1f3fcbddbaccbc59aa6d47bf9e7e66c96df364000080d0de7ceee5171b8d14cf",
+    ".musubix/decisions/ADR-0006.md": "8e5afac96d67501ccf65340e3ff15255a4bf4c97bbbffd65d7e1d836d5987ded",
+    ".musubix/decisions/ADR-0007.md": "50cc6f004fe55c8223f62faa4b056ad34a625db30f84dbccdcf1618bff9273fe",
+    ".musubix/decisions/ADR-0008.md": "f1ca0da57053cc29a060af8365298637e9b486e14b882860cd20227d871ad92a",
+    ".musubix/decisions/ADR-0009.md": "7d35aae0fc612405fe7323048a88d0804b8134de4bedb02a997ef8f210401ffd",
+    ".musubix/decisions/ADR-0010.md": "c940c11a67a27969728c7f37626a7bcf21ce9cbbd5d8200bbcdf8777a3fc81a5",
+    ".musubix/features/autonomous-development/design.md": "6907d2aaddea0c657e7e7a6b8a0d29d335a2cc2559da12322daa9464009d0957",
+    ".musubix/features/autonomous-development/requirements.md": "bff61115dab122776d912656a4f7dcb3029abf718492135bcd1c8d1cbec00729",
+    ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
+    ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c"
+  },
+  "artifactSha256": "5510fb5b2e412eb4eb5627f7f2bb2c818f165035c6e28bd71800c97749270965",
+  "approver": "nahisaho",
+  "approvedAt": "2026-09-16T00:54:09.556Z"
+}

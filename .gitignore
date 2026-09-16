@@ -1,0 +1,22 @@
+node_modules/
+dist/
+coverage/
+.test-work/
+.test-tools/
+release-assets/
+*.tgz
+*.tsbuildinfo
+.musubix/cache/
+.musubix4/
+
+# musubix4 generated caches
+/.musubix/cache/
+
+# Marketplace example generated artifacts
+/examples/marketplace-platform/apps/storefront/.next/
+/examples/marketplace-platform/apps/storefront/node_modules/
+/examples/marketplace-platform/services/bff/node_modules/
+/examples/marketplace-platform/services/order/target/
+/examples/marketplace-platform/services/recommendation/**/__pycache__/
+/examples/marketplace-platform/services/recommendation/**/*.py[cod]
+/examples/marketplace-platform/services/risk/target/

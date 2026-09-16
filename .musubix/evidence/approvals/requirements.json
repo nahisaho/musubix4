@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "stage": "requirements",
+  "artifacts": {
+    ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
+    ".musubix/features/autonomous-development/requirements.md": "bff61115dab122776d912656a4f7dcb3029abf718492135bcd1c8d1cbec00729",
+    ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c"
+  },
+  "artifactSha256": "a0c2a6e230448c82d9f5f05170ff74880a2f3bcbf7e58936e2ded2fe0077eb0f",
+  "approver": "nahisaho",
+  "approvedAt": "2026-09-16T00:46:12.870Z"
+}

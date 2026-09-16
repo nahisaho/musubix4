@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "upstream": {
+    "repository": "nahisaho/musubix3",
+    "commit": "c0b20f06727bceb04eeec181d95af9047b1981de"
+  },
+  "procedure": {
+    "id": "musubix3-canonical-oracle",
+    "version": "1"
+  },
+  "artifactDigest": "a5702cdd82d5e7fd84760ed94592e45253964114874110b00a86aad4185ae384"
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "upstream": {
+    "repository": "nahisaho/musubix3",
+    "commit": "c0b20f06727bceb04eeec181d95af9047b1981de"
+  },
+  "procedure": {
+    "id": "musubix3-canonical-oracle",
+    "version": "1"
+  },
+  "artifacts": [
+    {
+      "path": "tests/fixtures/musubix3-cli-surface.json",
+      "sha256": "1b4ad352b1ec0084d594c29d80b9ca27b03912bbd62bba1cb5eec3c30e7a1fe6"
+    },
+    {
+      "path": "baseline-specs/oracle/goldens/status.json",
+      "sha256": "d9a62a79803f7cfa04314d0165b2294a0cb35ce27d46cac760333fe13630ca80"
+    },
+    {
+      "path": "tests/hoh-lifecycle.test.ts",
+      "sha256": "a1074d5089c1a16d7320c45f304588182e6d57923c424204f372b6a2c7c547c1"
+    },
+    {
+      "path": "baseline-specs/oracle/historical-trace.json",
+      "sha256": "929af80280a5d5c0c1940332b2b905141873e52a353677a42a0a2236ecf1134d"
+    }
+  ],
+  "attestation": {
+    "path": "baseline-specs/oracle/regeneration-attestation.json",
+    "sha256": "58167603407bb0270233d6b2a8ae1817d7431b10fb5d27b8e045d6d60fb71247"
+  }
+}

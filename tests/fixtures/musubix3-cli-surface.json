@@ -1,0 +1,574 @@
+{
+  "path": "musubix4",
+  "options": [
+    "-V, --version"
+  ],
+  "commands": [
+    {
+      "path": "musubix4 approval",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 approval prepare",
+          "options": [
+            "--domain <name>",
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 approval record",
+          "options": [
+            "--approver <name>",
+            "--artifact-sha256 <hash>",
+            "--confirm",
+            "--domain <name>",
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 approval validate",
+          "options": [
+            "--domain <name>",
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 attestation",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 attestation oidc-audience",
+          "options": [
+            "--json",
+            "--key-id <id>",
+            "--public-key-file <file>",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 attestation payload",
+          "options": [
+            "--github-oidc-token-file <file>",
+            "--json",
+            "--key-id <id>",
+            "--provider <provider>",
+            "--public-key-file <file>",
+            "--root <directory>",
+            "--run-id <id>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 attestation verify",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 change",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 change waiver",
+          "options": [],
+          "commands": [
+            {
+              "path": "musubix4 change waiver record",
+              "options": [
+                "--approver <name>",
+                "--confirm",
+                "--detail <value>",
+                "--json",
+                "--reason <text>",
+                "--requirement <req-id>",
+                "--root <directory>"
+              ],
+              "commands": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "musubix4 change-record",
+      "options": [
+        "--allow-unchanged",
+        "--dry-run",
+        "--json",
+        "--requirement <ids...>",
+        "--root <directory>"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 config",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 config lint",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 config scaffold",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 constitution",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 constitution validate",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 design",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 design c4",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 design scaffold",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 design validate",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 evidence",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 evidence refresh",
+          "options": [
+            "--changed",
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 formal",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 formal check",
+          "options": [
+            "--json",
+            "--lean-command <path>",
+            "--root <directory>",
+            "--solver <solver>",
+            "--timeout <milliseconds>",
+            "--z3-command <path>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 formal doctor",
+          "options": [
+            "--json",
+            "--lean-command <path>",
+            "--root <directory>",
+            "--timeout <milliseconds>",
+            "--z3-command <path>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 formal generate",
+          "options": [
+            "--format <format>",
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 gate",
+      "options": [
+        "--changed",
+        "--feature <name>",
+        "--json",
+        "--root <directory>"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 graph",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 graph cycles",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 graph gate",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 graph impact",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 graph index",
+          "options": [
+            "--changed",
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 init",
+      "options": [
+        "--dry-run",
+        "--feature <slug>",
+        "--force",
+        "--json",
+        "--root <directory>"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 knowledge",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 knowledge build",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 knowledge query",
+          "options": [
+            "--json",
+            "--limit <count>",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 model-correspondence",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 model-correspondence validate",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 mutation",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 mutation doctor",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 mutation identity",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 mutation validate",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 plugin-install",
+      "options": [
+        "--json"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 requirements",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 requirements scaffold",
+          "options": [
+            "--json",
+            "--root <directory>",
+            "--title <text>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 requirements validate",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 status",
+      "options": [
+        "--json",
+        "--root <directory>"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 tdd",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 tdd green",
+          "options": [
+            "--command <name>",
+            "--json",
+            "--requirement <id>",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 tdd migrate",
+          "options": [
+            "--approver <name>",
+            "--confirm",
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 tdd red",
+          "options": [
+            "--command <name>",
+            "--json",
+            "--requirement <id>",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 tdd refactor",
+          "options": [
+            "--command <name>",
+            "--json",
+            "--requirement <id>",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 tdd validate",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 tdd void",
+          "options": [
+            "--approver <name>",
+            "--confirm",
+            "--json",
+            "--reason <text>",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 trace",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 trace build",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 trace check",
+          "options": [
+            "--json",
+            "--root <directory>",
+            "--strict"
+          ],
+          "commands": []
+        },
+        {
+          "path": "musubix4 trace impact",
+          "options": [
+            "--json",
+            "--root <directory>"
+          ],
+          "commands": []
+        }
+      ]
+    },
+    {
+      "path": "musubix4 upgrade",
+      "options": [
+        "--dry-run",
+        "--json",
+        "--root <directory>"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 workflow",
+      "options": [],
+      "commands": [
+        {
+          "path": "musubix4 workflow waiver",
+          "options": [],
+          "commands": [
+            {
+              "path": "musubix4 workflow waiver record",
+              "options": [
+                "--approver <name>",
+                "--confirm",
+                "--index <n>",
+                "--json",
+                "--phase <phase>",
+                "--reason <text>",
+                "--recorded-at <timestamp>",
+                "--root <directory>",
+                "--skill <skill>"
+              ],
+              "commands": []
+            },
+            {
+              "path": "musubix4 workflow waiver record-all",
+              "options": [
+                "--approver <name>",
+                "--confirm",
+                "--json",
+                "--reason <text>",
+                "--root <directory>"
+              ],
+              "commands": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "musubix4 workflow-record",
+      "options": [
+        "--command <text>",
+        "--json",
+        "--reason <text>",
+        "--root <directory>",
+        "--status <status>"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 workflow-sanitize",
+      "options": [
+        "--json",
+        "--root <directory>",
+        "--session-id <uuid>"
+      ],
+      "commands": []
+    },
+    {
+      "path": "musubix4 workflow-verify",
+      "options": [
+        "--json",
+        "--root <directory>",
+        "--session-id <uuid>",
+        "--strict"
+      ],
+      "commands": []
+    }
+  ]
+}
