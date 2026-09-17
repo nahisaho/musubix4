@@ -43,7 +43,7 @@ REQ-SAFE-WORKFLOW-SPEED-002 and verifies the complete allowlist, sequential
 boundary, and ordering contract. A fifth cycle strengthened the assertions to
 distinguish parallel and sequential clauses. CHANGE-0007 has six waivers: the
 initial three and three refreshed after the final cycle; together with
-CHANGE-0006's three, there are nine across both changes. The abbreviated waiver
+CHANGE-0006's fourteen, there are twenty across both changes. The abbreviated waiver
 reasons are supported by all five passing focused cycles, the subsequent full
 test suite, strict trace, graph gate, and changed quality gate. The waivers
 acknowledge checkpoint chronology debt and do not claim that the first bounded

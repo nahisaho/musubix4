@@ -186,6 +186,64 @@
       "phase": "complete",
       "status": "failed",
       "recordedAt": "2026-09-17T06:51:34.922Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-17T09:05:19.779Z"
     }
-  ]
+  ],
+  "verification": {
+    "mode": "compatible",
+    "sourceSha256": "90c2276c52a39b32573a7ebef4574185beabe5c25565dc42acdea3c3ca20068f",
+    "eventsSha256": "45dc9cb1dd5bbe7b4ff84c158278f139099a1486628771309550e259591f0012",
+    "verifiedAt": "2026-09-17T09:07:43.000Z",
+    "invocations": [
+      {
+        "skill": "sdd-change",
+        "toolCallId": "call_Z82rOaEiX6VquumWDtQX3tfX",
+        "invokedAt": "2026-09-17T03:52:42.457Z",
+        "completedAt": "2026-09-17T03:52:35.942Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-design",
+        "toolCallId": "call_yhyp8AnVwXjMokRQbgaoBbTC",
+        "invokedAt": "2026-09-17T04:01:59.070Z",
+        "completedAt": "2026-09-17T04:01:59.087Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-implementation",
+        "toolCallId": "call_sGJaT0AsWH0hUI9uFkBlieE4",
+        "invokedAt": "2026-09-17T04:20:11.072Z",
+        "completedAt": "2026-09-17T04:20:11.083Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-quality",
+        "toolCallId": "call_mJcUTSS6RcfadejMJ4B2emK2",
+        "invokedAt": "2026-09-17T04:59:35.502Z",
+        "completedAt": "2026-09-17T04:59:35.524Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-change",
+        "toolCallId": "call_WC27Jp12kg1eOCfTs6Koey9z",
+        "invokedAt": "2026-09-17T06:49:01.968Z",
+        "completedAt": "2026-09-17T06:49:01.978Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-change",
+        "toolCallId": "call_vMDeA5x87Rqz0FfRfjnWLCIs",
+        "invokedAt": "2026-09-17T06:51:01.758Z",
+        "completedAt": "2026-09-17T06:51:01.767Z",
+        "status": "completed"
+      }
+    ]
+  }
 }

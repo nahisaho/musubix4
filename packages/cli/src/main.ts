@@ -67,13 +67,24 @@ function outputHohRun(
 }
 
 /** @id CODE-HOH-CLI-001
- * @implements REQ-AUTONOMOUS-DEVELOPMENT-001 REQ-AUTONOMOUS-DEVELOPMENT-004 REQ-AUTONOMOUS-DEVELOPMENT-011 REQ-AUTONOMOUS-DEVELOPMENT-012
- * @design DES-AUTONOMOUS-DEVELOPMENT-001 DES-AUTONOMOUS-DEVELOPMENT-005
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-001 REQ-AUTONOMOUS-DEVELOPMENT-004 REQ-AUTONOMOUS-DEVELOPMENT-011 REQ-AUTONOMOUS-DEVELOPMENT-012 REQ-AUTOMATIC-HOH-CODING-001
+ * @design DES-AUTONOMOUS-DEVELOPMENT-001 DES-AUTONOMOUS-DEVELOPMENT-005 DES-AUTOMATIC-HOH-CODING-002
  */
 export function localHohServices(root: string, store: FileRunStore): HohServices {
   const candidates = new Map<string, GitCandidateStore>();
-  const invoke = async (role: 'planner' | 'developer' | 'qa' | 'reviewer', context: unknown): Promise<unknown> => {
-    const run = (context as { run: { id: string; config: HohConfig; requirements?: string[] } }).run;
+  const invoke = async (
+    role: 'planner' | 'developer' | 'qa' | 'reviewer',
+    context: unknown,
+    execution?: { id: string; config: HohConfig },
+  ): Promise<unknown> => {
+    const run = role === 'reviewer'
+      ? execution
+      : (context as { run?: { id: string; config: HohConfig } }).run;
+    if (!run || !run.id.trim() || !run.config) {
+      throw new Error(role === 'reviewer'
+        ? 'Reviewer execution context is required.'
+        : `${role} role context requires a run.`);
+    }
     const policy = derivePolicy(role, run.config.permissions[role] ?? {});
     const result = await invokeCopilotRole({
       ...(process.env.MUSUBIX4_COPILOT_EXECUTABLE ? { executable: process.env.MUSUBIX4_COPILOT_EXECUTABLE } : {}),
@@ -97,7 +108,7 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
       planner: (context) => invoke('planner', context),
       developer: (context) => invoke('developer', context),
       qa: (context) => invoke('qa', context),
-      reviewer: (context) => invoke('reviewer', context),
+      reviewer: (context, execution) => invoke('reviewer', context, execution),
     },
     project: {
       preflight: async ({ config }: { config: HohConfig }) => {

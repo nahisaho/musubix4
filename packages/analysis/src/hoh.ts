@@ -439,6 +439,20 @@ export interface Lease {
   path: string;
 }
 
+/** @id CODE-AUTOMATIC-HOH-CODING-003
+ * @implements REQ-AUTOMATIC-HOH-CODING-001
+ * @design DES-AUTOMATIC-HOH-CODING-002
+ */
+export interface RoleExecutionContext {
+  id: string;
+  config: HohConfig;
+}
+
+export type HohReviewer = (
+  context: unknown,
+  execution?: RoleExecutionContext,
+) => Promise<unknown>;
+
 export interface HohServices {
   github?: {
     loadIssue(
@@ -449,7 +463,10 @@ export interface HohServices {
     planner(context: unknown): Promise<unknown>;
     developer(context: unknown): Promise<unknown>;
     qa(context: unknown): Promise<unknown>;
-    reviewer?(context: unknown): Promise<unknown>;
+    reviewer?(
+      context: unknown,
+      execution?: RoleExecutionContext,
+    ): Promise<unknown>;
   };
   project: {
     preflight(context: unknown): Promise<void>;
@@ -3756,9 +3773,13 @@ async function consumeBoundaryAttempt(
   return { nonce, consumed: consumed + 1 };
 }
 
+/** @id CODE-AUTOMATIC-HOH-CODING-004
+ * @implements REQ-AUTOMATIC-HOH-CODING-001
+ * @design DES-AUTOMATIC-HOH-CODING-002
+ */
 async function evaluateAutomaticManifest(
   store: FileRunStore,
-  reviewer: (context: unknown) => Promise<unknown>,
+  reviewer: HohReviewer,
   input: {
     run: RunRecord;
     stage: "requirements" | "design" | "release";
@@ -3773,6 +3794,16 @@ async function evaluateAutomaticManifest(
     >;
   },
 ): Promise<Record<string, unknown>> {
+  const execution: RoleExecutionContext = {
+    id: input.run.id,
+    config: input.run.config,
+  };
+  if (!execution.id.trim()) {
+    throw new Error("Reviewer execution context requires a non-empty run ID.");
+  }
+  if (!execution.config) {
+    throw new Error("Reviewer execution context requires a config.");
+  }
   const manifestPaths = input.manifestArtifacts.map(({ path }) => path);
   const manifestDigest = digest(
     stableJson(
@@ -3834,23 +3865,26 @@ async function evaluateAutomaticManifest(
     roleAttempt += 1
   ) {
     const candidate = record(
-      await reviewer({
-        stage: input.stage,
-        boundaryKind: input.boundaryKind,
-        boundaryEpisodeOrdinal: input.boundaryEpisodeOrdinal,
-        ...(input.amendmentAttemptOrdinal === undefined
-          ? {}
-          : { amendmentAttemptOrdinal: input.amendmentAttemptOrdinal }),
-        nonce: attempt.nonce,
-        manifestDigest,
-        manifestPaths,
-        manifestArtifacts: input.manifestArtifacts,
-        validatorEvidence: input.validatorEvidence,
-        ...(input.releaseGateEvidence
-          ? { releaseGateEvidence: input.releaseGateEvidence }
-          : {}),
-        attempt: roleAttempt + 1,
-      }),
+      await reviewer(
+        {
+          stage: input.stage,
+          boundaryKind: input.boundaryKind,
+          boundaryEpisodeOrdinal: input.boundaryEpisodeOrdinal,
+          ...(input.amendmentAttemptOrdinal === undefined
+            ? {}
+            : { amendmentAttemptOrdinal: input.amendmentAttemptOrdinal }),
+          nonce: attempt.nonce,
+          manifestDigest,
+          manifestPaths,
+          manifestArtifacts: input.manifestArtifacts,
+          validatorEvidence: input.validatorEvidence,
+          ...(input.releaseGateEvidence
+            ? { releaseGateEvidence: input.releaseGateEvidence }
+            : {}),
+          attempt: roleAttempt + 1,
+        },
+        execution,
+      ),
       "Reviewer output",
     );
     const reviewedPaths =
@@ -3964,13 +3998,13 @@ async function evaluateAutomaticManifest(
 }
 
 /** @id CODE-AUTONOMOUS-AUTO-APPROVAL-001
- * @implements REQ-AUTONOMOUS-DEVELOPMENT-016
- * @design DES-AUTONOMOUS-DEVELOPMENT-006 DES-AUTONOMOUS-DEVELOPMENT-012 DES-AUTONOMOUS-DEVELOPMENT-015
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-016 REQ-AUTOMATIC-HOH-CODING-001
+ * @design DES-AUTONOMOUS-DEVELOPMENT-006 DES-AUTONOMOUS-DEVELOPMENT-012 DES-AUTONOMOUS-DEVELOPMENT-015 DES-AUTOMATIC-HOH-CODING-002
  */
 export async function autoApproveRunBoundary(
   store: FileRunStore,
   runId: string,
-  reviewer: (context: unknown) => Promise<unknown>,
+  reviewer: HohReviewer,
 ): Promise<RunRecord> {
   const lease = await store.acquire(runId, {
     pid: process.pid,
@@ -4139,7 +4173,7 @@ export async function autoApproveRunBoundary(
 
 async function reviewAutomaticBoundary(
   store: FileRunStore,
-  reviewer: (context: unknown) => Promise<unknown>,
+  reviewer: HohReviewer,
   input: {
     run: RunRecord;
     stage: "requirements" | "design";

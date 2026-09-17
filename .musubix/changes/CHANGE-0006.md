@@ -42,10 +42,13 @@ Behavior change to the shipped GitHub Copilot CLI Skill instructions.
 The first Red/Green cycle was executed successfully, but its implementation
 checkpoint was recorded after Green. A second review-driven Red/Green cycle
 then covered the final guard and Skill-safety edits after the original Green
-checkpoint. The three approved change-evidence waivers for this change (nine
-across CHANGE-0006 and CHANGE-0007 after CHANGE-0007's refresh) use an
-abbreviated reason; the final
-shipped fingerprints are instead supported by both passing focused cycles, the
-subsequent full test suite, strict trace, graph gate, and changed quality gate.
-The waivers acknowledge checkpoint chronology debt and do not claim that the
-first bounded cycle alone covers the final source tree.
+checkpoint. CHANGE-0006 has fourteen approved change-evidence waivers: the initial
+three, three refreshed after CHANGE-0008's first correctly ordered
+REQ-AUTOMATIC-HOH-CODING-001 cycle, and four final waivers after its
+second review-driven cycle added the explicit migration diagnostic, followed
+by four refreshed against the final third cycle. Together with CHANGE-0007's
+six, there are twenty across both changes. The abbreviated reasons are
+supported by the two CHANGE-0006 focused cycles, the later CHANGE-0008 defect
+cycles, the subsequent full test suite, strict trace, graph gate, and changed
+quality gate. The waivers acknowledge checkpoint chronology debt and do not
+claim that the first bounded cycle alone covers the final source tree.

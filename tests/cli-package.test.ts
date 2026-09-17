@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { parseDocument } from 'yaml';
 import {
-  buildTrace, exists, FileRunStore, githubOidcAudience, loadConfig, parseHohConfig, readText, runProcess, writeJson, writeText,
+  buildTrace, exists, FileRunStore, githubOidcAudience, HohOrchestrator, loadConfig, parseHohConfig, readText, runProcess, writeJson, writeText,
 } from '../packages/analysis/src/index.js';
 import { skillNames } from '../packages/cli/src/install.js';
 import { localHohServices } from '../packages/cli/src/main.js';
@@ -422,6 +422,86 @@ describe('distribution contracts', () => {
       else process.env.MUSUBIX4_COPILOT_EXECUTABLE = previousExecutable;
       if (previousMarkerPath === undefined) delete process.env.MUSUBIX4_TEST_MARKER_PATH;
       else process.env.MUSUBIX4_TEST_MARKER_PATH = previousMarkerPath;
+    }
+  });
+
+  /** @id TEST-AUTOMATIC-HOH-CODING-003
+   * @verifies REQ-AUTOMATIC-HOH-CODING-001
+   */
+  it('TEST-AUTOMATIC-HOH-CODING-003 supplies reviewer execution metadata without prompt leakage', async () => {
+    const root = await fixture();
+    const store = new FileRunStore(root);
+    const run = await store.create({
+      source: { kind: 'prompt', text: 'implement the feature' },
+      requirements: ['REQ-PUBLIC-001'],
+      config: parseHohConfig({
+        model: 'gpt-5.4',
+        budget: { aiCredits: 10 },
+        commands: { build: ['npm', 'run', 'build'] },
+      }),
+    });
+    const promptPath = resolve(root, 'role-prompts.jsonl');
+    const executable = resolve(root, 'fake-reviewer.mjs');
+    await writeText(root, 'fake-reviewer.mjs', [
+      '#!/usr/bin/env node',
+      "import { appendFileSync } from 'node:fs';",
+      "const prompt = process.argv[process.argv.indexOf('-p') + 1];",
+      "const request = JSON.parse(prompt);",
+      "appendFileSync(process.env.MUSUBIX4_TEST_PROMPT_PATH, JSON.stringify({marker:process.env.MUSUBIX4_HOH_RUN_ID,request}) + '\\n');",
+      "let result;",
+      "if (request.role === 'reviewer') {",
+      "  const boundary = request.context;",
+      "  result = {...boundary, reviewedPaths: boundary.manifestPaths, findings: []};",
+      "} else {",
+      "  result = {kind:'plan',priorities:[{requirementId:request.context.requirements[0],acceptanceGates:['test'],preservation:['base']}],addressedBlockers:[]};",
+      "}",
+      "console.log(JSON.stringify({type:'usage',aiCredits:0,model:'gpt-5.4'}));",
+      "console.log(JSON.stringify({type:'result',result}));",
+    ].join('\n'));
+    await chmod(executable, 0o755);
+    const previousExecutable = process.env.MUSUBIX4_COPILOT_EXECUTABLE;
+    const previousPromptPath = process.env.MUSUBIX4_TEST_PROMPT_PATH;
+    process.env.MUSUBIX4_COPILOT_EXECUTABLE = executable;
+    process.env.MUSUBIX4_TEST_PROMPT_PATH = promptPath;
+    try {
+      const services = localHohServices(root, store);
+      const result = await new HohOrchestrator(store, services).resume(run.id);
+      expect(result.state).toBe('planned');
+      const calls = (await readText(root, 'role-prompts.jsonl'))
+        .trim()
+        .split('\n')
+        .map((line) => JSON.parse(line) as {
+          marker: string;
+          request: { role: string; context: Record<string, unknown> };
+        });
+      const reviewerCalls = calls.filter(({ request }) => request.role === 'reviewer');
+      expect(reviewerCalls).toHaveLength(2);
+      for (const call of reviewerCalls) {
+        expect(call.marker).toBe(run.id);
+        expect(call.request).not.toHaveProperty('execution');
+        expect(call.request.context).not.toHaveProperty('run');
+        expect(call.request.context).not.toHaveProperty('execution');
+        const { manifestArtifacts: _manifestArtifacts, ...envelope } = call.request.context;
+        expect(JSON.stringify(envelope)).not.toContain(run.id);
+        expect(Object.keys(call.request.context).sort()).toEqual([
+          'attempt',
+          'boundaryEpisodeOrdinal',
+          'boundaryKind',
+          'manifestArtifacts',
+          'manifestDigest',
+          'manifestPaths',
+          'nonce',
+          'stage',
+          'validatorEvidence',
+        ]);
+      }
+      await expect(services.roles.reviewer?.({ stage: 'requirements' }))
+        .rejects.toThrow('Reviewer execution context is required.');
+    } finally {
+      if (previousExecutable === undefined) delete process.env.MUSUBIX4_COPILOT_EXECUTABLE;
+      else process.env.MUSUBIX4_COPILOT_EXECUTABLE = previousExecutable;
+      if (previousPromptPath === undefined) delete process.env.MUSUBIX4_TEST_PROMPT_PATH;
+      else process.env.MUSUBIX4_TEST_PROMPT_PATH = previousPromptPath;
     }
   });
 

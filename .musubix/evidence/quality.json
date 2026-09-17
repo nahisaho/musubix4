@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T06:45:12.829Z",
+  "generatedAt": "2026-09-17T09:24:39.970Z",
   "status": "pass",
   "checks": [
     {
@@ -183,7 +183,7 @@
       "name": "workflow",
       "required": true,
       "status": "pass",
-      "summary": "21 workflow declaration(s) across 5 Skill(s) reconciled with Copilot invocation events.",
+      "summary": "24 workflow declaration(s) across 5 Skill(s) reconciled with Copilot invocation events.",
       "diagnostics": [
         {
           "code": "WORKFLOW_SKILL_NOT_INVOKED",
@@ -194,9 +194,9 @@
           "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.109Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.109Z"
           }
         },
         {
@@ -208,9 +208,9 @@
           "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.109Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.109Z"
           }
         },
         {
@@ -222,9 +222,9 @@
           "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -236,9 +236,9 @@
           "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -250,9 +250,9 @@
           "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -264,9 +264,9 @@
           "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -278,9 +278,9 @@
           "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -292,9 +292,9 @@
           "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -306,9 +306,9 @@
           "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -320,9 +320,9 @@
           "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -334,9 +334,9 @@
           "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -348,9 +348,9 @@
           "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -362,9 +362,9 @@
           "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -376,9 +376,9 @@
           "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -390,9 +390,9 @@
           "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -404,9 +404,9 @@
           "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -418,9 +418,9 @@
           "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.111Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
           }
         },
         {
@@ -432,9 +432,9 @@
           "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.111Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
           }
         },
         {
@@ -446,9 +446,9 @@
           "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -460,9 +460,9 @@
           "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -474,9 +474,9 @@
           "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -488,9 +488,9 @@
           "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -502,9 +502,9 @@
           "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.111Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
           }
         },
         {
@@ -516,9 +516,9 @@
           "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.111Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
           }
         },
         {
@@ -530,9 +530,9 @@
           "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -544,9 +544,9 @@
           "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -558,9 +558,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.111Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
           }
         },
         {
@@ -572,9 +572,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.028Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.111Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
           }
         },
         {
@@ -586,9 +586,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -600,9 +600,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -614,9 +614,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         },
         {
@@ -628,9 +628,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-            "recordedAt": "2026-09-17T06:41:45.027Z",
-            "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+            "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+            "recordedAt": "2026-09-17T09:13:30.110Z",
+            "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
           }
         }
       ]
@@ -639,14 +639,14 @@
       "name": "tdd",
       "required": true,
       "status": "pass",
-      "summary": "117 Red-Green TDD cycle(s) recorded.",
+      "summary": "121 Red-Green TDD cycle(s) recorded.",
       "diagnostics": []
     },
     {
       "name": "change-history",
       "required": true,
       "status": "pass",
-      "summary": "7 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "8 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
@@ -877,6 +877,18 @@
           }
         },
         {
+          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+          "severity": "warning",
+          "message": "CHANGE-0006:REQ-AUTOMATIC-HOH-CODING-001 references TDD evidence without monotonic order; regenerate the cycle.",
+          "changeId": "CHANGE-0006",
+          "detail": "requirement:REQ-AUTOMATIC-HOH-CODING-001",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Historical CHANGE-0006 checkpoints predate monotonic ordering and the final three-cycle CHANGE-0008 test set; current behavior is independently covered by focused TDD and full validation.",
+            "recordedAt": "2026-09-17T08:27:39.363Z"
+          }
+        },
+        {
           "code": "CHANGE_RED_UNPROVEN",
           "severity": "warning",
           "message": "CHANGE-0006 has no valid Red evidence for REQ-AUTOMATIC-HOH-CODING-001 before its Red phase.",
@@ -884,8 +896,8 @@
           "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "Red and Green executed successfully; implementation checkpoint was recorded after Green in this session.",
-            "recordedAt": "2026-09-17T04:54:25.595Z"
+            "reason": "Historical Red phase ordering is immutable; the final automatic-HoH behavior has current focused Red-Green evidence and full validation.",
+            "recordedAt": "2026-09-17T08:27:40.121Z"
           }
         },
         {
@@ -896,8 +908,8 @@
           "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "Red and Green executed successfully; implementation checkpoint was recorded after Green in this session.",
-            "recordedAt": "2026-09-17T04:54:26.448Z"
+            "reason": "Historical Green phase ordering is immutable; the final automatic-HoH behavior has current focused Red-Green evidence and full validation.",
+            "recordedAt": "2026-09-17T08:27:40.926Z"
           }
         },
         {
@@ -923,6 +935,18 @@
             "reason": "Red and Green executed successfully; implementation checkpoint was recorded after Green, and final behavior is covered by five focused cycles plus full validation.",
             "recordedAt": "2026-09-17T06:01:29.721Z"
           }
+        },
+        {
+          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+          "severity": "warning",
+          "message": "CHANGE-0008:REQ-AUTOMATIC-HOH-CODING-001 references TDD evidence without monotonic order; regenerate the cycle.",
+          "changeId": "CHANGE-0008",
+          "detail": "requirement:REQ-AUTOMATIC-HOH-CODING-001",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "The primary CHANGE-0008 phase sequence is ordered; final release-review Red-Green cycles strengthened prompt-envelope coverage after its append-only quality checkpoint.",
+            "recordedAt": "2026-09-17T08:27:42.536Z"
+          }
         }
       ]
     },
@@ -930,7 +954,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "pass",
-      "summary": "7/7 staged change(s) have semantically complete evidence.",
+      "summary": "8/8 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -976,8 +1000,8 @@
           "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "Red and Green executed successfully; implementation checkpoint was recorded after Green in this session.",
-            "recordedAt": "2026-09-17T04:54:26.807Z"
+            "reason": "Historical bounded chronology cannot be rewritten; the final CHANGE-0008 cycles and complete validation cover the shipped behavior.",
+            "recordedAt": "2026-09-17T08:27:41.728Z"
           }
         },
         {
@@ -999,9 +1023,9 @@
       "required": true,
       "status": "pass",
       "summary": "node: completed, exit 0.",
-      "durationMs": 67020,
+      "durationMs": 69120,
       "exitCode": 0,
-      "stdout": "\n RUN  v3.2.7 /home/nahisaho/GitHub/musubix4\n\n ✓ tests/cli-package.test.ts (18 tests) 29964ms\n   ✓ CLI contracts > prints version/help and JSON validation with nonzero failure  1171ms\n   ✓ CLI contracts > returns structured errors for missing files, invalid solver and unknown commands  896ms\n   ✓ CLI contracts > supports init alias, dry-run, status and native-bin symlink invocation  1301ms\n   ✓ CLI contracts > requires explicit confirmation before recording human approval  1878ms\n   ✓ CLI contracts > runs full workflow and reports JSON evidence  9488ms\n   ✓ CLI contracts > reports and enforces strict Code Graph mode through CLI gates and status  2706ms\n   ✓ CLI contracts > enforces strict workflow session identity from config and CLI  2450ms\n   ✓ CLI contracts > derives the configured GitHub OIDC audience without reading a private key  475ms\n   ✓ CLI contracts > records a staged change checkpoint through the CLI  2306ms\n   ✓ CLI contracts > returns exit 1 for incomplete starter gates and contradictory requirements  1445ms\n   ✓ CLI contracts > executes a complete CLI TDD cycle and exposes it to the gate  2563ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-001 routes configured top-level coding through bounded HoH summaries  636ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-002 enforces routing safety details and role markers  952ms\n   ✓ distribution contracts > TEST-SESSION-SCOPED-DEVELOPMENT-002 reuses evidence only for an explicit change ID  777ms\n   ✓ distribution contracts > validates native manifests and packed hidden skills/built engine/assets  891ms\n ✓ tests/change-multi-requirement-test-annotation.test.ts (1 test) 3036ms\n   ✓ TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001 recognizes every requirement in a shared @verifies declaration  3035ms\n ✓ tests/structured-test-path-binding.test.ts (1 test) 1843ms\n   ✓ structured test path binding > TEST-STRUCTURED-TEST-PATH-BINDING-001 binds executed IDs to their authoritative trace paths  1842ms\n ✓ tests/structured-full-test-report.test.ts (1 test) 1028ms\n   ✓ structured full test report > TEST-STRUCTURED-FULL-TEST-REPORT-001 emits authoritative TEST IDs from the executed Vitest suite  1028ms\n ✓ tests/optional-formal-gate.test.ts (1 test) 873ms\n   ✓ optional formal gate > TEST-OPTIONAL-FORMAL-GATE-001 does not block readiness for unsupported prose when formal is optional  872ms\n ✓ tests/hoh-lifecycle.test.ts (18 tests) 828ms\n ✓ tests/release-documents.test.ts (10 tests) 404ms\n   ✓ v0.1.0 release documents > TEST-RELEASE-V010-BASELINE-001 verifies the approved fixture and release verifier  327ms\n ✓ tests/autonomous-auto-release-isolation.test.ts (2 tests) 325ms\n ✓ tests/autonomous-baseline-oracle.test.ts (4 tests) 369ms\n ✓ tests/release-version-consistency.test.ts (1 test) 375ms\n   ✓ release version consistency > TEST-RELEASE-VERSION-CONSISTENCY-001 verifies repository and built CLI release versions  374ms\n ✓ tests/autonomous-amendment-promotion.test.ts (1 test) 252ms\n ✓ tests/autonomous-amendment-git.test.ts (1 test) 249ms\n ✓ tests/autonomous-amendment-cli-promotion.test.ts (1 test) 258ms\n ✓ tests/autonomous-seven-check-adapter.test.ts (1 test) 161ms\n ✓ tests/policy-command-closed-set.test.ts (1 test) 131ms\n ✓ tests/policy-command-definition-binding.test.ts (1 test) 134ms\n ✓ tests/policy-command-optional-binding.test.ts (1 test) 124ms\n ✓ tests/full-v1-acceptance.test.ts (1 test) 106ms\n ✓ tests/autonomous-auto-approval-review-repair.test.ts (3 tests) 95ms\n ✓ tests/autonomous-auto-approval-boundary-evidence.test.ts (3 tests) 81ms\n ✓ tests/autonomous-auto-release-approval.test.ts (1 test) 43ms\n ✓ tests/autonomous-auto-approval-repair.test.ts (1 test) 48ms\n ✓ tests/autonomous-auto-amendment-approval.test.ts (1 test) 38ms\n ✓ tests/autonomous-auto-approval-least-privilege.test.ts (1 test) 39ms\n ✓ tests/autonomous-auto-amendment-repair.test.ts (1 test) 46ms\n ✓ tests/autonomous-auto-approval-retry.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-approval-nonce.test.ts (1 test) 55ms\n ✓ tests/autonomous-amendment-approval-consumption.test.ts (1 test) 47ms\n ✓ tests/autonomous-auto-release-manifest.test.ts (1 test) 42ms\n ✓ tests/autonomous-amendment-fsm.test.ts (1 test) 59ms\n ✓ tests/autonomous-auto-spec-design-manifest.test.ts (1 test) 40ms\n ✓ tests/autonomous-auto-spec-design-approval.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-approval-manifest-limit.test.ts (1 test) 28ms\n ✓ tests/autonomous-protected-boundary.test.ts (1 test) 31ms\n ✓ tests/autonomous-amendment-approval.test.ts (1 test) 31ms\n ✓ tests/autonomous-protected-set.test.ts (1 test) 33ms\n ✓ tests/autonomous-auto-approval-rehash.test.ts (1 test) 33ms\n ✓ tests/autonomous-amendment-cli.test.ts (1 test) 33ms\n ✓ tests/autonomous-auto-approval-authority-persistence.test.ts (1 test) 25ms\n ✓ tests/autonomous-seven-check-orchestration.test.ts (1 test) 27ms\n ✓ tests/autonomous-qa-mutation-routing.test.ts (1 test) 26ms\n ✓ tests/autonomous-amendment-routing.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-authority-sticky.test.ts (1 test) 23ms\n ✓ tests/autonomous-auto-approval-reviewer-required.test.ts (1 test) 22ms\n ✓ tests/autonomous-durability-limits.test.ts (1 test) 25ms\n ✓ tests/autonomous-auto-approval-empty-manifest.test.ts (1 test) 24ms\n ✓ tests/autonomous-auto-approval-authority-escalation.test.ts (1 test) 25ms\n ✓ tests/autonomous-command-surface.test.ts (1 test) 25ms\n ✓ tests/autonomous-command-surface-loop.test.ts (1 test) 21ms\n ✓ tests/autonomous-command-surface-advanced.test.ts (1 test) 21ms\n ✓ tests/autonomous-hoh-config-file.test.ts (1 test) 8ms\n ✓ tests/autonomous-seven-check-qa.test.ts (1 test) 9ms\n ✓ tests/autonomous-collision-inventory.test.ts (1 test) 9ms\n ✓ tests/autonomous-auto-approval-config.test.ts (1 test) 3ms\n ✓ tests/autonomous-seven-check-config.test.ts (1 test) 3ms\n\n Test Files  55 passed (55)\n      Tests  106 passed (106)\n   Start at  15:41:50\n   Duration  66.69s (transform 702ms, setup 219ms, collect 17.61s, tests 41.69s, environment 7ms, prepare 2.10s)\n\n",
+      "stdout": "\n RUN  v3.2.7 /home/nahisaho/GitHub/musubix4\n\n ✓ tests/cli-package.test.ts (19 tests) 30649ms\n   ✓ CLI contracts > prints version/help and JSON validation with nonzero failure  1265ms\n   ✓ CLI contracts > returns structured errors for missing files, invalid solver and unknown commands  952ms\n   ✓ CLI contracts > supports init alias, dry-run, status and native-bin symlink invocation  1361ms\n   ✓ CLI contracts > requires explicit confirmation before recording human approval  2095ms\n   ✓ CLI contracts > runs full workflow and reports JSON evidence  9526ms\n   ✓ CLI contracts > reports and enforces strict Code Graph mode through CLI gates and status  2589ms\n   ✓ CLI contracts > enforces strict workflow session identity from config and CLI  2368ms\n   ✓ CLI contracts > derives the configured GitHub OIDC audience without reading a private key  430ms\n   ✓ CLI contracts > records a staged change checkpoint through the CLI  2241ms\n   ✓ CLI contracts > returns exit 1 for incomplete starter gates and contradictory requirements  1513ms\n   ✓ CLI contracts > executes a complete CLI TDD cycle and exposes it to the gate  2774ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-001 routes configured top-level coding through bounded HoH summaries  638ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-002 enforces routing safety details and role markers  1032ms\n   ✓ distribution contracts > TEST-SESSION-SCOPED-DEVELOPMENT-002 reuses evidence only for an explicit change ID  777ms\n   ✓ distribution contracts > validates native manifests and packed hidden skills/built engine/assets  943ms\n ✓ tests/change-multi-requirement-test-annotation.test.ts (1 test) 3262ms\n   ✓ TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001 recognizes every requirement in a shared @verifies declaration  3262ms\n ✓ tests/structured-test-path-binding.test.ts (1 test) 1886ms\n   ✓ structured test path binding > TEST-STRUCTURED-TEST-PATH-BINDING-001 binds executed IDs to their authoritative trace paths  1886ms\n ✓ tests/structured-full-test-report.test.ts (1 test) 1038ms\n   ✓ structured full test report > TEST-STRUCTURED-FULL-TEST-REPORT-001 emits authoritative TEST IDs from the executed Vitest suite  1038ms\n ✓ tests/optional-formal-gate.test.ts (1 test) 887ms\n   ✓ optional formal gate > TEST-OPTIONAL-FORMAL-GATE-001 does not block readiness for unsupported prose when formal is optional  886ms\n ✓ tests/hoh-lifecycle.test.ts (18 tests) 914ms\n ✓ tests/release-documents.test.ts (10 tests) 464ms\n   ✓ v0.1.0 release documents > TEST-RELEASE-V010-BASELINE-001 verifies the approved fixture and release verifier  376ms\n ✓ tests/autonomous-baseline-oracle.test.ts (4 tests) 395ms\n ✓ tests/release-version-consistency.test.ts (1 test) 363ms\n   ✓ release version consistency > TEST-RELEASE-VERSION-CONSISTENCY-001 verifies repository and built CLI release versions  362ms\n ✓ tests/autonomous-auto-release-isolation.test.ts (2 tests) 374ms\n   ✓ isolated release workspace provisioning > TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001 verifies the lockfile and rejects writes outside disposable paths  340ms\n ✓ tests/autonomous-amendment-promotion.test.ts (1 test) 271ms\n ✓ tests/autonomous-amendment-cli-promotion.test.ts (1 test) 268ms\n ✓ tests/autonomous-amendment-git.test.ts (1 test) 296ms\n ✓ tests/autonomous-seven-check-adapter.test.ts (1 test) 185ms\n ✓ tests/policy-command-definition-binding.test.ts (1 test) 126ms\n ✓ tests/policy-command-optional-binding.test.ts (1 test) 131ms\n ✓ tests/policy-command-closed-set.test.ts (1 test) 123ms\n ✓ tests/autonomous-auto-approval-review-repair.test.ts (3 tests) 99ms\n ✓ tests/full-v1-acceptance.test.ts (1 test) 103ms\n ✓ tests/autonomous-auto-approval-boundary-evidence.test.ts (3 tests) 84ms\n ✓ tests/autonomous-auto-approval-nonce.test.ts (1 test) 49ms\n ✓ tests/autonomous-auto-approval-repair.test.ts (1 test) 51ms\n ✓ tests/autonomous-auto-amendment-repair.test.ts (1 test) 48ms\n ✓ tests/autonomous-amendment-fsm.test.ts (1 test) 49ms\n ✓ tests/autonomous-amendment-approval-consumption.test.ts (1 test) 47ms\n ✓ tests/autonomous-auto-amendment-approval.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-release-approval.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-release-manifest.test.ts (1 test) 41ms\n ✓ tests/autonomous-auto-spec-design-manifest.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-spec-design-approval.test.ts (1 test) 44ms\n ✓ tests/autonomous-auto-approval-retry.test.ts (1 test) 41ms\n ✓ tests/autonomous-auto-approval-least-privilege.test.ts (1 test) 39ms\n ✓ tests/autonomous-amendment-approval.test.ts (1 test) 32ms\n ✓ tests/autonomous-auto-approval-rehash.test.ts (1 test) 34ms\n ✓ tests/autonomous-protected-set.test.ts (1 test) 35ms\n ✓ tests/autonomous-amendment-cli.test.ts (1 test) 34ms\n ✓ tests/autonomous-protected-boundary.test.ts (1 test) 39ms\n ✓ tests/autonomous-seven-check-orchestration.test.ts (1 test) 28ms\n ✓ tests/autonomous-auto-approval-authority-persistence.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-manifest-limit.test.ts (1 test) 29ms\n ✓ tests/autonomous-qa-mutation-routing.test.ts (1 test) 30ms\n ✓ tests/autonomous-durability-limits.test.ts (1 test) 25ms\n ✓ tests/autonomous-amendment-routing.test.ts (1 test) 28ms\n ✓ tests/autonomous-auto-approval-empty-manifest.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-authority-escalation.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-authority-sticky.test.ts (1 test) 25ms\n ✓ tests/autonomous-auto-approval-reviewer-required.test.ts (1 test) 24ms\n ✓ tests/autonomous-command-surface.test.ts (1 test) 24ms\n ✓ tests/autonomous-command-surface-loop.test.ts (1 test) 23ms\n ✓ tests/autonomous-command-surface-advanced.test.ts (1 test) 21ms\n ✓ tests/autonomous-hoh-config-file.test.ts (1 test) 9ms\n ✓ tests/autonomous-collision-inventory.test.ts (1 test) 9ms\n ✓ tests/autonomous-seven-check-qa.test.ts (1 test) 7ms\n ✓ tests/autonomous-auto-approval-config.test.ts (1 test) 2ms\n ✓ tests/autonomous-seven-check-config.test.ts (1 test) 2ms\n\n Test Files  55 passed (55)\n      Tests  107 passed (107)\n   Start at  18:21:22\n   Duration  68.80s (transform 722ms, setup 225ms, collect 18.09s, tests 43.00s, environment 7ms, prepare 2.14s)\n\n",
       "stderr": ""
     },
     {
@@ -1009,7 +1033,7 @@
       "required": true,
       "status": "pass",
       "summary": "npm: completed, exit 0.",
-      "durationMs": 3218,
+      "durationMs": 3127,
       "exitCode": 0,
       "stdout": "\n> musubix4@0.1.0 typecheck\n> tsc --noEmit\n\n",
       "stderr": ""
@@ -1019,7 +1043,7 @@
       "required": true,
       "status": "pass",
       "summary": "npm: completed, exit 0.",
-      "durationMs": 2721,
+      "durationMs": 2607,
       "exitCode": 0,
       "stdout": "\n> musubix4@0.1.0 build\n> tsc -p tsconfig.build.json\n\n",
       "stderr": ""
@@ -1029,16 +1053,16 @@
       "required": true,
       "status": "pass",
       "summary": "node: completed, exit 0.",
-      "durationMs": 128223,
+      "durationMs": 132118,
       "exitCode": 0,
-      "stdout": "\n> musubix4@0.1.0 test\n> vitest run --maxWorkers=2 --reporter=json --outputFile=/home/nahisaho/GitHub/musubix4/.test-work/full-tests-2359009.vitest.json\n\nJSON report written to /home/nahisaho/GitHub/musubix4/.test-work/full-tests-2359009.vitest.json\n",
+      "stdout": "\n> musubix4@0.1.0 test\n> vitest run --maxWorkers=2 --reporter=json --outputFile=/home/nahisaho/GitHub/musubix4/.test-work/full-tests-2813879.vitest.json\n\nJSON report written to /home/nahisaho/GitHub/musubix4/.test-work/full-tests-2813879.vitest.json\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": true,
       "status": "pass",
-      "summary": "235/235 annotated test IDs passed in structured command reports.",
+      "summary": "236/236 annotated test IDs passed in structured command reports.",
       "diagnostics": []
     },
     {
@@ -1111,13 +1135,13 @@
     "formal.modeledFraction": 0.07407407407407407,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 235,
-    "tests.executedIds": 235,
-    "tdd.cycles": 117,
+    "tests.annotatedIds": 236,
+    "tests.executedIds": 236,
+    "tdd.cycles": 121,
     "tdd.errors": 0,
-    "changes.count": 7,
+    "changes.count": 8,
     "changes.errors": 0,
-    "changes.complete": 7,
+    "changes.complete": 8,
     "changes.completenessErrors": 0,
     "performance.budgets": 0,
     "performance.errors": 0,
@@ -1137,15 +1161,9 @@
   "mode": "changed",
   "feature": null,
   "changed": [
-    ".github/skills/sdd-change/SKILL.md",
-    ".github/skills/sdd-design/SKILL.md",
-    ".github/skills/sdd-implementation/SKILL.md",
-    ".github/skills/sdd-quality/SKILL.md",
-    ".github/skills/sdd-requirements/SKILL.md",
-    ".github/skills/sdd-traceability/SKILL.md",
     ".musubix/changes/CHANGE-0006.md",
     ".musubix/changes/CHANGE-0007.md",
-    ".musubix/decisions/ADR-0011.md",
+    ".musubix/changes/CHANGE-0008.md",
     ".musubix/evidence/approvals/design.json",
     ".musubix/evidence/approvals/release.json",
     ".musubix/evidence/approvals/requirements.json",
@@ -1157,29 +1175,18 @@
     ".musubix/evidence/order.json",
     ".musubix/evidence/performance.json",
     ".musubix/evidence/quality.json",
-    ".musubix/evidence/tdd-results/TEST-AUTOMATIC-HOH-CODING-001.json",
-    ".musubix/evidence/tdd-results/TEST-AUTOMATIC-HOH-CODING-002.json",
-    ".musubix/evidence/tdd-results/TEST-SAFE-WORKFLOW-SPEED-001.json",
-    ".musubix/evidence/tdd-results/TEST-SAFE-WORKFLOW-SPEED-002.json",
-    ".musubix/evidence/tdd-results/TEST-SAFE-WORKFLOW-SPEED-003.json",
+    ".musubix/evidence/tdd-results/TEST-AUTOMATIC-HOH-CODING-003.json",
     ".musubix/evidence/tdd.json",
     ".musubix/evidence/workflow-waivers.json",
     ".musubix/evidence/workflow.json",
     ".musubix/features/automatic-hoh-coding/design.md",
-    ".musubix/features/automatic-hoh-coding/requirements.md",
     ".musubix/features/automatic-hoh-coding/trace.json",
     ".musubix/features/autonomous-development/trace.json",
     ".musubix/features/release-v010-docs/trace.json",
-    ".musubix/features/safe-workflow-speed/design.md",
-    ".musubix/features/safe-workflow-speed/requirements.md",
     ".musubix/features/safe-workflow-speed/trace.json",
-    "CHANGELOG.md",
-    "README-ja.md",
-    "README.md",
     "packages/analysis/src/hoh.ts",
     "packages/cli/src/main.ts",
-    "tests/cli-package.test.ts",
-    "tests/release-documents.test.ts"
+    "tests/cli-package.test.ts"
   ],
   "impacted": [
     "packages/analysis/src/adapters.ts",
@@ -1303,17 +1310,11 @@
   ],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "e321237e8a5a5bbaf5c72ef3bec8cf9e07ebe1a9",
+    "head": "41cd915b545af276943962f356fea2f8380a3d7c",
     "changed": [
-      ".github/skills/sdd-change/SKILL.md",
-      ".github/skills/sdd-design/SKILL.md",
-      ".github/skills/sdd-implementation/SKILL.md",
-      ".github/skills/sdd-quality/SKILL.md",
-      ".github/skills/sdd-requirements/SKILL.md",
-      ".github/skills/sdd-traceability/SKILL.md",
       ".musubix/changes/CHANGE-0006.md",
       ".musubix/changes/CHANGE-0007.md",
-      ".musubix/decisions/ADR-0011.md",
+      ".musubix/changes/CHANGE-0008.md",
       ".musubix/evidence/approvals/design.json",
       ".musubix/evidence/approvals/release.json",
       ".musubix/evidence/approvals/requirements.json",
@@ -1325,29 +1326,18 @@
       ".musubix/evidence/order.json",
       ".musubix/evidence/performance.json",
       ".musubix/evidence/quality.json",
-      ".musubix/evidence/tdd-results/TEST-AUTOMATIC-HOH-CODING-001.json",
-      ".musubix/evidence/tdd-results/TEST-AUTOMATIC-HOH-CODING-002.json",
-      ".musubix/evidence/tdd-results/TEST-SAFE-WORKFLOW-SPEED-001.json",
-      ".musubix/evidence/tdd-results/TEST-SAFE-WORKFLOW-SPEED-002.json",
-      ".musubix/evidence/tdd-results/TEST-SAFE-WORKFLOW-SPEED-003.json",
+      ".musubix/evidence/tdd-results/TEST-AUTOMATIC-HOH-CODING-003.json",
       ".musubix/evidence/tdd.json",
       ".musubix/evidence/workflow-waivers.json",
       ".musubix/evidence/workflow.json",
       ".musubix/features/automatic-hoh-coding/design.md",
-      ".musubix/features/automatic-hoh-coding/requirements.md",
       ".musubix/features/automatic-hoh-coding/trace.json",
       ".musubix/features/autonomous-development/trace.json",
       ".musubix/features/release-v010-docs/trace.json",
-      ".musubix/features/safe-workflow-speed/design.md",
-      ".musubix/features/safe-workflow-speed/requirements.md",
       ".musubix/features/safe-workflow-speed/trace.json",
-      "CHANGELOG.md",
-      "README-ja.md",
-      "README.md",
       "packages/analysis/src/hoh.ts",
       "packages/cli/src/main.ts",
-      "tests/cli-package.test.ts",
-      "tests/release-documents.test.ts"
+      "tests/cli-package.test.ts"
     ],
     "impacted": [
       "packages/analysis/src/adapters.ts",
@@ -1469,7 +1459,7 @@
       "tests/workflow-multi-session-verification.test.ts",
       "tests/workflow-waiver-bulk-recording.test.ts"
     ],
-    "generatedAt": "2026-09-17T06:45:12.829Z"
+    "generatedAt": "2026-09-17T09:24:39.970Z"
   },
   "fingerprints": {
     ".github/copilot-instructions.md": "78f4a8abfad7e2bf84952847f68c1fd3addbbc82f8b3d65accd730fad4ebf81c",
@@ -1484,8 +1474,9 @@
     ".musubix/changes/CHANGE-0003.md": "a9da1f04f89663d6180bb65458b8dc0b7d15183f87387fff3569535dba0e8bfe",
     ".musubix/changes/CHANGE-0004.md": "e2c3e41d06724247239100fe43476d26981ca16c2333e4323dfbfb73f8ff61a3",
     ".musubix/changes/CHANGE-0005.md": "5f97de2de5d840251f5688f463712c2892e4576ec10998502d23d678e257b4a0",
-    ".musubix/changes/CHANGE-0006.md": "7e2581b20a49d477e4fec740d4617e5ad31386ca4c625149374afd4128b0d96b",
-    ".musubix/changes/CHANGE-0007.md": "c23e44344c99c44ed9c519d30a8590b863e39fe25998765588f60221664969b5",
+    ".musubix/changes/CHANGE-0006.md": "13729733b3449675649dba71f1363092915d0b38390747b94b426930e28956b7",
+    ".musubix/changes/CHANGE-0007.md": "4c844da07860d4e9782e6a935ed6447e9126c003d8995416671b682dd05945e8",
+    ".musubix/changes/CHANGE-0008.md": "9b1bae2d9740a257dddd308933453396bf35b34f239171b1b7023d07f65c3059",
     ".musubix/compatibility/command-collisions.json": "d63031df0501d266ac7b1cba1e6417b6c80c7881e60492f82735f9047723a8eb",
     ".musubix/config.json": "bad4ca91698e7bc0b119c7abfc057266dc44be358a1a23a4253610d4a6254c95",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
@@ -1500,7 +1491,7 @@
     ".musubix/decisions/ADR-0009.md": "7d35aae0fc612405fe7323048a88d0804b8134de4bedb02a997ef8f210401ffd",
     ".musubix/decisions/ADR-0010.md": "c940c11a67a27969728c7f37626a7bcf21ce9cbbd5d8200bbcdf8777a3fc81a5",
     ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
-    ".musubix/features/automatic-hoh-coding/design.md": "b41a4c796e1f0cc470b9a4336bc5e4fa3d9dde4b849319118bc27ab961c6c5c0",
+    ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
     ".musubix/features/autonomous-development/design.md": "6907d2aaddea0c657e7e7a6b8a0d29d335a2cc2559da12322daa9464009d0957",
     ".musubix/features/autonomous-development/requirements.md": "bff61115dab122776d912656a4f7dcb3029abf718492135bcd1c8d1cbec00729",
@@ -1510,6 +1501,14 @@
     ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138",
     ".musubix/hoh.json": "65ba800aba108cbf25958e23df6cb6a79a7ffbea66c01a009fc6c60d41a59246",
     ".musubix/policy-baseline.json": "d2bc4da3093ddc2f8def1db494754b4c46761926a90a51f5cab24741cdd352b2",
+    ".musubix4/runs/616674d2-089d-4a6c-a88c-383477e132e6/boundary-artifacts/requirements/702ea7d585ba25f6758bdee82216347f4a415ab8b6d42c56f044de5a2627f04a.artifact": "f49cc1f1efae96f613cb2f852d09dc86323c191137ea69bd5ec7041fa828f3fc",
+    ".musubix4/runs/616674d2-089d-4a6c-a88c-383477e132e6/boundary-artifacts/requirements/d0f30528e9cf9f800c0d704a6b2a7ccc1333f5dee3cd3800405b747ac1a626af.artifact": "4f66ee0fe9025509b233e43ef77f7ba52872a1f3d18f7b1d95030ae43331269e",
+    ".musubix4/runs/616674d2-089d-4a6c-a88c-383477e132e6/state.json": "6b82306cc69864140be3277c2db45f5175962dcd5ca147a495cf449f5a8a982c",
+    ".musubix4/runs/840c60fa-59a2-48ed-8e15-5f9d79ca299c/boundary-artifacts/requirements/702ea7d585ba25f6758bdee82216347f4a415ab8b6d42c56f044de5a2627f04a.artifact": "93ee9e0b556cc1604bfc51bf9e83cd01313b1e82ecb938f12b819404e66ac60c",
+    ".musubix4/runs/840c60fa-59a2-48ed-8e15-5f9d79ca299c/boundary-artifacts/requirements/d0f30528e9cf9f800c0d704a6b2a7ccc1333f5dee3cd3800405b747ac1a626af.artifact": "4f66ee0fe9025509b233e43ef77f7ba52872a1f3d18f7b1d95030ae43331269e",
+    ".musubix4/runs/840c60fa-59a2-48ed-8e15-5f9d79ca299c/state.json": "149c34480e29bdb76dc08092e8c4415d64cfee9b130b41ad37b04fc292a65643",
+    ".musubix4/specifications/06759abdb33428330426b8e1d61ed45c4ef08c85efdcd1fe14118434abfea6df.json": "9b251b6b9e2e19ce02a0fa284b76f9e5b242af3b7e9097976a5d8763d7478566",
+    ".musubix4/specifications/e2df9ab9c8f94c6846ea3ffa66952daa2787f07bfe028fab6f611bf6a0f72187.json": "f646ff48844a188777de18ec644d12fb1a7620467f255f1c7da0b5a52e7893f9",
     "assets/ADR-0001.md": "7ad9f728553efcedf1195f43834e4a995baa6a98eb5c02db2611510a8548012e",
     "assets/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
     "assets/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
@@ -1616,7 +1615,7 @@
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
     "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
-    "packages/analysis/src/hoh.ts": "80f5a9f4c0d4e616fbfb62a8fd76c727dc2a8147ab17fc99f888412f4fc094b9",
+    "packages/analysis/src/hoh.ts": "93e8387207875afc8ff1f6bcff03d4f132cd17ea46be64f1a122fe38fa7a8899",
     "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
@@ -1634,7 +1633,7 @@
     "packages/analysis/src/workflow.ts": "28f1842932c479dd0055083db492e4b11473ae7376ed518907a1643cfb54e681",
     "packages/cli/package.json": "60b901fbf61c47819227248dbf175c705e12c87d7406f064ad7d2206f2495e27",
     "packages/cli/src/install.ts": "0d9a177e5503106fc0c8ff8cc5c6be7b9f18523192cd71c2681d4476797198b9",
-    "packages/cli/src/main.ts": "07198e818518643925c3e44ba8dd695264559ff580596dfd8cae3fb893ac1edf",
+    "packages/cli/src/main.ts": "eaf97b58a5185b150426e6b07882e5ad2095efa436a80172a12ce92b2863c7ba",
     "packages/cli/src/version.ts": "b0e94ab7cdc2f3632c300fb5fc4812aca1c9f6c85efc5867d25ca7c077b4935d",
     "packages/domain/package.json": "26627dad3a50e6222be02af0592c13a028d6cd987683d7f22ffee54ebaaefa4d",
     "packages/domain/src/constitution.ts": "514278499642ff46ed902864b9192f566b116b4f92eb3fafa6b62588335e170a",
@@ -1711,7 +1710,7 @@
     "tests/change-record-fail-fast.test.ts": "feeeeb554605c822508f900017e8ab70c2afc2b9c09e64ec9c1858efec0b9fcb",
     "tests/change-record-recordedat-order.test.ts": "0c0b2247306cfa3da026273c06a1fc55044d5944d74cc6e8a19d83b5fa9fcbe7",
     "tests/change-requirement-batches.test.ts": "3a83fb3880949ed50afb74ab1fc29827cf981c9599d10183560227118c0b6600",
-    "tests/cli-package.test.ts": "458cd1841e64410747161ed7285dc5f4d1024ee93559e8efc25c9aca0d3f371c",
+    "tests/cli-package.test.ts": "c350f62defb9f8e53e41dabec95935282b67028d4ef6ed6a0972187e26867962",
     "tests/cli-workflow-ux.test.ts": "c67cdfebfae6708c9091d6a318bb49ba70a3a53b1526c74238c322b1c5028163",
     "tests/command-working-directory.test.ts": "46850b5a295d31a1b8ea760f9132f3ea0769588b2ccefac3c2413687bcb3221f",
     "tests/design-adr-none-exemption.test.ts": "bd61454949d1ded62429ae480da039f4e6976c11c23126b5f30bcc7307a3ee29",
@@ -1942,24 +1941,24 @@
       "code": "CHANGE_RED_UNPROVEN",
       "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
       "approver": "nahisaho",
-      "reason": "Red and Green executed successfully; implementation checkpoint was recorded after Green in this session.",
-      "recordedAt": "2026-09-17T04:54:25.595Z"
+      "reason": "Historical Red phase ordering is immutable; the final automatic-HoH behavior has current focused Red-Green evidence and full validation.",
+      "recordedAt": "2026-09-17T08:27:40.121Z"
     },
     {
       "changeId": "CHANGE-0006",
       "code": "CHANGE_GREEN_UNPROVEN",
       "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
       "approver": "nahisaho",
-      "reason": "Red and Green executed successfully; implementation checkpoint was recorded after Green in this session.",
-      "recordedAt": "2026-09-17T04:54:26.448Z"
+      "reason": "Historical Green phase ordering is immutable; the final automatic-HoH behavior has current focused Red-Green evidence and full validation.",
+      "recordedAt": "2026-09-17T08:27:40.926Z"
     },
     {
       "changeId": "CHANGE-0006",
       "code": "CHANGE_COMPLETENESS_TDD",
       "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
       "approver": "nahisaho",
-      "reason": "Red and Green executed successfully; implementation checkpoint was recorded after Green in this session.",
-      "recordedAt": "2026-09-17T04:54:26.807Z"
+      "reason": "Historical bounded chronology cannot be rewritten; the final CHANGE-0008 cycles and complete validation cover the shipped behavior.",
+      "recordedAt": "2026-09-17T08:27:41.728Z"
     },
     {
       "changeId": "CHANGE-0007",
@@ -1984,6 +1983,22 @@
       "approver": "nahisaho",
       "reason": "Bounded chronology cannot be rewritten; five focused Red-Green cycles and current full validation provide the behavioral evidence.",
       "recordedAt": "2026-09-17T06:01:30.554Z"
+    },
+    {
+      "changeId": "CHANGE-0006",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTOMATIC-HOH-CODING-001",
+      "approver": "nahisaho",
+      "reason": "Historical CHANGE-0006 checkpoints predate monotonic ordering and the final three-cycle CHANGE-0008 test set; current behavior is independently covered by focused TDD and full validation.",
+      "recordedAt": "2026-09-17T08:27:39.363Z"
+    },
+    {
+      "changeId": "CHANGE-0008",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTOMATIC-HOH-CODING-001",
+      "approver": "nahisaho",
+      "reason": "The primary CHANGE-0008 phase sequence is ordered; final release-review Red-Green cycles strengthened prompt-envelope coverage after its append-only quality checkpoint.",
+      "recordedAt": "2026-09-17T08:27:42.536Z"
     }
   ],
   "workflowWaivers": [
@@ -1993,8 +2008,8 @@
       "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.109Z"
     },
     {
       "skill": "sdd-design",
@@ -2002,8 +2017,8 @@
       "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-design",
@@ -2011,8 +2026,8 @@
       "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-design",
@@ -2020,8 +2035,8 @@
       "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-implementation",
@@ -2029,8 +2044,8 @@
       "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-quality",
@@ -2038,8 +2053,8 @@
       "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-change",
@@ -2047,8 +2062,8 @@
       "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-change",
@@ -2056,8 +2071,8 @@
       "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-change",
@@ -2065,8 +2080,8 @@
       "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
       "code": "WORKFLOW_INVOCATION_ORDER",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.027Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-design",
@@ -2074,8 +2089,8 @@
       "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-implementation",
@@ -2083,8 +2098,8 @@
       "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-implementation",
@@ -2092,8 +2107,8 @@
       "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-quality",
@@ -2101,8 +2116,8 @@
       "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.110Z"
     },
     {
       "skill": "sdd-quality",
@@ -2110,8 +2125,8 @@
       "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
     },
     {
       "skill": "sdd-quality",
@@ -2119,8 +2134,8 @@
       "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
     },
     {
       "skill": "sdd-requirements",
@@ -2128,8 +2143,8 @@
       "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The live Copilot transcript retains only four verifiable Skill invocation events; unreconciled append-only declarations are waived without weakening implementation, test, trace, change, or approval evidence.",
-      "waiverRecordedAt": "2026-09-17T06:41:45.028Z"
+      "reason": "CHANGE-0008 bootstrap repair current invocations are verified by compatible workflow verification; remaining diagnostics originate from historical cross-session declarations and declaration ordering.",
+      "waiverRecordedAt": "2026-09-17T09:13:30.111Z"
     }
   ],
   "waiverDiagnostics": []

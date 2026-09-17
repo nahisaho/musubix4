@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T06:41:46.099Z",
+  "generatedAt": "2026-09-17T09:21:18.017Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -786,178 +786,190 @@
       "line": 412
     },
     {
+      "id": "CODE-AUTOMATIC-HOH-CODING-003",
+      "kind": "code",
+      "path": "packages/analysis/src/hoh.ts",
+      "line": 442
+    },
+    {
       "id": "CODE-AUTONOMOUS-HISTORICAL-TRACE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 639
+      "line": 656
     },
     {
       "id": "CODE-AUTONOMOUS-ORACLE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 723
+      "line": 740
     },
     {
       "id": "CODE-AUTONOMOUS-SURFACE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 915
+      "line": 932
     },
     {
       "id": "CODE-AUTONOMOUS-INVENTORY-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1213
+      "line": 1230
     },
     {
       "id": "CODE-AUTONOMOUS-PROTECTED-SET-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1356
+      "line": 1373
     },
     {
       "id": "CODE-HOH-PROCESS-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1417
+      "line": 1434
     },
     {
       "id": "CODE-HOH-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1505
+      "line": 1522
     },
     {
       "id": "CODE-AUTONOMOUS-HOH-CONFIG-FILE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1768
+      "line": 1785
     },
     {
       "id": "CODE-AUTONOMOUS-QA-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1784
+      "line": 1801
     },
     {
       "id": "CODE-HOH-POLICY-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1802
+      "line": 1819
     },
     {
       "id": "CODE-HOH-SPECIFICATION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1933
+      "line": 1950
     },
     {
       "id": "CODE-HOH-GITHUB-ISSUE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1945
+      "line": 1962
     },
     {
       "id": "CODE-AUTONOMOUS-QA-ADAPTER-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2068
+      "line": 2085
     },
     {
       "id": "CODE-HOH-COPILOT-ADAPTER-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2124
+      "line": 2141
     },
     {
       "id": "CODE-HOH-ROLE-CONTRACT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2297
+      "line": 2314
     },
     {
       "id": "CODE-HOH-EVIDENCE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2335
+      "line": 2352
     },
     {
       "id": "CODE-AUTONOMOUS-QA-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2390
+      "line": 2407
     },
     {
       "id": "CODE-HOH-GIT-STORE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2488
+      "line": 2505
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-GIT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2665
+      "line": 2682
     },
     {
       "id": "CODE-HOH-RUN-STORE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2989
+      "line": 3006
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3141
+      "line": 3158
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-CLI-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3232
+      "line": 3249
     },
     {
       "id": "CODE-HOH-LIFECYCLE-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3372
+      "line": 3389
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-PROMOTION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3419
+      "line": 3436
     },
     {
       "id": "CODE-HOH-RUN-APPROVAL-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3562
+      "line": 3579
+    },
+    {
+      "id": "CODE-AUTOMATIC-HOH-CODING-004",
+      "kind": "code",
+      "path": "packages/analysis/src/hoh.ts",
+      "line": 3776
     },
     {
       "id": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3966
+      "line": 4000
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4173
+      "line": 4207
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-RECOVERY-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4276
+      "line": 4310
     },
     {
       "id": "CODE-HOH-ORCHESTRATOR-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4364
+      "line": 4398
     },
     {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-024",
@@ -1245,37 +1257,37 @@
       "id": "CODE-CLI-WORKFLOW-UX-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 327
+      "line": 338
     },
     {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-023",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 564
+      "line": 575
     },
     {
       "id": "CODE-WORKFLOW-WAIVER-BULK-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 600
+      "line": 611
     },
     {
       "id": "CODE-CHANGE-RECORD-RECORDEDAT-ORDER-004",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 688
+      "line": 699
     },
     {
       "id": "CODE-CHANGE-RECORD-FAIL-FAST-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 704
+      "line": 715
     },
     {
       "id": "CODE-TDD-ADOPTION-WARNING-003",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 803
+      "line": 814
     },
     {
       "id": "CODE-RELEASE-VERSION-001",
@@ -2124,28 +2136,34 @@
       "line": 366
     },
     {
-      "id": "TEST-SAFE-WORKFLOW-SPEED-001",
+      "id": "TEST-AUTOMATIC-HOH-CODING-003",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
       "line": 428
     },
     {
+      "id": "TEST-SAFE-WORKFLOW-SPEED-001",
+      "kind": "test",
+      "path": "tests/cli-package.test.ts",
+      "line": 508
+    },
+    {
       "id": "TEST-SAFE-WORKFLOW-SPEED-002",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 454
+      "line": 534
     },
     {
       "id": "TEST-SESSION-SCOPED-DEVELOPMENT-001",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 470
+      "line": 550
     },
     {
       "id": "TEST-SESSION-SCOPED-DEVELOPMENT-002",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 494
+      "line": 574
     },
     {
       "id": "TEST-CLI-WORKFLOW-UX-001",
@@ -4489,6 +4507,16 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AUTOMATIC-HOH-CODING-003",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTOMATIC-HOH-CODING-003",
+      "to": "DES-AUTOMATIC-HOH-CODING-002",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AUTONOMOUS-HISTORICAL-TRACE-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-002",
       "relation": "implements"
@@ -5109,8 +5137,23 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AUTOMATIC-HOH-CODING-004",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTOMATIC-HOH-CODING-004",
+      "to": "DES-AUTOMATIC-HOH-CODING-002",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-016",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
       "relation": "implements"
     },
     {
@@ -5126,6 +5169,11 @@
     {
       "from": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-015",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
+      "to": "DES-AUTOMATIC-HOH-CODING-002",
       "relation": "implements"
     },
     {
@@ -5740,12 +5788,22 @@
     },
     {
       "from": "CODE-HOH-CLI-001",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-CLI-001",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "implements"
     },
     {
       "from": "CODE-HOH-CLI-001",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-005",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-CLI-001",
+      "to": "DES-AUTOMATIC-HOH-CODING-002",
       "relation": "implements"
     },
     {
@@ -6729,6 +6787,11 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AUTOMATIC-HOH-CODING-003",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-SAFE-WORKFLOW-SPEED-001",
       "to": "REQ-SAFE-WORKFLOW-SPEED-001",
       "relation": "verifies"
@@ -7551,7 +7614,7 @@
     ".musubix/decisions/ADR-0009.md": "7d35aae0fc612405fe7323048a88d0804b8134de4bedb02a997ef8f210401ffd",
     ".musubix/decisions/ADR-0010.md": "c940c11a67a27969728c7f37626a7bcf21ce9cbbd5d8200bbcdf8777a3fc81a5",
     ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
-    ".musubix/features/automatic-hoh-coding/design.md": "b41a4c796e1f0cc470b9a4336bc5e4fa3d9dde4b849319118bc27ab961c6c5c0",
+    ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
     ".musubix/features/autonomous-development/design.md": "6907d2aaddea0c657e7e7a6b8a0d29d335a2cc2559da12322daa9464009d0957",
     ".musubix/features/autonomous-development/requirements.md": "bff61115dab122776d912656a4f7dcb3029abf718492135bcd1c8d1cbec00729",
@@ -7572,7 +7635,7 @@
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
     "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
-    "packages/analysis/src/hoh.ts": "80f5a9f4c0d4e616fbfb62a8fd76c727dc2a8147ab17fc99f888412f4fc094b9",
+    "packages/analysis/src/hoh.ts": "93e8387207875afc8ff1f6bcff03d4f132cd17ea46be64f1a122fe38fa7a8899",
     "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
@@ -7589,7 +7652,7 @@
     "packages/analysis/src/workflow-waiver.ts": "d8c516747f6302c350e0647000f14a559d521e2f7615e2db5a72be59170162e2",
     "packages/analysis/src/workflow.ts": "28f1842932c479dd0055083db492e4b11473ae7376ed518907a1643cfb54e681",
     "packages/cli/src/install.ts": "0d9a177e5503106fc0c8ff8cc5c6be7b9f18523192cd71c2681d4476797198b9",
-    "packages/cli/src/main.ts": "07198e818518643925c3e44ba8dd695264559ff580596dfd8cae3fb893ac1edf",
+    "packages/cli/src/main.ts": "eaf97b58a5185b150426e6b07882e5ad2095efa436a80172a12ce92b2863c7ba",
     "packages/cli/src/version.ts": "b0e94ab7cdc2f3632c300fb5fc4812aca1c9f6c85efc5867d25ca7c077b4935d",
     "packages/domain/src/constitution.ts": "514278499642ff46ed902864b9192f566b116b4f92eb3fafa6b62588335e170a",
     "packages/domain/src/design.ts": "80a610413a1c34f25612dd7f4e34544d374c14adecc9b2c97a867a7eba70c873",
@@ -7660,7 +7723,7 @@
     "tests/change-record-fail-fast.test.ts": "feeeeb554605c822508f900017e8ab70c2afc2b9c09e64ec9c1858efec0b9fcb",
     "tests/change-record-recordedat-order.test.ts": "0c0b2247306cfa3da026273c06a1fc55044d5944d74cc6e8a19d83b5fa9fcbe7",
     "tests/change-requirement-batches.test.ts": "3a83fb3880949ed50afb74ab1fc29827cf981c9599d10183560227118c0b6600",
-    "tests/cli-package.test.ts": "458cd1841e64410747161ed7285dc5f4d1024ee93559e8efc25c9aca0d3f371c",
+    "tests/cli-package.test.ts": "c350f62defb9f8e53e41dabec95935282b67028d4ef6ed6a0972187e26867962",
     "tests/cli-workflow-ux.test.ts": "c67cdfebfae6708c9091d6a318bb49ba70a3a53b1526c74238c322b1c5028163",
     "tests/command-working-directory.test.ts": "46850b5a295d31a1b8ea760f9132f3ea0769588b2ccefac3c2413687bcb3221f",
     "tests/design-adr-none-exemption.test.ts": "bd61454949d1ded62429ae480da039f4e6976c11c23126b5f30bcc7307a3ee29",

@@ -5043,6 +5043,172 @@
         "diagnostics": [],
         "order": 362
       }
+    },
+    {
+      "cycleId": "e2b88bd1-8192-4c49-afb6-f3af10fd050f",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "bdcff75b46e3380d27c98086f76264737456db3d561bf47d5e288283b04c204a",
+        "commandSha256": "482bd810550a8366790bcd63b94f38aa5b2bf715668c6d7580d9721a0f9ff7d6",
+        "outputSha256": "3cffbee11bc231c2306a1f8816cb0780e2c7c34362cd526962020f9d7335926f",
+        "exitCode": 1,
+        "durationMs": 24566,
+        "testFingerprint": "f9cbb7bb9fc54e615c363eb911491be6c212abb0c38af2fd572c20464ac136dc",
+        "sourceFingerprint": "a701b4125c9be1dd33989d53cc571005a743d628e4497447124db17bbf035d5f",
+        "executionId": "dedbe5b9-e204-40a5-a108-8a64947caaa6",
+        "recordedAt": "2026-09-17T07:10:14.252Z",
+        "diagnostics": [],
+        "order": 369
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "6978d08330879971077cdc295afc07c88e7ed12100b209acfe9f21e06616fec9",
+        "commandSha256": "482bd810550a8366790bcd63b94f38aa5b2bf715668c6d7580d9721a0f9ff7d6",
+        "outputSha256": "3cffbee11bc231c2306a1f8816cb0780e2c7c34362cd526962020f9d7335926f",
+        "exitCode": 0,
+        "durationMs": 25928,
+        "testFingerprint": "f9cbb7bb9fc54e615c363eb911491be6c212abb0c38af2fd572c20464ac136dc",
+        "sourceFingerprint": "90e370eaadd4e09a26ca9020de129917de0b565e09157be52ad8f416dca09d67",
+        "executionId": "c40d8590-284c-43d2-af2e-84db4bdeafd8",
+        "recordedAt": "2026-09-17T07:11:48.405Z",
+        "diagnostics": [],
+        "order": 372
+      }
+    },
+    {
+      "cycleId": "821e5cfe-2627-4e56-b25e-27e71b10f585",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "red": {
+        "phase": "red",
+        "valid": false,
+        "scoped": true,
+        "resultObserved": false,
+        "testStatus": "passed",
+        "reportSha256": "6978d08330879971077cdc295afc07c88e7ed12100b209acfe9f21e06616fec9",
+        "commandSha256": "482bd810550a8366790bcd63b94f38aa5b2bf715668c6d7580d9721a0f9ff7d6",
+        "outputSha256": "3cffbee11bc231c2306a1f8816cb0780e2c7c34362cd526962020f9d7335926f",
+        "exitCode": 0,
+        "durationMs": 24401,
+        "testFingerprint": "a0d2087f37c10584defcb2e470135dfe851706a4f0ab8dab3cb76f22d6710814",
+        "sourceFingerprint": "a9d6d756b9620b24da4a07d7fe2580d03dc4e83ad532c9c6cfb4cdbecdb3cbd0",
+        "executionId": "a09a789e-4fad-4d15-bfc7-7089a43ad05c",
+        "recordedAt": "2026-09-17T07:51:31.131Z",
+        "diagnostics": [
+          {
+            "code": "TDD_TARGET_RESULT",
+            "severity": "error",
+            "message": "red requires TEST-AUTOMATIC-HOH-CODING-003 to report failed, observed passed.",
+            "path": ".musubix/evidence/tdd-results/TEST-AUTOMATIC-HOH-CODING-003.json"
+          },
+          {
+            "code": "TDD_PHASE_RESULT",
+            "severity": "error",
+            "message": "red requires a completed command with nonzero exit status."
+          }
+        ],
+        "order": 378
+      }
+    },
+    {
+      "cycleId": "4ec0587e-3ac4-433c-becd-d815167c6b9c",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "bdcff75b46e3380d27c98086f76264737456db3d561bf47d5e288283b04c204a",
+        "commandSha256": "482bd810550a8366790bcd63b94f38aa5b2bf715668c6d7580d9721a0f9ff7d6",
+        "outputSha256": "3cffbee11bc231c2306a1f8816cb0780e2c7c34362cd526962020f9d7335926f",
+        "exitCode": 1,
+        "durationMs": 24615,
+        "testFingerprint": "c1808906986e607e63604812f9bbb36d30d1a7d8d5f5652a9d484c8436551aa8",
+        "sourceFingerprint": "a9d6d756b9620b24da4a07d7fe2580d03dc4e83ad532c9c6cfb4cdbecdb3cbd0",
+        "executionId": "15a9af89-1ca6-476a-99b9-4a5cb7399a94",
+        "recordedAt": "2026-09-17T07:52:12.783Z",
+        "diagnostics": [],
+        "order": 379
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "6978d08330879971077cdc295afc07c88e7ed12100b209acfe9f21e06616fec9",
+        "commandSha256": "482bd810550a8366790bcd63b94f38aa5b2bf715668c6d7580d9721a0f9ff7d6",
+        "outputSha256": "3cffbee11bc231c2306a1f8816cb0780e2c7c34362cd526962020f9d7335926f",
+        "exitCode": 0,
+        "durationMs": 26179,
+        "testFingerprint": "c1808906986e607e63604812f9bbb36d30d1a7d8d5f5652a9d484c8436551aa8",
+        "sourceFingerprint": "483b40c52ef91e8d4dac7add10a64b6b2090941b2d6ff4d63411f11c708d6be3",
+        "executionId": "87ff789a-8c6d-4aa4-bf82-4e109309408c",
+        "recordedAt": "2026-09-17T07:52:50.424Z",
+        "diagnostics": [],
+        "order": 380
+      }
+    },
+    {
+      "cycleId": "7ac099d3-e613-4ff5-91ca-3ff3030fcb92",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "bdcff75b46e3380d27c98086f76264737456db3d561bf47d5e288283b04c204a",
+        "commandSha256": "482bd810550a8366790bcd63b94f38aa5b2bf715668c6d7580d9721a0f9ff7d6",
+        "outputSha256": "3cffbee11bc231c2306a1f8816cb0780e2c7c34362cd526962020f9d7335926f",
+        "exitCode": 1,
+        "durationMs": 25043,
+        "testFingerprint": "463cf55f660a5099d755ee321de54a124fa4e820c74d639bd17601bdd55e2771",
+        "sourceFingerprint": "71ec72dcc9db0e98cbd66cec253ac1bc57bb936be8348313e86212cf78c2e747",
+        "executionId": "8295ccad-3e6a-4bc3-acf9-e03f3f956113",
+        "recordedAt": "2026-09-17T08:16:04.370Z",
+        "diagnostics": [],
+        "order": 386
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "6978d08330879971077cdc295afc07c88e7ed12100b209acfe9f21e06616fec9",
+        "commandSha256": "482bd810550a8366790bcd63b94f38aa5b2bf715668c6d7580d9721a0f9ff7d6",
+        "outputSha256": "3cffbee11bc231c2306a1f8816cb0780e2c7c34362cd526962020f9d7335926f",
+        "exitCode": 0,
+        "durationMs": 26024,
+        "testFingerprint": "463cf55f660a5099d755ee321de54a124fa4e820c74d639bd17601bdd55e2771",
+        "sourceFingerprint": "f59d13a2f66b89c63ea65ed95652d7ef051c1e8c5a228a118d77e386512767c8",
+        "executionId": "e4af2767-6edb-4108-ab44-3a5881c55883",
+        "recordedAt": "2026-09-17T08:16:38.715Z",
+        "diagnostics": [],
+        "order": 387
+      }
     }
   ],
   "chain": [
@@ -7817,6 +7983,90 @@
       "phaseEvidenceSha256": "eaae431c6a2e1db25d076f1bfc0f646662527ae0b65c35f0016cbd6e03d2cbaf",
       "previousSha256": "66ae2109500cfaeb0febf9c66ca066f96fc6252c37cbe3ab7c691ffea9d58e33",
       "recordSha256": "090f5343784ed801a60bc5bbad6b1f85e9b9a2fb480b4c6343bbbefe2965bf8c"
+    },
+    {
+      "sequence": 232,
+      "cycleId": "e2b88bd1-8192-4c49-afb6-f3af10fd050f",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "phase": "red",
+      "phaseEvidenceSha256": "26be4a7c53bb67277425159c06a7085d671194f01b82c6692d5bda9ed57a5bd2",
+      "previousSha256": "090f5343784ed801a60bc5bbad6b1f85e9b9a2fb480b4c6343bbbefe2965bf8c",
+      "recordSha256": "266c0121f2c2f0c8577c09050eae9de3f0a3c2a4e10e745460416a3262fad5cd"
+    },
+    {
+      "sequence": 233,
+      "cycleId": "e2b88bd1-8192-4c49-afb6-f3af10fd050f",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "phase": "green",
+      "phaseEvidenceSha256": "a7894c11c3259c9cc41032f2b9978f5fd453c269a981bafcdd6d8cfaa2bad587",
+      "previousSha256": "266c0121f2c2f0c8577c09050eae9de3f0a3c2a4e10e745460416a3262fad5cd",
+      "recordSha256": "da4ed62f334eebca8540c9079e3483f2c98461a2d1b36f6c65a907101500a12a"
+    },
+    {
+      "sequence": 234,
+      "cycleId": "821e5cfe-2627-4e56-b25e-27e71b10f585",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "phase": "red",
+      "phaseEvidenceSha256": "b62d61a1cd4a1954e162f9d4f5a6f396750cb13cca3e66d21b7a8887e0ae5435",
+      "previousSha256": "da4ed62f334eebca8540c9079e3483f2c98461a2d1b36f6c65a907101500a12a",
+      "recordSha256": "316927b610e97d13e48d8f6723980ab493374481c67d97bf811b992058f02dfc"
+    },
+    {
+      "sequence": 235,
+      "cycleId": "4ec0587e-3ac4-433c-becd-d815167c6b9c",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "phase": "red",
+      "phaseEvidenceSha256": "651d4be0dc4135c6459ba8c0edde4df1be383294fce5573898ff45880c25c86e",
+      "previousSha256": "316927b610e97d13e48d8f6723980ab493374481c67d97bf811b992058f02dfc",
+      "recordSha256": "1ed85352c90bf606922c0c6d651fba03d37c52e1bf845d1c9964975d37a0e235"
+    },
+    {
+      "sequence": 236,
+      "cycleId": "4ec0587e-3ac4-433c-becd-d815167c6b9c",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "phase": "green",
+      "phaseEvidenceSha256": "34035a829a9407efa9f70366c3296802e88d0ba2f2f77cbaa07d160548392888",
+      "previousSha256": "1ed85352c90bf606922c0c6d651fba03d37c52e1bf845d1c9964975d37a0e235",
+      "recordSha256": "28bfad63e0875f9dd310723e6a319a53e00abbe39c0f72c0a5dd40391a658ebd"
+    },
+    {
+      "sequence": 237,
+      "cycleId": "7ac099d3-e613-4ff5-91ca-3ff3030fcb92",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "phase": "red",
+      "phaseEvidenceSha256": "4fb0d185ab25cb53f7483a8079248aa3801c173a13300140449c73f11e360a73",
+      "previousSha256": "28bfad63e0875f9dd310723e6a319a53e00abbe39c0f72c0a5dd40391a658ebd",
+      "recordSha256": "70fe97aeac7e5686dae30352028bb3fa27586bec09c8a493698895235e61a126"
+    },
+    {
+      "sequence": 238,
+      "cycleId": "7ac099d3-e613-4ff5-91ca-3ff3030fcb92",
+      "requirementId": "REQ-AUTOMATIC-HOH-CODING-001",
+      "testId": "TEST-AUTOMATIC-HOH-CODING-003",
+      "testPath": "tests/cli-package.test.ts",
+      "commandName": "hoh-test",
+      "phase": "green",
+      "phaseEvidenceSha256": "ecf97e134f3f4bf4e6a8b4ca625498ce186c452d3b43691ba42be60832c2b9b0",
+      "previousSha256": "70fe97aeac7e5686dae30352028bb3fa27586bec09c8a493698895235e61a126",
+      "recordSha256": "a6e2ef735180c450727e4e4abd6dbd81a0a4c75c55ae66ac7ddd85044c9df267"
     }
   ]
 }
