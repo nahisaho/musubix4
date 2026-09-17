@@ -98,7 +98,8 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
       environment: { MUSUBIX4_HOH_RUN_ID: run.id },
       validate: (value) => value,
       reserveAttempt: (ceiling) => store.reserveAttemptBudget(run.id, role, ceiling),
-      settleAttempt: (id, actual) => store.settleAttemptBudget(run.id, id, actual),
+      settleAttempt: (id, actual, actualNanoAiu) =>
+        store.settleAttemptBudget(run.id, id, actual, actualNanoAiu),
       abandonAttempt: (id) => store.abandonAttemptBudget(run.id, id),
     });
     return result.value;

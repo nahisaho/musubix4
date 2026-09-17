@@ -450,10 +450,10 @@ describe("evidence and durable lifecycle", () => {
         executable,
         `#!/usr/bin/env node
   import fs from 'node:fs';
+  if (process.argv.includes('--version')) { console.log('1.2.3'); process.exit(0); }
   const state = process.env.FAKE_STATE;
   const count = Number(fs.existsSync(state) ? fs.readFileSync(state, 'utf8') : '0') + 1;
   fs.writeFileSync(state, String(count));
-  if (process.argv.includes('--version')) { console.log('1.2.3'); process.exit(0); }
   console.log(JSON.stringify({type:'usage',aiCredits:0.25,model:'gpt-fixed',reasoning:'high',version:'1.2.3'}));
   console.log(JSON.stringify({type:'result',result:count === 1 ? {kind:'invalid'} : {kind:'plan',priorities:[{requirementId:'REQ-A',acceptanceGates:['test'],preservation:['base']}],addressedBlockers:[]}}));
   `,
@@ -520,6 +520,10 @@ describe("evidence and durable lifecycle", () => {
         executable,
         `#!/usr/bin/env node
 import fs from 'node:fs';
+if (process.argv.includes('--version')) {
+  console.log('GitHub Copilot CLI 1.2.3');
+  process.exit(0);
+}
 const scenario = process.env.SCENARIO;
 console.log(JSON.stringify({type:'progress',message:'working SECRET'}));
 console.log(JSON.stringify({type:'tool',tool:{name:'read_file'}}));
@@ -607,6 +611,281 @@ if (scenario === 'valid') {
           2,
         );
       }
+    });
+
+    /** @id TEST-HOH-COPILOT-ADAPTER-004
+     * @verifies REQ-AUTONOMOUS-DEVELOPMENT-004
+     */
+    it("TEST-HOH-COPILOT-ADAPTER-004 parses current Copilot role JSONL semantic anchors", async () => {
+      const root = await fixture();
+      const executable = resolve(root, "fake-copilot-current.mjs");
+      const fixturePath = resolve(
+        process.cwd(),
+        "tests/fixtures/copilot-cli-1.0.86-role-output.jsonl",
+      );
+      await writeFile(
+        executable,
+        `#!/usr/bin/env node
+import { readFileSync } from 'node:fs';
+if (process.argv.includes('--version')) {
+  console.error(process.env.SECRET_TOKEN ?? '');
+  console.log('GitHub Copilot CLI 1.0.86-2');
+  process.exit(0);
+}
+const events = readFileSync(process.env.COPILOT_PROTOCOL_FIXTURE, 'utf8')
+  .trim().split('\\n').map((line) => JSON.parse(line));
+const scenario = process.env.SCENARIO;
+if (scenario === 'decreasing') {
+  events.splice(events.length - 1, 0, {
+    type: 'session.usage_checkpoint',
+    timestamp: '2026-01-01T00:00:00.011Z',
+    data: { totalNanoAiu: 1000000000 },
+  });
+}
+if (scenario === 'model-drift') {
+  events.find((event) => event.type === 'assistant.message').data.model = 'other-model';
+}
+if (scenario === 'unknown') {
+  events.splice(events.length - 1, 0, {
+    type: 'future.lifecycle_event',
+    timestamp: '2026-01-01T00:00:00.011Z',
+    data: { ignored: true },
+  });
+}
+for (const event of events) console.log(JSON.stringify(event));
+`,
+      );
+      await chmod(executable, 0o755);
+      const module =
+        (await import("../packages/analysis/src/hoh.js")) as Record<
+          string,
+          unknown
+        >;
+      const invoke = module.invokeCopilotRole as (
+        input: Record<string, unknown>,
+      ) => Promise<Record<string, unknown>>;
+      const lifecycle: string[] = [];
+      const common = {
+        executable,
+        cwd: root,
+        role: "planner",
+        prompt: "current protocol",
+        config: parseHohConfig({
+          model: "gpt-5.3-codex",
+          copilotCliVersion: "1.0.86-2",
+          budget: { aiCredits: 10 },
+          commands: { test: ["npm", "test"] },
+          limits: { roleOutputRetryLimit: 1 },
+        }),
+        policy: derivePolicy("planner", { allowSecrets: ["SECRET_TOKEN"] }),
+        reserveAttempt: async () => {
+          lifecycle.push("reserve");
+          return "reservation";
+        },
+        settleAttempt: async (_id: string, usage: number) => {
+          lifecycle.push(`settle:${usage}`);
+        },
+        abandonAttempt: async () => {
+          lifecycle.push("abandon");
+        },
+      };
+      const result = await invoke({
+        ...common,
+        environment: {
+          COPILOT_PROTOCOL_FIXTURE: fixturePath,
+          SCENARIO: "unknown",
+          SECRET_TOKEN: "PROBE-SECRET",
+        },
+        validate: (value: unknown) => value,
+      });
+      expect(result).toMatchObject({
+        attempts: 1,
+        usage: { aiCredits: 5.782875 },
+        value: {
+          kind: "plan",
+          priorities: [],
+          addressedBlockers: [],
+        },
+      });
+      expect(result.events).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ type: "session.mcp_server_status_changed" }),
+          expect.objectContaining({ type: "future.lifecycle_event" }),
+          expect.objectContaining({ type: "session.usage_checkpoint" }),
+        ]),
+      );
+      expect(result.records).toEqual([
+        expect.objectContaining({ argv: [executable, "--version"] }),
+        expect.objectContaining({ argv: expect.arrayContaining([executable]) }),
+      ]);
+      expect(JSON.stringify(result.records)).not.toContain("PROBE-SECRET");
+      expect(lifecycle).toEqual(["reserve", "settle:5.782875"]);
+
+      for (const scenario of ["decreasing", "model-drift"]) {
+        lifecycle.length = 0;
+        await expect(
+          invoke({
+            ...common,
+            environment: {
+              COPILOT_PROTOCOL_FIXTURE: fixturePath,
+              SCENARIO: scenario,
+              SECRET_TOKEN: "PROBE-SECRET",
+            },
+            validate: (value: unknown) => value,
+          }),
+        ).rejects.toThrow(/retries exhausted|usage|model/i);
+        expect(lifecycle).toEqual([
+          "reserve",
+          "abandon",
+          "reserve",
+          "abandon",
+        ]);
+      }
+    });
+
+    /** @id TEST-HOH-COPILOT-ADAPTER-005
+     * @verifies REQ-AUTONOMOUS-DEVELOPMENT-004
+     */
+    it("TEST-HOH-COPILOT-ADAPTER-005 preserves exact nano-AIU and fails closed on truncated output", async () => {
+      const root = await fixture();
+      const executable = resolve(root, "fake-copilot-bounds.mjs");
+      await writeFile(
+        executable,
+        `#!/usr/bin/env node
+const exactNanoAiu = 543795648780;
+const events = [
+  {type:'assistant.message',data:{phase:'final_answer',model:'gpt-fixed',content:'{"kind":"plan"}'}},
+  ...(process.env.SCENARIO === 'fallback' ? [] : [{type:'session.usage_checkpoint',data:{totalNanoAiu:exactNanoAiu}}]),
+  {type:'result',exitCode:0},
+];
+if (process.env.SCENARIO === 'truncated') {
+  const compact = [
+    {type:'assistant.message',data:{phase:'final_answer',model:'gpt-fixed',content:'{"kind":"plan"}'}},
+    {type:'result',exitCode:0},
+  ];
+  process.stdout.write(compact.map((event) => JSON.stringify(event)).join('\\n') + '\\n'.repeat(2048));
+} else {
+  for (const event of events) console.log(JSON.stringify(event));
+}
+`,
+      );
+      await chmod(executable, 0o755);
+      const module =
+        (await import("../packages/analysis/src/hoh.js")) as Record<
+          string,
+          unknown
+        >;
+      const invoke = module.invokeCopilotRole as (
+        input: Record<string, unknown>,
+      ) => Promise<Record<string, unknown>>;
+      const lifecycle: string[] = [];
+      const common = {
+        executable,
+        cwd: root,
+        role: "planner",
+        prompt: "bounded protocol",
+        config: parseHohConfig({
+          model: "gpt-fixed",
+          budget: { aiCredits: 600 },
+          commands: { test: ["npm", "test"] },
+          limits: { roleOutputRetryLimit: 1 },
+        }),
+        policy: derivePolicy("planner", {}),
+        reserveAttempt: async () => {
+          lifecycle.push("reserve");
+          return "reservation";
+        },
+        settleAttempt: async (
+          _id: string,
+          usage: number,
+          actualNanoAiu?: number,
+        ) => {
+          lifecycle.push(`settle:${usage}:${actualNanoAiu}`);
+        },
+        abandonAttempt: async () => {
+          lifecycle.push("abandon");
+        },
+        validate: (value: unknown) => value,
+      };
+
+      await invoke({
+        ...common,
+        environment: { SCENARIO: "exact" },
+      });
+      expect(lifecycle).toEqual([
+        "reserve",
+        "settle:543.79564878:543795648780",
+      ]);
+      const store = new FileRunStore(root);
+      const run = await store.create({
+        source: { kind: "prompt", text: "exact metering" },
+        config: common.config,
+      });
+      const reservation = await store.reserveAttemptBudget(
+        run.id,
+        "planner",
+        1,
+      );
+      await store.settleAttemptBudget(
+        run.id,
+        reservation,
+        543.79564878,
+        543795648780,
+      );
+      expect(await store.status(run.id)).toMatchObject({
+        usage: { aiCredits: 543.79564878, reserved: 0 },
+        usageNanoAiu: { consumed: 543795648780, reserved: 0 },
+        attempts: [
+          expect.objectContaining({
+            actual: 543.79564878,
+            actualNanoAiu: 543795648780,
+          }),
+        ],
+      });
+
+      lifecycle.length = 0;
+      await invoke({
+        ...common,
+        environment: { SCENARIO: "fallback" },
+      });
+      expect(lifecycle).toEqual([
+        "reserve",
+        "settle:1:1000000000",
+      ]);
+
+      lifecycle.length = 0;
+      await expect(
+        invoke({
+          ...common,
+          config: {
+            ...common.config,
+            budget: { aiCredits: 10 },
+          },
+          environment: { SCENARIO: "exact" },
+        }),
+      ).rejects.toThrow(/budget/i);
+      expect(lifecycle).toEqual([
+        "reserve",
+        "settle:543.79564878:543795648780",
+      ]);
+
+      lifecycle.length = 0;
+      await expect(
+        invoke({
+          ...common,
+          config: {
+            ...common.config,
+            maxCommandOutputBytes: 128,
+          },
+          environment: { SCENARIO: "truncated" },
+        }),
+      ).rejects.toThrow(/output exceeded the configured byte bound/i);
+      expect(lifecycle).toEqual([
+        "reserve",
+        "abandon",
+        "reserve",
+        "abandon",
+      ]);
     });
 
     /** @id TEST-HOH-GIT-STORE-002

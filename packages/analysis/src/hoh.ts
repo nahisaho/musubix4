@@ -322,6 +322,7 @@ export interface RunRecord {
   config: HohConfig;
   configDigest: string;
   usage: { aiCredits: number; reserved: number };
+  usageNanoAiu?: { consumed: number; reserved: number };
   evidence: { verified: number; unresolved: number; regressions: number };
   evidenceClaims?: QaClaim[];
   activeDurationMs: number;
@@ -386,8 +387,11 @@ export interface RunRecord {
     role: HohRole;
     ceiling: number;
     actual?: number;
+    ceilingNanoAiu?: number;
+    actualNanoAiu?: number;
     status: "reserved" | "settled" | "abandoned";
     overrun?: number;
+    overrunNanoAiu?: number;
     diagnosticCode?: "ROLE_CREDIT_RESERVATION_OVERRUN";
   }>;
   journal: RunTransition[];
@@ -2082,6 +2086,131 @@ function jsonLines(text: string): Record<string, unknown>[] {
     });
 }
 
+const nanoAiuPerCredit = 1_000_000_000;
+
+function creditsToNanoAiu(credits: number): number {
+  const nanoAiu = Math.trunc(credits * nanoAiuPerCredit);
+  if (!Number.isSafeInteger(nanoAiu) || nanoAiu < 0) {
+    throw new Error("Copilot credit value cannot be represented as nano-AIU.");
+  }
+  return nanoAiu;
+}
+
+function parseCopilotRoleEvents(
+  events: Record<string, unknown>[],
+  reservedNanoAiu: number,
+  configuredModel: string,
+  configuredReasoning?: string,
+  configuredVersion?: string,
+): { value: unknown; actualNanoAiu: number; displayCredits: number } {
+  const current = events.some((event) => {
+    if (event.type === "session.usage_checkpoint") return true;
+    if (event.type !== "assistant.message") return false;
+    if (!event.data || typeof event.data !== "object" || Array.isArray(event.data))
+      return false;
+    const data = event.data as Record<string, unknown>;
+    return data.phase === "final_answer";
+  });
+  if (!current) {
+    const usageEvents = events.filter((event) => event.type === "usage");
+    if (!usageEvents.length) throw new Error("Copilot JSONL omitted usage.");
+    const usage = usageEvents.reduce(
+      (sum, event) =>
+        sum + (typeof event.aiCredits === "number" ? event.aiCredits : 0),
+      0,
+    );
+    if (
+      !Number.isFinite(usage) ||
+      usage < 0 ||
+      usageEvents.some(
+        (event) => typeof event.aiCredits !== "number" || event.aiCredits < 0,
+      )
+    ) {
+      throw new Error("Copilot JSONL usage is invalid.");
+    }
+    for (const metadata of usageEvents) {
+      if (metadata.model !== configuredModel)
+        throw new Error("Copilot model drift detected.");
+      if (configuredReasoning && metadata.reasoning !== configuredReasoning)
+        throw new Error("Copilot reasoning drift detected.");
+      if (configuredVersion && metadata.version !== configuredVersion)
+        throw new Error("Copilot CLI version drift detected in JSONL.");
+    }
+    const resultEvents = events.filter((event) => event.type === "result");
+    if (
+      resultEvents.length !== 1 ||
+      !Object.hasOwn(resultEvents[0]!, "result")
+    ) {
+      throw new Error(
+        resultEvents.length > 1
+          ? "Copilot JSONL returned ambiguous results."
+          : "Copilot JSONL omitted a result event.",
+      );
+    }
+    return {
+      value: resultEvents[0]!.result,
+      actualNanoAiu: creditsToNanoAiu(usage),
+      displayCredits: usage,
+    };
+  }
+
+  const resultEvents = events.filter((event) => event.type === "result");
+  const resultEvent = resultEvents[0];
+  if (
+    resultEvents.length !== 1 ||
+    resultEvent !== events.at(-1) ||
+    resultEvent?.exitCode !== 0
+  ) {
+    throw new Error("Copilot current JSONL requires one final successful result.");
+  }
+  const finalAnswers = events.filter((event) => {
+    if (event.type !== "assistant.message") return false;
+    if (!event.data || typeof event.data !== "object" || Array.isArray(event.data))
+      return false;
+    return (event.data as Record<string, unknown>).phase === "final_answer";
+  });
+  const finalAnswer = finalAnswers.at(-1);
+  if (!finalAnswer) throw new Error("Copilot current JSONL omitted a final answer.");
+  for (const event of finalAnswers) {
+    const data = record(event.data, "Copilot final answer");
+    if (data.model !== configuredModel)
+      throw new Error("Copilot model drift detected.");
+  }
+  const content = record(finalAnswer.data, "Copilot final answer").content;
+  if (typeof content !== "string")
+    throw new Error("Copilot final answer content is invalid.");
+  let value: unknown;
+  try {
+    value = JSON.parse(content) as unknown;
+  } catch {
+    throw new Error("Copilot final answer content is not valid JSON.");
+  }
+
+  let previousNanoAiu = 0;
+  let actualNanoAiu = reservedNanoAiu;
+  const checkpoints = events.filter(
+    (event) => event.type === "session.usage_checkpoint",
+  );
+  for (const event of checkpoints) {
+    const data = record(event.data, "Copilot usage checkpoint");
+    const checkpoint = data.totalNanoAiu;
+    if (
+      typeof checkpoint !== "number" ||
+      !Number.isSafeInteger(checkpoint) ||
+      checkpoint < previousNanoAiu
+    ) {
+      throw new Error("Copilot current JSONL usage is invalid or decreasing.");
+    }
+    previousNanoAiu = checkpoint;
+    actualNanoAiu = checkpoint;
+  }
+  return {
+    value,
+    actualNanoAiu,
+    displayCredits: actualNanoAiu / nanoAiuPerCredit,
+  };
+}
+
 /** @id CODE-AUTONOMOUS-QA-ADAPTER-001
  * @implements REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-015
  * @design DES-AUTONOMOUS-DEVELOPMENT-009 DES-AUTONOMOUS-DEVELOPMENT-011
@@ -2152,7 +2281,11 @@ export async function invokeCopilotRole(input: {
   environment?: Record<string, string>;
   validate(value: unknown): unknown;
   reserveAttempt?: (ceiling: number) => Promise<string>;
-  settleAttempt?: (id: string, actual: number) => Promise<void>;
+  settleAttempt?: (
+    id: string,
+    actual: number,
+    actualNanoAiu?: number,
+  ) => Promise<void>;
   abandonAttempt?: (id: string) => Promise<void>;
 }): Promise<{
   value: unknown;
@@ -2164,13 +2297,18 @@ export async function invokeCopilotRole(input: {
 }> {
   const executable = input.executable ?? "copilot";
   const records: CommandRecord[] = [];
-  if (executable === "copilot" || executable.endsWith("/copilot")) {
+  const secretValues = input.policy.allowSecrets
+    .map((name) => input.environment?.[name])
+    .filter((value): value is string => !!value);
+  if (input.config.copilotCliVersion) {
     const versionRecord = await runBoundedProcess({
       argv: [executable, "--version"],
       cwd: input.cwd,
+      ...(input.environment ? { environment: input.environment } : {}),
       timeoutMs: Math.min(input.config.commandTimeoutMs, 30_000),
       maxOutputBytes: input.config.maxCommandOutputBytes,
       policy: input.policy,
+      secretValues,
     });
     records.push(versionRecord);
     const observedVersion =
@@ -2187,19 +2325,20 @@ export async function invokeCopilotRole(input: {
       );
     }
   }
-  const secretValues = input.policy.allowSecrets
-    .map((name) => input.environment?.[name])
-    .filter((value): value is string => !!value);
   const prompt = redactText(input.prompt, secretValues);
-  let consumed = 0;
+  let consumedNanoAiu = 0;
   let lastError: unknown;
   for (
     let attempt = 0;
     attempt <= input.config.limits.roleOutputRetryLimit;
     attempt += 1
   ) {
-    const remaining = input.config.budget.aiCredits - consumed;
-    if (remaining < input.config.roleInvocationReservedCredits)
+    const remainingNanoAiu =
+      creditsToNanoAiu(input.config.budget.aiCredits) - consumedNanoAiu;
+    if (
+      remainingNanoAiu <
+      creditsToNanoAiu(input.config.roleInvocationReservedCredits)
+    )
       throw new Error(
         "AI-credit budget cannot fund the configured role reservation.",
       );
@@ -2225,71 +2364,34 @@ export async function invokeCopilotRole(input: {
       const completed = command;
       if (completed.timedOut || completed.exitCode !== 0)
         throw new Error(`Copilot ${input.role} process failed.`);
+      if (completed.truncated)
+        throw new Error("Copilot role output exceeded the configured byte bound.");
       const events = jsonLines(completed.stdout);
-      const unsupported = events.find(
-        (event) =>
-          !["progress", "tool", "diagnostic", "usage", "result"].includes(
-            String(event.type),
-          ),
+      const parsed = parseCopilotRoleEvents(
+        events,
+        creditsToNanoAiu(input.config.roleInvocationReservedCredits),
+        input.config.model,
+        input.config.reasoning,
+        input.config.copilotCliVersion,
       );
-      if (unsupported)
-        throw new Error(
-          `Copilot JSONL event type is unsupported: ${String(unsupported.type)}.`,
-        );
-      const usageEvents = events.filter((event) => event.type === "usage");
-      if (!usageEvents.length) throw new Error("Copilot JSONL omitted usage.");
-      const usage = usageEvents.reduce(
-        (sum, event) =>
-          sum + (typeof event.aiCredits === "number" ? event.aiCredits : 0),
-        0,
-      );
-      if (
-        !Number.isFinite(usage) ||
-        usage < 0 ||
-        usageEvents.some(
-          (event) => typeof event.aiCredits !== "number" || event.aiCredits < 0,
-        )
-      ) {
-        throw new Error("Copilot JSONL usage is invalid.");
-      }
-      for (const metadata of usageEvents) {
-        if (metadata.model !== input.config.model)
-          throw new Error("Copilot model drift detected.");
-        if (
-          input.config.reasoning &&
-          metadata.reasoning !== input.config.reasoning
-        )
-          throw new Error("Copilot reasoning drift detected.");
-        if (
-          input.config.copilotCliVersion &&
-          metadata.version !== input.config.copilotCliVersion
-        )
-          throw new Error("Copilot CLI version drift detected in JSONL.");
-      }
-      const resultEvents = events.filter((event) => event.type === "result");
-      if (
-        resultEvents.length !== 1 ||
-        !Object.hasOwn(resultEvents[0]!, "result")
-      ) {
-        throw new Error(
-          resultEvents.length > 1
-            ? "Copilot JSONL returned ambiguous results."
-            : "Copilot JSONL omitted a result event.",
-        );
-      }
-      consumed += usage;
-      if (consumed > input.config.budget.aiCredits)
-        throw new Error("Copilot usage exceeded the fixed AI-credit budget.");
+      const usage = parsed.displayCredits;
+      consumedNanoAiu += parsed.actualNanoAiu;
       if (reservationId) {
-        await input.settleAttempt?.(reservationId, usage);
+        await input.settleAttempt?.(
+          reservationId,
+          usage,
+          parsed.actualNanoAiu,
+        );
         reconciled = true;
       }
+      if (consumedNanoAiu > creditsToNanoAiu(input.config.budget.aiCredits))
+        throw new Error("Copilot usage exceeded the fixed AI-credit budget.");
       try {
-        const value = input.validate(resultEvents[0]!.result);
+        const value = input.validate(parsed.value);
         return {
           value: redactValue(value, secretValues),
           attempts: attempt + 1,
-          usage: { aiCredits: consumed },
+          usage: { aiCredits: consumedNanoAiu / nanoAiuPerCredit },
           records,
           events: redactValue(events, secretValues) as Record<
             string,
@@ -3046,6 +3148,7 @@ export class FileRunStore {
       config: input.config,
       configDigest: digest(stableJson(input.config)),
       usage: { aiCredits: 0, reserved: 0 },
+      usageNanoAiu: { consumed: 0, reserved: 0 },
       evidence: { verified: 0, unresolved: 0, regressions: 0 },
       activeDurationMs: 0,
       stagnantIterations: 0,
@@ -3318,17 +3421,26 @@ export class FileRunStore {
     ceiling: number,
   ): Promise<string> {
     const run = await this.status(runId);
-    const available =
-      run.config.budget.aiCredits - run.usage.aiCredits - run.usage.reserved;
-    if (ceiling <= 0 || ceiling > available)
+    const usageNanoAiu = run.usageNanoAiu ?? {
+      consumed: creditsToNanoAiu(run.usage.aiCredits),
+      reserved: creditsToNanoAiu(run.usage.reserved),
+    };
+    const ceilingNanoAiu = creditsToNanoAiu(ceiling);
+    const availableNanoAiu =
+      creditsToNanoAiu(run.config.budget.aiCredits) -
+      usageNanoAiu.consumed -
+      usageNanoAiu.reserved;
+    if (ceilingNanoAiu <= 0 || ceilingNanoAiu > availableNanoAiu)
       throw new Error(
         "Attempt reservation exceeds the remaining AI-credit budget.",
       );
     const id = randomUUID();
-    run.usage.reserved += ceiling;
+    usageNanoAiu.reserved += ceilingNanoAiu;
+    run.usageNanoAiu = usageNanoAiu;
+    run.usage.reserved = usageNanoAiu.reserved / nanoAiuPerCredit;
     run.attempts = [
       ...(run.attempts ?? []),
-      { id, role, ceiling, status: "reserved" },
+      { id, role, ceiling, ceilingNanoAiu, status: "reserved" },
     ];
     await this.save(run);
     return id;
@@ -3338,6 +3450,7 @@ export class FileRunStore {
     runId: string,
     reservationId: string,
     actualUsage: number,
+    exactNanoAiu?: number,
   ): Promise<void> {
     const run = await this.status(runId);
     const attempt = run.attempts?.find((item) => item.id === reservationId);
@@ -3345,15 +3458,29 @@ export class FileRunStore {
       throw new Error("Attempt reservation is not active.");
     if (!Number.isFinite(actualUsage) || actualUsage < 0)
       throw new Error("Actual usage must be a non-negative number.");
-    attempt.actual = actualUsage;
+    const usageNanoAiu = run.usageNanoAiu ?? {
+      consumed: creditsToNanoAiu(run.usage.aiCredits),
+      reserved: creditsToNanoAiu(run.usage.reserved),
+    };
+    const actualNanoAiu = exactNanoAiu ?? creditsToNanoAiu(actualUsage);
+    if (!Number.isSafeInteger(actualNanoAiu) || actualNanoAiu < 0)
+      throw new Error("Actual nano-AIU usage must be a non-negative safe integer.");
+    const ceilingNanoAiu =
+      attempt.ceilingNanoAiu ?? creditsToNanoAiu(attempt.ceiling);
+    attempt.actualNanoAiu = actualNanoAiu;
+    attempt.actual = actualNanoAiu / nanoAiuPerCredit;
     attempt.status = "settled";
-    if (actualUsage > attempt.ceiling) {
-      attempt.overrun = actualUsage - attempt.ceiling;
+    if (actualNanoAiu > ceilingNanoAiu) {
+      attempt.overrunNanoAiu = actualNanoAiu - ceilingNanoAiu;
+      attempt.overrun = attempt.overrunNanoAiu / nanoAiuPerCredit;
       attempt.diagnosticCode = "ROLE_CREDIT_RESERVATION_OVERRUN";
     }
-    run.usage.reserved -= attempt.ceiling;
-    run.usage.aiCredits += actualUsage;
-    if (run.usage.aiCredits > run.config.budget.aiCredits) {
+    usageNanoAiu.reserved -= ceilingNanoAiu;
+    usageNanoAiu.consumed += actualNanoAiu;
+    run.usageNanoAiu = usageNanoAiu;
+    run.usage.reserved = usageNanoAiu.reserved / nanoAiuPerCredit;
+    run.usage.aiCredits = usageNanoAiu.consumed / nanoAiuPerCredit;
+    if (usageNanoAiu.consumed > creditsToNanoAiu(run.config.budget.aiCredits)) {
       run.state = "failed";
       run.terminalReason = "budget-exhausted";
       run.journal = [
@@ -3378,10 +3505,20 @@ export class FileRunStore {
     const attempt = run.attempts?.find((item) => item.id === reservationId);
     if (!attempt || attempt.status !== "reserved")
       throw new Error("Attempt reservation is not active.");
-    attempt.actual = attempt.ceiling;
+    const usageNanoAiu = run.usageNanoAiu ?? {
+      consumed: creditsToNanoAiu(run.usage.aiCredits),
+      reserved: creditsToNanoAiu(run.usage.reserved),
+    };
+    const ceilingNanoAiu =
+      attempt.ceilingNanoAiu ?? creditsToNanoAiu(attempt.ceiling);
+    attempt.actualNanoAiu = ceilingNanoAiu;
+    attempt.actual = ceilingNanoAiu / nanoAiuPerCredit;
     attempt.status = "abandoned";
-    run.usage.reserved -= attempt.ceiling;
-    run.usage.aiCredits += attempt.ceiling;
+    usageNanoAiu.reserved -= ceilingNanoAiu;
+    usageNanoAiu.consumed += ceilingNanoAiu;
+    run.usageNanoAiu = usageNanoAiu;
+    run.usage.reserved = usageNanoAiu.reserved / nanoAiuPerCredit;
+    run.usage.aiCredits = usageNanoAiu.consumed / nanoAiuPerCredit;
     await this.save(run);
   }
 }
@@ -3401,6 +3538,9 @@ export function determineStopReason(input: {
   usedCredits?: number;
   reservedCredits?: number;
   budgetCredits?: number;
+  usedNanoAiu?: number;
+  reservedNanoAiu?: number;
+  budgetNanoAiu?: number;
   stagnantIterations?: number;
   maxStagnantIterations?: number;
   unrecoverableFailure?: boolean;
@@ -3418,12 +3558,19 @@ export function determineStopReason(input: {
     (input.activeDurationMs ?? 0) >= input.maxActiveDurationMs
   )
     return "time-limit";
-  if (
+  if (input.budgetNanoAiu !== undefined) {
+    if (
+      (input.usedNanoAiu ?? 0) + (input.reservedNanoAiu ?? 0) >=
+      input.budgetNanoAiu
+    )
+      return "budget-exhausted";
+  } else if (
     input.budgetCredits !== undefined &&
     (input.usedCredits ?? 0) + (input.reservedCredits ?? 0) >=
       input.budgetCredits
-  )
+  ) {
     return "budget-exhausted";
+  }
   if (
     input.maxStagnantIterations !== undefined &&
     (input.stagnantIterations ?? 0) >= input.maxStagnantIterations
@@ -4523,6 +4670,13 @@ export class HohOrchestrator {
         usedCredits: run.usage.aiCredits,
         reservedCredits: run.usage.reserved,
         budgetCredits: run.config.budget.aiCredits,
+        usedNanoAiu:
+          run.usageNanoAiu?.consumed ??
+          creditsToNanoAiu(run.usage.aiCredits),
+        reservedNanoAiu:
+          run.usageNanoAiu?.reserved ??
+          creditsToNanoAiu(run.usage.reserved),
+        budgetNanoAiu: creditsToNanoAiu(run.config.budget.aiCredits),
         stagnantIterations: run.stagnantIterations,
         maxStagnantIterations: run.config.limits.stagnantIterations,
       });

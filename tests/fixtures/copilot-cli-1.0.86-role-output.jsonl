@@ -1,0 +1,13 @@
+{"type":"session.mcp_server_status_changed","timestamp":"2026-01-01T00:00:00.000Z","data":{"serverName":"example","status":"starting"},"ephemeral":true}
+{"type":"session.mcp_servers_loaded","timestamp":"2026-01-01T00:00:00.001Z","data":{"servers":[]},"ephemeral":true}
+{"type":"session.tools_updated","timestamp":"2026-01-01T00:00:00.002Z","data":{"model":"gpt-5.3-codex"},"ephemeral":true}
+{"type":"user.message","timestamp":"2026-01-01T00:00:00.003Z","data":{"content":"[redacted]","delivery":"prompt","interactionId":"interaction-1","messageId":"message-1","turnId":"turn-1"}}
+{"type":"assistant.turn_start","timestamp":"2026-01-01T00:00:00.004Z","data":{"interactionId":"interaction-1","turnId":"turn-1"}}
+{"type":"model.call_start","timestamp":"2026-01-01T00:00:00.005Z","data":{"model":"gpt-5.3-codex","turnId":"turn-1"},"ephemeral":true}
+{"type":"model.call_finished","timestamp":"2026-01-01T00:00:00.006Z","data":{"interactionId":"interaction-1","outcome":"success","turnId":"turn-1"},"ephemeral":true}
+{"type":"assistant.message","timestamp":"2026-01-01T00:00:00.007Z","data":{"content":"{\"kind\":\"plan\",\"priorities\":[],\"addressedBlockers\":[]}","interactionId":"interaction-1","messageId":"message-2","model":"gpt-5.3-codex","phase":"final_answer","turnId":"turn-1"}}
+{"type":"assistant.reasoning","timestamp":"2026-01-01T00:00:00.008Z","data":{"content":"[redacted]","reasoningId":"reasoning-1"},"ephemeral":true}
+{"type":"assistant.turn_end","timestamp":"2026-01-01T00:00:00.009Z","data":{"turnId":"turn-1"}}
+{"type":"session.usage_checkpoint","timestamp":"2026-01-01T00:00:00.010Z","data":{"modelCacheState":[],"totalNanoAiu":5782875000,"totalPremiumRequests":1}}
+{"type":"assistant.idle","timestamp":"2026-01-01T00:00:00.011Z","data":{},"ephemeral":true}
+{"type":"result","timestamp":"2026-01-01T00:00:00.012Z","sessionId":"123e4567-e89b-42d3-a456-426614174000","exitCode":0,"usage":{"premiumRequests":1,"totalApiDurationMs":2475,"sessionDurationMs":6597,"codeChanges":{"linesAdded":0,"linesRemoved":0,"filesModified":[]}}}
