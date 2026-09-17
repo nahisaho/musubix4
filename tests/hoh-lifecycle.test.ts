@@ -691,6 +691,88 @@ for (const event of events) console.log(JSON.stringify(event));
       }
     });
 
+    /** @id TEST-HOH-COPILOT-ADAPTER-006
+     * @verifies REQ-AUTONOMOUS-DEVELOPMENT-004
+     */
+    it("TEST-HOH-COPILOT-ADAPTER-006 accepts only raw JSON or one exact JSON fence", async () => {
+      const root = await fixture();
+      const executable = resolve(root, "fake-copilot-fence.mjs");
+      await writeFile(
+        executable,
+        `#!/usr/bin/env node
+const fence = String.fromCharCode(96).repeat(3);
+const longFence = String.fromCharCode(96).repeat(4);
+const outputs = {
+  raw: '  ' + JSON.stringify({kind:'plan',message:'literal ' + fence + 'json fence'}) + '  ',
+  fenced: '\\n\\t' + fence + 'json\\r\\n{"kind":"plan"}\\r\\n' + fence + '\\n',
+  prose: 'Result:\\n' + fence + 'json\\n{"kind":"plan"}\\n' + fence,
+  multiple: fence + 'json\\n{"kind":"plan"}\\n' + fence + '\\n' + fence + 'json\\n{}\\n' + fence,
+  incomplete: fence + 'json\\n{"kind":"plan"}',
+  uppercase: fence + 'JSON\\n{"kind":"plan"}\\n' + fence,
+  padded: fence + 'json \\n{"kind":"plan"}\\n' + fence,
+  long: longFence + 'json\\n{"kind":"plan"}\\n' + longFence,
+  tilde: '~~~json\\n{"kind":"plan"}\\n~~~',
+  trailing: fence + 'json\\n{"kind":"plan"}\\n' + fence + ' trailing',
+};
+console.log(JSON.stringify({
+  type: 'assistant.message',
+  data: {phase: 'final_answer', model: 'gpt-fixed', content: outputs[process.env.SCENARIO]},
+}));
+console.log(JSON.stringify({
+  type: 'session.usage_checkpoint',
+  data: {totalNanoAiu: 250000000},
+}));
+console.log(JSON.stringify({type: 'result', exitCode: 0}));
+`,
+      );
+      await chmod(executable, 0o755);
+      const module =
+        (await import("../packages/analysis/src/hoh.js")) as Record<
+          string,
+          unknown
+        >;
+      const invoke = module.invokeCopilotRole as (
+        input: Record<string, unknown>,
+      ) => Promise<Record<string, unknown>>;
+      const common = {
+        executable,
+        cwd: root,
+        role: "planner",
+        prompt: "fence protocol",
+        config: parseHohConfig({
+          model: "gpt-fixed",
+          budget: { aiCredits: 10 },
+          commands: { test: ["npm", "test"] },
+          limits: { roleOutputRetryLimit: 1 },
+        }),
+        policy: derivePolicy("planner", {}),
+        reserveAttempt: async () => "reservation",
+        settleAttempt: async () => undefined,
+        abandonAttempt: async () => undefined,
+        validate: (value: unknown) => value,
+      };
+
+      for (const scenario of ["raw", "fenced"]) {
+        await expect(
+          invoke({ ...common, environment: { SCENARIO: scenario } }),
+        ).resolves.toMatchObject({ value: { kind: "plan" } });
+      }
+      for (const scenario of [
+        "prose",
+        "multiple",
+        "incomplete",
+        "uppercase",
+        "padded",
+        "long",
+        "tilde",
+        "trailing",
+      ]) {
+        await expect(
+          invoke({ ...common, environment: { SCENARIO: scenario } }),
+        ).rejects.toThrow(/final answer content|retries exhausted/i);
+      }
+    });
+
     /** @id TEST-HOH-COPILOT-ADAPTER-005
      * @verifies REQ-AUTONOMOUS-DEVELOPMENT-004
      */

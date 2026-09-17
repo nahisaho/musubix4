@@ -219,6 +219,38 @@
       "phase": "complete",
       "status": "completed",
       "recordedAt": "2026-09-17T14:11:22.340Z"
+    },
+    {
+      "skill": "sdd-design",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-17T14:33:28.293Z"
+    },
+    {
+      "skill": "sdd-implementation",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-17T14:47:53.525Z"
+    },
+    {
+      "skill": "sdd-quality",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-17T21:10:38.549Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-17T22:11:07.203Z"
     }
   ]
 }

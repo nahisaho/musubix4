@@ -45,6 +45,76 @@ function pathQuery(root: string, query: string): string {
 }
 
 const nestedHohMessage = 'Nested Harness-of-Harness orchestration is forbidden while MUSUBIX4_HOH_RUN_ID is set.';
+type HohRole = 'planner' | 'developer' | 'qa' | 'reviewer';
+
+/** @id CODE-HOH-ROLE-PROMPT-001
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-005
+ * @design DES-AUTONOMOUS-DEVELOPMENT-007
+ */
+export function renderRolePrompt(role: HohRole, context: unknown): string {
+  const responseContract = (() => {
+    const common = { version: 1, role };
+    if (role === 'planner') {
+      return {
+        ...common,
+        format: 'json-object',
+        schemaId: 'planner-plan-v1',
+        requiredFieldsByKind: {
+          plan: ['kind', 'priorities', 'addressedBlockers'],
+          readiness: ['kind', 'evidence'],
+        },
+        priorityRequiredFields: ['requirementId', 'acceptanceGates', 'preservation'],
+        instruction: 'Return exactly one raw JSON object matching one declared kind with no prose or Markdown.',
+      };
+    }
+    if (role === 'developer') {
+      return {
+        ...common,
+        format: 'json-object',
+        schemaId: 'developer-execution-v1',
+        requiredFields: ['executionRecords'],
+        instruction: 'Return exactly one raw JSON object with no prose or Markdown.',
+      };
+    }
+    if (role === 'qa') {
+      return {
+        ...common,
+        format: 'json-array',
+        schemaId: 'qa-claims-v1',
+        itemRequiredFields: ['claimId', 'status', 'evidence'],
+        instruction: 'Return exactly one raw JSON array with no prose or Markdown.',
+      };
+    }
+    const reviewerContext =
+      context && typeof context === 'object' && !Array.isArray(context)
+        ? context as Record<string, unknown>
+        : {};
+    return {
+      ...common,
+      format: 'json-object',
+      schemaId: 'reviewer-boundary-v1',
+      requiredFields: [
+        'stage',
+        'boundaryKind',
+        'boundaryEpisodeOrdinal',
+        ...(reviewerContext.amendmentAttemptOrdinal === undefined
+          ? []
+          : ['amendmentAttemptOrdinal']),
+        'nonce',
+        'manifestDigest',
+        'reviewedPaths',
+        'findings',
+      ],
+      instruction: 'Return exactly one raw JSON object with no prose or Markdown.',
+    };
+  })();
+  return JSON.stringify({
+    schemaVersion: 1,
+    role,
+    responseContract,
+    context,
+  });
+}
 
 /** @id CODE-AUTOMATIC-HOH-CODING-002
  * @implements REQ-AUTOMATIC-HOH-CODING-001 REQ-SAFE-WORKFLOW-SPEED-001
@@ -73,7 +143,7 @@ function outputHohRun(
 export function localHohServices(root: string, store: FileRunStore): HohServices {
   const candidates = new Map<string, GitCandidateStore>();
   const invoke = async (
-    role: 'planner' | 'developer' | 'qa' | 'reviewer',
+    role: HohRole,
     context: unknown,
     execution?: { id: string; config: HohConfig },
   ): Promise<unknown> => {
@@ -92,7 +162,7 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
         ? ((context as { workspace?: { path: string } }).workspace?.path ?? root)
         : root,
       role,
-      prompt: JSON.stringify({ schemaVersion: 1, role, context }),
+      prompt: renderRolePrompt(role, context),
       config: run.config,
       policy,
       environment: { MUSUBIX4_HOH_RUN_ID: run.id },

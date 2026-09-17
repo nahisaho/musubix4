@@ -2179,12 +2179,7 @@ function parseCopilotRoleEvents(
   const content = record(finalAnswer.data, "Copilot final answer").content;
   if (typeof content !== "string")
     throw new Error("Copilot final answer content is invalid.");
-  let value: unknown;
-  try {
-    value = JSON.parse(content) as unknown;
-  } catch {
-    throw new Error("Copilot final answer content is not valid JSON.");
-  }
+  const value = parseCopilotFinalAnswerContent(content);
 
   let previousNanoAiu = 0;
   let actualNanoAiu = reservedNanoAiu;
@@ -2201,6 +2196,7 @@ function parseCopilotRoleEvents(
     ) {
       throw new Error("Copilot current JSONL usage is invalid or decreasing.");
     }
+
     previousNanoAiu = checkpoint;
     actualNanoAiu = checkpoint;
   }
@@ -2209,6 +2205,29 @@ function parseCopilotRoleEvents(
     actualNanoAiu,
     displayCredits: actualNanoAiu / nanoAiuPerCredit,
   };
+}
+
+/** @id CODE-HOH-COPILOT-FINAL-001
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-004
+ * @design DES-AUTONOMOUS-DEVELOPMENT-006
+ */
+export function parseCopilotFinalAnswerContent(content: string): unknown {
+  const trimmed = content.replace(/^[ \t\n\r\f\v]+|[ \t\n\r\f\v]+$/g, "");
+  try {
+    return JSON.parse(trimmed) as unknown;
+  } catch {
+    const fenced = /^```json(?:\r\n|\n)([\s\S]*)(?:\r\n|\n)```$/.exec(
+      trimmed,
+    );
+    if (fenced) {
+      try {
+        return JSON.parse(fenced[1]!) as unknown;
+      } catch {
+        // Fall through to the stable role-output diagnostic.
+      }
+    }
+  }
+  throw new Error("Copilot final answer content is not valid JSON.");
 }
 
 /** @id CODE-AUTONOMOUS-QA-ADAPTER-001
@@ -4042,9 +4061,7 @@ async function evaluateAutomaticManifest(
     const contractValid =
       candidate.stage === input.stage &&
       candidate.boundaryKind === input.boundaryKind &&
-      (candidate.boundaryEpisodeOrdinal === input.boundaryEpisodeOrdinal ||
-        (input.boundaryKind !== "amendment" &&
-          candidate.boundaryEpisodeOrdinal === undefined)) &&
+      candidate.boundaryEpisodeOrdinal === input.boundaryEpisodeOrdinal &&
       (input.amendmentAttemptOrdinal === undefined ||
         candidate.amendmentAttemptOrdinal === input.amendmentAttemptOrdinal) &&
       candidate.nonce === attempt.nonce &&

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T14:11:01.458Z",
+  "generatedAt": "2026-09-17T22:11:04.438Z",
   "status": "pass",
   "checks": [
     {
@@ -183,7 +183,7 @@
       "name": "workflow",
       "required": true,
       "status": "pass",
-      "summary": "26 workflow declaration(s) across 5 Skill(s) reconciled with Copilot invocation events.",
+      "summary": "30 workflow declaration(s) across 5 Skill(s) reconciled with Copilot invocation events.",
       "diagnostics": [
         {
           "code": "WORKFLOW_SKILL_NOT_INVOKED",
@@ -194,9 +194,9 @@
           "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.241Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.241Z"
           }
         },
         {
@@ -208,9 +208,9 @@
           "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.241Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.241Z"
           }
         },
         {
@@ -222,9 +222,9 @@
           "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
@@ -236,9 +236,9 @@
           "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
@@ -250,9 +250,9 @@
           "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
@@ -264,9 +264,37 @@
           "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
+          }
+        },
+        {
+          "code": "WORKFLOW_SKILL_NOT_INVOKED",
+          "severity": "warning",
+          "message": "sdd-design:complete has no matching earlier completed Copilot Skill invocation.",
+          "skill": "sdd-design",
+          "phase": "complete",
+          "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
+          }
+        },
+        {
+          "code": "WORKFLOW_BINDING_MISSING",
+          "severity": "warning",
+          "message": "sdd-design:complete is not one-to-one bound to completed invocation evidence.",
+          "skill": "sdd-design",
+          "phase": "complete",
+          "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
@@ -278,9 +306,9 @@
           "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -292,9 +320,37 @@
           "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
+          }
+        },
+        {
+          "code": "WORKFLOW_SKILL_NOT_INVOKED",
+          "severity": "warning",
+          "message": "sdd-implementation:complete has no matching earlier completed Copilot Skill invocation.",
+          "skill": "sdd-implementation",
+          "phase": "complete",
+          "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
+          }
+        },
+        {
+          "code": "WORKFLOW_BINDING_MISSING",
+          "severity": "warning",
+          "message": "sdd-implementation:complete is not one-to-one bound to completed invocation evidence.",
+          "skill": "sdd-implementation",
+          "phase": "complete",
+          "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -306,9 +362,9 @@
           "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -320,23 +376,51 @@
           "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
-          "code": "WORKFLOW_INVOCATION_ORDER",
+          "code": "WORKFLOW_SKILL_NOT_INVOKED",
           "severity": "warning",
-          "message": "sdd-requirements:complete would bind Skill invocations out of declaration order.",
+          "message": "sdd-change:complete has no matching earlier completed Copilot Skill invocation.",
+          "skill": "sdd-change",
+          "phase": "complete",
+          "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
+          }
+        },
+        {
+          "code": "WORKFLOW_BINDING_MISSING",
+          "severity": "warning",
+          "message": "sdd-change:complete is not one-to-one bound to completed invocation evidence.",
+          "skill": "sdd-change",
+          "phase": "complete",
+          "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
+          }
+        },
+        {
+          "code": "WORKFLOW_SKILL_NOT_INVOKED",
+          "severity": "warning",
+          "message": "sdd-requirements:complete has no matching earlier completed Copilot Skill invocation.",
           "skill": "sdd-requirements",
           "phase": "complete",
           "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.819Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.819Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -348,23 +432,23 @@
           "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.819Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.819Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
-          "code": "WORKFLOW_INVOCATION_REUSED",
+          "code": "WORKFLOW_SKILL_NOT_INVOKED",
           "severity": "warning",
-          "message": "sdd-design:complete would reuse an invocation already bound to another declaration.",
+          "message": "sdd-design:complete has no matching earlier completed Copilot Skill invocation.",
           "skill": "sdd-design",
           "phase": "complete",
           "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
@@ -376,23 +460,23 @@
           "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
-          "code": "WORKFLOW_INVOCATION_REUSED",
+          "code": "WORKFLOW_SKILL_NOT_INVOKED",
           "severity": "warning",
-          "message": "sdd-implementation:complete would reuse an invocation already bound to another declaration.",
+          "message": "sdd-implementation:complete has no matching earlier completed Copilot Skill invocation.",
           "skill": "sdd-implementation",
           "phase": "complete",
           "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -404,9 +488,9 @@
           "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -418,9 +502,9 @@
           "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -432,23 +516,23 @@
           "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
-          "code": "WORKFLOW_INVOCATION_REUSED",
+          "code": "WORKFLOW_SKILL_NOT_INVOKED",
           "severity": "warning",
-          "message": "sdd-implementation:complete would reuse an invocation already bound to another declaration.",
+          "message": "sdd-implementation:complete has no matching earlier completed Copilot Skill invocation.",
           "skill": "sdd-implementation",
           "phase": "complete",
           "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -460,9 +544,9 @@
           "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -474,9 +558,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
@@ -488,163 +572,23 @@
           "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_INVOCATION_REUSED",
-          "severity": "warning",
-          "message": "sdd-change:complete would reuse an invocation already bound to another declaration.",
-          "skill": "sdd-change",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_BINDING_MISSING",
-          "severity": "warning",
-          "message": "sdd-change:complete is not one-to-one bound to completed invocation evidence.",
-          "skill": "sdd-change",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_INVOCATION_REUSED",
-          "severity": "warning",
-          "message": "sdd-design:complete would reuse an invocation already bound to another declaration.",
-          "skill": "sdd-design",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T04:47:12.659Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_BINDING_MISSING",
-          "severity": "warning",
-          "message": "sdd-design:complete is not one-to-one bound to completed invocation evidence.",
-          "skill": "sdd-design",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T04:47:12.659Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_INVOCATION_REUSED",
-          "severity": "warning",
-          "message": "sdd-implementation:complete would reuse an invocation already bound to another declaration.",
-          "skill": "sdd-implementation",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T04:47:13.451Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_BINDING_MISSING",
-          "severity": "warning",
-          "message": "sdd-implementation:complete is not one-to-one bound to completed invocation evidence.",
-          "skill": "sdd-implementation",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T04:47:13.451Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_INVOCATION_REUSED",
-          "severity": "warning",
-          "message": "sdd-change:complete would reuse an invocation already bound to another declaration.",
-          "skill": "sdd-change",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_BINDING_MISSING",
-          "severity": "warning",
-          "message": "sdd-change:complete is not one-to-one bound to completed invocation evidence.",
-          "skill": "sdd-change",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.243Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
           }
         },
         {
           "code": "WORKFLOW_SKILL_NOT_INVOKED",
           "severity": "warning",
-          "message": "sdd-quality:complete has no matching earlier completed Copilot Skill invocation.",
-          "skill": "sdd-quality",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T06:34:03.621Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.819Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.819Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_BINDING_MISSING",
-          "severity": "warning",
-          "message": "sdd-quality:complete is not one-to-one bound to completed invocation evidence.",
-          "skill": "sdd-quality",
-          "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T06:34:03.621Z",
-          "waiver": {
-            "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.819Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.819Z"
-          }
-        },
-        {
-          "code": "WORKFLOW_INVOCATION_REUSED",
-          "severity": "warning",
-          "message": "sdd-change:complete would reuse an invocation already bound to another declaration.",
+          "message": "sdd-change:complete has no matching earlier completed Copilot Skill invocation.",
           "skill": "sdd-change",
           "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T09:05:19.779Z",
+          "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
@@ -653,26 +597,26 @@
           "message": "sdd-change:complete is not one-to-one bound to completed invocation evidence.",
           "skill": "sdd-change",
           "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T09:05:19.779Z",
+          "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
-          "code": "WORKFLOW_INVOCATION_REUSED",
+          "code": "WORKFLOW_INVOCATION_ORDER",
           "severity": "warning",
-          "message": "sdd-change:complete would reuse an invocation already bound to another declaration.",
+          "message": "sdd-change:complete would bind Skill invocations out of declaration order.",
           "skill": "sdd-change",
           "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T12:43:06.923Z",
+          "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         },
         {
@@ -681,12 +625,12 @@
           "message": "sdd-change:complete is not one-to-one bound to completed invocation evidence.",
           "skill": "sdd-change",
           "phase": "complete",
-          "declarationRecordedAt": "2026-09-17T12:43:06.923Z",
+          "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-            "recordedAt": "2026-09-17T13:29:43.818Z",
-            "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+            "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+            "recordedAt": "2026-09-17T21:21:18.242Z",
+            "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
           }
         }
       ]
@@ -695,14 +639,14 @@
       "name": "tdd",
       "required": true,
       "status": "pass",
-      "summary": "131 Red-Green TDD cycle(s) recorded.",
+      "summary": "140 Red-Green TDD cycle(s) recorded.",
       "diagnostics": []
     },
     {
       "name": "change-history",
       "required": true,
       "status": "pass",
-      "summary": "10 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "11 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
@@ -731,13 +675,25 @@
         {
           "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
           "severity": "warning",
+          "message": "CHANGE-0001:REQ-AUTONOMOUS-DEVELOPMENT-005 references TDD evidence without monotonic order; regenerate the cycle.",
+          "changeId": "CHANGE-0001",
+          "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-005",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "Historical CHANGE-0001 evidence predates monotonic ordering; CHANGE-0011 now provides current bounded Red-Green evidence for the evolved role-prompt contract.",
+            "recordedAt": "2026-09-17T20:56:30.816Z"
+          }
+        },
+        {
+          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+          "severity": "warning",
           "message": "CHANGE-0001:REQ-AUTONOMOUS-DEVELOPMENT-016 references TDD evidence without monotonic order; regenerate the cycle.",
           "changeId": "CHANGE-0001",
           "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-016",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-            "recordedAt": "2026-09-14T20:27:04.317Z"
+            "reason": "Historical CHANGE-0001 evidence predates monotonic ordering; current automatic-approval tests and full validation pass with strict Reviewer boundary identity.",
+            "recordedAt": "2026-09-17T20:56:31.686Z"
           }
         },
         {
@@ -760,8 +716,8 @@
           "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-016",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-            "recordedAt": "2026-09-14T20:27:05.393Z"
+            "reason": "Historical CHANGE-0002 evidence predates monotonic ordering; current Reviewer approval tests were rerun through genuine Red-Green cycles.",
+            "recordedAt": "2026-09-17T20:56:32.530Z"
           }
         },
         {
@@ -772,8 +728,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-016",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-            "recordedAt": "2026-09-14T20:27:05.915Z"
+            "reason": "CHANGE-0002 historical ordering cannot bind to the newly updated Reviewer fixtures; current fixture tests have fresh failing Red and passing Green evidence.",
+            "recordedAt": "2026-09-17T20:56:33.359Z"
           }
         },
         {
@@ -784,8 +740,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-016",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-            "recordedAt": "2026-09-14T20:27:06.503Z"
+            "reason": "CHANGE-0002 historical ordering cannot bind to the newly updated Reviewer fixtures; current fixture tests have fresh failing Red and passing Green evidence.",
+            "recordedAt": "2026-09-17T20:56:34.317Z"
           }
         },
         {
@@ -1024,8 +980,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-004",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The final probe-secret-redaction assertion recorded a fresh real Red; immutable phase checkpoints predate this final cycle.",
-            "recordedAt": "2026-09-17T12:25:27.257Z"
+            "reason": "CHANGE-0009 predates the current monotonic TDD proof linkage; its current adapter tests, complete suite, trace, graph, and CHANGE-0011 regression coverage pass independently.",
+            "recordedAt": "2026-09-17T14:56:48.444Z"
           }
         },
         {
@@ -1036,8 +992,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-004",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The final probe-secret-redaction implementation recorded a passing Green and complete validation; immutable phase checkpoints predate this final cycle.",
-            "recordedAt": "2026-09-17T12:25:28.120Z"
+            "reason": "CHANGE-0009 predates the current monotonic TDD proof linkage; its current adapter tests, complete suite, trace, graph, and CHANGE-0011 regression coverage pass independently.",
+            "recordedAt": "2026-09-17T14:56:49.320Z"
           }
         },
         {
@@ -1123,6 +1079,18 @@
             "reason": "The regenerated baseline and dedicated compatibility test pass TEST-AUTONOMOUS-ORACLE-005; only append-only checkpoint ordering prevents direct recognition.",
             "recordedAt": "2026-09-17T13:29:49.866Z"
           }
+        },
+        {
+          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+          "severity": "warning",
+          "message": "CHANGE-0011:REQ-AUTONOMOUS-DEVELOPMENT-005 references TDD evidence without monotonic order; regenerate the cycle.",
+          "changeId": "CHANGE-0011",
+          "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-005",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "REQ-005 has a new current Red-Green cycle plus an earlier superseded cycle lacking compatible monotonic linkage; the current cycle and tests are valid.",
+            "recordedAt": "2026-09-17T20:56:35.936Z"
+          }
         }
       ]
     },
@@ -1130,7 +1098,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "pass",
-      "summary": "10/10 staged change(s) have semantically complete evidence.",
+      "summary": "11/11 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -1140,8 +1108,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-016",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-            "recordedAt": "2026-09-14T20:27:07.046Z"
+            "reason": "CHANGE-0002 historical chronology is immutable; current Reviewer contract fixtures and full suite provide fresh coverage.",
+            "recordedAt": "2026-09-17T20:56:35.136Z"
           }
         },
         {
@@ -1200,8 +1168,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-004",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "Current adapter tests have bounded Red-Green evidence for protocol parsing, exact metering, version probing, budget settlement, truncation, and secret redaction; only append-only checkpoint chronology is waived.",
-            "recordedAt": "2026-09-17T12:25:28.961Z"
+            "reason": "CHANGE-0009 historical chronology cannot be reconstructed; current full tests and the new bounded CHANGE-0011 Red-Green cycle cover the repaired Copilot adapter behavior.",
+            "recordedAt": "2026-09-17T14:56:50.212Z"
           }
         },
         {
@@ -1235,9 +1203,9 @@
       "required": true,
       "status": "pass",
       "summary": "node: completed, exit 0.",
-      "durationMs": 74284,
+      "durationMs": 84674,
       "exitCode": 0,
-      "stdout": "\n RUN  v3.2.7 /home/nahisaho/GitHub/musubix4\n\n ✓ tests/cli-package.test.ts (19 tests) 33264ms\n   ✓ CLI contracts > prints version/help and JSON validation with nonzero failure  1467ms\n   ✓ CLI contracts > returns structured errors for missing files, invalid solver and unknown commands  1109ms\n   ✓ CLI contracts > supports init alias, dry-run, status and native-bin symlink invocation  1567ms\n   ✓ CLI contracts > requires explicit confirmation before recording human approval  2261ms\n   ✓ CLI contracts > runs full workflow and reports JSON evidence  10269ms\n   ✓ CLI contracts > reports and enforces strict Code Graph mode through CLI gates and status  2843ms\n   ✓ CLI contracts > enforces strict workflow session identity from config and CLI  2582ms\n   ✓ CLI contracts > derives the configured GitHub OIDC audience without reading a private key  452ms\n   ✓ CLI contracts > records a staged change checkpoint through the CLI  2478ms\n   ✓ CLI contracts > returns exit 1 for incomplete starter gates and contradictory requirements  1610ms\n   ✓ CLI contracts > executes a complete CLI TDD cycle and exposes it to the gate  2936ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-001 routes configured top-level coding through bounded HoH summaries  685ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-002 enforces routing safety details and role markers  1042ms\n   ✓ distribution contracts > TEST-SESSION-SCOPED-DEVELOPMENT-002 reuses evidence only for an explicit change ID  802ms\n   ✓ distribution contracts > validates native manifests and packed hidden skills/built engine/assets  1013ms\n ✓ tests/change-multi-requirement-test-annotation.test.ts (1 test) 3332ms\n   ✓ TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001 recognizes every requirement in a shared @verifies declaration  3332ms\n ✓ tests/structured-test-path-binding.test.ts (1 test) 1990ms\n   ✓ structured test path binding > TEST-STRUCTURED-TEST-PATH-BINDING-001 binds executed IDs to their authoritative trace paths  1989ms\n ✓ tests/hoh-lifecycle.test.ts (19 tests) 1446ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-003 parses diverse real-shaped JSONL deterministically and settles or abandons once  309ms\n ✓ tests/structured-full-test-report.test.ts (1 test) 1047ms\n   ✓ structured full test report > TEST-STRUCTURED-FULL-TEST-REPORT-001 emits authoritative TEST IDs from the executed Vitest suite  1046ms\n ✓ tests/optional-formal-gate.test.ts (1 test) 941ms\n   ✓ optional formal gate > TEST-OPTIONAL-FORMAL-GATE-001 does not block readiness for unsupported prose when formal is optional  940ms\n ✓ tests/release-documents.test.ts (10 tests) 489ms\n   ✓ v0.1.0 release documents > TEST-RELEASE-V010-BASELINE-001 verifies the approved fixture and release verifier  397ms\n ✓ tests/autonomous-baseline-oracle.test.ts (5 tests) 431ms\n ✓ tests/release-version-consistency.test.ts (1 test) 441ms\n   ✓ release version consistency > TEST-RELEASE-VERSION-CONSISTENCY-001 verifies repository and built CLI release versions  440ms\n ✓ tests/autonomous-auto-release-isolation.test.ts (2 tests) 422ms\n   ✓ isolated release workspace provisioning > TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001 verifies the lockfile and rejects writes outside disposable paths  386ms\n ✓ tests/autonomous-amendment-promotion.test.ts (1 test) 276ms\n ✓ tests/autonomous-amendment-cli-promotion.test.ts (1 test) 286ms\n ✓ tests/autonomous-amendment-git.test.ts (1 test) 252ms\n ✓ tests/autonomous-seven-check-adapter.test.ts (1 test) 170ms\n ✓ tests/policy-command-closed-set.test.ts (1 test) 128ms\n ✓ tests/policy-command-definition-binding.test.ts (1 test) 129ms\n ✓ tests/policy-command-optional-binding.test.ts (1 test) 138ms\n ✓ tests/autonomous-auto-approval-review-repair.test.ts (3 tests) 103ms\n ✓ tests/full-v1-acceptance.test.ts (1 test) 108ms\n ✓ tests/autonomous-auto-approval-boundary-evidence.test.ts (3 tests) 90ms\n ✓ tests/autonomous-auto-approval-repair.test.ts (1 test) 49ms\n ✓ tests/autonomous-auto-amendment-repair.test.ts (1 test) 53ms\n ✓ tests/autonomous-auto-release-approval.test.ts (1 test) 43ms\n ✓ tests/autonomous-amendment-approval-consumption.test.ts (1 test) 52ms\n ✓ tests/autonomous-amendment-fsm.test.ts (1 test) 54ms\n ✓ tests/autonomous-auto-approval-nonce.test.ts (1 test) 50ms\n ✓ tests/autonomous-auto-amendment-approval.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-spec-design-approval.test.ts (1 test) 43ms\n ✓ tests/autonomous-auto-approval-retry.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-approval-least-privilege.test.ts (1 test) 44ms\n ✓ tests/autonomous-auto-release-manifest.test.ts (1 test) 46ms\n ✓ tests/autonomous-auto-spec-design-manifest.test.ts (1 test) 46ms\n ✓ tests/autonomous-auto-approval-rehash.test.ts (1 test) 38ms\n ✓ tests/autonomous-protected-set.test.ts (1 test) 35ms\n ✓ tests/autonomous-amendment-cli.test.ts (1 test) 34ms\n ✓ tests/autonomous-protected-boundary.test.ts (1 test) 34ms\n ✓ tests/autonomous-amendment-approval.test.ts (1 test) 34ms\n ✓ tests/autonomous-auto-approval-manifest-limit.test.ts (1 test) 31ms\n ✓ tests/autonomous-seven-check-orchestration.test.ts (1 test) 30ms\n ✓ tests/autonomous-auto-approval-empty-manifest.test.ts (1 test) 26ms\n ✓ tests/autonomous-qa-mutation-routing.test.ts (1 test) 28ms\n ✓ tests/autonomous-auto-approval-authority-persistence.test.ts (1 test) 29ms\n ✓ tests/autonomous-amendment-routing.test.ts (1 test) 30ms\n ✓ tests/autonomous-auto-approval-reviewer-required.test.ts (1 test) 24ms\n ✓ tests/autonomous-auto-approval-authority-escalation.test.ts (1 test) 27ms\n ✓ tests/autonomous-command-surface.test.ts (1 test) 24ms\n ✓ tests/autonomous-auto-approval-authority-sticky.test.ts (1 test) 27ms\n ✓ tests/autonomous-durability-limits.test.ts (1 test) 26ms\n ✓ tests/autonomous-command-surface-loop.test.ts (1 test) 22ms\n ✓ tests/autonomous-command-surface-advanced.test.ts (1 test) 20ms\n ✓ tests/inherited-compatibility.test.ts (1 test) 11ms\n ✓ tests/autonomous-hoh-config-file.test.ts (1 test) 8ms\n ✓ tests/autonomous-seven-check-qa.test.ts (1 test) 9ms\n ✓ tests/autonomous-collision-inventory.test.ts (1 test) 8ms\n ✓ tests/autonomous-seven-check-config.test.ts (1 test) 3ms\n ✓ tests/autonomous-auto-approval-config.test.ts (1 test) 2ms\n\n Test Files  56 passed (56)\n      Tests  110 passed (110)\n   Start at  23:07:40\n   Duration  73.89s (transform 809ms, setup 243ms, collect 19.16s, tests 46.61s, environment 7ms, prepare 2.25s)\n\n",
+      "stdout": "\n RUN  v3.2.7 /home/nahisaho/GitHub/musubix4\n\n ✓ tests/cli-package.test.ts (21 tests) 33688ms\n   ✓ CLI contracts > prints version/help and JSON validation with nonzero failure  1395ms\n   ✓ CLI contracts > returns structured errors for missing files, invalid solver and unknown commands  1006ms\n   ✓ CLI contracts > supports init alias, dry-run, status and native-bin symlink invocation  1634ms\n   ✓ CLI contracts > requires explicit confirmation before recording human approval  2460ms\n   ✓ CLI contracts > runs full workflow and reports JSON evidence  10429ms\n   ✓ CLI contracts > reports and enforces strict Code Graph mode through CLI gates and status  2753ms\n   ✓ CLI contracts > enforces strict workflow session identity from config and CLI  2487ms\n   ✓ CLI contracts > derives the configured GitHub OIDC audience without reading a private key  448ms\n   ✓ CLI contracts > records a staged change checkpoint through the CLI  2612ms\n   ✓ CLI contracts > returns exit 1 for incomplete starter gates and contradictory requirements  1571ms\n   ✓ CLI contracts > executes a complete CLI TDD cycle and exposes it to the gate  2979ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-001 routes configured top-level coding through bounded HoH summaries  710ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-002 enforces routing safety details and role markers  1066ms\n   ✓ distribution contracts > TEST-SESSION-SCOPED-DEVELOPMENT-002 reuses evidence only for an explicit change ID  820ms\n   ✓ distribution contracts > validates native manifests and packed hidden skills/built engine/assets  1015ms\n ✓ tests/change-multi-requirement-test-annotation.test.ts (1 test) 3799ms\n   ✓ TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001 recognizes every requirement in a shared @verifies declaration  3798ms\n ✓ tests/structured-test-path-binding.test.ts (1 test) 2136ms\n   ✓ structured test path binding > TEST-STRUCTURED-TEST-PATH-BINDING-001 binds executed IDs to their authoritative trace paths  2135ms\n ✓ tests/hoh-lifecycle.test.ts (20 tests) 1991ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-003 parses diverse real-shaped JSONL deterministically and settles or abandons once  307ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-006 accepts only raw JSON or one exact JSON fence  520ms\n ✓ tests/structured-full-test-report.test.ts (1 test) 1292ms\n   ✓ structured full test report > TEST-STRUCTURED-FULL-TEST-REPORT-001 emits authoritative TEST IDs from the executed Vitest suite  1291ms\n ✓ tests/optional-formal-gate.test.ts (1 test) 1028ms\n   ✓ optional formal gate > TEST-OPTIONAL-FORMAL-GATE-001 does not block readiness for unsupported prose when formal is optional  1027ms\n ✓ tests/release-documents.test.ts (10 tests) 566ms\n   ✓ v0.1.0 release documents > TEST-RELEASE-V010-BASELINE-001 verifies the approved fixture and release verifier  457ms\n ✓ tests/autonomous-auto-release-isolation.test.ts (2 tests) 396ms\n   ✓ isolated release workspace provisioning > TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001 verifies the lockfile and rejects writes outside disposable paths  363ms\n ✓ tests/release-version-consistency.test.ts (1 test) 402ms\n   ✓ release version consistency > TEST-RELEASE-VERSION-CONSISTENCY-001 verifies repository and built CLI release versions  401ms\n ✓ tests/autonomous-baseline-oracle.test.ts (5 tests) 429ms\n ✓ tests/autonomous-amendment-cli-promotion.test.ts (1 test) 346ms\n   ✓ approved amendment CLI promotion > TEST-AUTONOMOUS-AMENDMENT-CLI-PROMOTION-001 promotes on the approved command replay  345ms\n ✓ tests/autonomous-amendment-promotion.test.ts (1 test) 317ms\n   ✓ approved amendment promotion > TEST-AUTONOMOUS-AMENDMENT-PROMOTION-001 atomically promotes and re-pins approved inventory  316ms\n ✓ tests/autonomous-amendment-git.test.ts (1 test) 282ms\n ✓ tests/autonomous-seven-check-adapter.test.ts (1 test) 222ms\n ✓ tests/policy-command-definition-binding.test.ts (1 test) 128ms\n ✓ tests/policy-command-closed-set.test.ts (1 test) 180ms\n ✓ tests/policy-command-optional-binding.test.ts (1 test) 132ms\n ✓ tests/autonomous-auto-approval-boundary-evidence.test.ts (3 tests) 127ms\n ✓ tests/full-v1-acceptance.test.ts (1 test) 123ms\n ✓ tests/autonomous-auto-approval-review-repair.test.ts (3 tests) 106ms\n ✓ tests/autonomous-auto-approval-nonce.test.ts (1 test) 74ms\n ✓ tests/autonomous-auto-approval-repair.test.ts (1 test) 71ms\n ✓ tests/autonomous-amendment-approval-consumption.test.ts (1 test) 53ms\n ✓ tests/autonomous-auto-amendment-repair.test.ts (1 test) 52ms\n ✓ tests/autonomous-amendment-fsm.test.ts (1 test) 63ms\n ✓ tests/autonomous-auto-release-approval.test.ts (1 test) 45ms\n ✓ tests/autonomous-auto-spec-design-approval.test.ts (1 test) 59ms\n ✓ tests/autonomous-auto-approval-retry.test.ts (1 test) 44ms\n ✓ tests/autonomous-auto-approval-least-privilege.test.ts (1 test) 44ms\n ✓ tests/autonomous-auto-release-manifest.test.ts (1 test) 60ms\n ✓ tests/autonomous-auto-spec-design-manifest.test.ts (1 test) 50ms\n ✓ tests/autonomous-auto-amendment-approval.test.ts (1 test) 42ms\n ✓ tests/autonomous-amendment-cli.test.ts (1 test) 58ms\n ✓ tests/autonomous-auto-approval-rehash.test.ts (1 test) 39ms\n ✓ tests/autonomous-protected-set.test.ts (1 test) 37ms\n ✓ tests/autonomous-amendment-approval.test.ts (1 test) 39ms\n ✓ tests/autonomous-protected-boundary.test.ts (1 test) 33ms\n ✓ tests/autonomous-auto-approval-manifest-limit.test.ts (1 test) 30ms\n ✓ tests/autonomous-amendment-routing.test.ts (1 test) 26ms\n ✓ tests/autonomous-seven-check-orchestration.test.ts (1 test) 28ms\n ✓ tests/autonomous-qa-mutation-routing.test.ts (1 test) 41ms\n ✓ tests/autonomous-command-surface.test.ts (1 test) 29ms\n ✓ tests/autonomous-durability-limits.test.ts (1 test) 30ms\n ✓ tests/autonomous-auto-approval-authority-persistence.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-empty-manifest.test.ts (1 test) 30ms\n ✓ tests/autonomous-auto-approval-authority-escalation.test.ts (1 test) 26ms\n ✓ tests/autonomous-auto-approval-authority-sticky.test.ts (1 test) 28ms\n ✓ tests/autonomous-auto-approval-reviewer-required.test.ts (1 test) 23ms\n ✓ tests/autonomous-command-surface-advanced.test.ts (1 test) 22ms\n ✓ tests/autonomous-command-surface-loop.test.ts (1 test) 34ms\n ✓ tests/inherited-compatibility.test.ts (1 test) 15ms\n ✓ tests/autonomous-seven-check-qa.test.ts (1 test) 10ms\n ✓ tests/autonomous-hoh-config-file.test.ts (1 test) 13ms\n ✓ tests/autonomous-collision-inventory.test.ts (1 test) 8ms\n ✓ tests/autonomous-seven-check-config.test.ts (1 test) 3ms\n ✓ tests/autonomous-auto-approval-config.test.ts (1 test) 4ms\n\n Test Files  56 passed (56)\n      Tests  113 passed (113)\n   Start at  07:07:23\n   Duration  84.28s (transform 787ms, setup 263ms, collect 25.73s, tests 48.98s, environment 8ms, prepare 2.70s)\n\n",
       "stderr": ""
     },
     {
@@ -1245,7 +1213,7 @@
       "required": true,
       "status": "pass",
       "summary": "npm: completed, exit 0.",
-      "durationMs": 3291,
+      "durationMs": 4188,
       "exitCode": 0,
       "stdout": "\n> musubix4@0.1.0 typecheck\n> tsc --noEmit\n\n",
       "stderr": ""
@@ -1255,7 +1223,7 @@
       "required": true,
       "status": "pass",
       "summary": "npm: completed, exit 0.",
-      "durationMs": 2717,
+      "durationMs": 3102,
       "exitCode": 0,
       "stdout": "\n> musubix4@0.1.0 build\n> tsc -p tsconfig.build.json\n\n",
       "stderr": ""
@@ -1265,16 +1233,16 @@
       "required": true,
       "status": "pass",
       "summary": "node: completed, exit 0.",
-      "durationMs": 140060,
+      "durationMs": 151520,
       "exitCode": 0,
-      "stdout": "\n> musubix4@0.1.0 test\n> vitest run --maxWorkers=2 --reporter=json --outputFile=/home/nahisaho/GitHub/musubix4/.test-work/full-tests-3542113.vitest.json\n\nJSON report written to /home/nahisaho/GitHub/musubix4/.test-work/full-tests-3542113.vitest.json\n",
+      "stdout": "\n> musubix4@0.1.0 test\n> vitest run --maxWorkers=2 --reporter=json --outputFile=/home/nahisaho/GitHub/musubix4/.test-work/full-tests-282002.vitest.json\n\nJSON report written to /home/nahisaho/GitHub/musubix4/.test-work/full-tests-282002.vitest.json\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": true,
       "status": "pass",
-      "summary": "239/239 annotated test IDs passed in structured command reports.",
+      "summary": "242/242 annotated test IDs passed in structured command reports.",
       "diagnostics": []
     },
     {
@@ -1347,13 +1315,13 @@
     "formal.modeledFraction": 0.07407407407407407,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 239,
-    "tests.executedIds": 239,
-    "tdd.cycles": 131,
+    "tests.annotatedIds": 242,
+    "tests.executedIds": 242,
+    "tdd.cycles": 140,
     "tdd.errors": 0,
-    "changes.count": 10,
+    "changes.count": 11,
     "changes.errors": 0,
-    "changes.complete": 10,
+    "changes.complete": 11,
     "changes.completenessErrors": 0,
     "performance.budgets": 0,
     "performance.errors": 0,
@@ -1373,7 +1341,7 @@
   "mode": "changed",
   "feature": null,
   "changed": [
-    ".musubix/changes/CHANGE-0010.md",
+    ".musubix/changes/CHANGE-0011.md",
     ".musubix/evidence/approvals/design.json",
     ".musubix/evidence/approvals/release.json",
     ".musubix/evidence/approvals/requirements.json",
@@ -1385,7 +1353,9 @@
     ".musubix/evidence/order.json",
     ".musubix/evidence/performance.json",
     ".musubix/evidence/quality.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-ORACLE-005.json",
+    ".musubix/evidence/tdd-results/TEST-HOH-COPILOT-ADAPTER-006.json",
+    ".musubix/evidence/tdd-results/TEST-HOH-ROLE-PROMPT-001.json",
+    ".musubix/evidence/tdd-results/TEST-HOH-ROLE-PROMPT-002.json",
     ".musubix/evidence/tdd.json",
     ".musubix/evidence/workflow-waivers.json",
     ".musubix/evidence/workflow.json",
@@ -1395,26 +1365,141 @@
     ".musubix/features/autonomous-development/trace.json",
     ".musubix/features/release-v010-docs/trace.json",
     ".musubix/features/safe-workflow-speed/trace.json",
-    ".musubix/hoh.json",
-    "baseline-specs/baseline.manifest.json",
-    "baseline-specs/oracle/historical-trace.json",
-    "baseline-specs/oracle/regeneration-attestation.json",
-    "scripts/run-hoh-tdd.mjs",
-    "tests/autonomous-baseline-oracle.test.ts",
-    "tests/hoh-lifecycle.test.ts",
-    "tests/inherited-compatibility.test.ts"
+    "packages/analysis/src/hoh.ts",
+    "packages/cli/src/main.ts",
+    "tests/autonomous-auto-release-approval.test.ts",
+    "tests/autonomous-auto-release-manifest.test.ts",
+    "tests/autonomous-auto-spec-design-approval.test.ts",
+    "tests/autonomous-auto-spec-design-manifest.test.ts",
+    "tests/cli-package.test.ts",
+    "tests/hoh-lifecycle.test.ts"
   ],
   "impacted": [
-    "scripts/run-hoh-tdd.mjs",
+    "packages/analysis/src/adapters.ts",
+    "packages/analysis/src/approval-domains.ts",
+    "packages/analysis/src/approval-record.ts",
+    "packages/analysis/src/approval.ts",
+    "packages/analysis/src/attestation.ts",
+    "packages/analysis/src/change-evidence.ts",
+    "packages/analysis/src/change-waiver.ts",
+    "packages/analysis/src/change.ts",
+    "packages/analysis/src/config.ts",
+    "packages/analysis/src/gate.ts",
+    "packages/analysis/src/graph.ts",
+    "packages/analysis/src/hoh.ts",
+    "packages/analysis/src/index.ts",
+    "packages/analysis/src/model-correspondence.ts",
+    "packages/analysis/src/mutation.ts",
+    "packages/analysis/src/performance.ts",
+    "packages/analysis/src/tdd.ts",
+    "packages/analysis/src/workflow-types.ts",
+    "packages/analysis/src/workflow-waiver.ts",
+    "packages/analysis/src/workflow.ts",
+    "packages/cli/src/install.ts",
+    "packages/cli/src/main.ts",
+    "tests/adapter-integration.test.ts",
+    "tests/adapter-pattern-recognition.test.ts",
+    "tests/approval-domain-scoping.test.ts",
+    "tests/approval.test.ts",
+    "tests/attestation-evidence-stability.test.ts",
+    "tests/autonomous-amendment-approval-consumption.test.ts",
+    "tests/autonomous-amendment-approval.test.ts",
+    "tests/autonomous-amendment-cli-promotion.test.ts",
+    "tests/autonomous-amendment-cli.test.ts",
+    "tests/autonomous-amendment-fsm.test.ts",
+    "tests/autonomous-amendment-git.test.ts",
+    "tests/autonomous-amendment-promotion.test.ts",
+    "tests/autonomous-amendment-routing.test.ts",
+    "tests/autonomous-auto-amendment-approval.test.ts",
+    "tests/autonomous-auto-amendment-repair.test.ts",
+    "tests/autonomous-auto-approval-authority-escalation.test.ts",
+    "tests/autonomous-auto-approval-authority-persistence.test.ts",
+    "tests/autonomous-auto-approval-authority-sticky.test.ts",
+    "tests/autonomous-auto-approval-boundary-evidence.test.ts",
+    "tests/autonomous-auto-approval-config.test.ts",
+    "tests/autonomous-auto-approval-empty-manifest.test.ts",
+    "tests/autonomous-auto-approval-least-privilege.test.ts",
+    "tests/autonomous-auto-approval-manifest-limit.test.ts",
+    "tests/autonomous-auto-approval-nonce.test.ts",
+    "tests/autonomous-auto-approval-rehash.test.ts",
+    "tests/autonomous-auto-approval-repair.test.ts",
+    "tests/autonomous-auto-approval-retry.test.ts",
+    "tests/autonomous-auto-approval-review-repair.test.ts",
+    "tests/autonomous-auto-approval-reviewer-required.test.ts",
+    "tests/autonomous-auto-release-approval.test.ts",
+    "tests/autonomous-auto-release-isolation.test.ts",
+    "tests/autonomous-auto-release-manifest.test.ts",
+    "tests/autonomous-auto-spec-design-approval.test.ts",
+    "tests/autonomous-auto-spec-design-manifest.test.ts",
     "tests/autonomous-baseline-oracle.test.ts",
+    "tests/autonomous-collision-inventory.test.ts",
+    "tests/autonomous-command-surface-advanced.test.ts",
+    "tests/autonomous-command-surface-loop.test.ts",
+    "tests/autonomous-command-surface.test.ts",
+    "tests/autonomous-durability-limits.test.ts",
+    "tests/autonomous-hoh-config-file.test.ts",
+    "tests/autonomous-protected-boundary.test.ts",
+    "tests/autonomous-protected-set.test.ts",
+    "tests/autonomous-qa-mutation-routing.test.ts",
+    "tests/autonomous-seven-check-adapter.test.ts",
+    "tests/autonomous-seven-check-config.test.ts",
+    "tests/autonomous-seven-check-orchestration.test.ts",
+    "tests/autonomous-seven-check-qa.test.ts",
+    "tests/bounded-file-read-concurrency.test.ts",
+    "tests/change-acceptance-heuristic.test.ts",
+    "tests/change-evidence-waiver.test.ts",
+    "tests/change-multi-requirement-test-annotation.test.ts",
+    "tests/change-record-fail-fast.test.ts",
+    "tests/change-record-recordedat-order.test.ts",
+    "tests/change-requirement-batches.test.ts",
+    "tests/cli-package.test.ts",
+    "tests/cli-workflow-ux.test.ts",
+    "tests/command-working-directory.test.ts",
+    "tests/domain.test.ts",
+    "tests/ears-id-diagnostic-messages.test.ts",
+    "tests/formal-knowledge.test.ts",
+    "tests/full-v1-acceptance.test.ts",
+    "tests/gate-install.test.ts",
+    "tests/helpers.ts",
     "tests/hoh-lifecycle.test.ts",
-    "tests/inherited-compatibility.test.ts"
+    "tests/inherited-compatibility.test.ts",
+    "tests/model-correspondence-evidence-guidance.test.ts",
+    "tests/optional-formal-gate.test.ts",
+    "tests/p2-improvements.test.ts",
+    "tests/p3-attestation-oidc.test.ts",
+    "tests/p3-codegraph-policy.test.ts",
+    "tests/p3-formal.test.ts",
+    "tests/p3-performance-provenance.test.ts",
+    "tests/p3-workflow-provenance.test.ts",
+    "tests/p4-correspondence-mutation.test.ts",
+    "tests/p4-workflow-streaming.test.ts",
+    "tests/php-verification.test.ts",
+    "tests/policy-command-closed-set.test.ts",
+    "tests/policy-command-definition-binding.test.ts",
+    "tests/policy-command-optional-binding.test.ts",
+    "tests/release-documents.test.ts",
+    "tests/release-version-consistency.test.ts",
+    "tests/scaffold-artifact.test.ts",
+    "tests/structured-full-test-report.test.ts",
+    "tests/structured-test-path-binding.test.ts",
+    "tests/tdd-adoption-warning.test.ts",
+    "tests/tdd-cycle-void.test.ts",
+    "tests/tdd-fingerprint-migration.test.ts",
+    "tests/tdd-fingerprint-scoping.test.ts",
+    "tests/tdd-green-requirement-scoping.test.ts",
+    "tests/tdd-red-collection-guidance.test.ts",
+    "tests/tdd-superseded-cycle-scoping.test.ts",
+    "tests/trace-graph.test.ts",
+    "tests/upgrade-workflow.test.ts",
+    "tests/workflow-evidence-waiver.test.ts",
+    "tests/workflow-multi-session-verification.test.ts",
+    "tests/workflow-waiver-bulk-recording.test.ts"
   ],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "90fceb46b8c6d244241469296c6562d4883fd2ec",
+    "head": "902442007bc48ff39387dc230311f1f567d15dd9",
     "changed": [
-      ".musubix/changes/CHANGE-0010.md",
+      ".musubix/changes/CHANGE-0011.md",
       ".musubix/evidence/approvals/design.json",
       ".musubix/evidence/approvals/release.json",
       ".musubix/evidence/approvals/requirements.json",
@@ -1426,7 +1511,9 @@
       ".musubix/evidence/order.json",
       ".musubix/evidence/performance.json",
       ".musubix/evidence/quality.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-ORACLE-005.json",
+      ".musubix/evidence/tdd-results/TEST-HOH-COPILOT-ADAPTER-006.json",
+      ".musubix/evidence/tdd-results/TEST-HOH-ROLE-PROMPT-001.json",
+      ".musubix/evidence/tdd-results/TEST-HOH-ROLE-PROMPT-002.json",
       ".musubix/evidence/tdd.json",
       ".musubix/evidence/workflow-waivers.json",
       ".musubix/evidence/workflow.json",
@@ -1436,22 +1523,137 @@
       ".musubix/features/autonomous-development/trace.json",
       ".musubix/features/release-v010-docs/trace.json",
       ".musubix/features/safe-workflow-speed/trace.json",
-      ".musubix/hoh.json",
-      "baseline-specs/baseline.manifest.json",
-      "baseline-specs/oracle/historical-trace.json",
-      "baseline-specs/oracle/regeneration-attestation.json",
-      "scripts/run-hoh-tdd.mjs",
-      "tests/autonomous-baseline-oracle.test.ts",
-      "tests/hoh-lifecycle.test.ts",
-      "tests/inherited-compatibility.test.ts"
+      "packages/analysis/src/hoh.ts",
+      "packages/cli/src/main.ts",
+      "tests/autonomous-auto-release-approval.test.ts",
+      "tests/autonomous-auto-release-manifest.test.ts",
+      "tests/autonomous-auto-spec-design-approval.test.ts",
+      "tests/autonomous-auto-spec-design-manifest.test.ts",
+      "tests/cli-package.test.ts",
+      "tests/hoh-lifecycle.test.ts"
     ],
     "impacted": [
-      "scripts/run-hoh-tdd.mjs",
+      "packages/analysis/src/adapters.ts",
+      "packages/analysis/src/approval-domains.ts",
+      "packages/analysis/src/approval-record.ts",
+      "packages/analysis/src/approval.ts",
+      "packages/analysis/src/attestation.ts",
+      "packages/analysis/src/change-evidence.ts",
+      "packages/analysis/src/change-waiver.ts",
+      "packages/analysis/src/change.ts",
+      "packages/analysis/src/config.ts",
+      "packages/analysis/src/gate.ts",
+      "packages/analysis/src/graph.ts",
+      "packages/analysis/src/hoh.ts",
+      "packages/analysis/src/index.ts",
+      "packages/analysis/src/model-correspondence.ts",
+      "packages/analysis/src/mutation.ts",
+      "packages/analysis/src/performance.ts",
+      "packages/analysis/src/tdd.ts",
+      "packages/analysis/src/workflow-types.ts",
+      "packages/analysis/src/workflow-waiver.ts",
+      "packages/analysis/src/workflow.ts",
+      "packages/cli/src/install.ts",
+      "packages/cli/src/main.ts",
+      "tests/adapter-integration.test.ts",
+      "tests/adapter-pattern-recognition.test.ts",
+      "tests/approval-domain-scoping.test.ts",
+      "tests/approval.test.ts",
+      "tests/attestation-evidence-stability.test.ts",
+      "tests/autonomous-amendment-approval-consumption.test.ts",
+      "tests/autonomous-amendment-approval.test.ts",
+      "tests/autonomous-amendment-cli-promotion.test.ts",
+      "tests/autonomous-amendment-cli.test.ts",
+      "tests/autonomous-amendment-fsm.test.ts",
+      "tests/autonomous-amendment-git.test.ts",
+      "tests/autonomous-amendment-promotion.test.ts",
+      "tests/autonomous-amendment-routing.test.ts",
+      "tests/autonomous-auto-amendment-approval.test.ts",
+      "tests/autonomous-auto-amendment-repair.test.ts",
+      "tests/autonomous-auto-approval-authority-escalation.test.ts",
+      "tests/autonomous-auto-approval-authority-persistence.test.ts",
+      "tests/autonomous-auto-approval-authority-sticky.test.ts",
+      "tests/autonomous-auto-approval-boundary-evidence.test.ts",
+      "tests/autonomous-auto-approval-config.test.ts",
+      "tests/autonomous-auto-approval-empty-manifest.test.ts",
+      "tests/autonomous-auto-approval-least-privilege.test.ts",
+      "tests/autonomous-auto-approval-manifest-limit.test.ts",
+      "tests/autonomous-auto-approval-nonce.test.ts",
+      "tests/autonomous-auto-approval-rehash.test.ts",
+      "tests/autonomous-auto-approval-repair.test.ts",
+      "tests/autonomous-auto-approval-retry.test.ts",
+      "tests/autonomous-auto-approval-review-repair.test.ts",
+      "tests/autonomous-auto-approval-reviewer-required.test.ts",
+      "tests/autonomous-auto-release-approval.test.ts",
+      "tests/autonomous-auto-release-isolation.test.ts",
+      "tests/autonomous-auto-release-manifest.test.ts",
+      "tests/autonomous-auto-spec-design-approval.test.ts",
+      "tests/autonomous-auto-spec-design-manifest.test.ts",
       "tests/autonomous-baseline-oracle.test.ts",
+      "tests/autonomous-collision-inventory.test.ts",
+      "tests/autonomous-command-surface-advanced.test.ts",
+      "tests/autonomous-command-surface-loop.test.ts",
+      "tests/autonomous-command-surface.test.ts",
+      "tests/autonomous-durability-limits.test.ts",
+      "tests/autonomous-hoh-config-file.test.ts",
+      "tests/autonomous-protected-boundary.test.ts",
+      "tests/autonomous-protected-set.test.ts",
+      "tests/autonomous-qa-mutation-routing.test.ts",
+      "tests/autonomous-seven-check-adapter.test.ts",
+      "tests/autonomous-seven-check-config.test.ts",
+      "tests/autonomous-seven-check-orchestration.test.ts",
+      "tests/autonomous-seven-check-qa.test.ts",
+      "tests/bounded-file-read-concurrency.test.ts",
+      "tests/change-acceptance-heuristic.test.ts",
+      "tests/change-evidence-waiver.test.ts",
+      "tests/change-multi-requirement-test-annotation.test.ts",
+      "tests/change-record-fail-fast.test.ts",
+      "tests/change-record-recordedat-order.test.ts",
+      "tests/change-requirement-batches.test.ts",
+      "tests/cli-package.test.ts",
+      "tests/cli-workflow-ux.test.ts",
+      "tests/command-working-directory.test.ts",
+      "tests/domain.test.ts",
+      "tests/ears-id-diagnostic-messages.test.ts",
+      "tests/formal-knowledge.test.ts",
+      "tests/full-v1-acceptance.test.ts",
+      "tests/gate-install.test.ts",
+      "tests/helpers.ts",
       "tests/hoh-lifecycle.test.ts",
-      "tests/inherited-compatibility.test.ts"
+      "tests/inherited-compatibility.test.ts",
+      "tests/model-correspondence-evidence-guidance.test.ts",
+      "tests/optional-formal-gate.test.ts",
+      "tests/p2-improvements.test.ts",
+      "tests/p3-attestation-oidc.test.ts",
+      "tests/p3-codegraph-policy.test.ts",
+      "tests/p3-formal.test.ts",
+      "tests/p3-performance-provenance.test.ts",
+      "tests/p3-workflow-provenance.test.ts",
+      "tests/p4-correspondence-mutation.test.ts",
+      "tests/p4-workflow-streaming.test.ts",
+      "tests/php-verification.test.ts",
+      "tests/policy-command-closed-set.test.ts",
+      "tests/policy-command-definition-binding.test.ts",
+      "tests/policy-command-optional-binding.test.ts",
+      "tests/release-documents.test.ts",
+      "tests/release-version-consistency.test.ts",
+      "tests/scaffold-artifact.test.ts",
+      "tests/structured-full-test-report.test.ts",
+      "tests/structured-test-path-binding.test.ts",
+      "tests/tdd-adoption-warning.test.ts",
+      "tests/tdd-cycle-void.test.ts",
+      "tests/tdd-fingerprint-migration.test.ts",
+      "tests/tdd-fingerprint-scoping.test.ts",
+      "tests/tdd-green-requirement-scoping.test.ts",
+      "tests/tdd-red-collection-guidance.test.ts",
+      "tests/tdd-superseded-cycle-scoping.test.ts",
+      "tests/trace-graph.test.ts",
+      "tests/upgrade-workflow.test.ts",
+      "tests/workflow-evidence-waiver.test.ts",
+      "tests/workflow-multi-session-verification.test.ts",
+      "tests/workflow-waiver-bulk-recording.test.ts"
     ],
-    "generatedAt": "2026-09-17T14:11:01.458Z"
+    "generatedAt": "2026-09-17T22:11:04.438Z"
   },
   "fingerprints": {
     ".github/copilot-instructions.md": "78f4a8abfad7e2bf84952847f68c1fd3addbbc82f8b3d65accd730fad4ebf81c",
@@ -1471,6 +1673,7 @@
     ".musubix/changes/CHANGE-0008.md": "9b1bae2d9740a257dddd308933453396bf35b34f239171b1b7023d07f65c3059",
     ".musubix/changes/CHANGE-0009.md": "9e443922324803b477aa3741f929922707e6137c30ee7ff225f6ebb45f7438ce",
     ".musubix/changes/CHANGE-0010.md": "09c16366649036690e55d7f3c0446451ba63c36ce4a18eebae3f532b1d6899b5",
+    ".musubix/changes/CHANGE-0011.md": "eced68b95cd24e04061534c0a37cad73d93deaabe47a3482ec2168a83cebfedd",
     ".musubix/compatibility/command-collisions.json": "d63031df0501d266ac7b1cba1e6417b6c80c7881e60492f82735f9047723a8eb",
     ".musubix/config.json": "bad4ca91698e7bc0b119c7abfc057266dc44be358a1a23a4253610d4a6254c95",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
@@ -1487,8 +1690,8 @@
     ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
     ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/design.md": "31beb89c88174ae20b940f2308bbd2175c2ee9cd7318427f1ac9f8ad943eb999",
-    ".musubix/features/autonomous-development/requirements.md": "5cefcbdf0bf86eb0ff494fa2fa3f5775a3efd07436afc3d8b2743cc18942779b",
+    ".musubix/features/autonomous-development/design.md": "0a02562e7ff30790fabdbfc02e38e7087a50d8cfba7a9e1c78063bb0ce193fa7",
+    ".musubix/features/autonomous-development/requirements.md": "98aa474d8c2466eadd3596617ade57fd8ac8aa31232d62f608518b9cfcdea3ab",
     ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
     ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
     ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
@@ -1504,9 +1707,13 @@
     ".musubix4/runs/840c60fa-59a2-48ed-8e15-5f9d79ca299c/boundary-artifacts/requirements/702ea7d585ba25f6758bdee82216347f4a415ab8b6d42c56f044de5a2627f04a.artifact": "93ee9e0b556cc1604bfc51bf9e83cd01313b1e82ecb938f12b819404e66ac60c",
     ".musubix4/runs/840c60fa-59a2-48ed-8e15-5f9d79ca299c/boundary-artifacts/requirements/d0f30528e9cf9f800c0d704a6b2a7ccc1333f5dee3cd3800405b747ac1a626af.artifact": "4f66ee0fe9025509b233e43ef77f7ba52872a1f3d18f7b1d95030ae43331269e",
     ".musubix4/runs/840c60fa-59a2-48ed-8e15-5f9d79ca299c/state.json": "149c34480e29bdb76dc08092e8c4415d64cfee9b130b41ad37b04fc292a65643",
+    ".musubix4/runs/8767e400-1a73-466a-be22-183c2529bb13/boundary-artifacts/requirements/702ea7d585ba25f6758bdee82216347f4a415ab8b6d42c56f044de5a2627f04a.artifact": "2a25f57bf66f7af2941f70b4e84e82862cb969dd3e37d952e395c6e9a3fdd206",
+    ".musubix4/runs/8767e400-1a73-466a-be22-183c2529bb13/boundary-artifacts/requirements/d0f30528e9cf9f800c0d704a6b2a7ccc1333f5dee3cd3800405b747ac1a626af.artifact": "ff785b74585a83866ed0edb203bae0aa990d458c02f95c5c47644903fc50a817",
+    ".musubix4/runs/8767e400-1a73-466a-be22-183c2529bb13/state.json": "56337eaf973e471384a25c761904e0e4f81b2ef6a5a2d14fec1ebc69ee17c3fa",
     ".musubix4/specifications/06759abdb33428330426b8e1d61ed45c4ef08c85efdcd1fe14118434abfea6df.json": "9b251b6b9e2e19ce02a0fa284b76f9e5b242af3b7e9097976a5d8763d7478566",
     ".musubix4/specifications/e2df9ab9c8f94c6846ea3ffa66952daa2787f07bfe028fab6f611bf6a0f72187.json": "f646ff48844a188777de18ec644d12fb1a7620467f255f1c7da0b5a52e7893f9",
     ".musubix4/specifications/e4fea7148d076fba27e5fbb18a826856d0c66b24736702c7ff25d30f4c8aa925.json": "98f6cb0295d54769b68034eda705c736c8a3c610434ca3fad0690ac1675cdf50",
+    ".musubix4/specifications/f6e12217c00d3c088d86e1b32991fb3ca7b5e56272ebf2c4c767c4a834862638.json": "72c3c2cab478e3fa32ed6b173fe8a4ec27487c0475825078ddc6f01bbeb42bc6",
     "assets/ADR-0001.md": "7ad9f728553efcedf1195f43834e4a995baa6a98eb5c02db2611510a8548012e",
     "assets/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
     "assets/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
@@ -1613,7 +1820,7 @@
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
     "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
-    "packages/analysis/src/hoh.ts": "aadeb9be3cdc2bc2a0a29163789ef3e540a3ad0d73e344c52a45a69a8ad49925",
+    "packages/analysis/src/hoh.ts": "c4893e9979f94f3c2ed52b4dfcb71e60ef86dc76d24a1bb2283df03fcb5cc2d0",
     "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
@@ -1631,7 +1838,7 @@
     "packages/analysis/src/workflow.ts": "28f1842932c479dd0055083db492e4b11473ae7376ed518907a1643cfb54e681",
     "packages/cli/package.json": "60b901fbf61c47819227248dbf175c705e12c87d7406f064ad7d2206f2495e27",
     "packages/cli/src/install.ts": "0d9a177e5503106fc0c8ff8cc5c6be7b9f18523192cd71c2681d4476797198b9",
-    "packages/cli/src/main.ts": "06c3c25cf9139b0eae3820618c1595f4cd2b65bc2e1be6602566afed858e2f58",
+    "packages/cli/src/main.ts": "9eb6b8f300ca666d789a21cb7ba02ebb2b3b3b08e497622373cde46342998c20",
     "packages/cli/src/version.ts": "b0e94ab7cdc2f3632c300fb5fc4812aca1c9f6c85efc5867d25ca7c077b4935d",
     "packages/domain/package.json": "26627dad3a50e6222be02af0592c13a028d6cd987683d7f22ffee54ebaaefa4d",
     "packages/domain/src/constitution.ts": "514278499642ff46ed902864b9192f566b116b4f92eb3fafa6b62588335e170a",
@@ -1682,11 +1889,11 @@
     "tests/autonomous-auto-approval-retry.test.ts": "8d932bf0bbbc20946afdb6a8280348248028f34973cb3f81f0e450560585781b",
     "tests/autonomous-auto-approval-review-repair.test.ts": "2c08ff904813e5cff89cb4207569ee8e9d078dc215b60b89ef27b1abdeabd4c3",
     "tests/autonomous-auto-approval-reviewer-required.test.ts": "4583c69e926b7036cc805795852912777013c28594acaeec3bca7c6ddc48b418",
-    "tests/autonomous-auto-release-approval.test.ts": "419bb7e670d7c983ecdbed28585bfc27542a92630e18d0367db38e49068db359",
+    "tests/autonomous-auto-release-approval.test.ts": "db9f8af15b5d397beb81a0aa723643a436a60d81dc85002ab0d620c13e263346",
     "tests/autonomous-auto-release-isolation.test.ts": "85aa1cd2a486f36f3852d47028c2f291ed6c3e381f49b61203884165528d6540",
-    "tests/autonomous-auto-release-manifest.test.ts": "a9f56ffed96b8a453ddd1f273e53a0a4dae250dc42cb999b6e71504ee1d21ccd",
-    "tests/autonomous-auto-spec-design-approval.test.ts": "860ac579c21bdbc591cfbae7e1b1278a8d93c438269121642b7452cf630fd59b",
-    "tests/autonomous-auto-spec-design-manifest.test.ts": "edf3557545e869ae006db9d1a107b59167677fe7854fdc9ebc7795683f000848",
+    "tests/autonomous-auto-release-manifest.test.ts": "444b35fcc5973456353dfd1e9cf720142b9eb153567d9aebec3e9ce02d54541c",
+    "tests/autonomous-auto-spec-design-approval.test.ts": "07de87f8514b3a6f70a8c7e182952359aedc33694c475c7931f7c427bbf0a022",
+    "tests/autonomous-auto-spec-design-manifest.test.ts": "9787604968ea346bcb45519c192010adcc77f3bc3bc3e0df7d2e4d207853e8d7",
     "tests/autonomous-baseline-oracle.test.ts": "bbcb7929781b8e00519a5bb94957efc6cd3eda10192c66e62d2950a90e24200a",
     "tests/autonomous-collision-inventory.test.ts": "41038fb8991e145c153ddb4f012a234d069a69c448149eb7f7f311a0855366b6",
     "tests/autonomous-command-surface-advanced.test.ts": "ae869bf14a4182514e3a4179f3257a92a5dc224c6e13e54d1b4b44ea21f0879d",
@@ -1708,7 +1915,7 @@
     "tests/change-record-fail-fast.test.ts": "feeeeb554605c822508f900017e8ab70c2afc2b9c09e64ec9c1858efec0b9fcb",
     "tests/change-record-recordedat-order.test.ts": "0c0b2247306cfa3da026273c06a1fc55044d5944d74cc6e8a19d83b5fa9fcbe7",
     "tests/change-requirement-batches.test.ts": "3a83fb3880949ed50afb74ab1fc29827cf981c9599d10183560227118c0b6600",
-    "tests/cli-package.test.ts": "c350f62defb9f8e53e41dabec95935282b67028d4ef6ed6a0972187e26867962",
+    "tests/cli-package.test.ts": "d2a87d2a6b19e20558abfb36ff25befde84cfb72a6e5768cbf1b8713746455e8",
     "tests/cli-workflow-ux.test.ts": "c67cdfebfae6708c9091d6a318bb49ba70a3a53b1526c74238c322b1c5028163",
     "tests/command-working-directory.test.ts": "46850b5a295d31a1b8ea760f9132f3ea0769588b2ccefac3c2413687bcb3221f",
     "tests/design-adr-none-exemption.test.ts": "bd61454949d1ded62429ae480da039f4e6976c11c23126b5f30bcc7307a3ee29",
@@ -1721,7 +1928,7 @@
     "tests/full-v1-acceptance.test.ts": "982e14539e0df21529cbfdcc5ba27b969661f43fd4786ae3433bfd6bbe6681ea",
     "tests/gate-install.test.ts": "97d48d731b0871b42666597ad4c9a92730a217653744904c1e60aa1d00227bb7",
     "tests/helpers.ts": "031929b097a7318d83fe8024ef1ff7f4248964a5d0861e8301504f62c887f054",
-    "tests/hoh-lifecycle.test.ts": "26af68bce2fb317e76763fa51d02b8651a11413d957e7a610bdfa66bd1c4c54c",
+    "tests/hoh-lifecycle.test.ts": "4cde45ef1cc5a8fef8550fd7ab6fe412b6eeb557fac77e2019371c17d3e10382",
     "tests/inherited-compatibility.test.ts": "abf55f4899c5d07f6de1537db3d5de3498aa30b63d028680fce5dcfeb88bdf1d",
     "tests/model-correspondence-evidence-guidance.test.ts": "5886b128fada18690cbda5cc454193e6bb4cadc48077977d2f033659baa09b7d",
     "tests/optional-formal-gate.test.ts": "c33a55d9bb39c30227dec7540ef6185d1ddc3a8c57dba941b08da44576c8afa8",
@@ -1765,8 +1972,8 @@
       "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
       "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-016",
       "approver": "nahisaho",
-      "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-      "recordedAt": "2026-09-14T20:27:04.317Z"
+      "reason": "Historical CHANGE-0001 evidence predates monotonic ordering; current automatic-approval tests and full validation pass with strict Reviewer boundary identity.",
+      "recordedAt": "2026-09-17T20:56:31.686Z"
     },
     {
       "changeId": "CHANGE-0002",
@@ -1781,32 +1988,32 @@
       "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
       "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-016",
       "approver": "nahisaho",
-      "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-      "recordedAt": "2026-09-14T20:27:05.393Z"
+      "reason": "Historical CHANGE-0002 evidence predates monotonic ordering; current Reviewer approval tests were rerun through genuine Red-Green cycles.",
+      "recordedAt": "2026-09-17T20:56:32.530Z"
     },
     {
       "changeId": "CHANGE-0002",
       "code": "CHANGE_RED_UNPROVEN",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-016",
       "approver": "nahisaho",
-      "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-      "recordedAt": "2026-09-14T20:27:05.915Z"
+      "reason": "CHANGE-0002 historical ordering cannot bind to the newly updated Reviewer fixtures; current fixture tests have fresh failing Red and passing Green evidence.",
+      "recordedAt": "2026-09-17T20:56:33.359Z"
     },
     {
       "changeId": "CHANGE-0002",
       "code": "CHANGE_GREEN_UNPROVEN",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-016",
       "approver": "nahisaho",
-      "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-      "recordedAt": "2026-09-14T20:27:06.503Z"
+      "reason": "CHANGE-0002 historical ordering cannot bind to the newly updated Reviewer fixtures; current fixture tests have fresh failing Red and passing Green evidence.",
+      "recordedAt": "2026-09-17T20:56:34.317Z"
     },
     {
       "changeId": "CHANGE-0002",
       "code": "CHANGE_COMPLETENESS_TDD",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-016",
       "approver": "nahisaho",
-      "reason": "CHANGE-0001/0002 predates monotonic staged-change ordering; current implementation is independently covered by valid TDD and quality evidence, so only historical chronology debt is waived.",
-      "recordedAt": "2026-09-14T20:27:07.046Z"
+      "reason": "CHANGE-0002 historical chronology is immutable; current Reviewer contract fixtures and full suite provide fresh coverage.",
+      "recordedAt": "2026-09-17T20:56:35.136Z"
     },
     {
       "changeId": "CHANGE-0001",
@@ -2013,24 +2220,24 @@
       "code": "CHANGE_RED_UNPROVEN",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-004",
       "approver": "nahisaho",
-      "reason": "The final probe-secret-redaction assertion recorded a fresh real Red; immutable phase checkpoints predate this final cycle.",
-      "recordedAt": "2026-09-17T12:25:27.257Z"
+      "reason": "CHANGE-0009 predates the current monotonic TDD proof linkage; its current adapter tests, complete suite, trace, graph, and CHANGE-0011 regression coverage pass independently.",
+      "recordedAt": "2026-09-17T14:56:48.444Z"
     },
     {
       "changeId": "CHANGE-0009",
       "code": "CHANGE_GREEN_UNPROVEN",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-004",
       "approver": "nahisaho",
-      "reason": "The final probe-secret-redaction implementation recorded a passing Green and complete validation; immutable phase checkpoints predate this final cycle.",
-      "recordedAt": "2026-09-17T12:25:28.120Z"
+      "reason": "CHANGE-0009 predates the current monotonic TDD proof linkage; its current adapter tests, complete suite, trace, graph, and CHANGE-0011 regression coverage pass independently.",
+      "recordedAt": "2026-09-17T14:56:49.320Z"
     },
     {
       "changeId": "CHANGE-0009",
       "code": "CHANGE_COMPLETENESS_TDD",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-004",
       "approver": "nahisaho",
-      "reason": "Current adapter tests have bounded Red-Green evidence for protocol parsing, exact metering, version probing, budget settlement, truncation, and secret redaction; only append-only checkpoint chronology is waived.",
-      "recordedAt": "2026-09-17T12:25:28.961Z"
+      "reason": "CHANGE-0009 historical chronology cannot be reconstructed; current full tests and the new bounded CHANGE-0011 Red-Green cycle cover the repaired Copilot adapter behavior.",
+      "recordedAt": "2026-09-17T14:56:50.212Z"
     },
     {
       "changeId": "CHANGE-0010",
@@ -2103,6 +2310,22 @@
       "approver": "nahisaho",
       "reason": "TEST-AUTONOMOUS-ORACLE-005 has bounded real Red-Green evidence and full validation for the baseline artifact compatibility contract.",
       "recordedAt": "2026-09-17T13:29:51.612Z"
+    },
+    {
+      "changeId": "CHANGE-0001",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-005",
+      "approver": "nahisaho",
+      "reason": "Historical CHANGE-0001 evidence predates monotonic ordering; CHANGE-0011 now provides current bounded Red-Green evidence for the evolved role-prompt contract.",
+      "recordedAt": "2026-09-17T20:56:30.816Z"
+    },
+    {
+      "changeId": "CHANGE-0011",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-005",
+      "approver": "nahisaho",
+      "reason": "REQ-005 has a new current Red-Green cycle plus an earlier superseded cycle lacking compatible monotonic linkage; the current cycle and tests are valid.",
+      "recordedAt": "2026-09-17T20:56:35.936Z"
     }
   ],
   "workflowWaivers": [
@@ -2112,8 +2335,8 @@
       "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.241Z"
     },
     {
       "skill": "sdd-design",
@@ -2121,8 +2344,8 @@
       "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
     },
     {
       "skill": "sdd-design",
@@ -2130,8 +2353,26 @@
       "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
+    },
+    {
+      "skill": "sdd-design",
+      "phase": "complete",
+      "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
+      "code": "WORKFLOW_SKILL_NOT_INVOKED",
+      "approver": "nahisaho",
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
+    },
+    {
+      "skill": "sdd-implementation",
+      "phase": "complete",
+      "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
+      "code": "WORKFLOW_SKILL_NOT_INVOKED",
+      "approver": "nahisaho",
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
     },
     {
       "skill": "sdd-quality",
@@ -2139,53 +2380,62 @@
       "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
+    },
+    {
+      "skill": "sdd-change",
+      "phase": "complete",
+      "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
+      "code": "WORKFLOW_SKILL_NOT_INVOKED",
+      "approver": "nahisaho",
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
     },
     {
       "skill": "sdd-change",
       "phase": "complete",
       "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
+      "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
     },
     {
       "skill": "sdd-change",
       "phase": "complete",
       "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
+      "code": "WORKFLOW_INVOCATION_ORDER",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
     },
     {
       "skill": "sdd-design",
       "phase": "complete",
       "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
+      "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.242Z"
     },
     {
       "skill": "sdd-implementation",
       "phase": "complete",
       "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
+      "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
     },
     {
       "skill": "sdd-implementation",
       "phase": "complete",
       "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
+      "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
     },
     {
       "skill": "sdd-quality",
@@ -2193,8 +2443,8 @@
       "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
     },
     {
       "skill": "sdd-quality",
@@ -2202,8 +2452,8 @@
       "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
     },
     {
       "skill": "sdd-quality",
@@ -2211,91 +2461,64 @@
       "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
     },
     {
       "skill": "sdd-requirements",
       "phase": "complete",
       "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
-      "code": "WORKFLOW_INVOCATION_ORDER",
-      "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.819Z"
-    },
-    {
-      "skill": "sdd-change",
-      "phase": "complete",
-      "declarationRecordedAt": "2026-09-17T09:05:19.779Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
-      "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-    },
-    {
-      "skill": "sdd-change",
-      "phase": "complete",
-      "declarationRecordedAt": "2026-09-17T12:43:06.923Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
-      "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-    },
-    {
-      "skill": "sdd-design",
-      "phase": "complete",
-      "declarationRecordedAt": "2026-09-17T04:47:12.659Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
-      "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-    },
-    {
-      "skill": "sdd-implementation",
-      "phase": "complete",
-      "declarationRecordedAt": "2026-09-17T04:47:13.451Z",
-      "code": "WORKFLOW_INVOCATION_REUSED",
-      "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.818Z"
-    },
-    {
-      "skill": "sdd-quality",
-      "phase": "complete",
-      "declarationRecordedAt": "2026-09-17T06:34:03.621Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The current CHANGE-0010 workflow is executed in this active session; compatible verification uses the latest complete sanitized transcript, while remaining diagnostics are historical cross-session declaration binding and ordering.",
-      "waiverRecordedAt": "2026-09-17T13:29:43.819Z"
+      "reason": "The current long-running Copilot session was compacted and cannot provide one-to-one historical Skill lifecycle bindings; compatible verification ran against the live transcript and CHANGE-0011 has independent current TDD and quality evidence.",
+      "waiverRecordedAt": "2026-09-17T21:21:18.243Z"
     }
   ],
   "waiverDiagnostics": [
     {
       "code": "WORKFLOW_WAIVER_STALE",
       "severity": "error",
-      "message": "Workflow waiver for sdd-design:complete:2026-09-14T14:10:15.628Z is stale.",
-      "path": ".musubix/evidence/workflow-waivers.json",
-      "skill": "sdd-design",
-      "phase": "complete",
-      "declarationRecordedAt": "2026-09-14T14:10:15.628Z"
-    },
-    {
-      "code": "WORKFLOW_WAIVER_STALE",
-      "severity": "error",
-      "message": "Workflow waiver for sdd-implementation:complete:2026-09-15T12:53:53.044Z is stale.",
-      "path": ".musubix/evidence/workflow-waivers.json",
-      "skill": "sdd-implementation",
-      "phase": "complete",
-      "declarationRecordedAt": "2026-09-15T12:53:53.044Z"
-    },
-    {
-      "code": "WORKFLOW_WAIVER_STALE",
-      "severity": "error",
-      "message": "Workflow waiver for sdd-change:complete:2026-09-15T13:31:32.076Z is stale.",
+      "message": "Workflow waiver for sdd-change:complete:2026-09-17T09:05:19.779Z is stale.",
       "path": ".musubix/evidence/workflow-waivers.json",
       "skill": "sdd-change",
       "phase": "complete",
-      "declarationRecordedAt": "2026-09-15T13:31:32.076Z"
+      "declarationRecordedAt": "2026-09-17T09:05:19.779Z"
+    },
+    {
+      "code": "WORKFLOW_WAIVER_STALE",
+      "severity": "error",
+      "message": "Workflow waiver for sdd-change:complete:2026-09-17T12:43:06.923Z is stale.",
+      "path": ".musubix/evidence/workflow-waivers.json",
+      "skill": "sdd-change",
+      "phase": "complete",
+      "declarationRecordedAt": "2026-09-17T12:43:06.923Z"
+    },
+    {
+      "code": "WORKFLOW_WAIVER_STALE",
+      "severity": "error",
+      "message": "Workflow waiver for sdd-design:complete:2026-09-17T04:47:12.659Z is stale.",
+      "path": ".musubix/evidence/workflow-waivers.json",
+      "skill": "sdd-design",
+      "phase": "complete",
+      "declarationRecordedAt": "2026-09-17T04:47:12.659Z"
+    },
+    {
+      "code": "WORKFLOW_WAIVER_STALE",
+      "severity": "error",
+      "message": "Workflow waiver for sdd-implementation:complete:2026-09-17T04:47:13.451Z is stale.",
+      "path": ".musubix/evidence/workflow-waivers.json",
+      "skill": "sdd-implementation",
+      "phase": "complete",
+      "declarationRecordedAt": "2026-09-17T04:47:13.451Z"
+    },
+    {
+      "code": "WORKFLOW_WAIVER_STALE",
+      "severity": "error",
+      "message": "Workflow waiver for sdd-quality:complete:2026-09-17T06:34:03.621Z is stale.",
+      "path": ".musubix/evidence/workflow-waivers.json",
+      "skill": "sdd-quality",
+      "phase": "complete",
+      "declarationRecordedAt": "2026-09-17T06:34:03.621Z"
     }
   ]
 }

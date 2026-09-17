@@ -53,6 +53,7 @@ describe('automatic release approval manifest', () => {
       const boundary = context as {
         stage: string;
         boundaryKind: string;
+        boundaryEpisodeOrdinal: number;
         nonce: string;
         manifestDigest: string;
         manifestPaths: string[];
@@ -65,6 +66,7 @@ describe('automatic release approval manifest', () => {
       return {
         stage: boundary.stage,
         boundaryKind: boundary.boundaryKind,
+        boundaryEpisodeOrdinal: boundary.boundaryEpisodeOrdinal,
         nonce: boundary.nonce,
         manifestDigest: boundary.manifestDigest,
         reviewedPaths: boundary.manifestPaths,
