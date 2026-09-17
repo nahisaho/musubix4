@@ -5577,6 +5577,92 @@
         "diagnostics": [],
         "order": 428
       }
+    },
+    {
+      "cycleId": "d82a3157-0773-4106-94dc-30d8d80a8f92",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "testId": "TEST-AUTONOMOUS-ORACLE-005",
+      "testPath": "tests/autonomous-baseline-oracle.test.ts",
+      "commandName": "hoh-test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "788dfac2886bb3c73692f9d8e20a0f9083fb342794f7fe54456ee0aa5267b3a2",
+        "commandSha256": "4bf450172910d148d276e695ed8e199060567802af0e08ce9f69ffe990beef21",
+        "outputSha256": "8d9bd3048f339b27b38f86f558558db825eac1c554c7c19ed08568d6aab15602",
+        "exitCode": 1,
+        "durationMs": 26577,
+        "testFingerprint": "5caf9882aaa7a93070ffdcc9ea1f5dac16060c178eab765174794cc056a1b244",
+        "sourceFingerprint": "32efee22443bc6fd8b11f36f4676aab8c1645b8fcdd46003cb291c97d21e0da8",
+        "executionId": "36c79621-3e3f-46f5-a64c-aa14391dd127",
+        "recordedAt": "2026-09-17T13:10:24.892Z",
+        "diagnostics": [],
+        "order": 435
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "bbaa82b818b51e56b9d42f391396b04c4456d8b414b685bf26acc239d53cea49",
+        "commandSha256": "4bf450172910d148d276e695ed8e199060567802af0e08ce9f69ffe990beef21",
+        "outputSha256": "8d9bd3048f339b27b38f86f558558db825eac1c554c7c19ed08568d6aab15602",
+        "exitCode": 0,
+        "durationMs": 26857,
+        "testFingerprint": "5caf9882aaa7a93070ffdcc9ea1f5dac16060c178eab765174794cc056a1b244",
+        "sourceFingerprint": "8048eabec0c9f5a384b9e4465290bef58ceb92e1aa89fb6c624e78368af2c5b1",
+        "executionId": "9553c582-c7a9-418c-8fb0-18ea5411a635",
+        "recordedAt": "2026-09-17T13:14:08.307Z",
+        "diagnostics": [],
+        "order": 438
+      }
+    },
+    {
+      "cycleId": "ee68372d-8f3b-4423-ab4e-d5710e079c35",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "testId": "TEST-AUTONOMOUS-ORACLE-005",
+      "testPath": "tests/autonomous-baseline-oracle.test.ts",
+      "commandName": "hoh-test",
+      "red": {
+        "phase": "red",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "failed",
+        "reportSha256": "788dfac2886bb3c73692f9d8e20a0f9083fb342794f7fe54456ee0aa5267b3a2",
+        "commandSha256": "4bf450172910d148d276e695ed8e199060567802af0e08ce9f69ffe990beef21",
+        "outputSha256": "8d9bd3048f339b27b38f86f558558db825eac1c554c7c19ed08568d6aab15602",
+        "exitCode": 1,
+        "durationMs": 28091,
+        "testFingerprint": "e0713437a55732e349d552b601130aa6cb8e04323807b34cf8cc8a8d0a94c28d",
+        "sourceFingerprint": "38f4f98f7f24baab04889b0576cd17a8bd715332cd2cda64c197c2cb26a6ef1d",
+        "executionId": "87230426-aabc-4142-ab6a-5d07f831d6b3",
+        "recordedAt": "2026-09-17T13:53:42.601Z",
+        "diagnostics": [],
+        "order": 450
+      },
+      "green": {
+        "phase": "green",
+        "valid": true,
+        "scoped": true,
+        "resultObserved": true,
+        "testStatus": "passed",
+        "reportSha256": "bbaa82b818b51e56b9d42f391396b04c4456d8b414b685bf26acc239d53cea49",
+        "commandSha256": "4bf450172910d148d276e695ed8e199060567802af0e08ce9f69ffe990beef21",
+        "outputSha256": "8d9bd3048f339b27b38f86f558558db825eac1c554c7c19ed08568d6aab15602",
+        "exitCode": 0,
+        "durationMs": 27584,
+        "testFingerprint": "e0713437a55732e349d552b601130aa6cb8e04323807b34cf8cc8a8d0a94c28d",
+        "sourceFingerprint": "2f3be0e9746ec88322d90f8d2663c12d8935c21672f9171c94b33f3a9d1ce0e1",
+        "executionId": "d95d793d-0644-4501-b695-6b64bd54bb98",
+        "recordedAt": "2026-09-17T13:54:32.698Z",
+        "diagnostics": [],
+        "order": 451
+      }
     }
   ],
   "chain": [
@@ -8627,6 +8713,54 @@
       "phaseEvidenceSha256": "33d96d811bca7eca01b66562b48dca8d887305f2369f50d5b8633083bf8dad89",
       "previousSha256": "86c906ac3a990ab1b29ce558a02bb21973c873b9b32760e6c8f768f1bdeab002",
       "recordSha256": "b1313ea391fe580f27a72d2ed0e5a532dfd926e3fc434e6154e8ad9b3d0e43b8"
+    },
+    {
+      "sequence": 255,
+      "cycleId": "d82a3157-0773-4106-94dc-30d8d80a8f92",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "testId": "TEST-AUTONOMOUS-ORACLE-005",
+      "testPath": "tests/autonomous-baseline-oracle.test.ts",
+      "commandName": "hoh-test",
+      "phase": "red",
+      "phaseEvidenceSha256": "71660542dafb9aead28ae61453e6e914bfe170fd6e65c7b2556fee5b9ee2adf2",
+      "previousSha256": "b1313ea391fe580f27a72d2ed0e5a532dfd926e3fc434e6154e8ad9b3d0e43b8",
+      "recordSha256": "924f601e9f59fcca8cc24cb2e4f4c715cbb665c2fa5c5652dc0eb4d1436a59ef"
+    },
+    {
+      "sequence": 256,
+      "cycleId": "d82a3157-0773-4106-94dc-30d8d80a8f92",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "testId": "TEST-AUTONOMOUS-ORACLE-005",
+      "testPath": "tests/autonomous-baseline-oracle.test.ts",
+      "commandName": "hoh-test",
+      "phase": "green",
+      "phaseEvidenceSha256": "01be706679575e4dfc9b4c4496d1f98f8913a815115145b4d98cc343f02942a0",
+      "previousSha256": "924f601e9f59fcca8cc24cb2e4f4c715cbb665c2fa5c5652dc0eb4d1436a59ef",
+      "recordSha256": "12e03d41f8b8201d34a5b28f32120f2c0c5884e455226a6248ecd94ec4b3695a"
+    },
+    {
+      "sequence": 257,
+      "cycleId": "ee68372d-8f3b-4423-ab4e-d5710e079c35",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "testId": "TEST-AUTONOMOUS-ORACLE-005",
+      "testPath": "tests/autonomous-baseline-oracle.test.ts",
+      "commandName": "hoh-test",
+      "phase": "red",
+      "phaseEvidenceSha256": "da4f0648f6d11267688d88143e2a1d4bda86201b2743a0a61889af55ba37ca7c",
+      "previousSha256": "12e03d41f8b8201d34a5b28f32120f2c0c5884e455226a6248ecd94ec4b3695a",
+      "recordSha256": "346d0d7b5739854dc8fc6e64f727e317b301eaa146d00deb0657660d3c44192d"
+    },
+    {
+      "sequence": 258,
+      "cycleId": "ee68372d-8f3b-4423-ab4e-d5710e079c35",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "testId": "TEST-AUTONOMOUS-ORACLE-005",
+      "testPath": "tests/autonomous-baseline-oracle.test.ts",
+      "commandName": "hoh-test",
+      "phase": "green",
+      "phaseEvidenceSha256": "f1dafd1803f12057cb814f7c9bbd3ae1cae7c40871df855868afa506d75f925a",
+      "previousSha256": "346d0d7b5739854dc8fc6e64f727e317b301eaa146d00deb0657660d3c44192d",
+      "recordSha256": "585a0d121aef70db5203d447dbb74edcc36cb7db969ca15b8dc60fdc7e682306"
     }
   ]
 }

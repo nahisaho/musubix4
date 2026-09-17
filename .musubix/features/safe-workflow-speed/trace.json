@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T12:39:30.856Z",
+  "generatedAt": "2026-09-17T14:07:35.615Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -187,13 +187,13 @@
       "id": "DES-AUTONOMOUS-DEVELOPMENT-015",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 119
+      "line": 120
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-016",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 127
+      "line": 128
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-001",
@@ -206,126 +206,126 @@
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-002",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 14,
+      "line": 15,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-003",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 21,
+      "line": 22,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-004",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 28,
+      "line": 29,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-005",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 35,
+      "line": 36,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-006",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 42,
+      "line": 43,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-007",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 49,
+      "line": 50,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-008",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 56,
+      "line": 57,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-009",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 63,
+      "line": 64,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-010",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 70,
+      "line": 71,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-011",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 77,
+      "line": 78,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-012",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 84,
+      "line": 85,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-013",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 91,
+      "line": 92,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-014",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 98,
+      "line": 99,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-015",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 105,
+      "line": 106,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-016",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 112,
+      "line": 113,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-017",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 120,
+      "line": 121,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-018",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 127,
+      "line": 128,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-019",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 134,
+      "line": 135,
       "mandatory": true
     },
     {
@@ -1773,25 +1773,31 @@
       "id": "TEST-AUTONOMOUS-ORACLE-001",
       "kind": "test",
       "path": "tests/autonomous-baseline-oracle.test.ts",
-      "line": 17
+      "line": 18
+    },
+    {
+      "id": "TEST-AUTONOMOUS-ORACLE-005",
+      "kind": "test",
+      "path": "tests/autonomous-baseline-oracle.test.ts",
+      "line": 106
     },
     {
       "id": "TEST-AUTONOMOUS-ORACLE-002",
       "kind": "test",
       "path": "tests/autonomous-baseline-oracle.test.ts",
-      "line": 105
+      "line": 147
     },
     {
       "id": "TEST-AUTONOMOUS-ORACLE-003",
       "kind": "test",
       "path": "tests/autonomous-baseline-oracle.test.ts",
-      "line": 138
+      "line": 180
     },
     {
       "id": "TEST-AUTONOMOUS-ORACLE-004",
       "kind": "test",
       "path": "tests/autonomous-baseline-oracle.test.ts",
-      "line": 189
+      "line": 231
     },
     {
       "id": "TEST-AUTONOMOUS-INVENTORY-001",
@@ -2262,124 +2268,124 @@
       "line": 24
     },
     {
-      "id": "TEST-CLI-COMPATIBILITY-001",
-      "kind": "test",
-      "path": "tests/hoh-lifecycle.test.ts",
-      "line": 59
-    },
-    {
       "id": "TEST-HOH-CONFIG-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 82
+      "line": 30
     },
     {
       "id": "TEST-HOH-APPROVAL-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 117
+      "line": 65
     },
     {
       "id": "TEST-HOH-POLICY-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 134
+      "line": 82
     },
     {
       "id": "TEST-HOH-SPECIFICATION-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 156
+      "line": 104
     },
     {
       "id": "TEST-HOH-ROLE-CONTRACT-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 189
+      "line": 137
     },
     {
       "id": "TEST-HOH-LIFECYCLE-003",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 246
+      "line": 194
     },
     {
       "id": "TEST-HOH-INVALID-OUTPUT-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 353
+      "line": 301
     },
     {
       "id": "TEST-HOH-EVIDENCE-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 412
+      "line": 360
     },
     {
       "id": "TEST-HOH-COPILOT-ADAPTER-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 443
+      "line": 391
     },
     {
       "id": "TEST-HOH-COPILOT-ADAPTER-003",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 513
+      "line": 461
     },
     {
       "id": "TEST-HOH-COPILOT-ADAPTER-004",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 616
+      "line": 564
     },
     {
       "id": "TEST-HOH-COPILOT-ADAPTER-005",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 746
+      "line": 694
     },
     {
       "id": "TEST-HOH-GIT-STORE-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 891
+      "line": 839
     },
     {
       "id": "TEST-HOH-GIT-DEPLOYMENT-003",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 961
+      "line": 909
     },
     {
       "id": "TEST-HOH-APPROVAL-RUN-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1059
+      "line": 1007
     },
     {
       "id": "TEST-HOH-DEPLOYMENT-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1130
+      "line": 1078
     },
     {
       "id": "TEST-HOH-GITHUB-ISSUE-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1185
+      "line": 1133
     },
     {
       "id": "TEST-HOH-QA-INTEGRITY-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1225
+      "line": 1173
     },
     {
       "id": "TEST-HOH-RECOVERY-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1300
+      "line": 1248
+    },
+    {
+      "id": "TEST-CLI-COMPATIBILITY-001",
+      "kind": "test",
+      "path": "tests/inherited-compatibility.test.ts",
+      "line": 35
     },
     {
       "id": "TEST-MODEL-CORRESPONDENCE-EVIDENCE-GUIDANCE-001",
@@ -6424,6 +6430,21 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AUTONOMOUS-ORACLE-005",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-ORACLE-005",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-002",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-ORACLE-005",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AUTONOMOUS-ORACLE-002",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-002",
       "relation": "verifies"
@@ -6994,11 +7015,6 @@
       "relation": "verifies"
     },
     {
-      "from": "TEST-CLI-COMPATIBILITY-001",
-      "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
-      "relation": "verifies"
-    },
-    {
       "from": "TEST-HOH-CONFIG-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-002",
       "relation": "verifies"
@@ -7281,6 +7297,11 @@
     {
       "from": "TEST-HOH-RECOVERY-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-CLI-COMPATIBILITY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "verifies"
     },
     {
@@ -7638,8 +7659,8 @@
     ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
     ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/design.md": "9cad7ffca607214c1fbd3c0d64bfb79f9b6e4fa0db6541688b7e57f6037d109c",
-    ".musubix/features/autonomous-development/requirements.md": "79c688ad43694668a2aa5a01f81052b1b917ce44f0fd0577e7ae0361b094833a",
+    ".musubix/features/autonomous-development/design.md": "31beb89c88174ae20b940f2308bbd2175c2ee9cd7318427f1ac9f8ad943eb999",
+    ".musubix/features/autonomous-development/requirements.md": "5cefcbdf0bf86eb0ff494fa2fa3f5775a3efd07436afc3d8b2743cc18942779b",
     ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
     ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
     ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
@@ -7688,7 +7709,7 @@
     "scripts/release-publish.mjs": "be05292662e6f3a169f238231574c97dc70d41fc7a036bfe86b284e43eadaff4",
     "scripts/release-version.mjs": "c57970a5dc7e3f86437237be2dc2f430bf510b7cfd61685f84fe43b27bdf22e8",
     "scripts/run-full-tests.mjs": "dea88f204d339ff376df2246bef6fa7a21814ff285b26ad9a1e09ed73414714b",
-    "scripts/run-hoh-tdd.mjs": "78a91ef0a983595b80b151b65b07a89bb95254fe8cced18cd910c3b5319f2a92",
+    "scripts/run-hoh-tdd.mjs": "8c716994587b1bea34c148d43ce715d076cbd7cbf49c40b915ba7e02586ebe34",
     "scripts/smoke-package.mjs": "0c07366d618477ae251a0577569cd5cd0c4ce9f9c5c7c2ea6142f2bb3dfc669c",
     "tests/adapter-integration.test.ts": "0b8974d0ca31559722d40f9e25d42e2ce3d60ef2206b77d4b000264b1eb153d1",
     "tests/adapter-pattern-recognition.test.ts": "72ca71cc538e4a56c9ce596cfe48928cd023ccc42e3e8964e157a30b340f4c15",
@@ -7724,7 +7745,7 @@
     "tests/autonomous-auto-release-manifest.test.ts": "a9f56ffed96b8a453ddd1f273e53a0a4dae250dc42cb999b6e71504ee1d21ccd",
     "tests/autonomous-auto-spec-design-approval.test.ts": "860ac579c21bdbc591cfbae7e1b1278a8d93c438269121642b7452cf630fd59b",
     "tests/autonomous-auto-spec-design-manifest.test.ts": "edf3557545e869ae006db9d1a107b59167677fe7854fdc9ebc7795683f000848",
-    "tests/autonomous-baseline-oracle.test.ts": "47a91fadf6e6322622ffb76a6a72606897e3e2487c66864d0f1bbdb293bff4ee",
+    "tests/autonomous-baseline-oracle.test.ts": "bbcb7929781b8e00519a5bb94957efc6cd3eda10192c66e62d2950a90e24200a",
     "tests/autonomous-collision-inventory.test.ts": "41038fb8991e145c153ddb4f012a234d069a69c448149eb7f7f311a0855366b6",
     "tests/autonomous-command-surface-advanced.test.ts": "ae869bf14a4182514e3a4179f3257a92a5dc224c6e13e54d1b4b44ea21f0879d",
     "tests/autonomous-command-surface-loop.test.ts": "48ccbabb63f2776dcd7ac90a794d101c7bdbc73abc3fa0393057328bd29be7e0",
@@ -7755,7 +7776,8 @@
     "tests/full-v1-acceptance.test.ts": "982e14539e0df21529cbfdcc5ba27b969661f43fd4786ae3433bfd6bbe6681ea",
     "tests/gate-install.test.ts": "97d48d731b0871b42666597ad4c9a92730a217653744904c1e60aa1d00227bb7",
     "tests/helpers.ts": "031929b097a7318d83fe8024ef1ff7f4248964a5d0861e8301504f62c887f054",
-    "tests/hoh-lifecycle.test.ts": "79be3a23de325f95df2686f0a98989a0478c2e469bc445843e46e4b59900c32b",
+    "tests/hoh-lifecycle.test.ts": "26af68bce2fb317e76763fa51d02b8651a11413d957e7a610bdfa66bd1c4c54c",
+    "tests/inherited-compatibility.test.ts": "abf55f4899c5d07f6de1537db3d5de3498aa30b63d028680fce5dcfeb88bdf1d",
     "tests/model-correspondence-evidence-guidance.test.ts": "5886b128fada18690cbda5cc454193e6bb4cadc48077977d2f033659baa09b7d",
     "tests/optional-formal-gate.test.ts": "c33a55d9bb39c30227dec7540ef6185d1ddc3a8c57dba941b08da44576c8afa8",
     "tests/p2-improvements.test.ts": "0d96ebf371ac344778ecc5a84b75cbac2ff972263d85264e861392fca5c976e4",

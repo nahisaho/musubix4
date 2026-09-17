@@ -25,6 +25,6 @@
     "trace": ["npx", "musubix4", "trace", "check", "--strict", "--json"],
     "dependency-cycle": ["npx", "musubix4", "graph", "gate", "--json"],
     "structured-contract": ["npx", "vitest", "run", "tests/autonomous-seven-check-orchestration.test.ts", "--maxWorkers=1"],
-    "inherited-compatibility": ["npx", "vitest", "run", "tests/hoh-lifecycle.test.ts", "--maxWorkers=1", "-t", "TEST-CLI-COMPATIBILITY-001"]
+    "inherited-compatibility": ["npx", "vitest", "run", "tests/inherited-compatibility.test.ts", "--maxWorkers=1"]
   }
 }

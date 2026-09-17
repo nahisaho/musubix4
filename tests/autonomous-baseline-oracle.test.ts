@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import * as hoh from "../packages/analysis/src/hoh.js";
 import {
@@ -100,6 +101,47 @@ describe("frozen baseline oracle", () => {
         }),
       ),
     ).rejects.toMatchObject({ code: "BASELINE_ARTIFACT_DIGEST_MISMATCH" });
+  });
+
+  /** @id TEST-AUTONOMOUS-ORACLE-005
+   * @verifies REQ-AUTONOMOUS-DEVELOPMENT-001 REQ-AUTONOMOUS-DEVELOPMENT-002 REQ-AUTONOMOUS-DEVELOPMENT-013
+   */
+  it("TEST-AUTONOMOUS-ORACLE-005 reproduces the checked-in baseline and keeps pinned tests compatibility-only", async () => {
+    await expect(hoh.verifyBaselineOracle(process.cwd())).resolves.toMatchObject({
+      valid: true,
+    });
+    const manifest = JSON.parse(
+      await readFile("baseline-specs/baseline.manifest.json", "utf8"),
+    ) as {
+      upstream: { commit: string };
+      procedure: { id: string; version: string };
+      artifacts: { path: string }[];
+    };
+    expect(manifest.upstream.commit).toBe(
+      "c0b20f06727bceb04eeec181d95af9047b1981de",
+    );
+    expect(manifest.procedure).toEqual({
+      id: "musubix3-canonical-oracle",
+      version: "2",
+    });
+    const pinnedTests = manifest.artifacts
+      .map((artifact) => artifact.path)
+      .filter((path) => path.endsWith(".test.ts"));
+    expect(pinnedTests).toEqual(["tests/inherited-compatibility.test.ts"]);
+    for (const path of pinnedTests) {
+      const source = await readFile(path, "utf8");
+      const ids = [...source.matchAll(/@id (TEST-[A-Z0-9-]+)/g)].map(
+        (match) => match[1],
+      );
+      expect(ids.length).toBeGreaterThan(0);
+      const declarations = [
+        ...source.matchAll(/\b(?:it|test)\s*\(/g),
+      ];
+      expect(declarations).toHaveLength(ids.length);
+      expect(ids.every((id) => id?.startsWith("TEST-CLI-COMPATIBILITY-"))).toBe(
+        true,
+      );
+    }
   });
 
   /** @id TEST-AUTONOMOUS-ORACLE-002

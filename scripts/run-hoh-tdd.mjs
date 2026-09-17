@@ -4,6 +4,7 @@ import { dirname, resolve } from "node:path";
 
 const [testId, reportPath] = process.argv.slice(2);
 const testFiles = [
+  "tests/inherited-compatibility.test.ts",
   "tests/hoh-lifecycle.test.ts",
   "tests/autonomous-baseline-oracle.test.ts",
   "tests/autonomous-command-surface.test.ts",

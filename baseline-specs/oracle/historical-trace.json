@@ -3,6 +3,6 @@
   "sourceRoot": "baseline-specs/features",
   "normalizedRequirement": "REQ-AUTONOMOUS-DEVELOPMENT-001",
   "implementationPaths": ["packages/analysis/src", "packages/cli/src", "packages/domain/src"],
-  "executingCompatibilityTestPaths": ["tests/hoh-lifecycle.test.ts", "tests/full-v1-acceptance.test.ts"],
+  "executingCompatibilityTestPaths": ["tests/inherited-compatibility.test.ts", "tests/full-v1-acceptance.test.ts"],
   "mappingPolicy": "Every historical requirement is indexed from baseline-specs/features and linked to the inherited implementation and executing compatibility suites during canonical regeneration."
 }
