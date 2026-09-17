@@ -9,6 +9,7 @@ editing, research and review to reason about alternatives; musubix4 validates
 explicit artifacts, not generated prose quality.
 After the work, run `npx musubix4 workflow-record sdd-design complete --status
 completed` exactly once.
+Efficiency: prefer human-readable validation when no fields are parsed; put only approved independent read-only checks in one parallel tool-call batch and preserve every producer-before-consumer edge. Do not rerun mutating or append-only commands for JSON diagnostics.
 
 1. Read requirements and constitution; identify requirement IDs before designing.
    Run `approval validate` and stop unless current `requirements` approval is
@@ -19,7 +20,7 @@ completed` exactly once.
    explicit component dependencies. Fields also accept Japanese labels.
 3. Record real trade-offs under `.musubix/decisions/ADR-xxxx.md`: context, decision,
    rejected alternatives and consequences. Do not invent existing decisions.
-4. Run `npx musubix4 design validate <file> --json` and
+4. Run `npx musubix4 design validate <file>` and
    `npx musubix4 design c4 <file>`. The Mermaid output reflects only declared
    components and dependencies; it is C4-like, not a full C4 model.
 5. Run `npx musubix4 trace build` then `npx musubix4 trace check`.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-16T03:47:22.058Z",
+  "generatedAt": "2026-09-17T06:41:46.099Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -73,6 +73,31 @@
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0010.md",
       "line": 1
+    },
+    {
+      "id": "ADR-0011",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0011.md",
+      "line": 1
+    },
+    {
+      "id": "DES-AUTOMATIC-HOH-CODING-001",
+      "kind": "design",
+      "path": ".musubix/features/automatic-hoh-coding/design.md",
+      "line": 7
+    },
+    {
+      "id": "DES-AUTOMATIC-HOH-CODING-002",
+      "kind": "design",
+      "path": ".musubix/features/automatic-hoh-coding/design.md",
+      "line": 15
+    },
+    {
+      "id": "REQ-AUTOMATIC-HOH-CODING-001",
+      "kind": "requirement",
+      "path": ".musubix/features/automatic-hoh-coding/requirements.md",
+      "line": 7,
+      "mandatory": true
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-001",
@@ -360,6 +385,38 @@
       "kind": "requirement",
       "path": ".musubix/features/release-v010-docs/requirements.md",
       "line": 35,
+      "mandatory": true
+    },
+    {
+      "id": "DES-SAFE-WORKFLOW-SPEED-001",
+      "kind": "design",
+      "path": ".musubix/features/safe-workflow-speed/design.md",
+      "line": 7
+    },
+    {
+      "id": "DES-SAFE-WORKFLOW-SPEED-002",
+      "kind": "design",
+      "path": ".musubix/features/safe-workflow-speed/design.md",
+      "line": 14
+    },
+    {
+      "id": "DES-SAFE-WORKFLOW-SPEED-003",
+      "kind": "design",
+      "path": ".musubix/features/safe-workflow-speed/design.md",
+      "line": 22
+    },
+    {
+      "id": "REQ-SAFE-WORKFLOW-SPEED-001",
+      "kind": "requirement",
+      "path": ".musubix/features/safe-workflow-speed/requirements.md",
+      "line": 7,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-SAFE-WORKFLOW-SPEED-002",
+      "kind": "requirement",
+      "path": ".musubix/features/safe-workflow-speed/requirements.md",
+      "line": 16,
       "mandatory": true
     },
     {
@@ -723,178 +780,184 @@
       "line": 42
     },
     {
+      "id": "CODE-AUTOMATIC-HOH-CODING-001",
+      "kind": "code",
+      "path": "packages/analysis/src/hoh.ts",
+      "line": 412
+    },
+    {
       "id": "CODE-AUTONOMOUS-HISTORICAL-TRACE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 599
+      "line": 639
     },
     {
       "id": "CODE-AUTONOMOUS-ORACLE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 683
+      "line": 723
     },
     {
       "id": "CODE-AUTONOMOUS-SURFACE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 875
+      "line": 915
     },
     {
       "id": "CODE-AUTONOMOUS-INVENTORY-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1173
+      "line": 1213
     },
     {
       "id": "CODE-AUTONOMOUS-PROTECTED-SET-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1316
+      "line": 1356
     },
     {
       "id": "CODE-HOH-PROCESS-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1377
+      "line": 1417
     },
     {
       "id": "CODE-HOH-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1465
+      "line": 1505
     },
     {
       "id": "CODE-AUTONOMOUS-HOH-CONFIG-FILE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1728
+      "line": 1768
     },
     {
       "id": "CODE-AUTONOMOUS-QA-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1744
+      "line": 1784
     },
     {
       "id": "CODE-HOH-POLICY-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1762
+      "line": 1802
     },
     {
       "id": "CODE-HOH-SPECIFICATION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1893
+      "line": 1933
     },
     {
       "id": "CODE-HOH-GITHUB-ISSUE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1905
+      "line": 1945
     },
     {
       "id": "CODE-AUTONOMOUS-QA-ADAPTER-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2028
+      "line": 2068
     },
     {
       "id": "CODE-HOH-COPILOT-ADAPTER-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2084
+      "line": 2124
     },
     {
       "id": "CODE-HOH-ROLE-CONTRACT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2257
+      "line": 2297
     },
     {
       "id": "CODE-HOH-EVIDENCE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2295
+      "line": 2335
     },
     {
       "id": "CODE-AUTONOMOUS-QA-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2350
+      "line": 2390
     },
     {
       "id": "CODE-HOH-GIT-STORE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2448
+      "line": 2488
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-GIT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2625
+      "line": 2665
     },
     {
       "id": "CODE-HOH-RUN-STORE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2949
+      "line": 2989
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3101
+      "line": 3141
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-CLI-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3192
+      "line": 3232
     },
     {
       "id": "CODE-HOH-LIFECYCLE-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3332
+      "line": 3372
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-PROMOTION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3379
+      "line": 3419
     },
     {
       "id": "CODE-HOH-RUN-APPROVAL-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3522
+      "line": 3562
     },
     {
       "id": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3926
+      "line": 3966
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4133
+      "line": 4173
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-RECOVERY-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4236
+      "line": 4276
     },
     {
       "id": "CODE-HOH-ORCHESTRATOR-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4324
+      "line": 4364
     },
     {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-024",
@@ -1167,46 +1230,52 @@
       "line": 70
     },
     {
+      "id": "CODE-AUTOMATIC-HOH-CODING-002",
+      "kind": "code",
+      "path": "packages/cli/src/main.ts",
+      "line": 49
+    },
+    {
       "id": "CODE-HOH-CLI-001",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 47
+      "line": 69
     },
     {
       "id": "CODE-CLI-WORKFLOW-UX-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 304
+      "line": 327
     },
     {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-023",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 541
+      "line": 564
     },
     {
       "id": "CODE-WORKFLOW-WAIVER-BULK-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 577
+      "line": 600
     },
     {
       "id": "CODE-CHANGE-RECORD-RECORDEDAT-ORDER-004",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 665
+      "line": 688
     },
     {
       "id": "CODE-CHANGE-RECORD-FAIL-FAST-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 681
+      "line": 704
     },
     {
       "id": "CODE-TDD-ADOPTION-WARNING-003",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 780
+      "line": 803
     },
     {
       "id": "CODE-RELEASE-VERSION-001",
@@ -2043,16 +2112,40 @@
       "line": 118
     },
     {
+      "id": "TEST-AUTOMATIC-HOH-CODING-001",
+      "kind": "test",
+      "path": "tests/cli-package.test.ts",
+      "line": 311
+    },
+    {
+      "id": "TEST-AUTOMATIC-HOH-CODING-002",
+      "kind": "test",
+      "path": "tests/cli-package.test.ts",
+      "line": 366
+    },
+    {
+      "id": "TEST-SAFE-WORKFLOW-SPEED-001",
+      "kind": "test",
+      "path": "tests/cli-package.test.ts",
+      "line": 428
+    },
+    {
+      "id": "TEST-SAFE-WORKFLOW-SPEED-002",
+      "kind": "test",
+      "path": "tests/cli-package.test.ts",
+      "line": 454
+    },
+    {
       "id": "TEST-SESSION-SCOPED-DEVELOPMENT-001",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 309
+      "line": 470
     },
     {
       "id": "TEST-SESSION-SCOPED-DEVELOPMENT-002",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 333
+      "line": 494
     },
     {
       "id": "TEST-CLI-WORKFLOW-UX-001",
@@ -2301,58 +2394,70 @@
       "line": 9
     },
     {
+      "id": "CODE-SAFE-WORKFLOW-SPEED-DOCS-003",
+      "kind": "code",
+      "path": "tests/release-documents.test.ts",
+      "line": 31
+    },
+    {
+      "id": "TEST-SAFE-WORKFLOW-SPEED-003",
+      "kind": "test",
+      "path": "tests/release-documents.test.ts",
+      "line": 44
+    },
+    {
       "id": "TEST-RELEASE-V010-README-EN-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 25
+      "line": 120
     },
     {
       "id": "TEST-RELEASE-V010-README-JA-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 72
+      "line": 167
     },
     {
       "id": "TEST-RELEASE-V010-SKILL-IDENTITY-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 119
+      "line": 214
     },
     {
       "id": "TEST-RELEASE-V010-NPX-IDENTITY-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 132
+      "line": 227
     },
     {
       "id": "TEST-RELEASE-V010-NPX-OPTIONS-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 156
+      "line": 251
     },
     {
       "id": "TEST-RELEASE-V010-WORKFLOW-VERSION-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 180
+      "line": 275
     },
     {
       "id": "TEST-RELEASE-V010-CHANGELOG-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 199
+      "line": 294
     },
     {
       "id": "TEST-RELEASE-V010-METADATA-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 227
+      "line": 322
     },
     {
       "id": "TEST-RELEASE-V010-BASELINE-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 252
+      "line": 347
     },
     {
       "id": "TEST-RELEASE-VERSION-CONSISTENCY-001",
@@ -2645,7 +2750,27 @@
     },
     {
       "from": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
       "to": "DES-RELEASE-V010-DOCS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
+      "to": "DES-AUTOMATIC-HOH-CODING-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
+      "to": "DES-SAFE-WORKFLOW-SPEED-001",
       "relation": "implements"
     },
     {
@@ -2657,6 +2782,31 @@
       "from": "CODE-SESSION-SCOPED-DEVELOPMENT-002",
       "to": "DES-RELEASE-V010-DOCS-004",
       "relation": "implements"
+    },
+    {
+      "from": "DES-AUTOMATIC-HOH-CODING-001",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0011",
+      "to": "DES-AUTOMATIC-HOH-CODING-001",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AUTOMATIC-HOH-CODING-001",
+      "to": "DES-AUTOMATIC-HOH-CODING-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AUTOMATIC-HOH-CODING-002",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0011",
+      "to": "DES-AUTOMATIC-HOH-CODING-002",
+      "relation": "decides"
     },
     {
       "from": "DES-AUTONOMOUS-DEVELOPMENT-001",
@@ -3669,6 +3819,46 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-SAFE-WORKFLOW-SPEED-001",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0011",
+      "to": "DES-SAFE-WORKFLOW-SPEED-001",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-002",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-001",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0011",
+      "to": "DES-SAFE-WORKFLOW-SPEED-002",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-002",
+      "to": "DES-SAFE-WORKFLOW-SPEED-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-003",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-002",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0011",
+      "to": "DES-SAFE-WORKFLOW-SPEED-003",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-003",
+      "to": "DES-SAFE-WORKFLOW-SPEED-002",
+      "relation": "depends-on"
+    },
+    {
       "from": "CODE-ADAPTER-PATTERN-RECOGNITION-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "implements"
@@ -4286,6 +4476,16 @@
     {
       "from": "CODE-BOUNDED-FILE-READ-CONCURRENCY-002",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTOMATIC-HOH-CODING-001",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTOMATIC-HOH-CODING-001",
+      "to": "DES-AUTOMATIC-HOH-CODING-001",
       "relation": "implements"
     },
     {
@@ -5499,6 +5699,26 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-AUTOMATIC-HOH-CODING-002",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTOMATIC-HOH-CODING-002",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTOMATIC-HOH-CODING-002",
+      "to": "DES-AUTOMATIC-HOH-CODING-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-AUTOMATIC-HOH-CODING-002",
+      "to": "DES-SAFE-WORKFLOW-SPEED-001",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-HOH-CLI-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "implements"
@@ -6499,6 +6719,26 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AUTOMATIC-HOH-CODING-001",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTOMATIC-HOH-CODING-002",
+      "to": "REQ-AUTOMATIC-HOH-CODING-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-SAFE-WORKFLOW-SPEED-001",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-SAFE-WORKFLOW-SPEED-002",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-001",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-SESSION-SCOPED-DEVELOPMENT-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "verifies"
@@ -6994,6 +7234,21 @@
       "relation": "verifies"
     },
     {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-DOCS-003",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-002",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-DOCS-003",
+      "to": "DES-SAFE-WORKFLOW-SPEED-003",
+      "relation": "implements"
+    },
+    {
+      "from": "TEST-SAFE-WORKFLOW-SPEED-003",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-002",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-RELEASE-V010-README-EN-001",
       "to": "REQ-RELEASE-V010-DOCS-001",
       "relation": "verifies"
@@ -7276,15 +7531,15 @@
   ],
   "diagnostics": [],
   "fingerprints": {
-    ".github/skills/sdd-change/SKILL.md": "8840555f85d664fe4c3565439d5e7595a7154eaacb0cc64e684aecc141dad62a",
-    ".github/skills/sdd-design/SKILL.md": "0aebe8540bde41e030fe1e8ef021725e16f4f1d379d2af800ef1529129f4ccae",
+    ".github/skills/sdd-change/SKILL.md": "8198b47e9ffae585f107ab4f6bdecbeb7348c83d2c04bb27776f5be9712ce500",
+    ".github/skills/sdd-design/SKILL.md": "508f2be3212ad0c8d9ad4e6ca3216e337b5cff478b82c26cb15ebc59941d0e0a",
     ".github/skills/sdd-formal-codegraph/SKILL.md": "6f0fb3c8813cfdc6965e667d9928d720d3a590bab384d684b5151903fa401eed",
-    ".github/skills/sdd-implementation/SKILL.md": "bafc4c454bea8938bf5d6c8430c50f7921493d0edd7923d7144f996af0dc469d",
+    ".github/skills/sdd-implementation/SKILL.md": "fd9a432399367a991c3a5e9ce8037092b6c4edd4ef8dbcff5ec9eae2c42ed239",
     ".github/skills/sdd-issue-report/SKILL.md": "c88e9cdf5543e39a7d3f3574f68f517ee6e072f8728b4366ce3551125526a3e2",
     ".github/skills/sdd-knowledge/SKILL.md": "314bc6ed58f2f0ce889828662cabeee3ef0670432836ae9d0cf503e268bcb79e",
-    ".github/skills/sdd-quality/SKILL.md": "5a3318d5bce8f0705213929fa179d11579e6e7aa3c0bb2ec1fec48fa98685c86",
-    ".github/skills/sdd-requirements/SKILL.md": "0633144a160ec78cf41b40dd9f6351f92c22237298fe762d7a59260c8c8835c4",
-    ".github/skills/sdd-traceability/SKILL.md": "7a89b43436ac5897a1c71bfed3708dee7a0c9646d367e4903634ac16e891c9d5",
+    ".github/skills/sdd-quality/SKILL.md": "5d21d7c3e72ba9f0ad0b9cdbf0befe3a8fabdd45aa73a2553df0c181542ddfce",
+    ".github/skills/sdd-requirements/SKILL.md": "19f472b73ab5b5b1911bba2afff47edd08218f5fccb7eebe1a27e1f327ed5114",
+    ".github/skills/sdd-traceability/SKILL.md": "fe353c67eac41bccf45f6222a17e0d848887f1b70f1572f60344a1276ed91f9e",
     ".musubix/decisions/ADR-0001.md": "6e21f1b375cfa1aabdf058b1dc987f94974dc23571fe60e94ba340dc48295b0f",
     ".musubix/decisions/ADR-0002.md": "51a753300754ae4da56777b39528b7a5a7ab07c3f10b96cb73938846277cf2c7",
     ".musubix/decisions/ADR-0003.md": "4321a14a1153431dac39bd53183fb0b70c603282c31cf2b19c3525969cba145b",
@@ -7295,10 +7550,15 @@
     ".musubix/decisions/ADR-0008.md": "f1ca0da57053cc29a060af8365298637e9b486e14b882860cd20227d871ad92a",
     ".musubix/decisions/ADR-0009.md": "7d35aae0fc612405fe7323048a88d0804b8134de4bedb02a997ef8f210401ffd",
     ".musubix/decisions/ADR-0010.md": "c940c11a67a27969728c7f37626a7bcf21ce9cbbd5d8200bbcdf8777a3fc81a5",
+    ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
+    ".musubix/features/automatic-hoh-coding/design.md": "b41a4c796e1f0cc470b9a4336bc5e4fa3d9dde4b849319118bc27ab961c6c5c0",
+    ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
     ".musubix/features/autonomous-development/design.md": "6907d2aaddea0c657e7e7a6b8a0d29d335a2cc2559da12322daa9464009d0957",
     ".musubix/features/autonomous-development/requirements.md": "bff61115dab122776d912656a4f7dcb3029abf718492135bcd1c8d1cbec00729",
     ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
     ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
+    ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
+    ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138",
     "packages/analysis/src/adapters.ts": "df12f449eabf195b2b91bf5e22aaf6b77f447f33c9b71be07a8deb421348b0de",
     "packages/analysis/src/approval-domains.ts": "c540c4b251412683959c8dc5470c738021d3a9e33ce4d51f55ab71c01a6bad3d",
     "packages/analysis/src/approval-record.ts": "ad7a90015c0118f796d1d64438d832da09c8a29dbe0a3f0b553ccd6efb860ec1",
@@ -7312,7 +7572,7 @@
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
     "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
-    "packages/analysis/src/hoh.ts": "349e7c71a703304d2320a75a008d9a07a058404b9cfea5391ac886e513955d21",
+    "packages/analysis/src/hoh.ts": "80f5a9f4c0d4e616fbfb62a8fd76c727dc2a8147ab17fc99f888412f4fc094b9",
     "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
@@ -7329,7 +7589,7 @@
     "packages/analysis/src/workflow-waiver.ts": "d8c516747f6302c350e0647000f14a559d521e2f7615e2db5a72be59170162e2",
     "packages/analysis/src/workflow.ts": "28f1842932c479dd0055083db492e4b11473ae7376ed518907a1643cfb54e681",
     "packages/cli/src/install.ts": "0d9a177e5503106fc0c8ff8cc5c6be7b9f18523192cd71c2681d4476797198b9",
-    "packages/cli/src/main.ts": "d87ce4ac347abd71eca9bafad3d9e3a309c22d2d46e58c2063733a30df0fb922",
+    "packages/cli/src/main.ts": "07198e818518643925c3e44ba8dd695264559ff580596dfd8cae3fb893ac1edf",
     "packages/cli/src/version.ts": "b0e94ab7cdc2f3632c300fb5fc4812aca1c9f6c85efc5867d25ca7c077b4935d",
     "packages/domain/src/constitution.ts": "514278499642ff46ed902864b9192f566b116b4f92eb3fafa6b62588335e170a",
     "packages/domain/src/design.ts": "80a610413a1c34f25612dd7f4e34544d374c14adecc9b2c97a867a7eba70c873",
@@ -7400,7 +7660,7 @@
     "tests/change-record-fail-fast.test.ts": "feeeeb554605c822508f900017e8ab70c2afc2b9c09e64ec9c1858efec0b9fcb",
     "tests/change-record-recordedat-order.test.ts": "0c0b2247306cfa3da026273c06a1fc55044d5944d74cc6e8a19d83b5fa9fcbe7",
     "tests/change-requirement-batches.test.ts": "3a83fb3880949ed50afb74ab1fc29827cf981c9599d10183560227118c0b6600",
-    "tests/cli-package.test.ts": "9106f1705bf62eed098e25345dae37c0abfd73e05524f7fecfdfd7bb64ba590d",
+    "tests/cli-package.test.ts": "458cd1841e64410747161ed7285dc5f4d1024ee93559e8efc25c9aca0d3f371c",
     "tests/cli-workflow-ux.test.ts": "c67cdfebfae6708c9091d6a318bb49ba70a3a53b1526c74238c322b1c5028163",
     "tests/command-working-directory.test.ts": "46850b5a295d31a1b8ea760f9132f3ea0769588b2ccefac3c2413687bcb3221f",
     "tests/design-adr-none-exemption.test.ts": "bd61454949d1ded62429ae480da039f4e6976c11c23126b5f30bcc7307a3ee29",
@@ -7425,7 +7685,7 @@
     "tests/policy-command-closed-set.test.ts": "97779514b4c0ed61852fa15f9ffe61ee5b58cc91205a05a96b61899de77257f6",
     "tests/policy-command-definition-binding.test.ts": "a24a6003d96c86038f776191f4cf2845e417fcb1edd691e893b2ddfa33545d3b",
     "tests/policy-command-optional-binding.test.ts": "25a77fd7cc4677f607b607fea1d397e9841be5e110a8632d37edc1cae09b6acd",
-    "tests/release-documents.test.ts": "1491083e994aa471be1f1ee630d0ce19f898e70e1c2f8bd54ddd0e382864b39c",
+    "tests/release-documents.test.ts": "8c8aefb201bd897844b0090aaa689757fcd71a21f12a0c4df38e6bcfc67e4da3",
     "tests/release-version-consistency.test.ts": "1b0599360f33a343827eb461c9224e1537db44162e4d642932dacf867534742e",
     "tests/scaffold-artifact.test.ts": "7b85b9c6f912e7b83c5bf9bd01b61264aa8a460750f9e8a4e382bb91686ea090",
     "tests/setup.ts": "7bb56857a68d20180b6a81c7bdc5acea0b2bcbfb1dcc45fcf50f94db08271c75",

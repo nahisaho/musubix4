@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-16T03:47:19.579Z",
-  "totalRequirements": 24,
-  "modeledRequirements": 1,
-  "modeledFraction": 0.041666666666666664,
+  "generatedAt": "2026-09-17T06:41:50.409Z",
+  "totalRequirements": 27,
+  "modeledRequirements": 2,
+  "modeledFraction": 0.07407407407407407,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -15,7 +15,13 @@
       "State transitions require one target for each declared from-state/event pair; undeclared transitions are unconstrained.",
       "Copilot supplies candidate requirements; deterministic checks do not establish their truth."
     ],
-    "literals": [],
+    "literals": [
+      {
+        "requirement": "REQ-SAFE-WORKFLOW-SPEED-002",
+        "atom": "[\"english and japanese release entry points\",\"disclose the complete safe batching boundary in their own language\"]",
+        "positive": true
+      }
+    ],
     "constraints": [
       {
         "requirement": "REQ-AUTONOMOUS-DEVELOPMENT-016",
@@ -29,6 +35,7 @@
       }
     ],
     "unsupported": [
+      "REQ-AUTOMATIC-HOH-CODING-001",
       "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "REQ-AUTONOMOUS-DEVELOPMENT-002",
       "REQ-AUTONOMOUS-DEVELOPMENT-003",
@@ -51,9 +58,15 @@
       "REQ-RELEASE-V010-DOCS-002",
       "REQ-RELEASE-V010-DOCS-003",
       "REQ-RELEASE-V010-DOCS-004",
-      "REQ-RELEASE-V010-DOCS-005"
+      "REQ-RELEASE-V010-DOCS-005",
+      "REQ-SAFE-WORKFLOW-SPEED-001"
     ],
     "diagnostics": [
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-AUTOMATIC-HOH-CODING-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
@@ -168,6 +181,11 @@
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
         "message": "REQ-RELEASE-V010-DOCS-005 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-SAFE-WORKFLOW-SPEED-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       }
     ],
     "consistency": "consistent",
@@ -182,7 +200,9 @@
     }
   },
   "fingerprints": {
+    ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
     ".musubix/features/autonomous-development/requirements.md": "bff61115dab122776d912656a4f7dcb3029abf718492135bcd1c8d1cbec00729",
-    ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c"
+    ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
+    ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138"
   }
 }

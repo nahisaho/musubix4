@@ -8,6 +8,7 @@ Follow the user's input language (日本語 / English). Use Copilot's native cod
 navigation, planning and editing to repair missing links; no custom LSP manager.
 After the work, run `npx musubix4 workflow-record sdd-traceability complete
 --status completed` exactly once.
+Efficiency: prefer human-readable validation when no fields are parsed; put only approved independent read-only checks in one parallel tool-call batch and preserve every producer-before-consumer edge. Do not rerun mutating or append-only commands for JSON diagnostics.
 
 1. Run `npx musubix4 trace build`. It scans `.musubix` artifacts and comment
    annotations in every Code Graph language, including JS/TS, Rust, Python, Go,
@@ -16,7 +17,7 @@ After the work, run `npx musubix4 workflow-record sdd-traceability complete
    Haskell `--`/`{- ... -}`, Lua `--`/`--[[ ... ]]`, and Visual Basic
    apostrophe/XML-documentation comments are scanned without accepting string
    literals as trace annotations.
-2. Run `npx musubix4 trace check --strict --json`.
+2. Run `npx musubix4 trace check --strict`.
    Distinguish malformed IDs, dangling endpoints, stale inputs, and missing
    mandatory design/implementation/test coverage. Non-strict coverage warnings
    are not a release gate pass.

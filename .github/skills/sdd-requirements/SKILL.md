@@ -12,6 +12,7 @@ Use Copilot's native planning, questions, research and editing; do not create an
 interview engine or research agent framework.
 After the work, run `npx musubix4 workflow-record sdd-requirements complete
 --status completed` exactly once.
+Efficiency: prefer human-readable validation when no fields are parsed; put only approved independent read-only checks in one parallel tool-call batch and preserve every producer-before-consumer edge. Do not rerun mutating or append-only commands for JSON diagnostics.
 
 1. For every new natural-language development request, create/use a fresh
    `.musubix/features/<new-slug>/requirements.md`; do not edit or reuse a prior
@@ -47,8 +48,8 @@ After the work, run `npx musubix4 workflow-record sdd-requirements complete
    - While a state holds, when an event occurs, the system shall respond.
    Japanese equivalents use `システムは…しなければならない。`, with
    `…とき、` / `…間、` / `もし…ならば、` / `…場合、` clauses.
-5. Validate with `npx musubix4 requirements validate <file> --json` and
-   `npx musubix4 constitution validate --json`. Rules use `PRINC-001`, `RULE-001`,
+5. Validate with `npx musubix4 requirements validate <file>` and
+   `npx musubix4 constitution validate` in one parallel tool-call batch. Rules use `PRINC-001`, `RULE-001`,
    a supported `Metric:` and numeric `Limit:`. Validation is not execution evidence.
 6. Before requesting human approval, run Copilot's native `rubber-duck`
    review agent on `requirements.md`. Fix every reported issue, then re-run

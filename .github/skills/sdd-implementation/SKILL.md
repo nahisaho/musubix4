@@ -11,6 +11,8 @@ Run only the repository's exact `musubix4` CLI. Never fall back to similarly
 named npm packages; report a blocker if the executable is unavailable.
 After the work, run `npx musubix4 workflow-record sdd-implementation complete
 --status completed` exactly once.
+Efficiency: prefer human-readable validation when no fields are parsed; put only approved independent read-only checks in one parallel tool-call batch and preserve every producer-before-consumer edge. Do not rerun mutating or append-only commands for JSON diagnostics.
+Trace/evidence producers, approvals, TDD, gates, status, and project build/test commands remain sequential.
 
 1. Before editing implementation code, verify that approved requirements and
    design artifacts exist, both validators pass, and `approval validate` reports

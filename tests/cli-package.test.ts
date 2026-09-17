@@ -1,12 +1,14 @@
 import { generateKeyPairSync } from 'node:crypto';
-import { readdir, symlink } from 'node:fs/promises';
+import { spawnSync } from 'node:child_process';
+import { chmod, readdir, symlink } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { parseDocument } from 'yaml';
 import {
-  buildTrace, exists, githubOidcAudience, loadConfig, readText, runProcess, writeJson, writeText,
+  buildTrace, exists, FileRunStore, githubOidcAudience, loadConfig, parseHohConfig, readText, runProcess, writeJson, writeText,
 } from '../packages/analysis/src/index.js';
 import { skillNames } from '../packages/cli/src/install.js';
+import { localHohServices } from '../packages/cli/src/main.js';
 import { fixture, project, repository, req } from './helpers.js';
 
 const cli = resolve('dist/packages/cli/src/main.js');
@@ -306,6 +308,165 @@ describe('CLI contracts', () => {
 });
 
 describe('distribution contracts', () => {
+  /** @id TEST-AUTOMATIC-HOH-CODING-001
+   * @verifies REQ-AUTOMATIC-HOH-CODING-001
+   */
+  it('TEST-AUTOMATIC-HOH-CODING-001 routes configured top-level coding through bounded HoH summaries', async () => {
+    const change = await readText(repository, '.github/skills/sdd-change/SKILL.md');
+    expect(change).toContain('top-level');
+    expect(change).toContain('.musubix/hoh.json');
+    expect(change).toContain('MUSUBIX4_HOH_RUN_ID');
+    expect(change).toContain('run --prompt');
+    expect(change).toContain('--summary-json');
+    expect(change).toContain('128');
+    expect(change).toContain('direct implementation fallback');
+
+    const root = await fixture();
+    const store = new FileRunStore(root);
+    const run = await store.create({
+      source: { kind: 'prompt', text: 'implement the feature' },
+      config: parseHohConfig({
+        model: 'gpt-5.4',
+        budget: { aiCredits: 10 },
+        commands: { build: ['npm', 'run', 'build'] },
+      }),
+    });
+    const summaryResult = await invoke(root, ['status', '--run', run.id, '--summary-json']);
+    expect(summaryResult.exitCode, summaryResult.stderr).toBe(0);
+    const summary = JSON.parse(summaryResult.stdout);
+    expect(summary).toMatchObject({
+      id: run.id,
+      state: 'created',
+      iteration: 0,
+      journalLength: 1,
+      evidence: { verified: 0, unresolved: 0, regressions: 0 },
+      evidenceClaimStatuses: [],
+      deploymentCommands: { deploy: false, verify: false, rollback: false },
+      requiredOperatorAction: 'none',
+    });
+    expect(summary).not.toHaveProperty('journal');
+    expect(summary).not.toHaveProperty('config');
+
+    const nested = spawnSync(
+      process.execPath,
+      [cli, 'run', '--prompt', 'nested', '--summary-json'],
+      {
+        cwd: root,
+        encoding: 'utf8',
+        env: { ...process.env, MUSUBIX4_HOH_RUN_ID: run.id },
+      },
+    );
+    expect(nested.status).toBe(2);
+    expect(JSON.parse(nested.stdout).error).toEqual({
+      code: 'CLI_ERROR',
+      message: 'Nested Harness-of-Harness orchestration is forbidden while MUSUBIX4_HOH_RUN_ID is set.',
+    });
+  });
+
+  /** @id TEST-AUTOMATIC-HOH-CODING-002
+   * @verifies REQ-AUTOMATIC-HOH-CODING-001
+   */
+  it('TEST-AUTOMATIC-HOH-CODING-002 enforces routing safety details and role markers', async () => {
+    const change = await readText(repository, '.github/skills/sdd-change/SKILL.md');
+    expect(change).toContain('journalLength');
+    expect(change).toContain('no-progress blocker');
+    expect(change).toContain('one or more evidence claims are all verified');
+    expect(change).toContain('unresolved/regressions are zero');
+    expect(change).toContain('deploy/verify/rollback are not all configured');
+    const root = await fixture();
+    const store = new FileRunStore(root);
+    const run = await store.create({
+      source: { kind: 'prompt', text: 'implement the feature' },
+      config: parseHohConfig({
+        model: 'gpt-5.4',
+        budget: { aiCredits: 10 },
+        commands: { build: ['npm', 'run', 'build'] },
+      }),
+    });
+    const missingRun = await invoke(root, ['status', '--summary-json']);
+    expect(missingRun.exitCode).toBe(2);
+    expect(JSON.parse(missingRun.stdout).error.message).toBe('--summary-json requires --run.');
+    for (const args of [
+      ['resume', 'other-run', '--summary-json'],
+      ['protected-set', 'amend', 'other-run', '--collision-inventory', 'inventory.json', '--json'],
+    ]) {
+      const nested = spawnSync(process.execPath, [cli, ...args], {
+        cwd: root,
+        encoding: 'utf8',
+        env: { ...process.env, MUSUBIX4_HOH_RUN_ID: run.id },
+      });
+      expect(nested.status).toBe(2);
+      expect(JSON.parse(nested.stdout).error.message)
+        .toBe('Nested Harness-of-Harness orchestration is forbidden while MUSUBIX4_HOH_RUN_ID is set.');
+    }
+    const markerPath = resolve(root, 'role-marker.txt');
+    const executable = resolve(root, 'fake-role.mjs');
+    await writeText(root, 'fake-role.mjs', [
+      '#!/usr/bin/env node',
+      "import { writeFileSync } from 'node:fs';",
+      "writeFileSync(process.env.MUSUBIX4_TEST_MARKER_PATH, process.env.MUSUBIX4_HOH_RUN_ID ?? '');",
+      "console.log(JSON.stringify({type:'usage',aiCredits:0,model:'gpt-5.4'}));",
+      "console.log(JSON.stringify({type:'result',result:{ok:true}}));",
+    ].join('\n'));
+    await chmod(executable, 0o755);
+    const previousExecutable = process.env.MUSUBIX4_COPILOT_EXECUTABLE;
+    const previousMarkerPath = process.env.MUSUBIX4_TEST_MARKER_PATH;
+    process.env.MUSUBIX4_COPILOT_EXECUTABLE = executable;
+    process.env.MUSUBIX4_TEST_MARKER_PATH = markerPath;
+    try {
+      const services = localHohServices(root, store);
+      await services.roles.planner?.({ run, requirements: [], attempt: 1 });
+      expect(await readText(root, 'role-marker.txt')).toBe(run.id);
+    } finally {
+      if (previousExecutable === undefined) delete process.env.MUSUBIX4_COPILOT_EXECUTABLE;
+      else process.env.MUSUBIX4_COPILOT_EXECUTABLE = previousExecutable;
+      if (previousMarkerPath === undefined) delete process.env.MUSUBIX4_TEST_MARKER_PATH;
+      else process.env.MUSUBIX4_TEST_MARKER_PATH = previousMarkerPath;
+    }
+  });
+
+  /** @id TEST-SAFE-WORKFLOW-SPEED-001
+   * @verifies REQ-SAFE-WORKFLOW-SPEED-001
+   */
+  it('TEST-SAFE-WORKFLOW-SPEED-001 ships concise output and safe parallelization rules', async () => {
+    const names = [
+      'sdd-change',
+      'sdd-requirements',
+      'sdd-design',
+      'sdd-implementation',
+      'sdd-traceability',
+      'sdd-quality',
+    ];
+    for (const name of names) {
+      const skill = await readText(repository, `.github/skills/${name}/SKILL.md`);
+      expect(skill).toContain('human-readable');
+      expect(skill).toContain('parallel tool-call batch');
+      expect(skill).toContain('producer-before-consumer');
+      expect(skill).toContain('Do not rerun');
+    }
+    const change = await readText(repository, '.github/skills/sdd-change/SKILL.md');
+    expect(change).toContain('approval prepare');
+    expect(change).toContain('workflow-verify');
+    expect(change).toContain('--summary-json');
+    expect(change).toContain('gate --json');
+  });
+
+  /** @id TEST-SAFE-WORKFLOW-SPEED-002
+   * @verifies REQ-SAFE-WORKFLOW-SPEED-001
+   */
+  it('TEST-SAFE-WORKFLOW-SPEED-002 encodes exact concise and sequential command rules', async () => {
+    expect(await readText(repository, '.github/skills/sdd-requirements/SKILL.md'))
+      .not.toContain('requirements validate <file> --json');
+    expect(await readText(repository, '.github/skills/sdd-design/SKILL.md'))
+      .not.toContain('design validate <file> --json');
+    expect(await readText(repository, '.github/skills/sdd-traceability/SKILL.md'))
+      .not.toContain('trace check --strict --json');
+    expect(await readText(repository, '.github/skills/sdd-quality/SKILL.md'))
+      .toContain('when individual');
+    expect(await readText(repository, '.github/skills/sdd-implementation/SKILL.md'))
+      .toContain('project build/test commands remain sequential');
+  });
+
   /** @id TEST-SESSION-SCOPED-DEVELOPMENT-001
    * @verifies REQ-AUTONOMOUS-DEVELOPMENT-001
    */

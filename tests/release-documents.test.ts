@@ -21,7 +21,102 @@ function skillPaths(): string[] {
     .sort();
 }
 
+function section(text: string, heading: string): string {
+  const start = text.indexOf(heading);
+  expect(start).toBeGreaterThanOrEqual(0);
+  const end = text.indexOf('\n## ', start + heading.length);
+  return text.slice(start, end < 0 ? undefined : end);
+}
+
+/**
+ * @id CODE-SAFE-WORKFLOW-SPEED-DOCS-003
+ * @implements REQ-SAFE-WORKFLOW-SPEED-002
+ * @design DES-SAFE-WORKFLOW-SPEED-003
+ */
+function anchoredParagraph(text: string, anchor: string): string {
+  const start = text.indexOf(anchor);
+  expect(start).toBeGreaterThanOrEqual(0);
+  const end = text.indexOf('\n\n', start);
+  return text.slice(start, end < 0 ? undefined : end).replace(/\s+/g, ' ');
+}
+
 describe('v0.1.0 release documents', () => {
+  /** @id TEST-SAFE-WORKFLOW-SPEED-003
+   * @verifies REQ-SAFE-WORKFLOW-SPEED-002
+   */
+  it('TEST-SAFE-WORKFLOW-SPEED-003 documents safe parallel validation in both languages', () => {
+    const englishAnchor = 'Only the explicitly allowlisted independent read-only validators';
+    const japaneseAnchor = '明示的に許可された独立した読み取り専用validatorだけ';
+    const englishSection = section(read('README.md'), '## Workflow');
+    const japaneseSection = section(read('README-ja.md'), '## ワークフロー');
+    expect(englishSection.split(englishAnchor)).toHaveLength(2);
+    expect(japaneseSection.split(japaneseAnchor)).toHaveLength(2);
+
+    const english = anchoredParagraph(englishSection, englishAnchor);
+    const japanese = anchoredParagraph(japaneseSection, japaneseAnchor);
+    const englishBoundary = english.split('all other commands remain sequential');
+    const japaneseBoundary = japanese.split('その他のcommandはすべて逐次実行');
+    expect(englishBoundary).toHaveLength(2);
+    expect(japaneseBoundary).toHaveLength(2);
+    const englishParallel = englishBoundary[0]!;
+    const japaneseParallel = japaneseBoundary[0]!;
+    const englishOrder = englishBoundary[1]!.split('The required order is:');
+    const japaneseOrder = japaneseBoundary[1]!.split('requirements承認がdesignより先');
+    expect(englishOrder).toHaveLength(2);
+    expect(japaneseOrder).toHaveLength(2);
+    const englishSequential = englishOrder[0]!;
+    const japaneseSequential = japaneseOrder[0]!;
+    const parallelCommands = [
+      'requirements validate',
+      'constitution validate',
+      'design validate',
+      'trace check',
+      'config lint',
+      'mutation validate',
+      'model-correspondence validate',
+      'approval validate',
+    ];
+    const sequentialCommands = [
+      'trace build',
+      'graph index',
+      'knowledge build',
+      'evidence refresh',
+      'workflow-verify',
+      'workflow-record',
+      'status',
+    ];
+    for (const command of parallelCommands) {
+      expect(englishParallel).toContain(`\`${command}\``);
+      expect(japaneseParallel).toContain(`\`${command}\``);
+    }
+    for (const command of sequentialCommands) {
+      expect(englishSequential).toContain(`\`${command}\``);
+      expect(japaneseSequential).toContain(`\`${command}\``);
+    }
+    for (const phrase of [
+      'all other commands remain sequential',
+      'requirements approval precedes design',
+      'design approval precedes Red',
+      'Red precedes implementation',
+      'implementation precedes Green',
+      '`trace build` precedes trace consumers',
+      '`graph index` precedes graph consumers',
+    ]) {
+      expect(english).toContain(phrase);
+    }
+    for (const phrase of [
+      'その他のcommandはすべて逐次実行',
+      'requirements承認がdesignより先',
+      'design承認がRedより先',
+      'Redがimplementationより先',
+      'implementationがGreenより先',
+      '`trace build`がtrace consumerより先',
+      '`graph index`がgraph consumerより先',
+    ]) {
+      expect(japanese).toContain(phrase);
+    }
+  });
+
   /** @id TEST-RELEASE-V010-README-EN-001
    * @verifies REQ-RELEASE-V010-DOCS-001
    */

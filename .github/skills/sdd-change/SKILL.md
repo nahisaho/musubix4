@@ -4,10 +4,12 @@ description: "Use as the MANDATORY first Skill for requests to develop, build, c
 ---
 # Integrated change workflow / 統合変更ワークフロー
 /* @id CODE-SESSION-SCOPED-DEVELOPMENT-001
- * @implements REQ-RELEASE-V010-DOCS-005
- * @design DES-RELEASE-V010-DOCS-004
+ * @implements REQ-RELEASE-V010-DOCS-005 REQ-AUTOMATIC-HOH-CODING-001 REQ-SAFE-WORKFLOW-SPEED-001
+ * @design DES-RELEASE-V010-DOCS-004 DES-AUTOMATIC-HOH-CODING-001 DES-SAFE-WORKFLOW-SPEED-001
  */
 Mandatory entrypoint: every new natural-language development request is a new change, even in an existing Copilot session; never reuse prior requirements, approvals, TDD, or change evidence unless the user explicitly names the existing change ID and asks to continue it. never start implementation before validating requirements/design; skip only for verified approved artifacts of that explicitly continued change.
+For a top-level executable-behavior request, when `MUSUBIX4_HOH_RUN_ID` is empty and `.musubix/hoh.json` or configured `hoh` exists, run `npx musubix4 run --prompt <complete-request> --summary-json` exactly once and resume with `--summary-json` at most 128 times. Before each resume compare the previous and current `state`, `iteration`, and `journalLength`; unchanged values are a no-progress blocker. Accept `deployed`, or accept `ready` without another resume only when one or more evidence claims are all verified, unresolved/regressions are zero, and deploy/verify/rollback are not all configured. Otherwise report the state/action as a blocker. Never start nested HoH, duplicate its SDD lifecycle, or use direct implementation fallback after routing. Unconfigured, documentation, investigation, review, explanation, and explicit `CHANGE-*` continuation requests retain this direct workflow.
+Efficiency: prefer human-readable validation when no fields are parsed; put only approved independent read-only checks in one parallel tool-call batch and preserve every producer-before-consumer edge. Do not rerun mutating or append-only commands for JSON diagnostics; keep structured output for `approval prepare`, `workflow-verify`, HoH summaries, and `gate --json` when check fields drive readiness or waivers.
 Never infer approval; show `approval prepare <stage>` and record only its reviewed hash with `approval record <stage> --approver <name> --artifact-sha256 <hash> --confirm`.
 Whenever an AI deliverable is documentation (requirements, design, ADRs, the CHANGE document, or release/quality evidence), run Copilot's native `rubber-duck` review agent on it before that phase's human approval, fixing every issue and re-reviewing until none remain.
 Follow the user's input language. Use native Copilot planning, editing, research, review, security review and subagents.

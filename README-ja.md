@@ -66,6 +66,28 @@ copilot plugin install nahisaho/musubix4
 実装、追跡可能性、品質、知識、formal/Code Graph、issue報告の各Skillを
 調整します。
 
+`.musubix/hoh.json`または`.musubix/config.json`の`hoh`設定が存在する場合、
+新しい最上位のコーディング依頼は1つの永続的なHarness on Harness runへ
+自動的にルーティングされます。Skillは`run --summary-json`と
+`resume --summary-json`の限定された結果を使用し、検証済みreadyまたはdeployで
+停止します。失敗時に直接実装へフォールバックしません。HoH設定を削除すると
+直接SDDワークフローを維持できます。HoH role subprocessには
+`MUSUBIX4_HOH_RUN_ID`が渡され、入れ子の`run`、`resume`、protected-set
+amendmentはexit code 2で拒否されます。
+
+明示的に許可された独立した読み取り専用validatorだけを並列実行できます。
+対象は`requirements validate`と`constitution validate`、異なるfileへの複数の
+`design validate`、producer artifactが最新の場合の`trace check`、
+`config lint`、`mutation validate`、`model-correspondence validate`、
+`approval validate`の独立した組み合わせです。その他のcommandはすべて逐次実行
+します。これにはproducerである`trace build`、`graph index`、
+`knowledge build`、`evidence refresh`、許可list外または入力が古いconsumer、
+gate、`workflow-verify`、`workflow-record`、workflow waiver、approvalの準備と
+記録、TDDとchange-record command、HoH lifecycle command、`status`、projectの
+build/test command、workflow/change/approval/TDD/HoH journalへのappend-only
+writeが含まれます。requirements承認がdesignより先、design承認がRedより先、
+Redがimplementationより先、implementationがGreenより先、`trace build`がtrace consumerより先、`graph index`がgraph consumerより先です。
+
 1. 測定可能な要求を定義して検証する。
 2. requirements承認を明示的に取得する。
 3. component、interface、制約、依存、ADRを設計する。
@@ -166,6 +188,12 @@ performance、mutation、model correspondence、quality、workspace snapshotの
 - gate passは設定済み必須証拠がcurrentであることを示し、普遍的な正しさや
   securityを保証しません。
 - local process/file制御はOS sandboxではありません。
+
+<!--
+@id CODE-SAFE-WORKFLOW-SPEED-DOCS-002
+@implements REQ-SAFE-WORKFLOW-SPEED-002
+@design DES-SAFE-WORKFLOW-SPEED-003
+-->
 
 <!--
 @id CODE-RELEASE-V010-DOCS-002

@@ -68,6 +68,31 @@ Ask Copilot to use `sdd-change` for each change. The Skill coordinates the
 specialized requirements, design, implementation, traceability, quality,
 knowledge, formal/Code Graph, and issue-reporting Skills.
 
+When `.musubix/hoh.json` or an `hoh` block in `.musubix/config.json` is present,
+a new top-level coding request is routed automatically through one durable
+Harness on Harness run. The Skill uses bounded `run --summary-json` and
+`resume --summary-json` results, stops on verified readiness or deployment, and
+reports failures without falling back to direct implementation. Remove the HoH
+configuration to retain the direct SDD workflow. HoH role subprocesses carry
+`MUSUBIX4_HOH_RUN_ID`; nested `run`, `resume`, and protected-set amendment
+orchestration is rejected with exit code 2.
+
+Only the explicitly allowlisted independent read-only validators may run in
+parallel: `requirements validate` with `constitution validate`; multiple
+`design validate` invocations for distinct files; and any independent subset of
+`trace check`, `config lint`, `mutation validate`,
+`model-correspondence validate`, and `approval validate` after producer
+artifacts are current. The sequential boundary means all other commands remain sequential, including
+producers (`trace build`, `graph index`, `knowledge build`, and
+`evidence refresh`), consumers outside that allowlist or with stale inputs,
+gates, `workflow-verify`, `workflow-record`, workflow waivers, approval
+preparation and recording, TDD and change-record commands, HoH lifecycle
+commands, `status`, project build/test commands, and append-only
+workflow/change/approval/TDD/HoH journal writes. The required order is:
+requirements approval precedes design; design approval precedes Red; Red precedes implementation;
+implementation precedes Green; `trace build` precedes trace consumers; and
+`graph index` precedes graph consumers.
+
 1. Define measurable requirements and validate them.
 2. Obtain explicit requirements approval.
 3. Define components, interfaces, constraints, dependencies, and ADRs.
@@ -185,6 +210,12 @@ Use `workflow waiver record <code>` for one reviewed diagnostic.
 - A passing gate means the repository's configured required evidence is current;
   it is not a universal correctness or security guarantee.
 - Local process and filesystem controls are not an operating-system sandbox.
+
+<!--
+@id CODE-SAFE-WORKFLOW-SPEED-DOCS-001
+@implements REQ-SAFE-WORKFLOW-SPEED-002
+@design DES-SAFE-WORKFLOW-SPEED-003
+-->
 
 <!--
 @id CODE-RELEASE-V010-DOCS-001

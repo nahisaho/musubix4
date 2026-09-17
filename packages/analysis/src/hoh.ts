@@ -393,6 +393,46 @@ export interface RunRecord {
   journal: RunTransition[];
 }
 
+export interface HohRunSummary {
+  id: string;
+  state: RunState;
+  iteration: number;
+  journalLength: number;
+  evidence: RunRecord["evidence"];
+  evidenceClaimStatuses: string[];
+  deploymentCommands: {
+    deploy: boolean;
+    verify: boolean;
+    rollback: boolean;
+  };
+  terminalReason: string | null;
+  requiredOperatorAction: NonNullable<RunRecord["requiredOperatorAction"]>;
+}
+
+/** @id CODE-AUTOMATIC-HOH-CODING-001
+ * @implements REQ-AUTOMATIC-HOH-CODING-001
+ * @design DES-AUTOMATIC-HOH-CODING-001
+ */
+export function summarizeHohRun(run: RunRecord): HohRunSummary {
+  return {
+    id: run.id,
+    state: run.state,
+    iteration: run.iteration,
+    journalLength: run.journal.length,
+    evidence: run.evidence,
+    evidenceClaimStatuses: (run.evidenceClaims ?? []).map(
+      (claim) => claim.status,
+    ),
+    deploymentCommands: {
+      deploy: !!run.config.commands.deploy?.length,
+      verify: !!run.config.commands.verify?.length,
+      rollback: !!run.config.commands.rollback?.length,
+    },
+    terminalReason: run.terminalReason ?? null,
+    requiredOperatorAction: run.requiredOperatorAction ?? "none",
+  };
+}
+
 export interface Lease {
   runId: string;
   nonce: string;

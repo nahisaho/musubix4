@@ -12,6 +12,10 @@ Initial public release of musubix4.
   review, or subagent capabilities.
 - Explicit requirements, design, and release approvals bind reviewed artifact
   manifests before development crosses protected boundaries.
+- Configured top-level coding requests automatically use one bounded Harness on
+  Harness run, with compact JSON status and nested-orchestration rejection.
+- Independent read-only validation is batched while stateful evidence commands
+  retain deterministic producer-before-consumer ordering.
 
 ### Deterministic evidence
 

@@ -21,7 +21,7 @@ import {
   FileRunStore, GitCandidateStore, HohOrchestrator, derivePolicy, invokeCopilotRole, verifyBaselineOracle,
   extractDeclaredCommandSurface, validateStaticCommandInventory, applyApprovedCollisionInventoryAmendment,
   runMandatoryProjectChecks, validateMandatoryQaConfiguration,
-  autoApproveRunBoundary, loadHohConfigFile, parseHohConfig, recordRunApproval, runBoundedProcess, type HohConfig, type HohServices, type SpecificationSource,
+  autoApproveRunBoundary, loadHohConfigFile, parseHohConfig, recordRunApproval, runBoundedProcess, summarizeHohRun, type HohConfig, type HohServices, type RunRecord, type SpecificationSource,
 } from '../../analysis/src/index.js';
 import { install, pluginInstall, upgradeSkills } from './install.js';
 import { findPackageRoot, readPackageVersion } from './version.js';
@@ -44,11 +44,33 @@ function pathQuery(root: string, query: string): string {
   return portable(relative(root, resolve(root, query)));
 }
 
+const nestedHohMessage = 'Nested Harness-of-Harness orchestration is forbidden while MUSUBIX4_HOH_RUN_ID is set.';
+
+/** @id CODE-AUTOMATIC-HOH-CODING-002
+ * @implements REQ-AUTOMATIC-HOH-CODING-001 REQ-SAFE-WORKFLOW-SPEED-001
+ * @design DES-AUTOMATIC-HOH-CODING-002 DES-SAFE-WORKFLOW-SPEED-001
+ */
+function rejectNestedHoh(): void {
+  if (process.env.MUSUBIX4_HOH_RUN_ID?.trim()) throw new Error(nestedHohMessage);
+}
+
+function outputHohRun(
+  run: RunRecord,
+  options: { json?: boolean; summaryJson?: boolean },
+  summary: string,
+): void {
+  if (options.summaryJson) {
+    console.log(JSON.stringify(summarizeHohRun(run), null, 2));
+    return;
+  }
+  output(run, !!options.json, summary);
+}
+
 /** @id CODE-HOH-CLI-001
  * @implements REQ-AUTONOMOUS-DEVELOPMENT-001 REQ-AUTONOMOUS-DEVELOPMENT-004 REQ-AUTONOMOUS-DEVELOPMENT-011 REQ-AUTONOMOUS-DEVELOPMENT-012
  * @design DES-AUTONOMOUS-DEVELOPMENT-001 DES-AUTONOMOUS-DEVELOPMENT-005
  */
-function localHohServices(root: string, store: FileRunStore): HohServices {
+export function localHohServices(root: string, store: FileRunStore): HohServices {
   const candidates = new Map<string, GitCandidateStore>();
   const invoke = async (role: 'planner' | 'developer' | 'qa' | 'reviewer', context: unknown): Promise<unknown> => {
     const run = (context as { run: { id: string; config: HohConfig; requirements?: string[] } }).run;
@@ -62,6 +84,7 @@ function localHohServices(root: string, store: FileRunStore): HohServices {
       prompt: JSON.stringify({ schemaVersion: 1, role, context }),
       config: run.config,
       policy,
+      environment: { MUSUBIX4_HOH_RUN_ID: run.id },
       validate: (value) => value,
       reserveAttempt: (ceiling) => store.reserveAttemptBudget(run.id, role, ceiling),
       settleAttempt: (id, actual) => store.settleAttemptBudget(run.id, id, actual),
@@ -856,9 +879,11 @@ export function createProgram(): Command {
     .option('--github-issue <owner/repo#number>', 'Public GitHub Issue specification')
     .option('--model <model>', 'Fixed Copilot model')
     .option('--budget <credits>', 'Positive AI-credit budget')
+    .option('--summary-json', 'Machine-readable bounded run summary')
     .action(async (options: {
-      root: string; json?: boolean; prompt?: string; markdown?: string; musubix?: string; githubIssue?: string; model?: string; budget?: string;
+      root: string; json?: boolean; summaryJson?: boolean; prompt?: string; markdown?: string; musubix?: string; githubIssue?: string; model?: string; budget?: string;
     }) => {
+      rejectNestedHoh();
       const root = resolve(options.root);
       const sources = [
         options.prompt === undefined ? null : { kind: 'prompt', text: options.prompt },
@@ -883,7 +908,7 @@ export function createProgram(): Command {
       if (!raw) throw new Error('Configure .musubix/hoh.json or provide --model and --budget.');
       const store = new FileRunStore(root);
       const run = await new HohOrchestrator(store, localHohServices(root, store)).start({ source: sources[0]!, config: raw });
-      output(run, !!options.json, `Run ${run.id}: ${run.state}`);
+      outputHohRun(run, options, `Run ${run.id}: ${run.state}`);
     });
   const protectedSet = program.command('protected-set').description('Manage approved protected-set amendments');
   common(protectedSet.command('amend <run-id>').description('Prepare a collision-inventory amendment for requirements approval'))
@@ -892,6 +917,7 @@ export function createProgram(): Command {
       runId: string,
       options: { root: string; json?: boolean; collisionInventory: string },
     ) => {
+      rejectNestedHoh();
       const root = resolve(options.root);
       const store = new FileRunStore(root);
       const current = await store.status(runId);
@@ -954,11 +980,13 @@ export function createProgram(): Command {
       );
     });
   common(program.command('resume <run-id>').description('Resume one durable MUSUBIX4 run transition'))
-    .action(async (runId: string, options: { root: string; json?: boolean }) => {
+    .option('--summary-json', 'Machine-readable bounded run summary')
+    .action(async (runId: string, options: { root: string; json?: boolean; summaryJson?: boolean }) => {
+      rejectNestedHoh();
       const root = resolve(options.root);
       const store = new FileRunStore(root);
       const run = await new HohOrchestrator(store, localHohServices(root, store)).resume(runId);
-      output(run, !!options.json, `Run ${run.id}: ${run.state}`);
+      outputHohRun(run, options, `Run ${run.id}: ${run.state}`);
       if (run.state === 'failed') process.exitCode = 1;
     });
   common(program.command('stop <run-id>').description('Request a resumable stop for a MUSUBIX4 run'))
@@ -968,10 +996,12 @@ export function createProgram(): Command {
     });
   common(program.command('status').description('One-shot artifact, gate, or HoH run status'))
     .option('--run <run-id>', 'Report one MUSUBIX4 HoH run')
-    .action(async (options: { root: string; json?: boolean; run?: string }) => {
+    .option('--summary-json', 'Machine-readable bounded HoH run summary')
+    .action(async (options: { root: string; json?: boolean; summaryJson?: boolean; run?: string }) => {
+      if (options.summaryJson && !options.run) throw new Error('--summary-json requires --run.');
       if (options.run) {
         const run = await new FileRunStore(resolve(options.root)).status(options.run);
-        output(run, !!options.json, `Run ${run.id}: ${run.state}; iteration ${run.iteration}; role ${run.role ?? 'none'}`);
+        outputHohRun(run, options, `Run ${run.id}: ${run.state}; iteration ${run.iteration}; role ${run.role ?? 'none'}`);
         return;
       }
       const status = await projectStatus(resolve(options.root));
@@ -989,7 +1019,7 @@ async function main(): Promise<void> {
   } catch (cause) {
     if (cause instanceof CommanderError && cause.exitCode === 0) return;
     const message = cause instanceof Error ? cause.message : String(cause);
-    if (process.argv.includes('--json')) console.log(JSON.stringify({ error: { code: 'CLI_ERROR', message } }));
+    if (process.argv.includes('--json') || process.argv.includes('--summary-json')) console.log(JSON.stringify({ error: { code: 'CLI_ERROR', message } }));
     else console.error(`musubix4: ${message}`);
     process.exitCode = 2;
   }

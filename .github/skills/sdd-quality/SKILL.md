@@ -6,6 +6,7 @@ description: "Use when deciding release readiness from actual checks, measurable
 Follow the user's input language. Native review/security review remain separate.
 After the work, run `npx musubix4 workflow-record sdd-quality complete --status
 completed` exactly once.
+Efficiency: prefer human-readable validation when no fields are parsed; put only approved independent read-only checks in one parallel tool-call batch and preserve every producer-before-consumer edge. Do not rerun mutating or append-only commands for JSON diagnostics.
 1. Inspect config/baseline first. Execute only trusted argument-array commands;
    never edit baseline without independent approval or substitute another CLI.
 2. Configure real tests/build/typecheck commands and timeouts. Use an explicit
@@ -18,7 +19,8 @@ completed` exactly once.
    `codeGraph.mode` when unresolved computed module loading must block release,
    and ensure the trusted baseline prevents downgrading it. Configure a
    fresh structured `testReport` for `test-identities`. Do not weaken policy.
-3. Run `npx musubix4 gate --json` or `npx musubix4 gate --changed --json`.
+3. Run `npx musubix4 gate` or `npx musubix4 gate --changed`; when individual
+   check fields drive evidence, readiness, or waivers, use `--json` once.
    `evidence refresh --json` runs the same fail-closed pipeline. If `input-stability` fails,
    inspect its per-path added/modified/deleted diagnostics and stop generators
    or formatters before rerunning. Standard dependency/build directories,
