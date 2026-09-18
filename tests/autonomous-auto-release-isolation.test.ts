@@ -13,7 +13,7 @@ import {
 import { fixture } from './helpers.js';
 
 /** @id TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001
- * @verifies REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-016
+ * @verifies REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-013 REQ-AUTONOMOUS-DEVELOPMENT-016
  */
 describe('isolated release workspace provisioning', () => {
   it('TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001 verifies the lockfile and rejects writes outside disposable paths', async () => {
@@ -59,6 +59,36 @@ describe('isolated release workspace provisioning', () => {
       'outside declared disposable paths',
     );
     await expect(access(resolve(invalid.runBase, 'qa'))).rejects.toThrow();
+
+    const trackedWrite = new GitCandidateStore(
+      root,
+      'release-workspace-tracked',
+      [],
+      {
+        ...provisioning,
+        writablePaths: ['src'],
+      },
+    );
+    await trackedWrite.initialize();
+    const trackedCandidate = await trackedWrite.snapshotStage('candidate');
+    await expect(
+      trackedWrite.createQaWorkspace(trackedCandidate),
+    ).rejects.toThrow('tracked production file');
+
+    const rootWrite = new GitCandidateStore(
+      root,
+      'release-workspace-root-write',
+      [],
+      {
+        ...provisioning,
+        writablePaths: ['.'],
+      },
+    );
+    await rootWrite.initialize();
+    const rootCandidate = await rootWrite.snapshotStage('candidate');
+    await expect(rootWrite.createQaWorkspace(rootCandidate)).rejects.toThrow(
+      'tracked production file',
+    );
   });
 });
 

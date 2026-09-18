@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T22:07:18.257Z",
+  "generatedAt": "2026-09-18T05:06:59.373Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -139,61 +139,61 @@
       "id": "DES-AUTONOMOUS-DEVELOPMENT-007",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 55
+      "line": 56
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-008",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 63
+      "line": 64
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-009",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 71
+      "line": 72
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-010",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 79
+      "line": 80
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-011",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 87
+      "line": 88
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-012",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 95
+      "line": 96
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-013",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 103
+      "line": 104
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-014",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 111
+      "line": 112
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-015",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 120
+      "line": 121
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-016",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 128
+      "line": 129
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-001",
@@ -831,151 +831,151 @@
       "id": "CODE-HOH-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1526
+      "line": 1547
     },
     {
       "id": "CODE-AUTONOMOUS-HOH-CONFIG-FILE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1789
+      "line": 1820
     },
     {
       "id": "CODE-AUTONOMOUS-QA-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1805
+      "line": 1836
     },
     {
       "id": "CODE-HOH-POLICY-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1823
+      "line": 1854
     },
     {
       "id": "CODE-HOH-SPECIFICATION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1954
+      "line": 2007
     },
     {
       "id": "CODE-HOH-GITHUB-ISSUE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1966
+      "line": 2019
     },
     {
       "id": "CODE-HOH-COPILOT-FINAL-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2210
+      "line": 2293
     },
     {
       "id": "CODE-AUTONOMOUS-QA-ADAPTER-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2233
+      "line": 2316
     },
     {
       "id": "CODE-HOH-COPILOT-ADAPTER-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2289
+      "line": 2372
     },
     {
       "id": "CODE-HOH-ROLE-CONTRACT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2435
+      "line": 2563
     },
     {
       "id": "CODE-HOH-EVIDENCE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2473
+      "line": 2601
     },
     {
       "id": "CODE-AUTONOMOUS-QA-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2528
+      "line": 2656
     },
     {
       "id": "CODE-HOH-GIT-STORE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2626
+      "line": 2754
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-GIT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2803
+      "line": 2931
     },
     {
       "id": "CODE-HOH-RUN-STORE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3127
+      "line": 3269
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3280
+      "line": 3422
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-CLI-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3371
+      "line": 3513
     },
     {
       "id": "CODE-HOH-LIFECYCLE-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3545
+      "line": 3687
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-PROMOTION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3602
+      "line": 3744
     },
     {
       "id": "CODE-HOH-RUN-APPROVAL-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3745
+      "line": 3887
     },
     {
       "id": "CODE-AUTOMATIC-HOH-CODING-004",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3942
+      "line": 4084
     },
     {
       "id": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4164
+      "line": 4306
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4371
+      "line": 4513
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-RECOVERY-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4474
+      "line": 4616
     },
     {
       "id": "CODE-HOH-ORCHESTRATOR-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4562
+      "line": 4704
     },
     {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-024",
@@ -1761,7 +1761,7 @@
       "id": "TEST-AUTONOMOUS-AUTO-RELEASE-GATE-INVALIDATION-001",
       "kind": "test",
       "path": "tests/autonomous-auto-release-isolation.test.ts",
-      "line": 65
+      "line": 95
     },
     {
       "id": "TEST-AUTONOMOUS-AUTO-RELEASE-MANIFEST-001",
@@ -2157,43 +2157,43 @@
       "id": "TEST-AUTOMATIC-HOH-CODING-003",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 428
+      "line": 434
     },
     {
       "id": "TEST-HOH-ROLE-PROMPT-001",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 508
+      "line": 520
     },
     {
       "id": "TEST-HOH-ROLE-PROMPT-002",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 598
+      "line": 616
     },
     {
       "id": "TEST-SAFE-WORKFLOW-SPEED-001",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 657
+      "line": 675
     },
     {
       "id": "TEST-SAFE-WORKFLOW-SPEED-002",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 683
+      "line": 701
     },
     {
       "id": "TEST-SESSION-SCOPED-DEVELOPMENT-001",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 699
+      "line": 717
     },
     {
       "id": "TEST-SESSION-SCOPED-DEVELOPMENT-002",
       "kind": "test",
       "path": "tests/cli-package.test.ts",
-      "line": 723
+      "line": 741
     },
     {
       "id": "TEST-CLI-WORKFLOW-UX-001",
@@ -2364,52 +2364,58 @@
       "line": 694
     },
     {
+      "id": "TEST-HOH-COPILOT-ADAPTER-007",
+      "kind": "test",
+      "path": "tests/hoh-lifecycle.test.ts",
+      "line": 792
+    },
+    {
       "id": "TEST-HOH-COPILOT-ADAPTER-005",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 776
+      "line": 1070
     },
     {
       "id": "TEST-HOH-GIT-STORE-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 921
+      "line": 1234
     },
     {
       "id": "TEST-HOH-GIT-DEPLOYMENT-003",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 991
+      "line": 1304
     },
     {
       "id": "TEST-HOH-APPROVAL-RUN-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1089
+      "line": 1402
     },
     {
       "id": "TEST-HOH-DEPLOYMENT-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1160
+      "line": 1473
     },
     {
       "id": "TEST-HOH-GITHUB-ISSUE-002",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1215
+      "line": 1528
     },
     {
       "id": "TEST-HOH-QA-INTEGRITY-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1255
+      "line": 1568
     },
     {
       "id": "TEST-HOH-RECOVERY-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1330
+      "line": 1643
     },
     {
       "id": "TEST-CLI-COMPATIBILITY-001",
@@ -6441,6 +6447,11 @@
     },
     {
       "from": "TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-016",
       "relation": "verifies"
     },
@@ -7240,6 +7251,11 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-HOH-COPILOT-ADAPTER-007",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-HOH-COPILOT-ADAPTER-005",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-004",
       "relation": "verifies"
@@ -7724,8 +7740,8 @@
     ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
     ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/design.md": "0a02562e7ff30790fabdbfc02e38e7087a50d8cfba7a9e1c78063bb0ce193fa7",
-    ".musubix/features/autonomous-development/requirements.md": "98aa474d8c2466eadd3596617ade57fd8ac8aa31232d62f608518b9cfcdea3ab",
+    ".musubix/features/autonomous-development/design.md": "03a3fbf721f782dda140ab02d90c18966a0cb3c5bbba111c0decb87765cffa01",
+    ".musubix/features/autonomous-development/requirements.md": "65ad718cb92bf1caeea7d372fe624e33f154cc8513ae5f69b28ee4a553b41f18",
     ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
     ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
     ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
@@ -7743,7 +7759,7 @@
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
     "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
-    "packages/analysis/src/hoh.ts": "c4893e9979f94f3c2ed52b4dfcb71e60ef86dc76d24a1bb2283df03fcb5cc2d0",
+    "packages/analysis/src/hoh.ts": "019c8964637a242caed06c24c6c5bd19c9528ef2f0e244bb3583c1698bf26100",
     "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
@@ -7806,7 +7822,7 @@
     "tests/autonomous-auto-approval-review-repair.test.ts": "2c08ff904813e5cff89cb4207569ee8e9d078dc215b60b89ef27b1abdeabd4c3",
     "tests/autonomous-auto-approval-reviewer-required.test.ts": "4583c69e926b7036cc805795852912777013c28594acaeec3bca7c6ddc48b418",
     "tests/autonomous-auto-release-approval.test.ts": "db9f8af15b5d397beb81a0aa723643a436a60d81dc85002ab0d620c13e263346",
-    "tests/autonomous-auto-release-isolation.test.ts": "85aa1cd2a486f36f3852d47028c2f291ed6c3e381f49b61203884165528d6540",
+    "tests/autonomous-auto-release-isolation.test.ts": "ff594b09e6b65449bee9b744ad964c785b0de4c778f943c99f464b2d671d9470",
     "tests/autonomous-auto-release-manifest.test.ts": "444b35fcc5973456353dfd1e9cf720142b9eb153567d9aebec3e9ce02d54541c",
     "tests/autonomous-auto-spec-design-approval.test.ts": "07de87f8514b3a6f70a8c7e182952359aedc33694c475c7931f7c427bbf0a022",
     "tests/autonomous-auto-spec-design-manifest.test.ts": "9787604968ea346bcb45519c192010adcc77f3bc3bc3e0df7d2e4d207853e8d7",
@@ -7831,7 +7847,7 @@
     "tests/change-record-fail-fast.test.ts": "feeeeb554605c822508f900017e8ab70c2afc2b9c09e64ec9c1858efec0b9fcb",
     "tests/change-record-recordedat-order.test.ts": "0c0b2247306cfa3da026273c06a1fc55044d5944d74cc6e8a19d83b5fa9fcbe7",
     "tests/change-requirement-batches.test.ts": "3a83fb3880949ed50afb74ab1fc29827cf981c9599d10183560227118c0b6600",
-    "tests/cli-package.test.ts": "d2a87d2a6b19e20558abfb36ff25befde84cfb72a6e5768cbf1b8713746455e8",
+    "tests/cli-package.test.ts": "97ddd738ad0f0aabbdcc59fd5e8b875ed3a88bf18965fb5a3e1c37ebf5536351",
     "tests/cli-workflow-ux.test.ts": "c67cdfebfae6708c9091d6a318bb49ba70a3a53b1526c74238c322b1c5028163",
     "tests/command-working-directory.test.ts": "46850b5a295d31a1b8ea760f9132f3ea0769588b2ccefac3c2413687bcb3221f",
     "tests/design-adr-none-exemption.test.ts": "bd61454949d1ded62429ae480da039f4e6976c11c23126b5f30bcc7307a3ee29",
@@ -7841,7 +7857,7 @@
     "tests/full-v1-acceptance.test.ts": "982e14539e0df21529cbfdcc5ba27b969661f43fd4786ae3433bfd6bbe6681ea",
     "tests/gate-install.test.ts": "97d48d731b0871b42666597ad4c9a92730a217653744904c1e60aa1d00227bb7",
     "tests/helpers.ts": "031929b097a7318d83fe8024ef1ff7f4248964a5d0861e8301504f62c887f054",
-    "tests/hoh-lifecycle.test.ts": "4cde45ef1cc5a8fef8550fd7ab6fe412b6eeb557fac77e2019371c17d3e10382",
+    "tests/hoh-lifecycle.test.ts": "ccdd4483312a4af638b63da3dee6f48e5017020ce62bccc8fb792450520872d9",
     "tests/inherited-compatibility.test.ts": "abf55f4899c5d07f6de1537db3d5de3498aa30b63d028680fce5dcfeb88bdf1d",
     "tests/model-correspondence-evidence-guidance.test.ts": "5886b128fada18690cbda5cc454193e6bb4cadc48077977d2f033659baa09b7d",
     "tests/optional-formal-gate.test.ts": "c33a55d9bb39c30227dec7540ef6185d1ddc3a8c57dba941b08da44576c8afa8",

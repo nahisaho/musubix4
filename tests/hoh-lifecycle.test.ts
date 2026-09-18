@@ -700,8 +700,15 @@ for (const event of events) console.log(JSON.stringify(event));
       await writeFile(
         executable,
         `#!/usr/bin/env node
+import fs from 'node:fs';
 const fence = String.fromCharCode(96).repeat(3);
 const longFence = String.fromCharCode(96).repeat(4);
+if (process.argv.includes('--version')) {
+  fs.writeFileSync(process.env.VERSION_SENTINEL, 'probed');
+  console.log('GitHub Copilot CLI 1.2.3');
+  process.exit(0);
+}
+if (!fs.existsSync(process.env.VERSION_SENTINEL)) process.exit(3);
 const outputs = {
   raw: '  ' + JSON.stringify({kind:'plan',message:'literal ' + fence + 'json fence'}) + '  ',
   fenced: '\\n\\t' + fence + 'json\\r\\n{"kind":"plan"}\\r\\n' + fence + '\\n',
@@ -751,10 +758,16 @@ console.log(JSON.stringify({type: 'result', exitCode: 0}));
         abandonAttempt: async () => undefined,
         validate: (value: unknown) => value,
       };
+      const environment = {
+        VERSION_SENTINEL: resolve(root, "version-probed"),
+      };
 
       for (const scenario of ["raw", "fenced"]) {
         await expect(
-          invoke({ ...common, environment: { SCENARIO: scenario } }),
+          invoke({
+            ...common,
+            environment: { ...environment, SCENARIO: scenario },
+          }),
         ).resolves.toMatchObject({ value: { kind: "plan" } });
       }
       for (const scenario of [
@@ -768,9 +781,290 @@ console.log(JSON.stringify({type: 'result', exitCode: 0}));
         "trailing",
       ]) {
         await expect(
-          invoke({ ...common, environment: { SCENARIO: scenario } }),
+          invoke({
+            ...common,
+            environment: { ...environment, SCENARIO: scenario },
+          }),
         ).rejects.toThrow(/final answer content|retries exhausted/i);
       }
+    });
+
+    /** @id TEST-HOH-COPILOT-ADAPTER-007
+     * @verifies REQ-AUTONOMOUS-DEVELOPMENT-013
+     */
+    it("TEST-HOH-COPILOT-ADAPTER-007 separates Copilot tool names from permission kinds and preserves current version resolution", async () => {
+      const root = await fixture();
+      const executable = resolve(root, "fake-copilot-tools.mjs");
+      await writeFile(
+        executable,
+        `#!/usr/bin/env node
+import fs from 'node:fs';
+const capture = process.env.CAPTURE;
+if (process.argv.includes('--version')) {
+  if (capture) fs.writeFileSync(capture, JSON.stringify({kind:'version',autoUpdate:process.env.COPILOT_AUTO_UPDATE ?? null}));
+  console.log(process.env.PROBE_VERSION ?? '1.2.3');
+  if (process.env.SCENARIO === 'probe-nonzero') {
+    console.error('probe failed');
+    process.exit(7);
+  }
+  process.exit(0);
+}
+if (capture) fs.writeFileSync(capture, JSON.stringify({kind:'role',argv:process.argv.slice(2),autoUpdate:process.env.COPILOT_AUTO_UPDATE ?? null}));
+if (process.env.SCENARIO === 'unknown-tool') {
+  console.log(JSON.stringify({type:'session.info',data:{infoType:'configuration',message:'Unknown tool name in the tool allowlist: "bogus"'}}));
+}
+if (process.env.SCENARIO === 'disabled-tools') {
+  console.log(JSON.stringify({type:'session.info',data:{infoType:'configuration',message:'Disabled tools: shell'}}));
+}
+console.log(JSON.stringify({type:'session.usage_checkpoint',data:{totalNanoAiu:1000000000}}));
+console.log(JSON.stringify({type:'assistant.message',data:{phase:'final_answer',model:'gpt-fixed',content:'{"executionRecords":[{"status":"completed"}]}'}}));
+console.log(JSON.stringify({type:'result',exitCode:0}));
+`,
+      );
+      await chmod(executable, 0o755);
+      const module =
+        (await import("../packages/analysis/src/hoh.js")) as Record<
+          string,
+          unknown
+        >;
+      const invoke = module.invokeCopilotRole as (
+        input: Record<string, unknown>,
+      ) => Promise<Record<string, unknown>>;
+      const capture = resolve(root, "capture.json");
+      const toolSegments = JSON.parse(
+        await readFile(
+          resolve(
+            process.cwd(),
+            "tests/fixtures/copilot-cli-1.0.86-tool-segments.json",
+          ),
+          "utf8",
+        ),
+      ) as { developer: string[]; readOnly: string[] };
+      const common = {
+        executable,
+        cwd: root,
+        role: "developer",
+        prompt: "implement",
+        config: parseHohConfig({
+          model: "gpt-fixed",
+          copilotCliVersion: "1.2.3",
+          budget: { aiCredits: 30 },
+          commands: { test: ["npm", "test"] },
+        }),
+        policy: derivePolicy("developer", {}),
+        environment: {
+          CAPTURE: capture,
+          COPILOT_AUTO_UPDATE: "false",
+        },
+        validate: (value: unknown) => value,
+      };
+      for (const role of ["planner", "developer", "qa", "reviewer"] as const) {
+        const roleCapture = resolve(root, `${role}-capture.json`);
+        const roleResult = await invoke({
+          ...common,
+          role,
+          policy: derivePolicy(role, {}),
+          environment: {
+            ...common.environment,
+            CAPTURE: roleCapture,
+          },
+        });
+        const captured = JSON.parse(await readFile(roleCapture, "utf8")) as {
+          argv: string[];
+          autoUpdate: string | null;
+        };
+        const availableIndex = captured.argv.indexOf("--available-tools");
+        const allowIndex = captured.argv.indexOf("--allow-tool");
+        const denyIndex = captured.argv.indexOf("--deny-tool");
+        const expectedTools =
+          role === "developer"
+            ? toolSegments.developer
+            : toolSegments.readOnly;
+        expect(
+          captured.argv.slice(
+            availableIndex + 1,
+            allowIndex === -1 ? denyIndex : allowIndex,
+          ),
+        ).toEqual(expectedTools);
+        if (role === "developer")
+          expect(captured.argv.slice(allowIndex + 1, denyIndex)).toEqual([
+            "write",
+          ]);
+        else expect(allowIndex).toBe(-1);
+        expect(captured.argv.slice(denyIndex + 1)).toEqual(["shell"]);
+        expect(captured.argv).not.toContain("--no-auto-update");
+        expect(captured.autoUpdate).toBeNull();
+        expect(roleResult.records).toEqual([
+          expect.objectContaining({ argv: [executable, "--version"] }),
+          expect.objectContaining({
+            argv: expect.arrayContaining([executable, "--available-tools"]),
+          }),
+        ]);
+      }
+      expect(derivePolicy("developer", {}).allowTools).toEqual([
+        "read",
+        "write",
+      ]);
+      for (const role of ["planner", "developer", "qa", "reviewer"] as const)
+        expect(() => derivePolicy(role, { allowTools: [] })).toThrow(
+          /non-empty|available tool/i,
+        );
+      expect(() =>
+        derivePolicy("developer", { allowTools: ["unknown"] }),
+      ).toThrow(/unknown.*capability/i);
+      expect(() =>
+        derivePolicy("qa", { allowTools: ["write"] }),
+      ).toThrow(/allowWrite/i);
+      expect(() =>
+        derivePolicy("developer", { allowTools: ["write"] }),
+      ).toThrow(/requires.*read/i);
+      for (const role of ["planner", "qa", "reviewer"] as const) {
+        expect(derivePolicy(role, { allowWrite: true }).allowWrite).toBe(true);
+        expect(() =>
+          derivePolicy(role, {
+            allowTools: ["read", "write"],
+            allowWrite: true,
+          }),
+        ).toThrow(/developer|write/i);
+      }
+      expect(
+        derivePolicy("deployment", { allowWrite: true }).allowWrite,
+      ).toBe(true);
+      expect(() =>
+        derivePolicy("deployment", {
+          allowTools: ["read", "write"],
+          allowWrite: true,
+        }),
+      ).toThrow(/developer|write/i);
+
+      let reservations = 0;
+      await expect(
+        invoke({
+          ...common,
+          environment: { ...common.environment, SCENARIO: "unknown-tool" },
+          reserveAttempt: async () => {
+            reservations += 1;
+            return "reservation";
+          },
+          abandonAttempt: async () => undefined,
+        }),
+      ).rejects.toThrow(/unknown tool name/i);
+      expect(reservations).toBe(1);
+      await expect(
+        invoke({
+          ...common,
+          environment: {
+            ...common.environment,
+            SCENARIO: "disabled-tools",
+          },
+        }),
+      ).resolves.toMatchObject({ attempts: 1 });
+
+      reservations = 0;
+      await expect(
+        invoke({
+          ...common,
+          config: parseHohConfig({
+            model: "gpt-fixed",
+            budget: { aiCredits: 30 },
+            commands: { test: ["npm", "test"] },
+          }),
+          environment: {
+            ...common.environment,
+            PROBE_VERSION: "1.0.85",
+          },
+          reserveAttempt: async () => {
+            reservations += 1;
+            return "reservation";
+          },
+        }),
+      ).rejects.toThrow(/1\.0\.86|minimum|unsupported/i);
+      expect(reservations).toBe(0);
+      await expect(
+        invoke({
+          ...common,
+          config: parseHohConfig({
+            model: "gpt-fixed",
+            budget: { aiCredits: 30 },
+            commands: { test: ["npm", "test"] },
+          }),
+          environment: {
+            ...common.environment,
+            PROBE_VERSION: "not-a-version",
+          },
+        }),
+      ).rejects.toThrow(/version|unsupported|unparsable/i);
+      await expect(
+        invoke({
+          ...common,
+          config: parseHohConfig({
+            model: "gpt-fixed",
+            budget: { aiCredits: 30 },
+            commands: { test: ["npm", "test"] },
+          }),
+          environment: {
+            ...common.environment,
+            PROBE_VERSION: "1.0.100",
+          },
+        }),
+      ).resolves.toMatchObject({ attempts: 1 });
+      await expect(
+        invoke({
+          ...common,
+          config: parseHohConfig({
+            model: "gpt-fixed",
+            budget: { aiCredits: 30 },
+            commands: { test: ["npm", "test"] },
+          }),
+          environment: {
+            ...common.environment,
+            PROBE_VERSION: "notice 0.0.1) GitHub Copilot CLI 1.0.100",
+          },
+        }),
+      ).resolves.toMatchObject({ attempts: 1 });
+      await expect(
+        invoke({
+          ...common,
+          config: parseHohConfig({
+            model: "gpt-fixed",
+            budget: { aiCredits: 30 },
+            commands: { test: ["npm", "test"] },
+          }),
+          environment: {
+            ...common.environment,
+            PROBE_VERSION: "GitHub Copilot CLI v1.0.100",
+          },
+        }),
+      ).rejects.toThrow(/version|unsupported|unparsable/i);
+      expect(() =>
+        parseHohConfig({
+          model: "gpt-fixed",
+          copilotCliVersion: "v1.0.86",
+          budget: { aiCredits: 30 },
+          commands: { test: ["npm", "test"] },
+        }),
+      ).toThrow(/copilotCliVersion|version/i);
+      const probeFailure = await invoke({
+        ...common,
+        config: parseHohConfig({
+          model: "gpt-fixed",
+          budget: { aiCredits: 30 },
+          commands: { test: ["npm", "test"] },
+        }),
+        environment: {
+          ...common.environment,
+          SCENARIO: "probe-nonzero",
+        },
+      }).catch((error: unknown) => error);
+      expect(probeFailure).toMatchObject({
+        name: "CopilotRoleConfigurationError",
+        records: [
+          expect.objectContaining({
+            argv: [executable, "--version"],
+            exitCode: 7,
+          }),
+        ],
+      });
     });
 
     /** @id TEST-HOH-COPILOT-ADAPTER-005
@@ -782,6 +1076,13 @@ console.log(JSON.stringify({type: 'result', exitCode: 0}));
       await writeFile(
         executable,
         `#!/usr/bin/env node
+import fs from 'node:fs';
+if (process.argv.includes('--version')) {
+  fs.writeFileSync(process.env.VERSION_SENTINEL, 'probed');
+  console.log('GitHub Copilot CLI 1.2.3');
+  process.exit(0);
+}
+if (!fs.existsSync(process.env.VERSION_SENTINEL)) process.exit(3);
 const exactNanoAiu = 543795648780;
 const events = [
   {type:'assistant.message',data:{phase:'final_answer',model:'gpt-fixed',content:'{"kind":"plan"}'}},
@@ -840,7 +1141,10 @@ if (process.env.SCENARIO === 'truncated') {
 
       await invoke({
         ...common,
-        environment: { SCENARIO: "exact" },
+        environment: {
+          SCENARIO: "exact",
+          VERSION_SENTINEL: resolve(root, "version-probed"),
+        },
       });
       expect(lifecycle).toEqual([
         "reserve",
@@ -876,7 +1180,10 @@ if (process.env.SCENARIO === 'truncated') {
       lifecycle.length = 0;
       await invoke({
         ...common,
-        environment: { SCENARIO: "fallback" },
+        environment: {
+          SCENARIO: "fallback",
+          VERSION_SENTINEL: resolve(root, "version-probed"),
+        },
       });
       expect(lifecycle).toEqual([
         "reserve",
@@ -891,7 +1198,10 @@ if (process.env.SCENARIO === 'truncated') {
             ...common.config,
             budget: { aiCredits: 10 },
           },
-          environment: { SCENARIO: "exact" },
+          environment: {
+            SCENARIO: "exact",
+            VERSION_SENTINEL: resolve(root, "version-probed"),
+          },
         }),
       ).rejects.toThrow(/budget/i);
       expect(lifecycle).toEqual([
@@ -907,7 +1217,10 @@ if (process.env.SCENARIO === 'truncated') {
             ...common.config,
             maxCommandOutputBytes: 128,
           },
-          environment: { SCENARIO: "truncated" },
+          environment: {
+            SCENARIO: "truncated",
+            VERSION_SENTINEL: resolve(root, "version-probed"),
+          },
         }),
       ).rejects.toThrow(/output exceeded the configured byte bound/i);
       expect(lifecycle).toEqual([

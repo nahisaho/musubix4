@@ -1443,6 +1443,7 @@ export async function runBoundedProcess(input: {
   argv: string[];
   cwd: string;
   environment?: Record<string, string>;
+  omitEnvironment?: string[];
   timeoutMs: number;
   maxOutputBytes: number;
   policy: EffectiveRolePolicy;
@@ -1452,10 +1453,12 @@ export async function runBoundedProcess(input: {
     throw new Error("Process argv must be a nonempty NUL-free array.");
   const cwd = resolve(input.cwd);
   const started = Date.now();
+  const environment = { ...process.env, ...input.environment };
+  for (const name of input.omitEnvironment ?? []) delete environment[name];
   const child = spawn(input.argv[0]!, input.argv.slice(1), {
     cwd,
     shell: false,
-    env: { ...process.env, ...input.environment },
+    env: environment,
     stdio: ["ignore", "pipe", "pipe"],
   });
   let stdout = "";
@@ -1523,6 +1526,24 @@ function positive(value: unknown, fallback: number, location: string): number {
   return resolved;
 }
 
+const copilotVersionTokenPattern =
+  /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
+
+function extractCopilotVersion(output: string): string | undefined {
+  return output
+    .trim()
+    .split(/\s+/)
+    .find((token) => copilotVersionTokenPattern.test(token));
+}
+
+function isSupportedCopilotVersion(version: string): boolean {
+  const [major, minor, patch] = version.split(/[+-]/, 1)[0]!.split(".").map(Number);
+  return (
+    major! > 1 ||
+    (major === 1 && (minor! > 0 || (minor === 0 && patch! >= 86)))
+  );
+}
+
 /** @id CODE-HOH-CONFIG-001
  * @implements REQ-AUTONOMOUS-DEVELOPMENT-002 REQ-AUTONOMOUS-DEVELOPMENT-004 REQ-AUTONOMOUS-DEVELOPMENT-010 REQ-AUTONOMOUS-DEVELOPMENT-012 REQ-AUTONOMOUS-DEVELOPMENT-013 REQ-AUTONOMOUS-DEVELOPMENT-015 REQ-AUTONOMOUS-DEVELOPMENT-016 REQ-AUTONOMOUS-DEVELOPMENT-017
  * @design DES-AUTONOMOUS-DEVELOPMENT-002
@@ -1554,6 +1575,16 @@ export function parseHohConfig(input: unknown): HohConfig {
   );
   if (typeof value.model !== "string" || !value.model.trim())
     throw new Error("hoh.model is required.");
+  if (
+    value.copilotCliVersion !== undefined &&
+    (typeof value.copilotCliVersion !== "string" ||
+      !copilotVersionTokenPattern.test(value.copilotCliVersion) ||
+      !isSupportedCopilotVersion(value.copilotCliVersion))
+  ) {
+    throw new Error(
+      "hoh.copilotCliVersion must be a semantic version at or above 1.0.86.",
+    );
+  }
   const budget = record(value.budget, "hoh.budget");
   rejectUnknown(budget, ["aiCredits"], "hoh.budget");
   const commands = record(value.commands, "hoh.commands");
@@ -1846,7 +1877,7 @@ export function derivePolicy(
       allowPaths: ["."],
       allowUrls: [],
       allowMcpServers: [],
-      allowTools: ["read", "edit"],
+      allowTools: ["read", "write"],
       allowSecrets: [],
       allowProjectCommands: true,
       allowWrite: true,
@@ -1895,6 +1926,28 @@ export function derivePolicy(
     allowTools: [...(configuration.allowTools ?? base.allowTools)],
     allowSecrets: [...(configuration.allowSecrets ?? base.allowSecrets)],
   };
+  const unknownCapability = effective.allowTools.find(
+    (capability) => capability !== "read" && capability !== "write",
+  );
+  if (unknownCapability)
+    throw new Error(`Unknown Copilot policy capability: ${unknownCapability}.`);
+  if (role !== "developer" && effective.allowTools.includes("write"))
+    throw new Error(
+      `Copilot allowTools write capability is restricted to Developer; adapter allowWrite does not grant it.`,
+    );
+  if (role !== "deployment" && !effective.allowTools.length)
+    throw new Error(
+      `Copilot ${role} policy requires a non-empty available tool capability set.`,
+    );
+  if (
+    effective.allowTools.includes("write") &&
+    !effective.allowTools.includes("read")
+  )
+    throw new Error("Copilot write capability requires read capability.");
+  if (effective.allowTools.includes("write") && !effective.allowWrite)
+    throw new Error(
+      "Copilot write capability requires effective allowWrite to be true.",
+    );
   const residualRisks = Object.entries(configuration)
     .flatMap(([key, value]) => {
       if (Array.isArray(value)) return value.map((item) => `${key}:${item}`);
@@ -2047,7 +2100,6 @@ function copilotArgs(
     "--stream",
     "off",
     "--no-ask-user",
-    "--no-auto-update",
     "--no-custom-instructions",
     "--disallow-temp-dir",
     "--max-ai-credits",
@@ -2058,18 +2110,19 @@ function copilotArgs(
   if (config.reasoning) args.push("--reasoning-effort", config.reasoning);
   if (policy.allowPaths.length)
     for (const path of policy.allowPaths) args.push("--add-dir", path);
-  if (policy.allowTools.length)
-    args.push(
-      "--available-tools",
-      ...policy.allowTools,
-      "--allow-tool",
-      ...policy.allowTools,
-    );
   if (policy.allowSecrets.length)
     args.push("--secret-env-vars", policy.allowSecrets.join(","));
   if (policy.allowUrls.length) args.push("--allow-url", ...policy.allowUrls);
   if (!policy.allowMcpServers.length) args.push("--disable-builtin-mcps");
-  if (!policy.allowProjectCommands) args.push("--deny-tool", "shell", "bash");
+  const availableTools = policy.allowTools.flatMap((capability) =>
+    capability === "read"
+      ? ["view", "grep", "glob"]
+      : ["apply_patch"],
+  );
+  if (availableTools.length)
+    args.push("--available-tools", ...availableTools);
+  if (policy.allowTools.includes("write")) args.push("--allow-tool", "write");
+  args.push("--deny-tool", "shell");
   return args;
 }
 
@@ -2096,6 +2149,21 @@ function creditsToNanoAiu(credits: number): number {
   return nanoAiu;
 }
 
+class CopilotRoleInvocationError extends Error {
+  override readonly name: string = "CopilotRoleInvocationError";
+
+  constructor(
+    message: string,
+    readonly records: CommandRecord[] = [],
+  ) {
+    super(message);
+  }
+}
+
+class CopilotRoleConfigurationError extends CopilotRoleInvocationError {
+  override readonly name = "CopilotRoleConfigurationError";
+}
+
 function parseCopilotRoleEvents(
   events: Record<string, unknown>[],
   reservedNanoAiu: number,
@@ -2103,6 +2171,21 @@ function parseCopilotRoleEvents(
   configuredReasoning?: string,
   configuredVersion?: string,
 ): { value: unknown; actualNanoAiu: number; displayCredits: number } {
+  const configurationFailure = events.find((event) => {
+    if (event.type !== "session.info") return false;
+    if (!event.data || typeof event.data !== "object" || Array.isArray(event.data))
+      return false;
+    const data = event.data as Record<string, unknown>;
+    return (
+      data.infoType === "configuration" &&
+      typeof data.message === "string" &&
+      data.message.includes("Unknown tool name in the tool allowlist")
+    );
+  });
+  if (configurationFailure)
+    throw new CopilotRoleConfigurationError(
+      "Copilot role configuration failed: unknown tool name in the tool allowlist.",
+    );
   const current = events.some((event) => {
     if (event.type === "session.usage_checkpoint") return true;
     if (event.type !== "assistant.message") return false;
@@ -2316,34 +2399,72 @@ export async function invokeCopilotRole(input: {
 }> {
   const executable = input.executable ?? "copilot";
   const records: CommandRecord[] = [];
+  const invocationResidualRisks = [
+    ...new Set([
+      ...input.policy.residualRisks,
+      "copilot-version-probe-to-spawn",
+    ]),
+  ].sort();
+  const { digest: _policyDigest, ...policyWithoutDigest } = input.policy;
+  const invocationPolicyPayload = {
+    ...policyWithoutDigest,
+    residualRisks: invocationResidualRisks,
+  };
+  const invocationPolicy: EffectiveRolePolicy = {
+    ...invocationPolicyPayload,
+    digest: digest(stableJson(invocationPolicyPayload)),
+  };
+  const environment = { ...input.environment };
+  delete environment.COPILOT_AUTO_UPDATE;
   const secretValues = input.policy.allowSecrets
     .map((name) => input.environment?.[name])
     .filter((value): value is string => !!value);
-  if (input.config.copilotCliVersion) {
+  const probeVersion = async (): Promise<void> => {
     const versionRecord = await runBoundedProcess({
       argv: [executable, "--version"],
       cwd: input.cwd,
-      ...(input.environment ? { environment: input.environment } : {}),
+      environment,
+      omitEnvironment: ["COPILOT_AUTO_UPDATE"],
       timeoutMs: Math.min(input.config.commandTimeoutMs, 30_000),
       maxOutputBytes: input.config.maxCommandOutputBytes,
-      policy: input.policy,
+      policy: invocationPolicy,
       secretValues,
     });
     records.push(versionRecord);
-    const observedVersion =
-      versionRecord.stdout.trim().match(/\d+\.\d+\.\d+(?:[-+][^\s]+)?/)?.[0] ??
-      versionRecord.stdout.trim();
-    if (versionRecord.exitCode !== 0)
-      throw new Error(`Copilot version probe failed: ${versionRecord.stderr}`);
+    if (
+      versionRecord.exitCode !== 0 ||
+      versionRecord.timedOut ||
+      versionRecord.truncated
+    ) {
+      throw new CopilotRoleConfigurationError(
+        `Copilot version probe failed: exit=${String(versionRecord.exitCode)} timedOut=${String(versionRecord.timedOut)} truncated=${String(versionRecord.truncated)} stderr=${versionRecord.stderr.trim()}`,
+        [...records],
+      );
+    }
+    const observedOutput = versionRecord.stdout.trim();
+    const observedVersion = extractCopilotVersion(observedOutput);
+    if (!observedVersion) {
+      throw new CopilotRoleConfigurationError(
+        `Unparsable Copilot CLI version output: ${observedOutput}`,
+        [...records],
+      );
+    }
+    if (!isSupportedCopilotVersion(observedVersion)) {
+      throw new CopilotRoleConfigurationError(
+        `Unsupported Copilot CLI version ${observedVersion}; minimum supported version is 1.0.86.`,
+        [...records],
+      );
+    }
     if (
       input.config.copilotCliVersion &&
       observedVersion !== input.config.copilotCliVersion
     ) {
-      throw new Error(
+      throw new CopilotRoleConfigurationError(
         `Copilot CLI version drift: expected ${input.config.copilotCliVersion}, observed ${observedVersion}.`,
+        [...records],
       );
     }
-  }
+  };
   const prompt = redactText(input.prompt, secretValues);
   let consumedNanoAiu = 0;
   let lastError: unknown;
@@ -2352,6 +2473,7 @@ export async function invokeCopilotRole(input: {
     attempt <= input.config.limits.roleOutputRetryLimit;
     attempt += 1
   ) {
+    await probeVersion();
     const remainingNanoAiu =
       creditsToNanoAiu(input.config.budget.aiCredits) - consumedNanoAiu;
     if (
@@ -2373,10 +2495,11 @@ export async function invokeCopilotRole(input: {
           ...copilotArgs(input.role, prompt, input.config, input.policy),
         ],
         cwd: input.cwd,
-        ...(input.environment ? { environment: input.environment } : {}),
+        environment,
+        omitEnvironment: ["COPILOT_AUTO_UPDATE"],
         timeoutMs: input.config.roleInvocationTimeoutMs,
         maxOutputBytes: input.config.maxCommandOutputBytes,
-        policy: input.policy,
+        policy: invocationPolicy,
         secretValues,
       });
       records.push(command);
@@ -2416,7 +2539,7 @@ export async function invokeCopilotRole(input: {
             string,
             unknown
           >[],
-          policy: input.policy,
+          policy: invocationPolicy,
         };
       } catch (cause) {
         lastError = cause;
@@ -2424,11 +2547,16 @@ export async function invokeCopilotRole(input: {
     } catch (cause) {
       if (reservationId && !reconciled)
         await input.abandonAttempt?.(reservationId);
+      if (cause instanceof CopilotRoleConfigurationError) {
+        if (cause.records.length) throw cause;
+        throw new CopilotRoleConfigurationError(cause.message, [...records]);
+      }
       lastError = cause;
     }
   }
-  throw new Error(
+  throw new CopilotRoleInvocationError(
     `Role output retries exhausted: ${lastError instanceof Error ? lastError.message : String(lastError)}`,
+    [...records],
   );
 }
 
@@ -2937,7 +3065,8 @@ export class GitCandidateStore {
     ]);
     try {
       const tracked = await gitCommand(path, ["ls-files", "-z"]);
-      for (const file of tracked.split("\0").filter(Boolean)) {
+      const trackedFiles = tracked.split("\0").filter(Boolean);
+      for (const file of trackedFiles) {
         const metadata = await lstat(resolve(path, file));
         if (!metadata.isSymbolicLink())
           await chmod(resolve(path, file), metadata.mode & ~0o222);
@@ -2972,6 +3101,19 @@ export class GitCandidateStore {
           ) {
             throw new Error(
               `Dependency writable path escapes the release checkout: ${writablePath}`,
+            );
+          }
+          const normalizedWritablePath = relativePath.split(sep).join("/");
+          if (
+            (normalizedWritablePath === "" && trackedFiles.length > 0) ||
+            trackedFiles.some(
+              (file) =>
+                file === normalizedWritablePath ||
+                file.startsWith(`${normalizedWritablePath}/`),
+            )
+          ) {
+            throw new Error(
+              `Dependency writable path overlaps a tracked production file: ${writablePath}`,
             );
           }
           await mkdir(absolute, { recursive: true });

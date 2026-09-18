@@ -1,0 +1,4 @@
+{
+  "developer": ["view", "grep", "glob", "apply_patch"],
+  "readOnly": ["view", "grep", "glob"]
+}
