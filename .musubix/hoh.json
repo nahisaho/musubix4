@@ -1,7 +1,7 @@
 {
   "model": "gpt-5.4",
   "budget": {
-    "aiCredits": 100
+    "aiCredits": 500
   },
   "approval": {
     "mode": "verified-auto",
