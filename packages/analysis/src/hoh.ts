@@ -1530,10 +1530,16 @@ const copilotVersionTokenPattern =
   /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
 
 function extractCopilotVersion(output: string): string | undefined {
-  return output
-    .trim()
-    .split(/\s+/)
-    .find((token) => copilotVersionTokenPattern.test(token));
+  for (const rawLine of output.split(/\r?\n/)) {
+    const line = rawLine.replace(/^[\t\v\f\r ]+|[\t\v\f\r ]+$/g, "");
+    const candidate = line.endsWith(".") ? line.slice(0, -1) : line;
+    if (copilotVersionTokenPattern.test(candidate)) return candidate;
+    const banner = candidate.match(
+      /^GitHub Copilot CLI (\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?)$/,
+    );
+    if (banner) return banner[1];
+  }
+  return undefined;
 }
 
 function isSupportedCopilotVersion(version: string): boolean {

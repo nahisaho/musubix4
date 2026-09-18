@@ -1013,15 +1013,66 @@ console.log(JSON.stringify({type:'result',exitCode:0}));
           ...common,
           config: parseHohConfig({
             model: "gpt-fixed",
+            copilotCliVersion: "1.0.86-beta.1+build.7",
             budget: { aiCredits: 30 },
             commands: { test: ["npm", "test"] },
           }),
           environment: {
             ...common.environment,
-            PROBE_VERSION: "notice 0.0.1) GitHub Copilot CLI 1.0.100",
+            PROBE_VERSION:
+              "\tGitHub Copilot CLI 1.0.86-beta.1+build.7. \r\nUpdate available",
           },
         }),
       ).resolves.toMatchObject({ attempts: 1 });
+      await expect(
+        invoke({
+          ...common,
+          config: parseHohConfig({
+            model: "gpt-fixed",
+            budget: { aiCredits: 30 },
+            commands: { test: ["npm", "test"] },
+          }),
+          environment: {
+            ...common.environment,
+            PROBE_VERSION:
+              "GitHub Copilot CLI 1.0.86.\nRun 'copilot update' to check for updates.",
+          },
+        }),
+      ).resolves.toMatchObject({ attempts: 1 });
+      await expect(
+        invoke({
+          ...common,
+          config: parseHohConfig({
+            model: "gpt-fixed",
+            budget: { aiCredits: 30 },
+            commands: { test: ["npm", "test"] },
+          }),
+          environment: {
+            ...common.environment,
+            PROBE_VERSION: "1.0.100.",
+          },
+        }),
+      ).resolves.toMatchObject({ attempts: 1 });
+      for (const probeVersion of [
+        "notice 0.0.1) GitHub Copilot CLI 1.0.100",
+        "GitHub Copilot CLI 1.0.100..",
+        "Update from 1.0.85 to 1.0.100",
+      ]) {
+        await expect(
+          invoke({
+            ...common,
+            config: parseHohConfig({
+              model: "gpt-fixed",
+              budget: { aiCredits: 30 },
+              commands: { test: ["npm", "test"] },
+            }),
+            environment: {
+              ...common.environment,
+              PROBE_VERSION: probeVersion,
+            },
+          }),
+        ).rejects.toThrow(/version|unsupported|unparsable/i);
+      }
       await expect(
         invoke({
           ...common,

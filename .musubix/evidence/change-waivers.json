@@ -1456,6 +1456,97 @@
       "order": 550,
       "previousSha256": "a1132529f1dbc56ce52bd57376cd64308246876defa46c8579ab185b6bd5e244",
       "payloadSha256": "60a572c95fe0709aaf0f6ecd8f1cb9bbeedbaf8bbcdaabe0b2d3148539beba9d"
+    },
+    {
+      "changeId": "CHANGE-0001",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "approver": "nahisaho",
+      "reason": "Historical CHANGE-0001 evidence predates monotonic ordering; current REQ-013 parser behavior has a fresh bounded Red-Green cycle and full validation.",
+      "recordedAt": "2026-09-18T06:03:23.579Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "36ed12afd17edd3ce9b55de808c71c88a5c58b8003e4c645873705225a464e47",
+      "order": 562,
+      "previousSha256": "60a572c95fe0709aaf0f6ecd8f1cb9bbeedbaf8bbcdaabe0b2d3148539beba9d",
+      "payloadSha256": "5a465e45c7bf177f5c12b0ebf6e495b6366162c0082635a2c55130bf2f20d173"
+    },
+    {
+      "changeId": "CHANGE-0010",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "approver": "nahisaho",
+      "reason": "Historical CHANGE-0010 evidence predates monotonic ordering; current REQ-013 parser behavior has a fresh bounded Red-Green cycle and full validation.",
+      "recordedAt": "2026-09-18T06:03:24.411Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "36ed12afd17edd3ce9b55de808c71c88a5c58b8003e4c645873705225a464e47",
+      "order": 563,
+      "previousSha256": "5a465e45c7bf177f5c12b0ebf6e495b6366162c0082635a2c55130bf2f20d173",
+      "payloadSha256": "5249ba962a9696fd6435dd7646fba50898d6fdad3e43b4f169cba9654e275828"
+    },
+    {
+      "changeId": "CHANGE-0012",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "approver": "nahisaho",
+      "reason": "CHANGE-0012 chronology is immutable; current TEST-HOH-COPILOT-ADAPTER-007 has a fresh bounded Red-Green cycle and full validation for the revised REQ-013 snapshot.",
+      "recordedAt": "2026-09-18T06:03:25.250Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "36ed12afd17edd3ce9b55de808c71c88a5c58b8003e4c645873705225a464e47",
+      "order": 564,
+      "previousSha256": "5249ba962a9696fd6435dd7646fba50898d6fdad3e43b4f169cba9654e275828",
+      "payloadSha256": "0bbd62b07b97d8fc2458da656afd157341141ef1f3107c90446c55b356ceae58"
+    },
+    {
+      "changeId": "CHANGE-0012",
+      "code": "CHANGE_RED_UNPROVEN",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "approver": "nahisaho",
+      "reason": "Current TEST-HOH-COPILOT-ADAPTER-007 records a genuine failing Red against the legacy parser; only the historical CHANGE-0012 phase boundary is waived.",
+      "recordedAt": "2026-09-18T06:03:26.066Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "8204f92aee8b220978f02101aa21ae5338c1ebbb5d39d58efda2f613fc1fec19",
+      "order": 565,
+      "previousSha256": "0bbd62b07b97d8fc2458da656afd157341141ef1f3107c90446c55b356ceae58",
+      "payloadSha256": "9dedc05127697e312ca1fdc253fafece574ed5303639601aab3b7012c69634c9"
+    },
+    {
+      "changeId": "CHANGE-0012",
+      "code": "CHANGE_GREEN_UNPROVEN",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "approver": "nahisaho",
+      "reason": "Current TEST-HOH-COPILOT-ADAPTER-007 records a passing Green for the line-oriented parser; only the historical CHANGE-0012 phase boundary is waived.",
+      "recordedAt": "2026-09-18T06:03:26.883Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "8204f92aee8b220978f02101aa21ae5338c1ebbb5d39d58efda2f613fc1fec19",
+      "order": 566,
+      "previousSha256": "9dedc05127697e312ca1fdc253fafece574ed5303639601aab3b7012c69634c9",
+      "payloadSha256": "020304ea4fc2017e722ef8d2ef119058de47940ffca057bb9157f1f224b96345"
+    },
+    {
+      "changeId": "CHANGE-0012",
+      "code": "CHANGE_COMPLETENESS_TDD",
+      "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "approver": "nahisaho",
+      "reason": "Fresh bounded REQ-013 Red-Green evidence and the full suite supersede historical CHANGE-0012 completeness debt.",
+      "recordedAt": "2026-09-18T06:03:27.771Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "8204f92aee8b220978f02101aa21ae5338c1ebbb5d39d58efda2f613fc1fec19",
+      "order": 567,
+      "previousSha256": "020304ea4fc2017e722ef8d2ef119058de47940ffca057bb9157f1f224b96345",
+      "payloadSha256": "1e15ba40306894b93f53e2ccfcac4617793b3c6b9b644b09782e60ed170c0e23"
+    },
+    {
+      "changeId": "CHANGE-0013",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "approver": "nahisaho",
+      "reason": "CHANGE-0013 has ordered design, Red, implementation, Green, and quality checkpoints plus a fresh bounded Red-Green cycle; the reused TEST-HOH-COPILOT-ADAPTER-007 identity also selects older pre-monotonic evidence, so only that selection ambiguity is waived.",
+      "recordedAt": "2026-09-18T06:03:28.581Z",
+      "snapshotVersion": 1,
+      "snapshotHash": "36ed12afd17edd3ce9b55de808c71c88a5c58b8003e4c645873705225a464e47",
+      "order": 568,
+      "previousSha256": "1e15ba40306894b93f53e2ccfcac4617793b3c6b9b644b09782e60ed170c0e23",
+      "payloadSha256": "c93e7bce1b09f68c033be633fdc91b716b03e4ac04ceae5a7b272a03bdd1d426"
     }
   ]
 }
