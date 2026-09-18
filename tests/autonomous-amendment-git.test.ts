@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, stat, utimes, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
@@ -37,14 +37,45 @@ describe("provisional inventory commits", () => {
       cwd: root,
     });
     spawnSync("git", ["config", "user.name", "Test"], { cwd: root });
+    await utimes(
+      resolve(root, "src/app.ts"),
+      Date.UTC(2000, 0, 1) / 1000,
+      Date.UTC(2000, 0, 1) / 1000,
+    );
     spawnSync("git", ["add", "."], { cwd: root });
     spawnSync("git", ["commit", "-qm", "base"], { cwd: root });
-    await writeFile(resolve(root, "src/app.ts"), "export const value = 2;\n");
-
     const store = new GitCandidateStore(root, "amendment", [
       ".musubix/compatibility/command-collisions.json",
     ]) as AmendmentGitStore;
     await store.initialize();
+    spawnSync("git", ["config", "core.trustctime", "false"], { cwd: root });
+    spawnSync("git", ["config", "core.checkStat", "minimal"], { cwd: root });
+    const appPath = resolve(root, "src/app.ts");
+    const originalMetadata = await stat(appPath);
+    const indexDebug = spawnSync(
+      "git",
+      ["ls-files", "--debug", "--", "src/app.ts"],
+      { cwd: root, encoding: "utf8" },
+    ).stdout;
+    const indexMtime = /mtime: (\d+):(\d+)/.exec(indexDebug);
+    expect(indexMtime).not.toBeNull();
+    const indexMtimeSeconds =
+      Number(indexMtime![1]) + Number(indexMtime![2]) / 1_000_000_000;
+    const gitDir = spawnSync("git", ["rev-parse", "--git-dir"], {
+      cwd: root,
+      encoding: "utf8",
+    }).stdout.trim();
+    await utimes(
+      resolve(root, gitDir, "index"),
+      originalMetadata.atimeMs / 1000,
+      indexMtimeSeconds,
+    );
+    await writeFile(appPath, "export const value = 2;\n");
+    await utimes(
+      appPath,
+      originalMetadata.atimeMs / 1000,
+      indexMtimeSeconds,
+    );
     const original = await store.snapshotStage("developer");
     const approved = Buffer.from(
       '{"schemaVersion":1,"entries":[{"path":"musubix4 run","classification":"musubix4-only","invocation":["run","--help"]}]}',

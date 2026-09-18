@@ -5,12 +5,15 @@ import {
   mkdir,
   open,
   readFile,
+  readlink,
   readdir,
   rename,
   rm,
   stat,
+  utimes,
   writeFile,
 } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { dirname, isAbsolute, relative, resolve, sep } from "node:path";
 import { spawn } from "node:child_process";
 import ts from "typescript";
@@ -257,6 +260,36 @@ export class ProtectedSetError extends Error {
   }
 }
 
+export class CandidateIsolationError extends Error {
+  constructor(
+    readonly code: string,
+    message: string,
+    readonly path: string,
+    readonly guidance: string,
+  ) {
+    super(message);
+    this.name = "CandidateIsolationError";
+  }
+
+  get paths(): string[] {
+    return [this.path];
+  }
+}
+
+export class CandidateBaselineError extends Error {
+  constructor(
+    readonly code:
+      | "CANDIDATE_BASELINE_MISSING"
+      | "CANDIDATE_BASELINE_INVALID"
+      | "CANDIDATE_BASELINE_DIGEST_MISMATCH"
+      | "CANDIDATE_BASE_COMMIT_UNRESOLVABLE",
+    message: string,
+  ) {
+    super(message);
+    this.name = "CandidateBaselineError";
+  }
+}
+
 export interface CommandRecord {
   schemaVersion: 1;
   argv: string[];
@@ -304,6 +337,7 @@ export type RunState =
   | "ready"
   | "approval-paused"
   | "amendment-required"
+  | "candidate-isolation-required"
   | "deploying"
   | "deployed"
   | "recovered"
@@ -335,8 +369,11 @@ export interface RunRecord {
     | "approve-requirements"
     | "approve-design"
     | "approve-release"
+    | "restore-candidate-isolation-paths-or-start-new-run"
+    | "start-new-run"
     | "none";
   offendingInventoryPaths?: string[];
+  offendingCandidateIsolationPaths?: string[];
   amendmentManifest?: {
     path: string;
     sha256: string;
@@ -345,6 +382,7 @@ export interface RunRecord {
   protectedSetDigest?: string;
   protectedSetPaths?: string[];
   collisionInventoryOverridePath?: string;
+  candidateBaselineInitialized?: boolean;
   terminalReason?: string;
   candidate?: CandidateSnapshot;
   preservationCandidate?: CandidateSnapshot;
@@ -411,6 +449,7 @@ export interface HohRunSummary {
   };
   terminalReason: string | null;
   requiredOperatorAction: NonNullable<RunRecord["requiredOperatorAction"]>;
+  offendingCandidateIsolationPaths: string[];
 }
 
 /** @id CODE-AUTOMATIC-HOH-CODING-001
@@ -434,6 +473,8 @@ export function summarizeHohRun(run: RunRecord): HohRunSummary {
     },
     terminalReason: run.terminalReason ?? null,
     requiredOperatorAction: run.requiredOperatorAction ?? "none",
+    offendingCandidateIsolationPaths:
+      run.offendingCandidateIsolationPaths ?? [],
   };
 }
 
@@ -485,6 +526,7 @@ export interface HohServices {
   };
   git: {
     initialize?(context: unknown): Promise<void>;
+    verifyIsolation?(context: unknown): Promise<void>;
     snapshot(context: unknown): Promise<CandidateSnapshot>;
     treeDigest(context: unknown): Promise<string>;
     rollback(context: unknown): Promise<CandidateSnapshot | void>;
@@ -2757,6 +2799,381 @@ async function gitCommand(
   return result.stdout.trim();
 }
 
+async function gitRawCommand(
+  root: string,
+  args: string[],
+  environment: Record<string, string> = {},
+  allowFailure = false,
+): Promise<string> {
+  const policy = derivePolicy("developer", {});
+  const result = await runBoundedProcess({
+    argv: ["git", ...args],
+    cwd: root,
+    environment,
+    timeoutMs: 30_000,
+    maxOutputBytes: 1_048_576,
+    policy,
+  });
+  if (!allowFailure && result.exitCode !== 0)
+    throw new Error(`git ${args[0]} failed: ${result.stderr.trim()}`);
+  return result.stdout;
+}
+
+interface GitDiffNameStatusEntry {
+  status: string;
+  path: string;
+  originalPath?: string;
+}
+
+interface CandidateIsolationPathState {
+  path: string;
+  content: string;
+  mode: string;
+  existence: "present" | "absent";
+  indexEntry: string;
+  stagedIdentity: string;
+  unstagedIdentity: string;
+}
+
+interface CandidateIsolationBaseline {
+  schemaVersion: 1;
+  runBaseCommit: string;
+  statusDigest: string;
+  dirtyPathStates: CandidateIsolationPathState[];
+}
+
+interface CandidateIsolationDirtyStatus {
+  staged: boolean;
+  unstaged: boolean;
+}
+
+function candidateIsolationStatusKey(
+  status: CandidateIsolationDirtyStatus,
+): string {
+  return `${status.staged ? "S" : " "}${status.unstaged ? "U" : " "}`;
+}
+
+function shouldTrackCandidateIsolationOriginalPath(status: string): boolean {
+  return status[0] === "R";
+}
+
+function markCandidateIsolationStatus(
+  statusByPath: Map<string, CandidateIsolationDirtyStatus>,
+  path: string,
+  phase: keyof CandidateIsolationDirtyStatus,
+): void {
+  const current = statusByPath.get(path) ?? { staged: false, unstaged: false };
+  current[phase] = true;
+  statusByPath.set(path, current);
+}
+
+function parseGitDiffNameStatusZ(output: string): GitDiffNameStatusEntry[] {
+  const entries: GitDiffNameStatusEntry[] = [];
+  const fields = output.split("\0");
+  for (let index = 0; index < fields.length; index += 1) {
+    const field = fields[index];
+    if (!field) continue;
+    const kind = field[0];
+    if (!kind) throw new Error("Malformed git diff --name-status output.");
+    if (kind === "R" || kind === "C") {
+      const originalPath = fields[index + 1];
+      const path = fields[index + 2];
+      if (!originalPath || !path)
+        throw new Error("Malformed git rename/copy status output.");
+      entries.push({ status: field, path, originalPath });
+      index += 2;
+      continue;
+    }
+    const path = fields[index + 1];
+    if (!path) throw new Error("Malformed git diff path output.");
+    entries.push({ status: field, path });
+    index += 1;
+  }
+  return entries;
+}
+
+function parseGitPathListZ(output: string): string[] {
+  return output.split("\0").filter((entry) => entry.length > 0);
+}
+
+async function candidateIsolationStatusByPath(
+  root: string,
+  baselineRef = "HEAD",
+  environment: Record<string, string> = {},
+): Promise<Map<string, string>> {
+  const statusByPath = new Map<string, CandidateIsolationDirtyStatus>();
+  for (const entry of parseGitDiffNameStatusZ(
+    await gitRawCommand(root, [
+      "diff-index",
+      "--cached",
+      "--name-status",
+      "-z",
+      "--find-renames",
+      "--find-copies",
+      baselineRef,
+      "--",
+    ], environment),
+  )) {
+    markCandidateIsolationStatus(statusByPath, entry.path, "staged");
+    if (
+      entry.originalPath &&
+      shouldTrackCandidateIsolationOriginalPath(entry.status)
+    )
+      markCandidateIsolationStatus(statusByPath, entry.originalPath, "staged");
+  }
+  for (const entry of parseGitDiffNameStatusZ(
+    await gitRawCommand(root, [
+      "diff-files",
+      "--name-status",
+      "-z",
+      "--find-renames",
+      "--find-copies",
+      "--",
+    ], environment),
+  )) {
+    markCandidateIsolationStatus(statusByPath, entry.path, "unstaged");
+    if (
+      entry.originalPath &&
+      shouldTrackCandidateIsolationOriginalPath(entry.status)
+    )
+      markCandidateIsolationStatus(statusByPath, entry.originalPath, "unstaged");
+  }
+  return new Map(
+    [...statusByPath.entries()]
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([path, status]) => [path, candidateIsolationStatusKey(status)]),
+  );
+}
+
+function hasCandidateIsolationStageChange(status: string): boolean {
+  return status[0] === "S";
+}
+
+function hasCandidateIsolationWorktreeChange(status: string): boolean {
+  return status[1] === "U";
+}
+
+function isCandidateIsolationDirtyPathState(
+  pathState: CandidateIsolationPathState,
+): boolean {
+  return !!pathState.stagedIdentity || !!pathState.unstagedIdentity;
+}
+
+function candidateIsolationBaselineDigest(
+  baseline: Omit<CandidateIsolationBaseline, "statusDigest">,
+): string {
+  return digest(
+    JSON.stringify({
+      schemaVersion: baseline.schemaVersion,
+      runBaseCommit: baseline.runBaseCommit,
+      dirtyPathStates: [...baseline.dirtyPathStates].sort((left, right) =>
+        left.path.localeCompare(right.path),
+      ),
+    }),
+  );
+}
+
+async function gitIndexSignature(root: string): Promise<string> {
+  const gitDir = await gitCommand(root, ["rev-parse", "--git-dir"]);
+  const bytes = await readFile(resolve(root, gitDir, "index")).catch(
+    (error: NodeJS.ErrnoException) => {
+      if (error.code === "ENOENT") return Buffer.alloc(0);
+      throw error;
+    },
+  );
+  return createHash("sha256").update(bytes).digest("hex");
+}
+
+async function readCandidateIsolationWorkspaceState(
+  root: string,
+  baselineRef = "HEAD",
+  observedPaths: Iterable<string> = [],
+): Promise<{
+  statusByPath: Map<string, string>;
+  pathStates: CandidateIsolationPathState[];
+  pathStateByPath: Map<string, CandidateIsolationPathState>;
+  fingerprint: string;
+}> {
+  const realIndexSignature = await gitIndexSignature(root);
+  return withIsolatedGitIndex(root, async (environment) => {
+    const statusByPath = await candidateIsolationStatusByPath(
+      root,
+      baselineRef,
+      environment,
+    );
+    const paths = new Set([...statusByPath.keys(), ...observedPaths]);
+    const pathStates = await Promise.all(
+      [...paths]
+        .sort()
+        .map((path) =>
+          observeCandidateIsolationPath(root, statusByPath, path, environment),
+        ),
+    );
+    const pathStateByPath = new Map(
+      pathStates.map((pathState) => [pathState.path, pathState]),
+    );
+    return {
+      statusByPath,
+      pathStates,
+      pathStateByPath,
+      fingerprint: digest(
+        JSON.stringify({
+          index: realIndexSignature,
+          pathStates,
+        }),
+      ),
+    };
+  });
+}
+
+async function gitPathSignature(
+  root: string,
+  args: string[],
+  environment: Record<string, string> = {},
+): Promise<string | null> {
+  const result = await runBoundedProcess({
+    argv: ["git", ...args],
+    cwd: root,
+    environment,
+    timeoutMs: 30_000,
+    maxOutputBytes: 1_048_576,
+    policy: derivePolicy("developer", {}),
+  });
+  if (result.exitCode !== 0) return null;
+  return result.stdout === "" ? null : result.stdout;
+}
+
+async function worktreePathSignature(
+  root: string,
+  path: string,
+): Promise<{
+  content: string;
+  mode: string;
+  existence: "present" | "absent";
+}> {
+  const absolute = resolve(root, path);
+  const metadata = await lstat(absolute).catch((error: NodeJS.ErrnoException) => {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  });
+  if (!metadata) return { content: "", mode: "", existence: "absent" };
+  if (metadata.isSymbolicLink()) {
+    const target = await readlink(absolute, "utf8");
+    return {
+      content: createHash("sha256").update(target).digest("hex"),
+      mode: "120000",
+      existence: "present",
+    };
+  }
+  if (metadata.isFile()) {
+    const bytes = await readFile(absolute);
+    return {
+      content: createHash("sha256").update(bytes).digest("hex"),
+      mode: metadata.mode & 0o111 ? "100755" : "100644",
+      existence: "present",
+    };
+  }
+  return {
+    content: "",
+    mode: metadata.mode.toString(8),
+    existence: "present",
+  };
+}
+
+async function observeCandidateIsolationPath(
+  root: string,
+  statusByPath: Map<string, string>,
+  path: string,
+  environment: Record<string, string> = {},
+): Promise<CandidateIsolationPathState> {
+  const status = statusByPath.get(path) ?? "  ";
+  const worktree = await worktreePathSignature(root, path);
+  return {
+    path,
+    ...worktree,
+    indexEntry:
+      (await gitPathSignature(
+        root,
+        ["ls-files", "--stage", "-z", "--", path],
+        environment,
+      )) ??
+      "",
+    stagedIdentity: hasCandidateIsolationStageChange(status) ? "modified" : "",
+    unstagedIdentity: hasCandidateIsolationWorktreeChange(status)
+      ? "modified"
+      : "",
+  };
+}
+
+async function withIsolatedGitIndex<T>(
+  root: string,
+  operation: (environment: Record<string, string>) => Promise<T>,
+): Promise<T> {
+  const gitDir = await gitCommand(root, ["rev-parse", "--git-dir"]);
+  const indexPath = resolve(root, gitDir, "index");
+  const tempDir = resolve(
+    tmpdir(),
+    `musubix4-candidate-isolation-${randomUUID()}`,
+  );
+  const tempIndexPath = resolve(tempDir, "index");
+  const indexMetadata = await stat(indexPath).catch(
+    (error: NodeJS.ErrnoException) => {
+      if (error.code === "ENOENT") return null;
+      throw error;
+    },
+  );
+  const indexBytes = indexMetadata
+    ? await readFile(indexPath)
+    : Buffer.alloc(0);
+  await mkdir(tempDir, { recursive: true });
+  await writeFile(tempIndexPath, indexBytes);
+  if (indexMetadata) {
+    await utimes(
+      tempIndexPath,
+      indexMetadata.atimeMs / 1000,
+      indexMetadata.mtimeMs / 1000,
+    );
+  }
+  try {
+    return await operation({ GIT_INDEX_FILE: tempIndexPath });
+  } finally {
+    await rm(tempDir, { recursive: true, force: true });
+  }
+}
+
+async function restorePathToCommitIndex(
+  root: string,
+  commit: string,
+  path: string,
+  environment: Record<string, string>,
+): Promise<void> {
+  const entry = await gitPathSignature(root, ["ls-tree", "-z", commit, "--", path]);
+  const normalized = entry?.split("\0").find(Boolean) ?? null;
+  if (!normalized) {
+    await gitCommand(
+      root,
+      ["update-index", "--force-remove", "--", path],
+      environment,
+      true,
+    );
+    return;
+  }
+  const tab = normalized.indexOf("\t");
+  if (tab === -1)
+    throw new Error(`Malformed git tree entry for candidate isolation path: ${path}`);
+  const metadata = normalized.slice(0, tab).split(/\s+/u);
+  if (metadata.length < 3)
+    throw new Error(`Malformed git tree metadata for candidate isolation path: ${path}`);
+  const mode = metadata[0]!;
+  const objectId = metadata[2]!;
+  const entryPath = normalized.slice(tab + 1);
+  await gitCommand(
+    root,
+    ["update-index", "--add", "--cacheinfo", mode, objectId, entryPath],
+    environment,
+  );
+}
+
 /** @id CODE-HOH-GIT-STORE-002
  * @implements REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-009 REQ-AUTONOMOUS-DEVELOPMENT-014 REQ-AUTONOMOUS-DEVELOPMENT-016 REQ-AUTONOMOUS-DEVELOPMENT-018
  * @design DES-AUTONOMOUS-DEVELOPMENT-008
@@ -2766,6 +3183,9 @@ export class GitCandidateStore {
   readonly runBase: string;
   readonly refsBase: string;
   private initialized = false;
+  private baseCommit: string | null = null;
+  private statusDigest: string | null = null;
+  private initialDirtyPaths = new Map<string, CandidateIsolationPathState>();
 
   constructor(
     root: string,
@@ -2787,55 +3207,165 @@ export class GitCandidateStore {
     return { path, env: { GIT_INDEX_FILE: path } };
   }
 
-  async initialize(): Promise<{
-    baseRef: string;
-    baseCommit: string;
-    statusDigest: string;
-  }> {
-    const baseCommit = await gitCommand(this.root, [
-      "rev-parse",
-      "--verify",
-      "HEAD",
-    ]);
-    const statusBefore = await gitCommand(this.root, [
-      "status",
-      "--porcelain=v1",
-      "-z",
-    ]);
-    await gitCommand(this.root, [
-      "update-ref",
-      `${this.refsBase}/base`,
-      baseCommit,
-    ]);
-    const statusAfter = await gitCommand(this.root, [
-      "status",
-      "--porcelain=v1",
-      "-z",
-    ]);
-    if (statusBefore !== statusAfter)
-      throw new Error(
-        "Git workspace preflight changed the user worktree or index.",
-      );
-    this.initialized = true;
-    return {
-      baseRef: `${this.refsBase}/base`,
-      baseCommit,
-      statusDigest: digest(statusBefore),
-    };
+  private baselinePath(): string {
+    return resolve(this.runBase, "candidate-baseline.json");
   }
 
-  async snapshotStage(stage: string): Promise<CandidateSnapshot> {
-    if (!this.initialized) await this.initialize();
-    if (!/^[A-Za-z0-9._-]+$/.test(stage))
-      throw new Error("Stage name contains unsupported characters.");
-    const statusBefore = await gitCommand(this.root, [
-      "status",
-      "--porcelain=v1",
-      "-z",
-    ]);
-    const index = await this.isolatedIndex(stage);
-    await gitCommand(this.root, ["read-tree", "HEAD"], index.env);
-    await gitCommand(this.root, ["add", "-u", "--"], index.env);
+  private applyBaseline(baseline: CandidateIsolationBaseline): void {
+    this.baseCommit = baseline.runBaseCommit;
+    this.statusDigest = baseline.statusDigest;
+    this.initialDirtyPaths = new Map(
+      baseline.dirtyPathStates
+        .filter(isCandidateIsolationDirtyPathState)
+        .map((pathState) => [pathState.path, pathState]),
+    );
+    this.initialized = true;
+  }
+
+  private async loadBaseline(): Promise<CandidateIsolationBaseline | undefined> {
+    const contents = await readFile(this.baselinePath(), "utf8").catch(
+      (error: NodeJS.ErrnoException) => {
+        if (error.code === "ENOENT") return undefined;
+        throw new CandidateBaselineError(
+          "CANDIDATE_BASELINE_INVALID",
+          `Persisted Git candidate isolation baseline is unreadable: ${error.message}`,
+        );
+      },
+    );
+    if (contents === undefined) return undefined;
+    let value: Partial<CandidateIsolationBaseline>;
+    try {
+      value = JSON.parse(contents) as Partial<CandidateIsolationBaseline>;
+    } catch {
+      throw new CandidateBaselineError(
+        "CANDIDATE_BASELINE_INVALID",
+        "Persisted Git candidate isolation baseline is not valid JSON.",
+      );
+    }
+    if (
+      value.schemaVersion !== 1 ||
+      typeof value.runBaseCommit !== "string" ||
+      typeof value.statusDigest !== "string" ||
+      !Array.isArray(value.dirtyPathStates) ||
+      value.dirtyPathStates.some(
+        (pathState) =>
+          !pathState ||
+          typeof pathState !== "object" ||
+          typeof pathState.path !== "string" ||
+          typeof pathState.content !== "string" ||
+          typeof pathState.mode !== "string" ||
+          !["present", "absent"].includes(pathState.existence ?? "") ||
+          typeof pathState.indexEntry !== "string" ||
+          typeof pathState.stagedIdentity !== "string" ||
+          typeof pathState.unstagedIdentity !== "string",
+      )
+    ) {
+      throw new CandidateBaselineError(
+        "CANDIDATE_BASELINE_INVALID",
+        "Persisted Git candidate isolation baseline has an invalid shape.",
+      );
+    }
+    const baseline = value as CandidateIsolationBaseline;
+    if (
+      baseline.statusDigest !==
+      candidateIsolationBaselineDigest({
+        schemaVersion: baseline.schemaVersion,
+        runBaseCommit: baseline.runBaseCommit,
+        dirtyPathStates: baseline.dirtyPathStates,
+      })
+    ) {
+      throw new CandidateBaselineError(
+        "CANDIDATE_BASELINE_DIGEST_MISMATCH",
+        "Persisted Git candidate isolation baseline digest does not match its contents.",
+      );
+    }
+    return baseline;
+  }
+
+  private async assertCandidateIsolation(
+    pathStateByPath: Map<string, CandidateIsolationPathState>,
+  ): Promise<void> {
+    if (!this.baseCommit)
+      throw new Error("Git candidate store was not initialized correctly.");
+    for (const [path, initial] of this.initialDirtyPaths) {
+      const current = pathStateByPath.get(path) ?? {
+        path,
+        content: "",
+        mode: "",
+        existence: "absent" as const,
+        indexEntry: "",
+        stagedIdentity: "",
+        unstagedIdentity: "",
+      };
+      const differences: string[] = [];
+      if (
+        current.stagedIdentity !== initial.stagedIdentity ||
+        current.unstagedIdentity !== initial.unstagedIdentity
+      )
+        differences.push("staged/unstaged state");
+      if (current.indexEntry !== initial.indexEntry)
+        differences.push("staged content or mode");
+      if (
+        current.content !== initial.content ||
+        current.mode !== initial.mode ||
+        current.existence !== initial.existence
+      )
+        differences.push("worktree content, mode, or existence");
+      if (differences.length > 0) {
+        const guidance =
+          "Commit, stash, or revert the pre-existing tracked change before creating a candidate snapshot.";
+        throw new CandidateIsolationError(
+          "CANDIDATE_ISOLATION_CONFLICT",
+          `Tracked path dirty at initialization changed after candidate isolation began: ${path} (${differences.join(", ")}). ${guidance}`,
+          path,
+          guidance,
+        );
+      }
+
+    }
+  }
+
+  async verifyInitializationBaseline(): Promise<void> {
+    if (!this.initialized) await this.initialize({ allowCreate: false });
+    if (!this.baseCommit)
+      throw new Error("Git candidate store was not initialized correctly.");
+    const workspace = await readCandidateIsolationWorkspaceState(
+      this.root,
+      this.baseCommit,
+      this.initialDirtyPaths.keys(),
+    );
+    await this.assertCandidateIsolation(workspace.pathStateByPath);
+  }
+
+  private async restoreInitiallyDirtyPaths(
+    environment: Record<string, string>,
+  ): Promise<void> {
+    if (!this.baseCommit)
+      throw new Error("Git candidate store was not initialized correctly.");
+    for (const path of this.initialDirtyPaths.keys()) {
+      await restorePathToCommitIndex(this.root, this.baseCommit, path, environment);
+    }
+  }
+
+  private async stageCleanRunProducedTrackedPaths(
+    statusByPath: Map<string, string>,
+    environment: Record<string, string>,
+  ): Promise<void> {
+    for (const [path, status] of statusByPath) {
+      if (this.initialDirtyPaths.has(path)) continue;
+      if (
+        !hasCandidateIsolationStageChange(status) &&
+        !hasCandidateIsolationWorktreeChange(status)
+      ) {
+        continue;
+      }
+      await gitCommand(this.root, ["add", "-A", "--", path], environment);
+    }
+  }
+
+  private async stageCandidateExtraPaths(
+    environment: Record<string, string>,
+  ): Promise<void> {
     for (const path of this.candidateExtraPaths) {
       const absolute = resolve(this.root, path);
       if (relative(this.root, absolute).startsWith(".."))
@@ -2843,86 +3373,243 @@ export class GitCandidateStore {
       await stat(absolute).catch(() => {
         throw new Error(`candidateExtraPaths entry does not exist: ${path}`);
       });
-      await gitCommand(this.root, ["add", "--force", "--", path], index.env);
-    }
-    const treeDigest = await gitCommand(this.root, ["write-tree"], index.env);
-    const parent = await gitCommand(this.root, ["rev-parse", "HEAD"]);
-    const commit = await gitCommand(
-      this.root,
-      [
-        "commit-tree",
-        treeDigest,
-        "-p",
-        parent,
-        "-m",
-        `musubix4 ${this.runId} ${stage}`,
-      ],
-      index.env,
-    );
-    const ref = `${this.refsBase}/stages/${stage}`;
-    await gitCommand(this.root, ["update-ref", ref, commit]);
-    const supportedLockfiles = [
-      "package-lock.json",
-      "npm-shrinkwrap.json",
-      "pnpm-lock.yaml",
-      "yarn.lock",
-    ];
-    const configuredLockfile = this.dependencyProvisioning?.lockfilePath;
-    const presentLockfiles: string[] = [];
-    for (const path of configuredLockfile
-      ? [configuredLockfile]
-      : supportedLockfiles) {
-      const exists = await gitCommand(
-        this.root,
-        ["cat-file", "-e", `${ref}:${path}`],
-        {},
-        true,
+      const trackedEntries = parseGitPathListZ(
+        await gitRawCommand(
+          this.root,
+          ["ls-files", "-z", "--", path],
+          environment,
+        ),
       );
-      if (exists === "") {
-        const probe = await runBoundedProcess({
-          argv: ["git", "cat-file", "-e", `${ref}:${path}`],
-          cwd: this.root,
-          timeoutMs: 30_000,
-          maxOutputBytes: 1_048_576,
-          policy: derivePolicy("developer", {}),
-        });
-        if (probe.exitCode === 0) presentLockfiles.push(path);
+      if (trackedEntries.length === 0) {
+        await gitCommand(
+          this.root,
+          ["add", "--force", "--", path],
+          environment,
+        );
+        continue;
+      }
+      const untrackedEntries = parseGitPathListZ(
+        await gitRawCommand(
+          this.root,
+          ["ls-files", "--others", "-z", "--", path],
+          environment,
+        ),
+      );
+      for (const entry of untrackedEntries) {
+        await gitCommand(
+          this.root,
+          ["add", "--force", "--", entry],
+          environment,
+        );
       }
     }
-    if (configuredLockfile && presentLockfiles.length !== 1) {
-      throw new Error(
-        `Configured lockfile is absent from the candidate: ${configuredLockfile}`,
-      );
+  }
+
+  private async deleteSnapshotRef(ref: string): Promise<void> {
+    await gitCommand(this.root, ["update-ref", "-d", ref], {}, true);
+  }
+
+  async initialize(options: { allowCreate?: boolean } = {}): Promise<{
+    baseRef: string;
+    baseCommit: string;
+    statusDigest: string;
+  }> {
+    if (this.initialized) {
+      if (!this.baseCommit || !this.statusDigest)
+        throw new Error("Git candidate store was not initialized correctly.");
+      return {
+        baseRef: `${this.refsBase}/base`,
+        baseCommit: this.baseCommit,
+        statusDigest: this.statusDigest,
+      };
     }
-    if (!configuredLockfile && presentLockfiles.length > 1) {
-      throw new Error(
-        `Multiple candidate lockfiles require an explicit selection: ${presentLockfiles.join(", ")}`,
-      );
-    }
-    const lockfilePath = presentLockfiles[0];
-    let lockfile: CandidateSnapshot["lockfile"];
-    if (lockfilePath) {
-      const blob = await runBoundedProcess({
-        argv: ["git", "show", `${ref}:${lockfilePath}`],
+    const persisted = await this.loadBaseline();
+    if (persisted) {
+      const resolved = await runBoundedProcess({
+        argv: ["git", "cat-file", "-e", `${persisted.runBaseCommit}^{commit}`],
         cwd: this.root,
         timeoutMs: 30_000,
-        maxOutputBytes: 16_777_216,
+        maxOutputBytes: 1_048_576,
         policy: derivePolicy("developer", {}),
       });
-      if (blob.exitCode !== 0 || blob.timedOut || blob.truncated) {
-        throw new Error(`Unable to read candidate lockfile: ${lockfilePath}`);
+      if (resolved.exitCode !== 0) {
+        throw new CandidateBaselineError(
+          "CANDIDATE_BASE_COMMIT_UNRESOLVABLE",
+          `Persisted Git candidate base commit is unavailable: ${persisted.runBaseCommit}`,
+        );
       }
-      lockfile = { path: lockfilePath, sha256: digest(blob.stdout) };
+      await gitCommand(this.root, [
+        "update-ref",
+        `${this.refsBase}/base`,
+        persisted.runBaseCommit,
+      ]);
+      this.applyBaseline(persisted);
+      return {
+        baseRef: `${this.refsBase}/base`,
+        baseCommit: persisted.runBaseCommit,
+        statusDigest: persisted.statusDigest,
+      };
     }
-    await rm(index.path, { force: true });
-    const statusAfter = await gitCommand(this.root, [
-      "status",
-      "--porcelain=v1",
-      "-z",
+    if (options.allowCreate === false) {
+      throw new CandidateBaselineError(
+        "CANDIDATE_BASELINE_MISSING",
+        "Persisted Git candidate isolation baseline is missing after run work began.",
+      );
+    }
+    const baseCommit = await gitCommand(this.root, [
+      "rev-parse",
+      "--verify",
+      "HEAD",
     ]);
-    if (statusBefore !== statusAfter)
-      throw new Error("Candidate snapshot changed the user worktree or index.");
-    return { ref, treeDigest, ...(lockfile ? { lockfile } : {}) };
+    const workspaceBefore = await readCandidateIsolationWorkspaceState(
+      this.root,
+      baseCommit,
+    );
+    await gitCommand(this.root, [
+      "update-ref",
+      `${this.refsBase}/base`,
+      baseCommit,
+    ]);
+    const workspaceAfter = await readCandidateIsolationWorkspaceState(
+      this.root,
+      baseCommit,
+    );
+    if (workspaceBefore.fingerprint !== workspaceAfter.fingerprint)
+      throw new Error(
+        "Git workspace preflight changed the user worktree or index.",
+      );
+    const initialDirtyPathStates = workspaceBefore.pathStates.filter(
+      isCandidateIsolationDirtyPathState,
+    );
+    const baselineWithoutDigest: Omit<
+      CandidateIsolationBaseline,
+      "statusDigest"
+    > = {
+      schemaVersion: 1,
+      runBaseCommit: baseCommit,
+      dirtyPathStates: initialDirtyPathStates,
+    };
+    const baseline: CandidateIsolationBaseline = {
+      ...baselineWithoutDigest,
+      statusDigest: candidateIsolationBaselineDigest(baselineWithoutDigest),
+    };
+    await atomicWrite(this.baselinePath(), baseline);
+    this.applyBaseline(baseline);
+    return {
+      baseRef: `${this.refsBase}/base`,
+      baseCommit: baseline.runBaseCommit,
+      statusDigest: baseline.statusDigest,
+    };
+  }
+
+  async snapshotStage(stage: string): Promise<CandidateSnapshot> {
+    if (!this.initialized) await this.initialize();
+    if (!/^[A-Za-z0-9._-]+$/.test(stage))
+      throw new Error("Stage name contains unsupported characters.");
+    if (!this.baseCommit)
+      throw new Error("Git candidate store was not initialized correctly.");
+    const baseCommit = this.baseCommit;
+    const workspaceBefore = await readCandidateIsolationWorkspaceState(
+      this.root,
+      baseCommit,
+      this.initialDirtyPaths.keys(),
+    );
+    await this.assertCandidateIsolation(workspaceBefore.pathStateByPath);
+    let ref = `${this.refsBase}/stages/${stage}`;
+    let treeDigest = "";
+    let lockfile: CandidateSnapshot["lockfile"];
+    let refCreated = false;
+    try {
+      await withIsolatedGitIndex(this.root, async (environment) => {
+        await gitCommand(this.root, ["read-tree", baseCommit], environment);
+        await this.stageCleanRunProducedTrackedPaths(
+          workspaceBefore.statusByPath,
+          environment,
+        );
+        await this.stageCandidateExtraPaths(environment);
+        await this.restoreInitiallyDirtyPaths(environment);
+        treeDigest = await gitCommand(this.root, ["write-tree"], environment);
+        const commit = await gitCommand(
+          this.root,
+          [
+            "commit-tree",
+            treeDigest,
+            "-p",
+            baseCommit,
+            "-m",
+            `musubix4 ${this.runId} ${stage}`,
+          ],
+          environment,
+        );
+        await gitCommand(this.root, ["update-ref", ref, commit]);
+        refCreated = true;
+      });
+      const supportedLockfiles = [
+        "package-lock.json",
+        "npm-shrinkwrap.json",
+        "pnpm-lock.yaml",
+        "yarn.lock",
+      ];
+      const configuredLockfile = this.dependencyProvisioning?.lockfilePath;
+      const presentLockfiles: string[] = [];
+      for (const path of configuredLockfile
+        ? [configuredLockfile]
+        : supportedLockfiles) {
+        const exists = await gitCommand(
+          this.root,
+          ["cat-file", "-e", `${ref}:${path}`],
+          {},
+          true,
+        );
+        if (exists === "") {
+          const probe = await runBoundedProcess({
+            argv: ["git", "cat-file", "-e", `${ref}:${path}`],
+            cwd: this.root,
+            timeoutMs: 30_000,
+            maxOutputBytes: 1_048_576,
+            policy: derivePolicy("developer", {}),
+          });
+          if (probe.exitCode === 0) presentLockfiles.push(path);
+        }
+      }
+      if (configuredLockfile && presentLockfiles.length !== 1) {
+        throw new Error(
+          `Configured lockfile is absent from the candidate: ${configuredLockfile}`,
+        );
+      }
+      if (!configuredLockfile && presentLockfiles.length > 1) {
+        throw new Error(
+          `Multiple candidate lockfiles require an explicit selection: ${presentLockfiles.join(", ")}`,
+        );
+      }
+      const lockfilePath = presentLockfiles[0];
+      if (lockfilePath) {
+        const blob = await runBoundedProcess({
+          argv: ["git", "show", `${ref}:${lockfilePath}`],
+          cwd: this.root,
+          timeoutMs: 30_000,
+          maxOutputBytes: 16_777_216,
+          policy: derivePolicy("developer", {}),
+        });
+        if (blob.exitCode !== 0 || blob.timedOut || blob.truncated) {
+          throw new Error(`Unable to read candidate lockfile: ${lockfilePath}`);
+        }
+        lockfile = { path: lockfilePath, sha256: digest(blob.stdout) };
+      }
+      const workspaceAfter = await readCandidateIsolationWorkspaceState(
+        this.root,
+        baseCommit,
+        this.initialDirtyPaths.keys(),
+      );
+      if (workspaceBefore.fingerprint !== workspaceAfter.fingerprint) {
+        await this.assertCandidateIsolation(workspaceAfter.pathStateByPath);
+        throw new Error("Candidate snapshot changed the user worktree or index.");
+      }
+      return { ref, treeDigest, ...(lockfile ? { lockfile } : {}) };
+    } catch (cause) {
+      if (refCreated) await this.deleteSnapshotRef(ref);
+      throw cause;
+    }
   }
 
   async discardProvisionalCandidate(): Promise<void> {
@@ -3460,6 +4147,33 @@ export class FileRunStore {
       a.localeCompare(b),
     );
     if (terminal) next.terminalReason = "amendment-episode-limit";
+    await this.save(next);
+    return next;
+  }
+
+  async enterCandidateIsolationRequired(
+    runId: string,
+    error: CandidateIsolationError,
+  ): Promise<RunRecord> {
+    const run = await this.status(runId);
+    if (run.state === "candidate-isolation-required") return run;
+    const offendingPaths = [...new Set(error.paths)].sort((left, right) =>
+      left.localeCompare(right),
+    );
+    const next = await this.transition(
+      runId,
+      "candidate-isolation-required",
+      "candidate-isolation-required",
+      {
+        code: error.code,
+        offendingCandidateIsolationPaths: offendingPaths,
+        requiredOperatorAction: error.guidance,
+      },
+    );
+    next.requiredOperatorAction =
+      "restore-candidate-isolation-paths-or-start-new-run";
+    next.offendingCandidateIsolationPaths = offendingPaths;
+    Reflect.set(next, "terminalReason", undefined);
     await this.save(next);
     return next;
   }
@@ -4742,12 +5456,31 @@ export class HohOrchestrator {
       ),
       ...(protectedSet ? { protectedSet } : {}),
     });
-    await this.services.git.initialize?.({ run });
-    return run;
+    if (!this.services.git.initialize) return run;
+    await this.services.git.initialize({ run, allowCreate: true });
+    const initialized = await this.store.transition(
+      run.id,
+      "created",
+      "candidate-baseline-initialized",
+    );
+    initialized.candidateBaselineInitialized = true;
+    await this.store.save(initialized);
+    return initialized;
   }
 
   async resume(runId: string): Promise<RunRecord> {
     const initial = await this.store.status(runId);
+    if (
+      [
+        "deployed",
+        "recovered",
+        "rollback-failed",
+        "stopped",
+        "failed",
+      ].includes(initial.state)
+    ) {
+      return initial;
+    }
     const verifiedAutoRequired = await requiresVerifiedAutoApproval(
       this.store.root,
       initial,
@@ -4776,8 +5509,75 @@ export class HohOrchestrator {
           "stopped",
           "failed",
         ].includes(run.state)
-      )
+      ) {
         return run;
+      }
+      if (this.services.git.initialize) {
+        const roleStarted = run.journal.some((entry) =>
+          [
+            "planner-completed",
+            "developer-completed",
+            "qa-completed",
+          ].includes(entry.event),
+        );
+        try {
+          await this.services.git.initialize({
+            run,
+            allowCreate: !run.candidateBaselineInitialized && !roleStarted,
+          });
+          if (!run.candidateBaselineInitialized) {
+            const initialized = await this.store.transition(
+              runId,
+              run.state,
+              "candidate-baseline-initialized",
+            );
+            initialized.candidateBaselineInitialized = true;
+            await this.store.save(initialized);
+            run.candidateBaselineInitialized = true;
+            run.journal = initialized.journal;
+          }
+        } catch (cause) {
+          if (cause instanceof CandidateBaselineError) {
+            const failed = await this.store.transition(
+              runId,
+              "failed",
+              "candidate-baseline-invalid",
+              { code: cause.code },
+            );
+            failed.terminalReason = "candidate-baseline-invalid";
+            failed.requiredOperatorAction = "start-new-run";
+            failed.offendingCandidateIsolationPaths = [];
+            await this.store.save(failed);
+            return failed;
+          }
+          throw cause;
+        }
+      }
+      if (run.state === "candidate-isolation-required") {
+        if (!this.services.git.verifyIsolation) {
+          throw new CandidateIsolationError(
+            "CANDIDATE_ISOLATION_CONFLICT",
+            "Candidate isolation must be re-verified before this run can resume.",
+            run.offendingCandidateIsolationPaths?.[0] ?? "",
+            "Restore every offending path to its initialization fingerprint or start a new run.",
+          );
+        }
+        try {
+          await this.services.git.verifyIsolation({ run });
+        } catch (cause) {
+          if (cause instanceof CandidateIsolationError) throw cause;
+          throw cause;
+        }
+        const resumed = await this.store.transition(
+          runId,
+          "planned",
+          "candidate-isolation-resolved",
+        );
+        resumed.requiredOperatorAction = "none";
+        resumed.offendingCandidateIsolationPaths = [];
+        await this.store.save(resumed);
+        return resumed;
+      }
       if (run.protectedSetDigest) {
         let observed: { paths: string[]; digest: string };
         try {
@@ -5050,7 +5850,15 @@ export class HohOrchestrator {
             `Developer output retries exhausted: ${validationError instanceof Error ? validationError.message : String(validationError)}`,
           );
         }
-        const candidate = await this.services.git.snapshot({ run, output });
+        let candidate: CandidateSnapshot;
+        try {
+          candidate = await this.services.git.snapshot({ run, output });
+        } catch (cause) {
+          if (cause instanceof CandidateIsolationError) {
+            return this.store.enterCandidateIsolationRequired(runId, cause);
+          }
+          throw cause;
+        }
         try {
           await this.services.project.staticCandidateValidation?.({
             run,

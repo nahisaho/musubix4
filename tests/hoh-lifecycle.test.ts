@@ -1287,6 +1287,7 @@ if (process.env.SCENARIO === 'truncated') {
      */
     it("TEST-HOH-GIT-STORE-002 snapshots candidates and QA without mutating the user worktree or index", async () => {
       const root = await fixture({
+        ".gitignore": ".musubix4/\n",
         "tracked.txt": "base\n",
         "extra.txt": "candidate\n",
       });
@@ -1295,7 +1296,7 @@ if (process.env.SCENARIO === 'truncated') {
         cwd: root,
       });
       spawnSync("git", ["config", "user.name", "Test"], { cwd: root });
-      spawnSync("git", ["add", "tracked.txt"], { cwd: root });
+      spawnSync("git", ["add", ".gitignore", "tracked.txt"], { cwd: root });
       spawnSync("git", ["commit", "-qm", "base"], { cwd: root });
       await writeFile(resolve(root, "tracked.txt"), "user-change\n");
       spawnSync("git", ["add", "tracked.txt"], { cwd: root });
@@ -1334,7 +1335,7 @@ if (process.env.SCENARIO === 'truncated') {
       expect(candidate.ref).toBe("refs/musubix4/runs/run-1/stages/developer-1");
       const qa = await store.createQaWorkspace(candidate);
       expect(await readFile(resolve(qa.path, "tracked.txt"), "utf8")).toBe(
-        "user-change\n",
+        "base\n",
       );
       expect(await readFile(resolve(qa.path, "extra.txt"), "utf8")).toBe(
         "candidate\n",

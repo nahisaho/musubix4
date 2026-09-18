@@ -227,15 +227,39 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
       },
     },
     git: {
-      initialize: async ({ run }: { run: { id: string; config: HohConfig } }) => {
+      initialize: async ({
+        run,
+        allowCreate,
+      }: {
+        run: { id: string; config: HohConfig };
+        allowCreate?: boolean;
+      }) => {
         const candidate = new GitCandidateStore(
           root,
           run.id,
           run.config.candidateExtraPaths,
           run.config.dependencyProvisioning,
         );
-        await candidate.initialize();
+        await candidate.initialize({
+          ...(allowCreate === undefined ? {} : { allowCreate }),
+        });
         candidates.set(run.id, candidate);
+      },
+      verifyIsolation: async ({
+        run,
+      }: {
+        run: { id: string; config: HohConfig };
+      }) => {
+        const candidate =
+          candidates.get(run.id) ??
+          new GitCandidateStore(
+            root,
+            run.id,
+            run.config.candidateExtraPaths,
+            run.config.dependencyProvisioning,
+          );
+        candidates.set(run.id, candidate);
+        await candidate.verifyInitializationBaseline();
       },
       snapshot: async ({ run }: { run: { id: string; iteration: number; config: HohConfig } }) => {
         const candidate = candidates.get(run.id) ?? new GitCandidateStore(
