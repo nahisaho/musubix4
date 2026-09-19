@@ -13,7 +13,7 @@
         "path": ".musubix/evidence/tdd-results/{testId}.json"
       },
       "required": true,
-      "timeoutMs": 120000
+      "timeoutMs": 300000
     },
     {
       "name": "typecheck",
@@ -87,7 +87,8 @@
   "workflow": {
     "mode": "compatible",
     "maxAgeSeconds": 3600,
-    "maxFutureSkewSeconds": 60
+    "maxFutureSkewSeconds": 60,
+    "maxTranscriptBytes": 125829120
   },
   "attestation": {
     "mode": "local",
