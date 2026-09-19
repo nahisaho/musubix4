@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-19T11:53:54.817Z",
+  "generatedAt": "2026-09-19T22:41:44.397Z",
   "status": "pass",
   "checks": [
     {
@@ -188,7 +188,7 @@
       "name": "workflow",
       "required": true,
       "status": "pass",
-      "summary": "54 workflow declaration(s) across 5 Skill(s) reconciled with Copilot invocation events.",
+      "summary": "56 workflow declaration(s) across 5 Skill(s) reconciled with Copilot invocation events.",
       "diagnostics": [
         {
           "code": "WORKFLOW_SKILL_NOT_INVOKED",
@@ -199,9 +199,9 @@
           "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -213,9 +213,9 @@
           "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -227,9 +227,9 @@
           "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -241,9 +241,9 @@
           "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -255,9 +255,9 @@
           "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -269,9 +269,9 @@
           "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -283,9 +283,9 @@
           "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -297,9 +297,9 @@
           "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -311,9 +311,9 @@
           "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -325,9 +325,9 @@
           "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -339,9 +339,9 @@
           "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -353,9 +353,9 @@
           "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -367,9 +367,9 @@
           "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -381,9 +381,9 @@
           "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -395,9 +395,9 @@
           "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -409,9 +409,9 @@
           "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -423,9 +423,9 @@
           "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -437,9 +437,9 @@
           "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -451,9 +451,9 @@
           "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -465,9 +465,9 @@
           "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -479,9 +479,9 @@
           "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -493,9 +493,9 @@
           "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -507,9 +507,9 @@
           "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -521,9 +521,9 @@
           "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -535,9 +535,9 @@
           "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -549,9 +549,9 @@
           "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -563,9 +563,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -577,9 +577,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -591,9 +591,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -605,9 +605,9 @@
           "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -619,9 +619,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:12.659Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -633,9 +633,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:12.659Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -647,9 +647,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:13.451Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -661,9 +661,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:13.451Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -675,9 +675,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -689,9 +689,9 @@
           "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -703,9 +703,9 @@
           "declarationRecordedAt": "2026-09-17T06:34:03.621Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -717,9 +717,9 @@
           "declarationRecordedAt": "2026-09-17T06:34:03.621Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -731,9 +731,9 @@
           "declarationRecordedAt": "2026-09-17T09:05:19.779Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -745,9 +745,9 @@
           "declarationRecordedAt": "2026-09-17T09:05:19.779Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -759,9 +759,9 @@
           "declarationRecordedAt": "2026-09-17T12:43:06.923Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -773,9 +773,9 @@
           "declarationRecordedAt": "2026-09-17T12:43:06.923Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -787,9 +787,9 @@
           "declarationRecordedAt": "2026-09-17T14:11:22.340Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -801,9 +801,9 @@
           "declarationRecordedAt": "2026-09-17T14:11:22.340Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -815,9 +815,9 @@
           "declarationRecordedAt": "2026-09-17T14:33:28.293Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -829,9 +829,9 @@
           "declarationRecordedAt": "2026-09-17T14:33:28.293Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -843,9 +843,9 @@
           "declarationRecordedAt": "2026-09-17T14:47:53.525Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -857,9 +857,9 @@
           "declarationRecordedAt": "2026-09-17T14:47:53.525Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -871,9 +871,9 @@
           "declarationRecordedAt": "2026-09-17T21:10:38.549Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -885,9 +885,9 @@
           "declarationRecordedAt": "2026-09-17T21:10:38.549Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -899,9 +899,9 @@
           "declarationRecordedAt": "2026-09-17T22:11:07.203Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -913,9 +913,9 @@
           "declarationRecordedAt": "2026-09-17T22:11:07.203Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -927,9 +927,9 @@
           "declarationRecordedAt": "2026-09-17T23:54:40.589Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -941,9 +941,9 @@
           "declarationRecordedAt": "2026-09-17T23:54:40.589Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -955,9 +955,9 @@
           "declarationRecordedAt": "2026-09-18T00:34:27.053Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -969,9 +969,9 @@
           "declarationRecordedAt": "2026-09-18T00:34:27.053Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -983,9 +983,9 @@
           "declarationRecordedAt": "2026-09-18T03:30:33.916Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -997,9 +997,9 @@
           "declarationRecordedAt": "2026-09-18T03:30:33.916Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1011,9 +1011,9 @@
           "declarationRecordedAt": "2026-09-18T03:59:30.546Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1025,9 +1025,9 @@
           "declarationRecordedAt": "2026-09-18T03:59:30.546Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1039,9 +1039,9 @@
           "declarationRecordedAt": "2026-09-18T04:04:45.890Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1053,9 +1053,9 @@
           "declarationRecordedAt": "2026-09-18T04:04:45.890Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1067,9 +1067,9 @@
           "declarationRecordedAt": "2026-09-18T04:18:46.522Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1081,9 +1081,9 @@
           "declarationRecordedAt": "2026-09-18T04:18:46.522Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1095,9 +1095,9 @@
           "declarationRecordedAt": "2026-09-18T04:37:44.764Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1109,9 +1109,9 @@
           "declarationRecordedAt": "2026-09-18T04:37:44.764Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1123,9 +1123,9 @@
           "declarationRecordedAt": "2026-09-18T05:06:41.382Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1137,9 +1137,9 @@
           "declarationRecordedAt": "2026-09-18T05:06:41.382Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1151,9 +1151,9 @@
           "declarationRecordedAt": "2026-09-18T05:22:51.775Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1165,9 +1165,9 @@
           "declarationRecordedAt": "2026-09-18T05:22:51.775Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1179,9 +1179,9 @@
           "declarationRecordedAt": "2026-09-18T05:28:52.567Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1193,9 +1193,9 @@
           "declarationRecordedAt": "2026-09-18T05:28:52.567Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1207,9 +1207,9 @@
           "declarationRecordedAt": "2026-09-18T05:42:45.067Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1221,9 +1221,9 @@
           "declarationRecordedAt": "2026-09-18T05:42:45.067Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1235,9 +1235,9 @@
           "declarationRecordedAt": "2026-09-18T06:03:39.901Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1249,9 +1249,9 @@
           "declarationRecordedAt": "2026-09-18T06:03:39.901Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1263,9 +1263,9 @@
           "declarationRecordedAt": "2026-09-18T06:24:26.717Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1277,9 +1277,9 @@
           "declarationRecordedAt": "2026-09-18T06:24:26.717Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.391Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1291,9 +1291,9 @@
           "declarationRecordedAt": "2026-09-18T08:27:01.293Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1305,9 +1305,9 @@
           "declarationRecordedAt": "2026-09-18T08:27:01.293Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1319,9 +1319,9 @@
           "declarationRecordedAt": "2026-09-18T08:49:32.672Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1333,9 +1333,9 @@
           "declarationRecordedAt": "2026-09-18T08:49:32.672Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1347,9 +1347,9 @@
           "declarationRecordedAt": "2026-09-18T09:21:03.589Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1361,9 +1361,9 @@
           "declarationRecordedAt": "2026-09-18T09:21:03.589Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1375,9 +1375,9 @@
           "declarationRecordedAt": "2026-09-18T09:38:04.372Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1389,9 +1389,9 @@
           "declarationRecordedAt": "2026-09-18T09:38:04.372Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.762Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
           }
         },
         {
@@ -1403,9 +1403,9 @@
           "declarationRecordedAt": "2026-09-18T23:25:17.492Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1417,9 +1417,9 @@
           "declarationRecordedAt": "2026-09-18T23:25:17.492Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1431,9 +1431,9 @@
           "declarationRecordedAt": "2026-09-18T23:34:26.273Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1445,9 +1445,9 @@
           "declarationRecordedAt": "2026-09-18T23:34:26.273Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1459,9 +1459,9 @@
           "declarationRecordedAt": "2026-09-19T01:05:17.973Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         },
         {
@@ -1473,9 +1473,9 @@
           "declarationRecordedAt": "2026-09-19T01:05:17.973Z",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-            "recordedAt": "2026-09-19T11:49:10.392Z",
-            "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+            "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+            "recordedAt": "2026-09-19T22:36:54.761Z",
+            "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
           }
         }
       ]
@@ -1484,14 +1484,14 @@
       "name": "tdd",
       "required": true,
       "status": "pass",
-      "summary": "203 Red-Green TDD cycle(s) recorded.",
+      "summary": "206 Red-Green TDD cycle(s) recorded.",
       "diagnostics": []
     },
     {
       "name": "change-history",
       "required": true,
       "status": "pass",
-      "summary": "16 staged change(s) checked for ordered artifact and TDD evidence.",
+      "summary": "17 staged change(s) checked for ordered artifact and TDD evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
@@ -1501,8 +1501,8 @@
           "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "Historical CHANGE-0001 evidence predates monotonic ordering; current trace, TDD, commands, and release checks are independently rerun.",
-            "recordedAt": "2026-09-15T23:58:45.694Z"
+            "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+            "recordedAt": "2026-09-19T14:46:40.278Z"
           }
         },
         {
@@ -1921,8 +1921,8 @@
           "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The implementation checkpoint follows the immutable Red checkpoint, while the authoritative TEST-AUTONOMOUS-ORACLE-005 Red and Green evidence remains recorded and passing.",
-            "recordedAt": "2026-09-17T13:29:45.563Z"
+            "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+            "recordedAt": "2026-09-19T14:46:41.314Z"
           }
         },
         {
@@ -1933,8 +1933,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "A genuine failing baseline-oracle Red was recorded before regeneration; only append-only checkpoint ordering prevents direct recognition.",
-            "recordedAt": "2026-09-17T13:29:46.420Z"
+            "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+            "recordedAt": "2026-09-19T14:46:42.316Z"
           }
         },
         {
@@ -1945,8 +1945,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "The regenerated baseline and dedicated compatibility test pass TEST-AUTONOMOUS-ORACLE-005; only append-only checkpoint ordering prevents direct recognition.",
-            "recordedAt": "2026-09-17T13:29:47.293Z"
+            "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+            "recordedAt": "2026-09-19T14:46:43.294Z"
           }
         },
         {
@@ -2332,6 +2332,30 @@
             "reason": "Current deterministic Red-Green evidence and all required verification pass; only historical ordering and evidence-selection debt caused by closed append-only phase boundaries is waived.",
             "recordedAt": "2026-09-19T09:42:01.791Z"
           }
+        },
+        {
+          "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+          "severity": "warning",
+          "message": "CHANGE-0017 changed tests between Red and Green.",
+          "changeId": "CHANGE-0017",
+          "detail": "REQ-AUTONOMOUS-DEVELOPMENT-001",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "CHANGE-0017 kept TEST-AUTONOMOUS-ORACLE-006 fixed through its valid Red-Green cycle; additional non-target compatibility and source-version regression tests were updated after Red and all focused/full suites pass.",
+            "recordedAt": "2026-09-19T14:17:16.328Z"
+          }
+        },
+        {
+          "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+          "severity": "warning",
+          "message": "CHANGE-0017:REQ-AUTONOMOUS-DEVELOPMENT-001 references TDD evidence without monotonic order; regenerate the cycle.",
+          "changeId": "CHANGE-0017",
+          "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-001",
+          "waiver": {
+            "approver": "nahisaho",
+            "reason": "CHANGE-0017 has current ordered Red-Green evidence for its changed behavior; this diagnostic is caused by older REQ-AUTONOMOUS-DEVELOPMENT-001 cycles that predate monotonic order.",
+            "recordedAt": "2026-09-19T14:46:45.297Z"
+          }
         }
       ]
     },
@@ -2339,7 +2363,7 @@
       "name": "change-completeness",
       "required": true,
       "status": "pass",
-      "summary": "16/16 staged change(s) have semantically complete evidence.",
+      "summary": "17/17 staged change(s) have semantically complete evidence.",
       "diagnostics": [
         {
           "code": "CHANGE_COMPLETENESS_TDD",
@@ -2421,8 +2445,8 @@
           "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-001",
           "waiver": {
             "approver": "nahisaho",
-            "reason": "TEST-AUTONOMOUS-ORACLE-005 has bounded real Red-Green evidence and full validation for the baseline compatibility contract.",
-            "recordedAt": "2026-09-17T13:29:50.775Z"
+            "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+            "recordedAt": "2026-09-19T14:46:44.289Z"
           }
         },
         {
@@ -2540,9 +2564,9 @@
       "required": true,
       "status": "pass",
       "summary": "node: completed, exit 0.",
-      "durationMs": 125772,
+      "durationMs": 129708,
       "exitCode": 0,
-      "stdout": "\n RUN  v3.2.7 /home/nahisaho/GitHub/musubix4\n\n ✓ tests/change-quality-refresh.test.ts (4 tests) 37997ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-001 preserves two quality revisions with deterministic scoped order  7370ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-002 rejects no-later-Green refresh and keeps dry-run side-effect free  4746ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-003 rejects malformed quality history and unmatched checkpoints  21307ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-004 tolerates an order-only quality orphan and appends the same detail safely  4573ms\n ✓ tests/cli-package.test.ts (21 tests) 33917ms\n   ✓ CLI contracts > prints version/help and JSON validation with nonzero failure  1367ms\n   ✓ CLI contracts > returns structured errors for missing files, invalid solver and unknown commands  1013ms\n   ✓ CLI contracts > supports init alias, dry-run, status and native-bin symlink invocation  1481ms\n   ✓ CLI contracts > requires explicit confirmation before recording human approval  2139ms\n   ✓ CLI contracts > runs full workflow and reports JSON evidence  9952ms\n   ✓ CLI contracts > reports and enforces strict Code Graph mode through CLI gates and status  2634ms\n   ✓ CLI contracts > enforces strict workflow session identity from config and CLI  2529ms\n   ✓ CLI contracts > derives the configured GitHub OIDC audience without reading a private key  440ms\n   ✓ CLI contracts > records a staged change checkpoint through the CLI  2335ms\n   ✓ CLI contracts > returns exit 1 for incomplete starter gates and contradictory requirements  1582ms\n   ✓ CLI contracts > executes a complete CLI TDD cycle and exposes it to the gate  3853ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-001 routes configured top-level coding through bounded HoH summaries  707ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-002 enforces routing safety details and role markers  1084ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-003 supplies reviewer execution metadata without prompt leakage  610ms\n   ✓ distribution contracts > TEST-SESSION-SCOPED-DEVELOPMENT-002 reuses evidence only for an explicit change ID  824ms\n   ✓ distribution contracts > validates native manifests and packed hidden skills/built engine/assets  1109ms\n ✓ tests/hoh-lifecycle.test.ts (21 tests) 4083ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-003 parses diverse real-shaped JSONL deterministically and settles or abandons once  402ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-006 accepts only raw JSON or one exact JSON fence  1028ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-007 separates Copilot tool names from permission kinds and preserves current version resolution  935ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-005 preserves exact nano-AIU and fails closed on truncated output  389ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-GIT-STORE-002 snapshots candidates and QA without mutating the user worktree or index  440ms\n ✓ tests/change-multi-requirement-test-annotation.test.ts (1 test) 3321ms\n   ✓ TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001 recognizes every requirement in a shared @verifies declaration  3320ms\n ✓ tests/structured-test-path-binding.test.ts (1 test) 1979ms\n   ✓ structured test path binding > TEST-STRUCTURED-TEST-PATH-BINDING-001 binds executed IDs to their authoritative trace paths  1978ms\n ✓ tests/autonomous-candidate-baseline-recovery.test.ts (4 tests) 1251ms\n   ✓ candidate baseline recovery > TEST-AUTONOMOUS-CANDIDATE-BASELINE-004 preserves terminal runs and cleans failed snapshot refs while including explicitly selected ignored files  407ms\n   ✓ candidate baseline recovery > TEST-AUTONOMOUS-CANDIDATE-BASELINE-006 restores rejected candidate worktree changes before blocker retry and preserves initialization dirt  669ms\n ✓ tests/autonomous-candidate-recovery-contract.test.ts (5 tests) 1435ms\n   ✓ candidate recovery contract > TEST-AUTONOMOUS-CANDIDATE-BASELINE-007 fails closed for invalid versions, conditional bytes, limits, and unsupported dirty types before persistence  555ms\n   ✓ candidate recovery contract > TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001 restores exact index and worktree states while preserving all untracked paths  536ms\n ✓ tests/structured-full-test-report.test.ts (1 test) 1099ms\n   ✓ structured full test report > TEST-STRUCTURED-FULL-TEST-REPORT-001 emits authoritative TEST IDs from the executed Vitest suite  1098ms\n ✓ tests/optional-formal-gate.test.ts (1 test) 952ms\n   ✓ optional formal gate > TEST-OPTIONAL-FORMAL-GATE-001 does not block readiness for unsupported prose when formal is optional  951ms\n ✓ tests/autonomous-auto-release-isolation.test.ts (2 tests) 850ms\n   ✓ isolated release workspace provisioning > TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001 verifies the lockfile and rejects writes outside disposable paths  810ms\n ✓ tests/autonomous-candidate-release-review.test.ts (5 tests) 816ms\n   ✓ CHANGE-0015 release review corrections > TEST-AUTONOMOUS-REJECTED-REF-001 retains two same-iteration snapshots under immutable ordinal refs across rollback  491ms\n ✓ tests/autonomous-candidate-isolation-recorded-head.test.ts (1 test) 474ms\n   ✓ candidate isolation against the recorded initialization HEAD > TEST-AUTONOMOUS-CANDIDATE-ISOLATION-002 keeps initialization-dirty A pinned to the recorded HEAD while allowing clean-at-initialize B to carry its current run-produced content  473ms\n ✓ tests/release-documents.test.ts (10 tests) 481ms\n   ✓ v0.1.0 release documents > TEST-RELEASE-V010-BASELINE-001 verifies the approved fixture and release verifier  390ms\n ✓ tests/autonomous-baseline-oracle.test.ts (5 tests) 433ms\n ✓ tests/autonomous-amendment-git.test.ts (1 test) 382ms\n   ✓ provisional inventory commits > TEST-AUTONOMOUS-AMENDMENT-GIT-001 promotes only the approved inventory bytes  381ms\n ✓ tests/autonomous-amendment-promotion.test.ts (1 test) 330ms\n   ✓ approved amendment promotion > TEST-AUTONOMOUS-AMENDMENT-PROMOTION-001 atomically promotes and re-pins approved inventory  329ms\n ✓ tests/release-version-consistency.test.ts (1 test) 400ms\n   ✓ release version consistency > TEST-RELEASE-VERSION-CONSISTENCY-001 verifies repository and built CLI release versions  399ms\n ✓ tests/autonomous-amendment-cli-promotion.test.ts (1 test) 370ms\n   ✓ approved amendment CLI promotion > TEST-AUTONOMOUS-AMENDMENT-CLI-PROMOTION-001 promotes on the approved command replay  370ms\n ✓ tests/autonomous-rejected-ref-cleanup.test.ts (1 test) 289ms\n ✓ tests/autonomous-seven-check-adapter.test.ts (1 test) 172ms\n ✓ tests/autonomous-candidate-release-hardening.test.ts (2 tests) 103ms\n ✓ tests/policy-command-closed-set.test.ts (1 test) 134ms\n ✓ tests/policy-command-optional-binding.test.ts (1 test) 132ms\n ✓ tests/policy-command-definition-binding.test.ts (1 test) 126ms\n ✓ tests/full-v1-acceptance.test.ts (1 test) 117ms\n ✓ tests/autonomous-conflicted-index-baseline.test.ts (1 test) 81ms\n ✓ tests/autonomous-auto-approval-review-repair.test.ts (3 tests) 113ms\n ✓ tests/autonomous-recovery-generic-failure.test.ts (3 tests) 96ms\n ✓ tests/autonomous-auto-approval-boundary-evidence.test.ts (3 tests) 90ms\n ✓ tests/autonomous-auto-approval-repair.test.ts (1 test) 49ms\n ✓ tests/autonomous-amendment-approval-consumption.test.ts (1 test) 51ms\n ✓ tests/autonomous-amendment-fsm.test.ts (1 test) 57ms\n ✓ tests/autonomous-auto-amendment-repair.test.ts (1 test) 51ms\n ✓ tests/autonomous-auto-approval-nonce.test.ts (1 test) 54ms\n ✓ tests/autonomous-auto-spec-design-approval.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-release-approval.test.ts (1 test) 46ms\n ✓ tests/autonomous-auto-release-manifest.test.ts (1 test) 48ms\n ✓ tests/autonomous-declared-surface-workspace.test.ts (1 test) 46ms\n ✓ tests/autonomous-auto-amendment-approval.test.ts (1 test) 43ms\n ✓ tests/autonomous-auto-spec-design-manifest.test.ts (1 test) 42ms\n ✓ tests/autonomous-auto-approval-retry.test.ts (1 test) 40ms\n ✓ tests/autonomous-auto-approval-least-privilege.test.ts (1 test) 43ms\n ✓ tests/autonomous-seven-check-orchestration.test.ts (1 test) 35ms\n ✓ tests/autonomous-amendment-cli.test.ts (1 test) 37ms\n ✓ tests/autonomous-auto-approval-manifest-limit.test.ts (1 test) 29ms\n ✓ tests/autonomous-protected-set.test.ts (1 test) 36ms\n ✓ tests/autonomous-auto-approval-rehash.test.ts (1 test) 35ms\n ✓ tests/autonomous-qa-mutation-routing.test.ts (1 test) 32ms\n ✓ tests/autonomous-amendment-approval.test.ts (1 test) 33ms\n ✓ tests/autonomous-protected-boundary.test.ts (1 test) 33ms\n ✓ tests/autonomous-amendment-routing.test.ts (1 test) 31ms\n ✓ tests/autonomous-durability-limits.test.ts (1 test) 25ms\n ✓ tests/autonomous-auto-approval-authority-escalation.test.ts (1 test) 28ms\n ✓ tests/autonomous-auto-approval-authority-sticky.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-empty-manifest.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-authority-persistence.test.ts (1 test) 27ms\n ✓ tests/autonomous-command-surface-loop.test.ts (1 test) 22ms\n ✓ tests/autonomous-auto-approval-reviewer-required.test.ts (1 test) 24ms\n ✓ tests/autonomous-command-surface.test.ts (1 test) 24ms\n ✓ tests/autonomous-command-surface-advanced.test.ts (1 test) 22ms\n ✓ tests/autonomous-seven-check-qa.test.ts (1 test) 8ms\n ✓ tests/inherited-compatibility.test.ts (1 test) 13ms\n ✓ tests/autonomous-hoh-config-file.test.ts (1 test) 9ms\n ✓ tests/autonomous-collision-inventory.test.ts (1 test) 8ms\n ✓ tests/autonomous-auto-approval-config.test.ts (1 test) 3ms\n ✓ tests/autonomous-seven-check-config.test.ts (1 test) 3ms\n\n Test Files  66 passed (66)\n      Tests  141 passed (141)\n   Start at  20:49:22\n   Duration  125.33s (transform 1.01s, setup 291ms, collect 22.45s, tests 93.21s, environment 8ms, prepare 2.67s)\n\n",
+      "stdout": "\n RUN  v3.2.7 /home/nahisaho/GitHub/musubix4\n\n ✓ tests/change-quality-refresh.test.ts (4 tests) 39364ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-001 preserves two quality revisions with deterministic scoped order  7423ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-002 rejects no-later-Green refresh and keeps dry-run side-effect free  4691ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-003 rejects malformed quality history and unmatched checkpoints  22602ms\n   ✓ TEST-CHANGE-QUALITY-REFRESH-004 tolerates an order-only quality orphan and appends the same detail safely  4648ms\n ✓ tests/cli-package.test.ts (21 tests) 35620ms\n   ✓ CLI contracts > prints version/help and JSON validation with nonzero failure  1462ms\n   ✓ CLI contracts > returns structured errors for missing files, invalid solver and unknown commands  1005ms\n   ✓ CLI contracts > supports init alias, dry-run, status and native-bin symlink invocation  1508ms\n   ✓ CLI contracts > requires explicit confirmation before recording human approval  2384ms\n   ✓ CLI contracts > runs full workflow and reports JSON evidence  10952ms\n   ✓ CLI contracts > reports and enforces strict Code Graph mode through CLI gates and status  2952ms\n   ✓ CLI contracts > enforces strict workflow session identity from config and CLI  2876ms\n   ✓ CLI contracts > derives the configured GitHub OIDC audience without reading a private key  444ms\n   ✓ CLI contracts > records a staged change checkpoint through the CLI  2631ms\n   ✓ CLI contracts > returns exit 1 for incomplete starter gates and contradictory requirements  1611ms\n   ✓ CLI contracts > executes a complete CLI TDD cycle and exposes it to the gate  2953ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-001 routes configured top-level coding through bounded HoH summaries  690ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-002 enforces routing safety details and role markers  1121ms\n   ✓ distribution contracts > TEST-AUTOMATIC-HOH-CODING-003 supplies reviewer execution metadata without prompt leakage  706ms\n   ✓ distribution contracts > TEST-SESSION-SCOPED-DEVELOPMENT-002 reuses evidence only for an explicit change ID  855ms\n   ✓ distribution contracts > validates native manifests and packed hidden skills/built engine/assets  1182ms\n ✓ tests/hoh-lifecycle.test.ts (21 tests) 3739ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-003 parses diverse real-shaped JSONL deterministically and settles or abandons once  416ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-006 accepts only raw JSON or one exact JSON fence  956ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-007 separates Copilot tool names from permission kinds and preserves current version resolution  775ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-COPILOT-ADAPTER-005 preserves exact nano-AIU and fails closed on truncated output  333ms\n   ✓ evidence and durable lifecycle > iteration 2 harness adapters > TEST-HOH-GIT-STORE-002 snapshots candidates and QA without mutating the user worktree or index  376ms\n ✓ tests/change-multi-requirement-test-annotation.test.ts (1 test) 3436ms\n   ✓ TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001 recognizes every requirement in a shared @verifies declaration  3436ms\n ✓ tests/structured-test-path-binding.test.ts (1 test) 2134ms\n   ✓ structured test path binding > TEST-STRUCTURED-TEST-PATH-BINDING-001 binds executed IDs to their authoritative trace paths  2133ms\n ✓ tests/autonomous-candidate-recovery-contract.test.ts (5 tests) 1478ms\n   ✓ candidate recovery contract > TEST-AUTONOMOUS-CANDIDATE-BASELINE-007 fails closed for invalid versions, conditional bytes, limits, and unsupported dirty types before persistence  607ms\n   ✓ candidate recovery contract > TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001 restores exact index and worktree states while preserving all untracked paths  526ms\n ✓ tests/autonomous-candidate-baseline-recovery.test.ts (4 tests) 1248ms\n   ✓ candidate baseline recovery > TEST-AUTONOMOUS-CANDIDATE-BASELINE-004 preserves terminal runs and cleans failed snapshot refs while including explicitly selected ignored files  379ms\n   ✓ candidate baseline recovery > TEST-AUTONOMOUS-CANDIDATE-BASELINE-006 restores rejected candidate worktree changes before blocker retry and preserves initialization dirt  708ms\n ✓ tests/structured-full-test-report.test.ts (1 test) 1111ms\n   ✓ structured full test report > TEST-STRUCTURED-FULL-TEST-REPORT-001 emits authoritative TEST IDs from the executed Vitest suite  1110ms\n ✓ tests/optional-formal-gate.test.ts (1 test) 963ms\n   ✓ optional formal gate > TEST-OPTIONAL-FORMAL-GATE-001 does not block readiness for unsupported prose when formal is optional  961ms\n ✓ tests/autonomous-candidate-release-review.test.ts (5 tests) 826ms\n   ✓ CHANGE-0015 release review corrections > TEST-AUTONOMOUS-REJECTED-REF-001 retains two same-iteration snapshots under immutable ordinal refs across rollback  522ms\n ✓ tests/autonomous-auto-release-isolation.test.ts (2 tests) 784ms\n   ✓ isolated release workspace provisioning > TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001 verifies the lockfile and rejects writes outside disposable paths  745ms\n ✓ tests/autonomous-candidate-isolation-recorded-head.test.ts (1 test) 508ms\n   ✓ candidate isolation against the recorded initialization HEAD > TEST-AUTONOMOUS-CANDIDATE-ISOLATION-002 keeps initialization-dirty A pinned to the recorded HEAD while allowing clean-at-initialize B to carry its current run-produced content  507ms\n ✓ tests/release-documents.test.ts (10 tests) 458ms\n   ✓ v0.1.0 release documents > TEST-RELEASE-V010-BASELINE-001 verifies the approved fixture and release verifier  363ms\n ✓ tests/autonomous-baseline-oracle.test.ts (6 tests) 459ms\n ✓ tests/autonomous-amendment-git.test.ts (1 test) 416ms\n   ✓ provisional inventory commits > TEST-AUTONOMOUS-AMENDMENT-GIT-001 promotes only the approved inventory bytes  415ms\n ✓ tests/release-version-consistency.test.ts (1 test) 391ms\n   ✓ release version consistency > TEST-RELEASE-VERSION-CONSISTENCY-001 verifies repository and built CLI release versions  390ms\n ✓ tests/autonomous-rejected-ref-cleanup.test.ts (1 test) 314ms\n   ✓ rejected candidate ref cleanup > TEST-AUTONOMOUS-REJECTED-REF-002 retains the immutable ordinal ref and removes only its provisional stage ref  313ms\n ✓ tests/autonomous-amendment-cli-promotion.test.ts (1 test) 371ms\n   ✓ approved amendment CLI promotion > TEST-AUTONOMOUS-AMENDMENT-CLI-PROMOTION-001 promotes on the approved command replay  371ms\n ✓ tests/autonomous-amendment-promotion.test.ts (1 test) 359ms\n   ✓ approved amendment promotion > TEST-AUTONOMOUS-AMENDMENT-PROMOTION-001 atomically promotes and re-pins approved inventory  358ms\n ✓ tests/autonomous-seven-check-adapter.test.ts (1 test) 187ms\n ✓ tests/policy-command-closed-set.test.ts (1 test) 135ms\n ✓ tests/policy-command-optional-binding.test.ts (1 test) 132ms\n ✓ tests/policy-command-definition-binding.test.ts (1 test) 128ms\n ✓ tests/full-v1-acceptance.test.ts (1 test) 121ms\n ✓ tests/autonomous-auto-approval-review-repair.test.ts (3 tests) 112ms\n ✓ tests/autonomous-candidate-release-hardening.test.ts (2 tests) 108ms\n ✓ tests/autonomous-recovery-generic-failure.test.ts (3 tests) 104ms\n ✓ tests/autonomous-auto-approval-boundary-evidence.test.ts (3 tests) 92ms\n ✓ tests/autonomous-conflicted-index-baseline.test.ts (1 test) 85ms\n ✓ tests/autonomous-auto-amendment-repair.test.ts (1 test) 53ms\n ✓ tests/autonomous-auto-approval-repair.test.ts (1 test) 52ms\n ✓ tests/autonomous-amendment-fsm.test.ts (1 test) 53ms\n ✓ tests/autonomous-auto-approval-nonce.test.ts (1 test) 56ms\n ✓ tests/autonomous-auto-approval-least-privilege.test.ts (1 test) 47ms\n ✓ tests/autonomous-auto-release-manifest.test.ts (1 test) 50ms\n ✓ tests/autonomous-amendment-approval-consumption.test.ts (1 test) 48ms\n ✓ tests/autonomous-auto-release-approval.test.ts (1 test) 51ms\n ✓ tests/autonomous-declared-surface-workspace.test.ts (1 test) 48ms\n ✓ tests/autonomous-auto-spec-design-manifest.test.ts (1 test) 44ms\n ✓ tests/autonomous-auto-spec-design-approval.test.ts (1 test) 45ms\n ✓ tests/autonomous-auto-approval-retry.test.ts (1 test) 43ms\n ✓ tests/autonomous-auto-amendment-approval.test.ts (1 test) 45ms\n ✓ tests/autonomous-auto-approval-rehash.test.ts (1 test) 38ms\n ✓ tests/autonomous-protected-set.test.ts (1 test) 35ms\n ✓ tests/autonomous-amendment-routing.test.ts (1 test) 33ms\n ✓ tests/autonomous-qa-mutation-routing.test.ts (1 test) 33ms\n ✓ tests/autonomous-amendment-cli.test.ts (1 test) 35ms\n ✓ tests/autonomous-protected-boundary.test.ts (1 test) 33ms\n ✓ tests/autonomous-seven-check-orchestration.test.ts (1 test) 36ms\n ✓ tests/autonomous-amendment-approval.test.ts (1 test) 33ms\n ✓ tests/autonomous-auto-approval-manifest-limit.test.ts (1 test) 34ms\n ✓ tests/autonomous-command-surface.test.ts (1 test) 26ms\n ✓ tests/autonomous-auto-approval-authority-escalation.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-authority-sticky.test.ts (1 test) 27ms\n ✓ tests/autonomous-auto-approval-authority-persistence.test.ts (1 test) 29ms\n ✓ tests/autonomous-auto-approval-empty-manifest.test.ts (1 test) 26ms\n ✓ tests/autonomous-durability-limits.test.ts (1 test) 26ms\n ✓ tests/autonomous-auto-approval-reviewer-required.test.ts (1 test) 26ms\n ✓ tests/autonomous-command-surface-loop.test.ts (1 test) 22ms\n ✓ tests/autonomous-command-surface-advanced.test.ts (1 test) 23ms\n ✓ tests/autonomous-collision-inventory.test.ts (1 test) 9ms\n ✓ tests/inherited-compatibility.test.ts (1 test) 11ms\n ✓ tests/autonomous-seven-check-qa.test.ts (1 test) 10ms\n ✓ tests/autonomous-hoh-config-file.test.ts (1 test) 10ms\n ✓ tests/autonomous-seven-check-config.test.ts (1 test) 3ms\n ✓ tests/autonomous-auto-approval-config.test.ts (1 test) 3ms\n\n Test Files  66 passed (66)\n      Tests  142 passed (142)\n   Start at  07:37:08\n   Duration  129.33s (transform 912ms, setup 285ms, collect 23.00s, tests 96.41s, environment 8ms, prepare 2.69s)\n\n",
       "stderr": ""
     },
     {
@@ -2550,7 +2574,7 @@
       "required": true,
       "status": "pass",
       "summary": "npm: completed, exit 0.",
-      "durationMs": 3472,
+      "durationMs": 3628,
       "exitCode": 0,
       "stdout": "\n> musubix4@0.1.0 typecheck\n> tsc --noEmit\n\n",
       "stderr": ""
@@ -2560,7 +2584,7 @@
       "required": true,
       "status": "pass",
       "summary": "npm: completed, exit 0.",
-      "durationMs": 2868,
+      "durationMs": 2851,
       "exitCode": 0,
       "stdout": "\n> musubix4@0.1.0 build\n> tsc -p tsconfig.build.json\n\n",
       "stderr": ""
@@ -2570,16 +2594,16 @@
       "required": true,
       "status": "pass",
       "summary": "node: completed, exit 0.",
-      "durationMs": 165667,
+      "durationMs": 168388,
       "exitCode": 0,
-      "stdout": "\n> musubix4@0.1.0 test\n> vitest run --maxWorkers=2 --reporter=json --outputFile=/home/nahisaho/GitHub/musubix4/.test-work/full-tests-713957.vitest.json\n\nJSON report written to /home/nahisaho/GitHub/musubix4/.test-work/full-tests-713957.vitest.json\n",
+      "stdout": "\n> musubix4@0.1.0 test\n> vitest run --maxWorkers=2 --reporter=json --outputFile=/home/nahisaho/GitHub/musubix4/.test-work/full-tests-2250307.vitest.json\n\nJSON report written to /home/nahisaho/GitHub/musubix4/.test-work/full-tests-2250307.vitest.json\n",
       "stderr": ""
     },
     {
       "name": "test-identities",
       "required": true,
       "status": "pass",
-      "summary": "270/270 annotated test IDs passed in structured command reports.",
+      "summary": "271/271 annotated test IDs passed in structured command reports.",
       "diagnostics": []
     },
     {
@@ -2652,13 +2676,13 @@
     "formal.modeledFraction": 0.07142857142857142,
     "commands.failures": 0,
     "commands.skipped": 0,
-    "tests.annotatedIds": 270,
-    "tests.executedIds": 270,
-    "tdd.cycles": 203,
+    "tests.annotatedIds": 271,
+    "tests.executedIds": 271,
+    "tdd.cycles": 206,
     "tdd.errors": 0,
-    "changes.count": 16,
+    "changes.count": 17,
     "changes.errors": 0,
-    "changes.complete": 16,
+    "changes.complete": 17,
     "changes.completenessErrors": 0,
     "performance.budgets": 0,
     "performance.errors": 0,
@@ -2678,10 +2702,8 @@
   "mode": "changed",
   "feature": null,
   "changed": [
-    ".musubix/changes/CHANGE-0015.md",
-    ".musubix/changes/CHANGE-0016.md",
-    ".musubix/decisions/ADR-0013.md",
-    ".musubix/decisions/ADR-0014.md",
+    ".musubix/changes/CHANGE-0017.md",
+    ".musubix/decisions/ADR-0015.md",
     ".musubix/evidence/approvals/design.json",
     ".musubix/evidence/approvals/release.json",
     ".musubix/evidence/approvals/requirements.json",
@@ -2693,28 +2715,7 @@
     ".musubix/evidence/order.json",
     ".musubix/evidence/performance.json",
     ".musubix/evidence/quality.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-BLOCKER-IDENTITY-001.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-BLOCKER-RETRY-BOUNDARY-001.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-006.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-007.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-008.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-009.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-010.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-ISOLATION-003.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-003.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-004.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-001.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-002.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-001.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-002.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-REJECTED-REF-001.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-REJECTED-REF-002.json",
-    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-SNAPSHOT-ATTEMPT-002.json",
-    ".musubix/evidence/tdd-results/TEST-CHANGE-QUALITY-REFRESH-001.json",
-    ".musubix/evidence/tdd-results/TEST-CHANGE-QUALITY-REFRESH-003.json",
-    ".musubix/evidence/tdd-results/TEST-CHANGE-QUALITY-REFRESH-004.json",
+    ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-ORACLE-006.json",
     ".musubix/evidence/tdd.json",
     ".musubix/evidence/workflow-waivers.json",
     ".musubix/evidence/workflow.json",
@@ -2724,24 +2725,13 @@
     ".musubix/features/autonomous-development/trace.json",
     ".musubix/features/release-v010-docs/trace.json",
     ".musubix/features/safe-workflow-speed/trace.json",
-    "packages/analysis/src/change-evidence.ts",
-    "packages/analysis/src/change.ts",
+    ".musubix/hoh.json",
+    "baseline-specs/baseline.manifest.json",
+    "baseline-specs/oracle/regeneration-attestation.json",
     "packages/analysis/src/hoh.ts",
-    "packages/analysis/src/order.ts",
-    "packages/cli/src/main.ts",
-    "scripts/run-hoh-tdd.mjs",
-    "tests/autonomous-candidate-baseline-recovery.test.ts",
-    "tests/autonomous-candidate-isolation-recorded-head.test.ts",
-    "tests/autonomous-candidate-recovery-contract.test.ts",
-    "tests/autonomous-candidate-release-hardening.test.ts",
-    "tests/autonomous-candidate-release-review.test.ts",
-    "tests/autonomous-conflicted-index-baseline.test.ts",
-    "tests/autonomous-declared-surface-workspace.test.ts",
-    "tests/autonomous-qa-mutation-routing.test.ts",
-    "tests/autonomous-recovery-generic-failure.test.ts",
-    "tests/autonomous-rejected-ref-cleanup.test.ts",
-    "tests/change-quality-refresh.test.ts",
-    "tests/hoh-lifecycle.test.ts"
+    "tests/autonomous-baseline-oracle.test.ts",
+    "tests/inherited-compatibility.test.ts",
+    "tests/release-version-consistency.test.ts"
   ],
   "impacted": [
     "packages/analysis/src/adapters.ts",
@@ -2759,7 +2749,6 @@
     "packages/analysis/src/index.ts",
     "packages/analysis/src/model-correspondence.ts",
     "packages/analysis/src/mutation.ts",
-    "packages/analysis/src/order.ts",
     "packages/analysis/src/performance.ts",
     "packages/analysis/src/tdd.ts",
     "packages/analysis/src/workflow-types.ts",
@@ -2767,7 +2756,6 @@
     "packages/analysis/src/workflow.ts",
     "packages/cli/src/install.ts",
     "packages/cli/src/main.ts",
-    "scripts/run-hoh-tdd.mjs",
     "tests/adapter-integration.test.ts",
     "tests/adapter-pattern-recognition.test.ts",
     "tests/approval-domain-scoping.test.ts",
@@ -2878,12 +2866,10 @@
   ],
   "lastChangeAnalysis": {
     "baseline": "HEAD",
-    "head": "0094122b59c00bb24a6fec11537f16928b5dedcb",
+    "head": "61af84c577d859654d4ac08d6daf9def0cbe2d34",
     "changed": [
-      ".musubix/changes/CHANGE-0015.md",
-      ".musubix/changes/CHANGE-0016.md",
-      ".musubix/decisions/ADR-0013.md",
-      ".musubix/decisions/ADR-0014.md",
+      ".musubix/changes/CHANGE-0017.md",
+      ".musubix/decisions/ADR-0015.md",
       ".musubix/evidence/approvals/design.json",
       ".musubix/evidence/approvals/release.json",
       ".musubix/evidence/approvals/requirements.json",
@@ -2895,28 +2881,7 @@
       ".musubix/evidence/order.json",
       ".musubix/evidence/performance.json",
       ".musubix/evidence/quality.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-BLOCKER-IDENTITY-001.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-BLOCKER-RETRY-BOUNDARY-001.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-006.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-007.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-008.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-009.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-BASELINE-010.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-ISOLATION-003.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-003.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CANDIDATE-RECOVERY-004.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-001.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-002.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-001.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-002.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-REJECTED-REF-001.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-REJECTED-REF-002.json",
-      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-SNAPSHOT-ATTEMPT-002.json",
-      ".musubix/evidence/tdd-results/TEST-CHANGE-QUALITY-REFRESH-001.json",
-      ".musubix/evidence/tdd-results/TEST-CHANGE-QUALITY-REFRESH-003.json",
-      ".musubix/evidence/tdd-results/TEST-CHANGE-QUALITY-REFRESH-004.json",
+      ".musubix/evidence/tdd-results/TEST-AUTONOMOUS-ORACLE-006.json",
       ".musubix/evidence/tdd.json",
       ".musubix/evidence/workflow-waivers.json",
       ".musubix/evidence/workflow.json",
@@ -2926,24 +2891,13 @@
       ".musubix/features/autonomous-development/trace.json",
       ".musubix/features/release-v010-docs/trace.json",
       ".musubix/features/safe-workflow-speed/trace.json",
-      "packages/analysis/src/change-evidence.ts",
-      "packages/analysis/src/change.ts",
+      ".musubix/hoh.json",
+      "baseline-specs/baseline.manifest.json",
+      "baseline-specs/oracle/regeneration-attestation.json",
       "packages/analysis/src/hoh.ts",
-      "packages/analysis/src/order.ts",
-      "packages/cli/src/main.ts",
-      "scripts/run-hoh-tdd.mjs",
-      "tests/autonomous-candidate-baseline-recovery.test.ts",
-      "tests/autonomous-candidate-isolation-recorded-head.test.ts",
-      "tests/autonomous-candidate-recovery-contract.test.ts",
-      "tests/autonomous-candidate-release-hardening.test.ts",
-      "tests/autonomous-candidate-release-review.test.ts",
-      "tests/autonomous-conflicted-index-baseline.test.ts",
-      "tests/autonomous-declared-surface-workspace.test.ts",
-      "tests/autonomous-qa-mutation-routing.test.ts",
-      "tests/autonomous-recovery-generic-failure.test.ts",
-      "tests/autonomous-rejected-ref-cleanup.test.ts",
-      "tests/change-quality-refresh.test.ts",
-      "tests/hoh-lifecycle.test.ts"
+      "tests/autonomous-baseline-oracle.test.ts",
+      "tests/inherited-compatibility.test.ts",
+      "tests/release-version-consistency.test.ts"
     ],
     "impacted": [
       "packages/analysis/src/adapters.ts",
@@ -2961,7 +2915,6 @@
       "packages/analysis/src/index.ts",
       "packages/analysis/src/model-correspondence.ts",
       "packages/analysis/src/mutation.ts",
-      "packages/analysis/src/order.ts",
       "packages/analysis/src/performance.ts",
       "packages/analysis/src/tdd.ts",
       "packages/analysis/src/workflow-types.ts",
@@ -2969,7 +2922,6 @@
       "packages/analysis/src/workflow.ts",
       "packages/cli/src/install.ts",
       "packages/cli/src/main.ts",
-      "scripts/run-hoh-tdd.mjs",
       "tests/adapter-integration.test.ts",
       "tests/adapter-pattern-recognition.test.ts",
       "tests/approval-domain-scoping.test.ts",
@@ -3078,7 +3030,7 @@
       "tests/workflow-multi-session-verification.test.ts",
       "tests/workflow-waiver-bulk-recording.test.ts"
     ],
-    "generatedAt": "2026-09-19T11:53:54.817Z"
+    "generatedAt": "2026-09-19T22:41:44.397Z"
   },
   "fingerprints": {
     ".github/copilot-instructions.md": "78f4a8abfad7e2bf84952847f68c1fd3addbbc82f8b3d65accd730fad4ebf81c",
@@ -3104,6 +3056,7 @@
     ".musubix/changes/CHANGE-0014.md": "53e08d77f6bed9da8c0933574c4342c771eacbabd6bf706499de550f825d12d1",
     ".musubix/changes/CHANGE-0015.md": "e92b5e02fb88bc5e725b39b2867e84eddcaecde8c1965eeed336affac5bef90d",
     ".musubix/changes/CHANGE-0016.md": "4e400a9b8301cc5f49df4da04ada30e20f4c537b0fec76a6d7b671f530ea889a",
+    ".musubix/changes/CHANGE-0017.md": "1d62db6e1d0c378611450ef4b507d346fd2629e450e9fa7b9af62ff080cdb80a",
     ".musubix/compatibility/command-collisions.json": "d63031df0501d266ac7b1cba1e6417b6c80c7881e60492f82735f9047723a8eb",
     ".musubix/config.json": "85cc5cef783ca118af88458472c53aba335d2a013941c24c9978caa643cdbebf",
     ".musubix/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
@@ -3121,16 +3074,24 @@
     ".musubix/decisions/ADR-0012.md": "3942519e9559db374093ba17d5874e1fd86c933d9508a86b8059a3b4513caf6d",
     ".musubix/decisions/ADR-0013.md": "72fb5035ca7b34de79ec55fbcbd489bcbbb54219cd69ccd6d5b1115b1fe28efe",
     ".musubix/decisions/ADR-0014.md": "6ea60b8e3f730e5967a6302e54bf55bc1d36d618c77bd41a3cac03fcb63916d5",
+    ".musubix/decisions/ADR-0015.md": "6f91495a3e791dfb602b150bd1da8bc015dc6a937fee62e891d0279e30f7e4ab",
     ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/design.md": "641aa0541488b4bd1a444918882ab07766965d030ffea04e610db61df73b72f6",
-    ".musubix/features/autonomous-development/requirements.md": "8e333c361e2c183faeca1422e11c4cf2886bdfb058c42675ece27e76371a8c1c",
+    ".musubix/features/autonomous-development/design.md": "bc025359fd8d823e5bae9cc0cee79cedcab170905a27d1dc68fc2f669e91701e",
+    ".musubix/features/autonomous-development/requirements.md": "1877159cd4fcbc70e6c4ea8fc40ee0d0750cf4a11b14925cb5ccc1fa616107da",
     ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
     ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
     ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
     ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138",
-    ".musubix/hoh.json": "aadb0b5d6b5d99d3350b2c4e677dff2c04bcb3253fbc66dfdca8f81ecef57ebf",
+    ".musubix/hoh.json": "7491460a3441bb1b52a62fd0a1c75b8ba2a3e01772d83ceee8d1959d507ef128",
     ".musubix/policy-baseline.json": "104cbc2680b4967b5dcfdd4550a676cb69fa282c2e77ea34fcc78bc5726d5e6a",
+    ".musubix4/runs/03a5110f-6d6d-4d03-8aaa-a026fa5e03ce/approvals/design-13802aac-0320-457b-9d81-72caff2405cd.json": "ab77c22610d194e545f1eb559f02ce9dfb26e631de0809d225dcdb83429e9997",
+    ".musubix4/runs/03a5110f-6d6d-4d03-8aaa-a026fa5e03ce/approvals/requirements-97339dd1-c67f-40ec-b99a-6f32c903efff.json": "bb8af3d4964c5be82856dc5c6a36e8b344ce16c9da331df7580798f878820429",
+    ".musubix4/runs/03a5110f-6d6d-4d03-8aaa-a026fa5e03ce/boundary-artifacts/design/cb35d4f14bfbd28eb2908549ceeb205163a2764899a9c564d03bcefd23bde3f6.artifact": "14a0deaf02dd8de45a3dfd2a8885037cd2e651a99673a65b80705b17207fbe72",
+    ".musubix4/runs/03a5110f-6d6d-4d03-8aaa-a026fa5e03ce/boundary-artifacts/requirements/702ea7d585ba25f6758bdee82216347f4a415ab8b6d42c56f044de5a2627f04a.artifact": "cc96131dfbf713f70daab9e596c5ed1c61f95fab05c098a94e6b28dc08a9267f",
+    ".musubix4/runs/03a5110f-6d6d-4d03-8aaa-a026fa5e03ce/boundary-artifacts/requirements/d0f30528e9cf9f800c0d704a6b2a7ccc1333f5dee3cd3800405b747ac1a626af.artifact": "0388a0c0bfebc3892f543bb06c112ddac0cbcf2aeab19bc777368f19d84e093f",
+    ".musubix4/runs/03a5110f-6d6d-4d03-8aaa-a026fa5e03ce/candidate-baseline.json": "0157bf0200309cc75ff80b96365777ae97b89e37b1bca6d9399c917b9a534d35",
+    ".musubix4/runs/03a5110f-6d6d-4d03-8aaa-a026fa5e03ce/state.json": "0b6edb5f2db28eb512277930fbc1d674474acd320516fc32bfb1cdaab7655eb8",
     ".musubix4/runs/0ed13e59-67b9-4070-bcff-bdf6960c476c/approvals/design-baa500d7-b8cd-41d0-a691-f78e9c5bdb2c.json": "7772bd5cddbb07f3d9453186cf9406828b984e011aea4366daff9e3377e54cc9",
     ".musubix4/runs/0ed13e59-67b9-4070-bcff-bdf6960c476c/approvals/requirements-8800c98e-06b4-4bdd-963a-532925ef6dba.json": "aaf622567f92cf792c09720011a64d48e0961ab216c371fa481a6fb2ee0c1315",
     ".musubix4/runs/0ed13e59-67b9-4070-bcff-bdf6960c476c/boundary-artifacts/design/cb35d4f14bfbd28eb2908549ceeb205163a2764899a9c564d03bcefd23bde3f6.artifact": "83076830781005612512859ba6ea6ff6804e4ec8172903df2dfbe07f6f609d35",
@@ -3205,6 +3166,14 @@
     ".musubix4/runs/8767e400-1a73-466a-be22-183c2529bb13/boundary-artifacts/requirements/702ea7d585ba25f6758bdee82216347f4a415ab8b6d42c56f044de5a2627f04a.artifact": "2a25f57bf66f7af2941f70b4e84e82862cb969dd3e37d952e395c6e9a3fdd206",
     ".musubix4/runs/8767e400-1a73-466a-be22-183c2529bb13/boundary-artifacts/requirements/d0f30528e9cf9f800c0d704a6b2a7ccc1333f5dee3cd3800405b747ac1a626af.artifact": "ff785b74585a83866ed0edb203bae0aa990d458c02f95c5c47644903fc50a817",
     ".musubix4/runs/8767e400-1a73-466a-be22-183c2529bb13/state.json": "56337eaf973e471384a25c761904e0e4f81b2ef6a5a2d14fec1ebc69ee17c3fa",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/approvals/design-d784b7ad-0178-468c-9e71-5ebf708ebbae.json": "cbc3554a2fd2d295468e3278487426a851bd68a348eaaa49c0ebb7c0a5d94f4a",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/approvals/requirements-5180abf8-f9e3-4425-be0a-d0904c847fc3.json": "eaf1fc41cf30bfc40d64c39a96b4a36b940ecfac5082af89754b329761726075",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/boundary-artifacts/design/cb35d4f14bfbd28eb2908549ceeb205163a2764899a9c564d03bcefd23bde3f6.artifact": "55cc066a115481251b428872704ee5663b0b1bee6992e255e1a2a5fa85f05315",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/boundary-artifacts/requirements/702ea7d585ba25f6758bdee82216347f4a415ab8b6d42c56f044de5a2627f04a.artifact": "05a87851d9388b4b76ca69610a367d74480393a08031a53e77aa5d9f00cc9bf3",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/boundary-artifacts/requirements/d0f30528e9cf9f800c0d704a6b2a7ccc1333f5dee3cd3800405b747ac1a626af.artifact": "108f55d875b318e72ca26a9c7a2000a4ff143c0617b34cddcb4c584b04e72fce",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/candidate-baseline.json": "2392ecd129402a6be84ac8e75f3427255fab71858a573d7bc722e100e47c7d96",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/state.json": "ab653dc81d30c0ed19054da5ca5c9726a4780a28b125db6e92eba661ca4d32dd",
+    ".musubix4/runs/9b61c04d-0086-4fc9-aa68-77edc0b16f87/writer.lock": "5abcd9e0d126066a2989ef4a90685c7cfbb6e2eb6f32842380f0d2a8740fddf4",
     ".musubix4/runs/a0773646-6117-4179-8839-877d32866203/approvals/design-c96a3ec2-dc14-4d15-90e0-16ac2da6dd9c.json": "44d9e0e9825400fd5cc5dc9ec4b511ae419fddd5c5603c34d0405d419e34e937",
     ".musubix4/runs/a0773646-6117-4179-8839-877d32866203/approvals/requirements-b93b282c-4a24-475e-aba1-5b21dc9a8c67.json": "aed31f16497f2a77ae696c3eef95bce10ed8a37a3f860ebadcfda90083dccb25",
     ".musubix4/runs/a0773646-6117-4179-8839-877d32866203/boundary-artifacts/design/cb35d4f14bfbd28eb2908549ceeb205163a2764899a9c564d03bcefd23bde3f6.artifact": "fc472c06f24c66473a0c01bc1b85992ba241f4cf89419a31598a3c2927da5330",
@@ -3230,6 +3199,8 @@
     ".musubix4/specifications/7fdd07ed323ed89a1895bdf37c753bb144c362cc10aeb62e34e22933d8bf63a1.json": "a737957cd86c88cb3cff6a90721eb0f7a9f7006d6ebe5b59dd23e6e6b1f958b9",
     ".musubix4/specifications/8286d624f04a7f010fc9c4a9b11fdbb693bea64bca37b3d8428e206c6f514c15.json": "703c37ecbb71568c74a53731602270df34d57fc12c1e5960e75145d448cf8450",
     ".musubix4/specifications/83cba0d7dbf478684d214cb6e6c54f3466887ddfe7266ceafe61df7d5659c90d.json": "06d6548470bac935378affca66bcc2de9f914bd4027bda2e0371365daa5aaf8e",
+    ".musubix4/specifications/ab63a130f511d7f7841fe7ac39a63bc22f9af97b001f768e4bdc25f2614d0455.json": "8ed48b6dfce8aea18ecc3c7c2ff17b39607f8058012ef4192b00bc585008dffb",
+    ".musubix4/specifications/c3b42516cb925b93cc31dfb448f1ade17ee460a539df863e6f240ead1749d184.json": "6f62bdfcbd3c7849aaea830ccf89e98f5228e39e41809f4679e803555f5767c0",
     ".musubix4/specifications/d557680a0119ce4a167affbb48231afbdacc41df3a535d9d8fc6fee8e875b72e.json": "4bf0a9954b4ff1f99762d6d8653ad13ad47b304a27f7ca4598b47b5e1dc72873",
     ".musubix4/specifications/e2df9ab9c8f94c6846ea3ffa66952daa2787f07bfe028fab6f611bf6a0f72187.json": "f646ff48844a188777de18ec644d12fb1a7620467f255f1c7da0b5a52e7893f9",
     ".musubix4/specifications/e4fea7148d076fba27e5fbb18a826856d0c66b24736702c7ff25d30f4c8aa925.json": "98f6cb0295d54769b68034eda705c736c8a3c610434ca3fad0690ac1675cdf50",
@@ -3238,7 +3209,7 @@
     "assets/constitution.md": "f8b47fdc486f395bab05223a94821b145cf8df70ffde2c838a28f8d71fe0fa92",
     "assets/design.md": "abcbee85062b3a7f06d0f1034abe89fe27d911abf8397f98024249f60eb8a9de",
     "assets/requirements.md": "f6ce0617c425a351ac1995a50b37a8b7f6c5b3e8ea2d6087d0898d4fde40f5ed",
-    "baseline-specs/baseline.manifest.json": "f64ece267f3cb271af2baab67326af076117b9df99a0ef62b4b00bf8d9bc4341",
+    "baseline-specs/baseline.manifest.json": "b5cfd06cb79276dea1e2bb29fa1b49798032ffd22e004af4c525e81504985401",
     "baseline-specs/decisions/ADR-0009.md": "b81438c27d6710e45e9493ba831a8e5d0be89430183e3f581dd68c3c80fa38c1",
     "baseline-specs/decisions/ADR-0010.md": "b2e65434cc9c2ec8947e49bf60858784ab30e6f0c3dacd434f2e9d3f93154fa7",
     "baseline-specs/decisions/ADR-0011.md": "daeaf7fa94e563f46d9f5449b49b385e9ee52de4dc2b2f7bb34c71f07efd2f8a",
@@ -3319,7 +3290,7 @@
     "baseline-specs/features/workflow-waiver-bulk-recording/requirements.md": "361cfba519d4ab189a2091cf7b99133b9c005f69fb28aa2d77bba17bd7ee7b33",
     "baseline-specs/oracle/goldens/status.json": "d9a62a79803f7cfa04314d0165b2294a0cb35ce27d46cac760333fe13630ca80",
     "baseline-specs/oracle/historical-trace.json": "5d486274546de22105ed5e9d49be51e9c1c483edd41e9d7a7e26b78212ad0da1",
-    "baseline-specs/oracle/regeneration-attestation.json": "6dd59f8a48419ed5db48fddc6b9cbf90315bc0ce6ff91086a3eb3ef9a81bd192",
+    "baseline-specs/oracle/regeneration-attestation.json": "6781854b6656fa52094d8542ece1f065a597d085999df88b35ba119238861fe2",
     "CHANGELOG.md": "cee00664e43dd20a700cabeadde20a150dbeef23225209dc3e364e3e11841800",
     "CONTRIBUTING.md": "85991c36ca1c77a693bee59b695281aebc0096f141d3010e4513b25ff04b6d43",
     "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
@@ -3340,7 +3311,7 @@
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
     "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
-    "packages/analysis/src/hoh.ts": "3eb44c0cc25d8b28c1a7094cd50513f8117e68575e8383cc258ba5d50d054f08",
+    "packages/analysis/src/hoh.ts": "086731cef0f137450d7b1fa48c9fe3e16782f0cc11431952e9abd8c7643df626",
     "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
@@ -3414,7 +3385,7 @@
     "tests/autonomous-auto-release-manifest.test.ts": "444b35fcc5973456353dfd1e9cf720142b9eb153567d9aebec3e9ce02d54541c",
     "tests/autonomous-auto-spec-design-approval.test.ts": "07de87f8514b3a6f70a8c7e182952359aedc33694c475c7931f7c427bbf0a022",
     "tests/autonomous-auto-spec-design-manifest.test.ts": "9787604968ea346bcb45519c192010adcc77f3bc3bc3e0df7d2e4d207853e8d7",
-    "tests/autonomous-baseline-oracle.test.ts": "bbcb7929781b8e00519a5bb94957efc6cd3eda10192c66e62d2950a90e24200a",
+    "tests/autonomous-baseline-oracle.test.ts": "423279322f985f76781bd886300c6359f511ffd3e657eea7b2e86bd92b76b967",
     "tests/autonomous-candidate-baseline-recovery.test.ts": "176495fdd4c76b9529b3fcd9ae9f2b8d7afc39a307d2ea340b11fa37afa3937d",
     "tests/autonomous-candidate-isolation-recorded-head.test.ts": "d96e5993f602448d5503fe61bee6fe58024f6ece99fc58af82a97b6dc2ea6795",
     "tests/autonomous-candidate-recovery-contract.test.ts": "7b04093b008d2d8e435daf0f5183f0b41990a7876f3cf47bdc450aa6c52bd713",
@@ -3460,7 +3431,7 @@
     "tests/gate-install.test.ts": "97d48d731b0871b42666597ad4c9a92730a217653744904c1e60aa1d00227bb7",
     "tests/helpers.ts": "031929b097a7318d83fe8024ef1ff7f4248964a5d0861e8301504f62c887f054",
     "tests/hoh-lifecycle.test.ts": "9a35bfdb0f0a0a35a52891d686670f0220445c14ee766ea8ba4b4e6085fd8999",
-    "tests/inherited-compatibility.test.ts": "abf55f4899c5d07f6de1537db3d5de3498aa30b63d028680fce5dcfeb88bdf1d",
+    "tests/inherited-compatibility.test.ts": "07cb48c2c27f681c5891eb467c2ef588cbcd797fe06f552d97f1e2ed2707d934",
     "tests/model-correspondence-evidence-guidance.test.ts": "5886b128fada18690cbda5cc454193e6bb4cadc48077977d2f033659baa09b7d",
     "tests/optional-formal-gate.test.ts": "c33a55d9bb39c30227dec7540ef6185d1ddc3a8c57dba941b08da44576c8afa8",
     "tests/p2-improvements.test.ts": "0d96ebf371ac344778ecc5a84b75cbac2ff972263d85264e861392fca5c976e4",
@@ -3476,7 +3447,7 @@
     "tests/policy-command-definition-binding.test.ts": "a24a6003d96c86038f776191f4cf2845e417fcb1edd691e893b2ddfa33545d3b",
     "tests/policy-command-optional-binding.test.ts": "25a77fd7cc4677f607b607fea1d397e9841be5e110a8632d37edc1cae09b6acd",
     "tests/release-documents.test.ts": "8c8aefb201bd897844b0090aaa689757fcd71a21f12a0c4df38e6bcfc67e4da3",
-    "tests/release-version-consistency.test.ts": "1b0599360f33a343827eb461c9224e1537db44162e4d642932dacf867534742e",
+    "tests/release-version-consistency.test.ts": "d3f113a35c5bba5d1d4554e82199aee21ff4086dcae41c06185e769c230cbb38",
     "tests/scaffold-artifact.test.ts": "7b85b9c6f912e7b83c5bf9bd01b61264aa8a460750f9e8a4e382bb91686ea090",
     "tests/setup.ts": "7bb56857a68d20180b6a81c7bdc5acea0b2bcbfb1dcc45fcf50f94db08271c75",
     "tests/structured-full-test-report.test.ts": "43f01ced1a4b046dab1ae5a95b5134199e43236e13ac284c589814e629611094",
@@ -3551,8 +3522,8 @@
       "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
       "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-001",
       "approver": "nahisaho",
-      "reason": "Historical CHANGE-0001 evidence predates monotonic ordering; current trace, TDD, commands, and release checks are independently rerun.",
-      "recordedAt": "2026-09-15T23:58:45.694Z"
+      "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+      "recordedAt": "2026-09-19T14:46:40.278Z"
     },
     {
       "changeId": "CHANGE-0003",
@@ -3783,24 +3754,24 @@
       "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
       "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-001",
       "approver": "nahisaho",
-      "reason": "The implementation checkpoint follows the immutable Red checkpoint, while the authoritative TEST-AUTONOMOUS-ORACLE-005 Red and Green evidence remains recorded and passing.",
-      "recordedAt": "2026-09-17T13:29:45.563Z"
+      "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+      "recordedAt": "2026-09-19T14:46:41.314Z"
     },
     {
       "changeId": "CHANGE-0010",
       "code": "CHANGE_RED_UNPROVEN",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "approver": "nahisaho",
-      "reason": "A genuine failing baseline-oracle Red was recorded before regeneration; only append-only checkpoint ordering prevents direct recognition.",
-      "recordedAt": "2026-09-17T13:29:46.420Z"
+      "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+      "recordedAt": "2026-09-19T14:46:42.316Z"
     },
     {
       "changeId": "CHANGE-0010",
       "code": "CHANGE_GREEN_UNPROVEN",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "approver": "nahisaho",
-      "reason": "The regenerated baseline and dedicated compatibility test pass TEST-AUTONOMOUS-ORACLE-005; only append-only checkpoint ordering prevents direct recognition.",
-      "recordedAt": "2026-09-17T13:29:47.293Z"
+      "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+      "recordedAt": "2026-09-19T14:46:43.294Z"
     },
     {
       "changeId": "CHANGE-0010",
@@ -3831,8 +3802,8 @@
       "code": "CHANGE_COMPLETENESS_TDD",
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "approver": "nahisaho",
-      "reason": "TEST-AUTONOMOUS-ORACLE-005 has bounded real Red-Green evidence and full validation for the baseline compatibility contract.",
-      "recordedAt": "2026-09-17T13:29:50.775Z"
+      "reason": "New CHANGE-0017 TDD evidence changed the shared evidence snapshot while these historical chronology gaps remain independently covered by current passing tests and quality evidence; refresh the bounded historical debt waiver.",
+      "recordedAt": "2026-09-19T14:46:44.289Z"
     },
     {
       "changeId": "CHANGE-0010",
@@ -4185,6 +4156,22 @@
       "approver": "nahisaho",
       "reason": "Current deterministic Red-Green evidence and all required verification pass; only historical ordering and evidence-selection debt caused by closed append-only phase boundaries is waived.",
       "recordedAt": "2026-09-19T09:48:11.398Z"
+    },
+    {
+      "changeId": "CHANGE-0017",
+      "code": "CHANGE_TEST_CHANGED_AFTER_RED",
+      "detail": "REQ-AUTONOMOUS-DEVELOPMENT-001",
+      "approver": "nahisaho",
+      "reason": "CHANGE-0017 kept TEST-AUTONOMOUS-ORACLE-006 fixed through its valid Red-Green cycle; additional non-target compatibility and source-version regression tests were updated after Red and all focused/full suites pass.",
+      "recordedAt": "2026-09-19T14:17:16.328Z"
+    },
+    {
+      "changeId": "CHANGE-0017",
+      "code": "CHANGE_ORDER_MIGRATION_REQUIRED",
+      "detail": "requirement:REQ-AUTONOMOUS-DEVELOPMENT-001",
+      "approver": "nahisaho",
+      "reason": "CHANGE-0017 has current ordered Red-Green evidence for its changed behavior; this diagnostic is caused by older REQ-AUTONOMOUS-DEVELOPMENT-001 cycles that predate monotonic order.",
+      "recordedAt": "2026-09-19T14:46:45.297Z"
     }
   ],
   "workflowWaivers": [
@@ -4194,8 +4181,8 @@
       "declarationRecordedAt": "2026-09-14T07:14:46.364Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4203,8 +4190,8 @@
       "declarationRecordedAt": "2026-09-14T07:32:24.312Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4212,8 +4199,8 @@
       "declarationRecordedAt": "2026-09-14T10:43:50.160Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4221,8 +4208,8 @@
       "declarationRecordedAt": "2026-09-14T14:10:15.628Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4230,8 +4217,8 @@
       "declarationRecordedAt": "2026-09-15T12:53:53.044Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-quality",
@@ -4239,8 +4226,8 @@
       "declarationRecordedAt": "2026-09-15T11:05:15.207Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-change",
@@ -4248,8 +4235,8 @@
       "declarationRecordedAt": "2026-09-15T13:31:32.076Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-change",
@@ -4257,8 +4244,8 @@
       "declarationRecordedAt": "2026-09-16T04:06:06.566Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-change",
@@ -4266,8 +4253,8 @@
       "declarationRecordedAt": "2026-09-17T04:47:25.256Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4275,8 +4262,8 @@
       "declarationRecordedAt": "2026-09-15T21:38:19.690Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4284,8 +4271,8 @@
       "declarationRecordedAt": "2026-09-15T21:57:36.009Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4293,8 +4280,8 @@
       "declarationRecordedAt": "2026-09-15T22:59:07.144Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-quality",
@@ -4302,8 +4289,8 @@
       "declarationRecordedAt": "2026-09-15T13:00:59.917Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-quality",
@@ -4311,8 +4298,8 @@
       "declarationRecordedAt": "2026-09-15T21:58:31.653Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-quality",
@@ -4320,8 +4307,8 @@
       "declarationRecordedAt": "2026-09-16T04:06:05.728Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-requirements",
@@ -4329,8 +4316,8 @@
       "declarationRecordedAt": "2026-09-15T21:29:30.902Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-change",
@@ -4338,8 +4325,8 @@
       "declarationRecordedAt": "2026-09-17T09:05:19.779Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-change",
@@ -4347,8 +4334,8 @@
       "declarationRecordedAt": "2026-09-17T12:43:06.923Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4356,8 +4343,8 @@
       "declarationRecordedAt": "2026-09-17T04:47:12.659Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4365,8 +4352,8 @@
       "declarationRecordedAt": "2026-09-17T04:47:13.451Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-quality",
@@ -4374,8 +4361,8 @@
       "declarationRecordedAt": "2026-09-17T06:34:03.621Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-change",
@@ -4383,8 +4370,8 @@
       "declarationRecordedAt": "2026-09-17T22:11:07.203Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-quality",
@@ -4392,8 +4379,8 @@
       "declarationRecordedAt": "2026-09-18T04:37:44.764Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-change",
@@ -4401,8 +4388,8 @@
       "declarationRecordedAt": "2026-09-18T05:06:41.382Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-change",
@@ -4410,8 +4397,8 @@
       "declarationRecordedAt": "2026-09-17T14:11:22.340Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4419,8 +4406,8 @@
       "declarationRecordedAt": "2026-09-17T14:33:28.293Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4428,8 +4415,8 @@
       "declarationRecordedAt": "2026-09-18T00:34:27.053Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4437,8 +4424,8 @@
       "declarationRecordedAt": "2026-09-18T04:04:45.890Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4446,8 +4433,8 @@
       "declarationRecordedAt": "2026-09-18T05:28:52.567Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4455,8 +4442,8 @@
       "declarationRecordedAt": "2026-09-17T14:47:53.525Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4464,8 +4451,8 @@
       "declarationRecordedAt": "2026-09-18T03:30:33.916Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4473,8 +4460,8 @@
       "declarationRecordedAt": "2026-09-18T04:18:46.522Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4482,8 +4469,8 @@
       "declarationRecordedAt": "2026-09-18T05:42:45.067Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-quality",
@@ -4491,8 +4478,8 @@
       "declarationRecordedAt": "2026-09-17T21:10:38.549Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-requirements",
@@ -4500,8 +4487,8 @@
       "declarationRecordedAt": "2026-09-17T23:54:40.589Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-requirements",
@@ -4509,8 +4496,8 @@
       "declarationRecordedAt": "2026-09-18T03:59:30.546Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-requirements",
@@ -4518,8 +4505,8 @@
       "declarationRecordedAt": "2026-09-18T05:22:51.775Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-quality",
@@ -4527,8 +4514,8 @@
       "declarationRecordedAt": "2026-09-18T06:03:39.901Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-change",
@@ -4536,8 +4523,8 @@
       "declarationRecordedAt": "2026-09-18T06:24:26.717Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.391Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-design",
@@ -4545,8 +4532,8 @@
       "declarationRecordedAt": "2026-09-18T08:49:32.672Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4554,8 +4541,8 @@
       "declarationRecordedAt": "2026-09-18T09:21:03.589Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-requirements",
@@ -4563,8 +4550,8 @@
       "declarationRecordedAt": "2026-09-18T08:27:01.293Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-quality",
@@ -4572,8 +4559,8 @@
       "declarationRecordedAt": "2026-09-18T09:38:04.372Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.762Z"
     },
     {
       "skill": "sdd-change",
@@ -4581,8 +4568,8 @@
       "declarationRecordedAt": "2026-09-18T23:25:17.492Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4590,8 +4577,8 @@
       "declarationRecordedAt": "2026-09-18T23:34:26.273Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     },
     {
       "skill": "sdd-implementation",
@@ -4599,8 +4586,8 @@
       "declarationRecordedAt": "2026-09-19T01:05:17.973Z",
       "code": "WORKFLOW_SKILL_NOT_INVOKED",
       "approver": "nahisaho",
-      "reason": "The active Copilot CLI session cannot contain its terminal event before completion; all declared SDD Skills were invoked in-session and deterministic lifecycle and quality evidence is independently current.",
-      "waiverRecordedAt": "2026-09-19T11:49:10.392Z"
+      "reason": "The active compatible transcript is verified; the terminal sdd-change completion declaration is recorded after the retained Skill invocation events and is bounded as declaration reconciliation debt.",
+      "waiverRecordedAt": "2026-09-19T22:36:54.761Z"
     }
   ],
   "waiverDiagnostics": []

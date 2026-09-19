@@ -110,6 +110,7 @@ describe("frozen baseline oracle", () => {
     await expect(hoh.verifyBaselineOracle(process.cwd())).resolves.toMatchObject({
       valid: true,
     });
+
     const manifest = JSON.parse(
       await readFile("baseline-specs/baseline.manifest.json", "utf8"),
     ) as {
@@ -122,7 +123,7 @@ describe("frozen baseline oracle", () => {
     );
     expect(manifest.procedure).toEqual({
       id: "musubix3-canonical-oracle",
-      version: "2",
+      version: "3",
     });
     const pinnedTests = manifest.artifacts
       .map((artifact) => artifact.path)
@@ -142,6 +143,26 @@ describe("frozen baseline oracle", () => {
         true,
       );
     }
+  });
+
+  /** @id TEST-AUTONOMOUS-ORACLE-006
+   * @verifies REQ-AUTONOMOUS-DEVELOPMENT-001
+   */
+  it("TEST-AUTONOMOUS-ORACLE-006 keeps frozen compatibility tests independent of product versions", async () => {
+    const manifest = JSON.parse(
+      await readFile("baseline-specs/baseline.manifest.json", "utf8"),
+    ) as { artifacts: { path: string }[] };
+    const pinnedTests = manifest.artifacts
+      .map((artifact) => artifact.path)
+      .filter((path) => path.endsWith(".test.ts"));
+    expect(pinnedTests.length).toBeGreaterThan(0);
+
+    const findings = (await Promise.all(pinnedTests.map(async (path) =>
+      hoh.findBaselineCompatibilityVersionCouplings(
+        path,
+        await readFile(path, "utf8"),
+      )))).flat();
+    expect(findings, JSON.stringify(findings)).toEqual([]);
   });
 
   /** @id TEST-AUTONOMOUS-ORACLE-002

@@ -18,6 +18,7 @@
     "command": ["npm", "ci", "--ignore-scripts", "--cache", ".musubix4-disposable/npm-cache"],
     "writablePaths": ["node_modules", ".musubix4-disposable"]
   },
+  "commandTimeoutMs": 300000,
   "qaChecks": {
     "build": ["npm", "run", "build"],
     "focused-test": ["npx", "vitest", "run", "tests/autonomous-seven-check-qa.test.ts", "--maxWorkers=1"],

@@ -446,6 +446,50 @@
       "status": "completed",
       "reason": "CHANGE-0015 and supporting CHANGE-0016 implementation, evidence, approvals, reviews, and final readiness gate completed.",
       "recordedAt": "2026-09-19T11:54:18.733Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-19T22:31:44.387Z"
     }
-  ]
+  ],
+  "verification": {
+    "mode": "compatible",
+    "sourceSha256": "97a3e3bd99547fc644b1502683a6a1cf96940829c59387f3dde692c293782fe5",
+    "eventsSha256": "97fe1b5d896c327e4ca44bfee8f618c0b687740b26ee77a6b230057daff0f475",
+    "verifiedAt": "2026-09-19T22:36:47.638Z",
+    "invocations": [
+      {
+        "skill": "sdd-change",
+        "toolCallId": "call_M8S8kkGmDcog9JAbO5OdJKs3",
+        "invokedAt": "2026-09-19T04:05:07.189Z",
+        "completedAt": "2026-09-19T04:05:07.205Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-design",
+        "toolCallId": "call_K5trURGY6mYHMkZRPZCjfPzK",
+        "invokedAt": "2026-09-19T08:23:07.975Z",
+        "completedAt": "2026-09-19T08:23:07.986Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-change",
+        "toolCallId": "call_er74iXm9rwqq0DUpynzogDlB",
+        "invokedAt": "2026-09-19T09:49:51.426Z",
+        "completedAt": "2026-09-19T09:49:51.439Z",
+        "status": "completed"
+      },
+      {
+        "skill": "sdd-change",
+        "toolCallId": "call_E4L5KD1Hik3fSmbmgzGz3K6O",
+        "invokedAt": "2026-09-19T11:57:09.877Z",
+        "completedAt": "2026-09-19T11:57:09.889Z",
+        "status": "completed"
+      }
+    ]
+  }
 }

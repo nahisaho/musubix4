@@ -6,7 +6,7 @@
   },
   "procedure": {
     "id": "musubix3-canonical-oracle",
-    "version": "2"
+    "version": "3"
   },
   "artifacts": [
     {
@@ -19,7 +19,7 @@
     },
     {
       "path": "tests/inherited-compatibility.test.ts",
-      "sha256": "abf55f4899c5d07f6de1537db3d5de3498aa30b63d028680fce5dcfeb88bdf1d"
+      "sha256": "07cb48c2c27f681c5891eb467c2ef588cbcd797fe06f552d97f1e2ed2707d934"
     },
     {
       "path": "baseline-specs/oracle/historical-trace.json",
@@ -28,6 +28,6 @@
   ],
   "attestation": {
     "path": "baseline-specs/oracle/regeneration-attestation.json",
-    "sha256": "6dd59f8a48419ed5db48fddc6b9cbf90315bc0ce6ff91086a3eb3ef9a81bd192"
+    "sha256": "6781854b6656fa52094d8542ece1f065a597d085999df88b35ba119238861fe2"
   }
 }

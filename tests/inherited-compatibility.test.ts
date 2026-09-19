@@ -51,5 +51,4 @@ it("TEST-CLI-COMPATIBILITY-001 preserves every MUSUBIX3 command and option", () 
     missingOptions: [],
   });
   expect(createProgram().name()).toBe("musubix4");
-  expect(createProgram().version()).toBe("0.1.0");
 });

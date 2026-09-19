@@ -613,6 +613,102 @@ interface BaselineManifest {
   attestation: { path: string; sha256: string };
 }
 
+export interface BaselineCompatibilityVersionCoupling {
+  code: "BASELINE_COMPATIBILITY_VERSION_COUPLING";
+  path: string;
+  line: number;
+  column: number;
+}
+
+/** @id CODE-AUTONOMOUS-ORACLE-GOVERNANCE-001
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-001
+ * @design DES-AUTONOMOUS-DEVELOPMENT-018
+ */
+export function findBaselineCompatibilityVersionCouplings(
+  path: string,
+  source: string,
+): BaselineCompatibilityVersionCoupling[] {
+  const file = ts.createSourceFile(path, source, ts.ScriptTarget.Latest, true);
+  const findings: BaselineCompatibilityVersionCoupling[] = [];
+  const isTypeOnly = (node: ts.Node): boolean => {
+    for (let current: ts.Node | undefined = node; current; current = current.parent) {
+      if (ts.isTypeNode(current)) return true;
+      if (ts.isTypeElement(current)) return true;
+      if (ts.isInterfaceDeclaration(current)) return true;
+      if (ts.isImportClause(current) && current.isTypeOnly) return true;
+      if (ts.isImportSpecifier(current) && current.isTypeOnly) return true;
+      if (ts.isExportSpecifier(current) && current.isTypeOnly) return true;
+      if (ts.isExportDeclaration(current) && current.isTypeOnly) return true;
+    }
+    return false;
+  };
+  const add = (node: ts.Node) => {
+    const position = file.getLineAndCharacterOfPosition(node.getStart(file));
+    findings.push({
+      code: "BASELINE_COMPATIBILITY_VERSION_COUPLING",
+      path: path.replaceAll("\\", "/"),
+      line: position.line + 1,
+      column: position.character + 1,
+    });
+  };
+  const optionToken = /(?:^|[ \t\r\n,=:])(?:--version|-V)(?=$|[ \t\r\n,=:])/;
+  const staticString = (node: ts.Expression): string | undefined => {
+    if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
+      return node.text;
+    }
+    if (ts.isParenthesizedExpression(node)) return staticString(node.expression);
+    if (ts.isBinaryExpression(node) && node.operatorToken.kind === ts.SyntaxKind.PlusToken) {
+      const left = staticString(node.left);
+      const right = staticString(node.right);
+      return left === undefined || right === undefined ? undefined : left + right;
+    }
+    if (ts.isTemplateExpression(node)) {
+      let value = node.head.text;
+      for (const span of node.templateSpans) {
+        const expression = staticString(span.expression);
+        if (expression === undefined) return undefined;
+        value += expression + span.literal.text;
+      }
+      return value;
+    }
+    return undefined;
+  };
+  const isStaticStringChild = (node: ts.Node): boolean => {
+    const parent = node.parent;
+    return parent !== undefined && (
+      ts.isParenthesizedExpression(parent)
+      || ts.isTemplateSpan(parent)
+      || (ts.isBinaryExpression(parent)
+        && parent.operatorToken.kind === ts.SyntaxKind.PlusToken)
+    );
+  };
+  const visit = (node: ts.Node): void => {
+    if (ts.isIdentifier(node) && node.text === "version" && !isTypeOnly(node)) {
+      add(node);
+    }
+    if (
+      (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))
+      && node.text === "version"
+      && !isTypeOnly(node)
+      && (
+        (ts.isElementAccessExpression(node.parent) && node.parent.argumentExpression === node)
+        || (ts.isBindingElement(node.parent) && node.parent.propertyName === node)
+        || ts.isImportSpecifier(node.parent)
+        || ts.isExportSpecifier(node.parent)
+      )
+    ) {
+      add(node);
+    }
+    if (ts.isExpression(node) && !isTypeOnly(node) && !isStaticStringChild(node)) {
+      const value = staticString(node);
+      if (value !== undefined && optionToken.test(value)) add(node);
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(file);
+  return findings;
+}
+
 interface HistoricalTraceMapping {
   schemaVersion?: number;
   sourceRoot?: string;
