@@ -25,6 +25,7 @@ export interface ChangeFingerprints {
 export interface ChangePhaseEvidence {
   phase: ChangePhase;
   order?: number;
+  orderDetail?: string;
   recordedAt: string;
   fingerprints: ChangeFingerprints;
   allowUnchanged?: boolean;
@@ -42,6 +43,7 @@ export interface ChangeRecord {
   requirementIds: string[];
   phases: Partial<Record<ChangePhase, ChangePhaseEvidence>>;
   tddBatches?: ChangeTddBatch[];
+  qualityHistory?: ChangePhaseEvidence[];
 }
 
 export interface ChangeEvidence {

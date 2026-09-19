@@ -58,11 +58,7 @@ export interface EvidenceOrderScope {
   code?: string;
   requirementId?: string;
   detail?: string;
-  /**
-   * Only ever supplied, and only ever consulted by `recordKey`, for
-   * `phase === 'waiver'` records — never by any external caller directly.
-   * See `recordKey`'s CODE-CHANGE-EVIDENCE-WAIVER-013 annotation below.
-   */
+  /** Used to distinguish repeated waiver and quality records. */
   sequence?: number;
 }
 
@@ -76,21 +72,18 @@ function recordSha256(record: Omit<EvidenceOrderRecord, 'recordSha256'>): string
  * @implements REQ-AUTONOMOUS-DEVELOPMENT-001
  * @design DES-AUTONOMOUS-DEVELOPMENT-001
  * Appends `scope.detail` after `scope.code`/`scope.requirementId` (only when
- * present), then, only when `phase === 'waiver'`, `scope.sequence` (only when
- * present). Every existing call site omits `scope.detail`/`scope.sequence`
- * (or the whole `scope` argument), so pre-existing keys are byte-identical.
- * `scope.sequence` lets multiple waiver-phase records share every other
- * scope field (REQ-CHANGE-EVIDENCE-WAIVER-006/010's supersession) without
- * ever colliding, since a record's `sequence` is strictly monotonic and
- * unique; it is never appended for any non-`waiver` phase, so
- * `EVIDENCE_ORDER_DUPLICATE` detection for every other phase is unchanged.
+ * present), then, for `waiver` and `quality`, `scope.sequence` (only when
+ * present). The monotonic sequence permits repeated scoped audit events while
+ * duplicate detection for every other phase remains unchanged.
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-020
+ * @design DES-AUTONOMOUS-DEVELOPMENT-017
  */
 function recordKey(kind: EvidenceOrderKind, entityId: string, phase: string, scope?: EvidenceOrderScope): string {
   const key: unknown[] = [kind, entityId, phase];
   if (scope?.code !== undefined) key.push(scope.code);
   if (scope?.requirementId !== undefined) key.push(scope.requirementId);
   if (scope?.detail !== undefined) key.push(scope.detail);
-  if (phase === 'waiver' && scope?.sequence !== undefined) key.push(scope.sequence);
+  if ((phase === 'waiver' || (kind === 'change' && phase === 'quality')) && scope?.sequence !== undefined) key.push(scope.sequence);
   return JSON.stringify(key);
 }
 
@@ -141,7 +134,9 @@ export function validateEvidenceOrderLog(log: EvidenceOrderLog | null): {
       ...(record.code !== undefined ? { code: record.code } : {}),
       ...(record.requirementId !== undefined ? { requirementId: record.requirementId } : {}),
       ...(record.detail !== undefined ? { detail: record.detail } : {}),
-      ...(record.phase === 'waiver' ? { sequence: record.sequence } : {}),
+      ...(record.phase === 'waiver' || (record.kind === 'change' && record.phase === 'quality')
+        ? { sequence: record.sequence }
+        : {}),
     });
     if (records.has(key)) {
       diagnostics.push(error('EVIDENCE_ORDER_DUPLICATE', `${record.kind}:${record.entityId}:${record.phase} appears more than once.`, orderPath));
@@ -180,7 +175,9 @@ export async function appendEvidenceOrder(
     ...(input.code !== undefined ? { code: input.code } : {}),
     ...(input.requirementId !== undefined ? { requirementId: input.requirementId } : {}),
     ...(input.detail !== undefined ? { detail: input.detail } : {}),
-    ...(input.phase === 'waiver' ? { sequence: log.records.length + 1 } : {}),
+    ...(input.phase === 'waiver' || (input.kind === 'change' && input.phase === 'quality')
+      ? { sequence: log.records.length + 1 }
+      : {}),
   };
   if (validated.records.has(recordKey(input.kind, input.entityId, input.phase, scope))) {
     throw new Error(`${input.kind}:${input.entityId}:${input.phase} is already present in monotonic evidence order.`);

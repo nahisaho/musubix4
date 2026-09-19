@@ -86,6 +86,53 @@ const tddBatchPhases = ['red', 'implementation', 'green'] as const;
 type TddBatchPhase = typeof tddBatchPhases[number];
 const singularPhases = ['impact', 'requirements', 'design', 'quality'] as const;
 
+/** @id CODE-CHANGE-QUALITY-REFRESH-001
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-020
+ * @design DES-AUTONOMOUS-DEVELOPMENT-017
+ */
+function qualityHistoryIssue(change: ChangeRecord): { code: string; message: string } | null {
+  const quality = change.phases.quality;
+  const value: unknown = change.qualityHistory;
+  if (value !== undefined && !Array.isArray(value)) {
+    return { code: 'CHANGE_QUALITY_HISTORY_SCHEMA', message: `${change.changeId}:qualityHistory must be an array.` };
+  }
+  const history = Array.isArray(value) ? value : [];
+  if (history.length && !quality) {
+    return {
+      code: 'CHANGE_QUALITY_HISTORY_SCHEMA',
+      message: `${change.changeId}:qualityHistory requires a current quality checkpoint.`,
+    };
+  }
+  const expectedCurrentDetail = history.length ? `quality-revision:${history.length}` : undefined;
+  if (quality && quality.orderDetail !== expectedCurrentDetail) {
+    return {
+      code: 'CHANGE_QUALITY_HISTORY_SCHEMA',
+      message: `${change.changeId}:current quality detail must be ${expectedCurrentDetail ?? 'absent'}.`,
+    };
+  }
+  let previousOrder = 0;
+  const orders = new Set<number>();
+  for (const [index, checkpoint] of history.entries()) {
+    const expectedDetail = index === 0 ? undefined : `quality-revision:${index}`;
+    if (!checkpoint || checkpoint.phase !== 'quality' || checkpoint.orderDetail !== expectedDetail
+      || !Number.isInteger(checkpoint.order) || checkpoint.order! < 1
+      || !isCanonicalIsoRecordedAt(checkpoint.recordedAt)
+      || !checkpoint.fingerprints || typeof checkpoint.fingerprints !== 'object') {
+      return { code: 'CHANGE_QUALITY_HISTORY_SCHEMA', message: `${change.changeId}:qualityHistory[${index}] is malformed.` };
+    }
+    if (orders.has(checkpoint.order!) || checkpoint.order! <= previousOrder
+      || (quality?.order !== undefined && checkpoint.order! >= quality.order)) {
+      return {
+        code: 'CHANGE_QUALITY_HISTORY_ORDER',
+        message: `${change.changeId}:qualityHistory[${index}] is not strictly before the current quality checkpoint.`,
+      };
+    }
+    orders.add(checkpoint.order!);
+    previousOrder = checkpoint.order!;
+  }
+  return null;
+}
+
 /** @id CODE-CHANGE-RECORD-FAIL-FAST-001
  * @implements REQ-AUTONOMOUS-DEVELOPMENT-001
  * @design DES-AUTONOMOUS-DEVELOPMENT-001
@@ -126,8 +173,8 @@ function unchangedRejection(
 }
 
 /** @id CODE-CHANGE-RECORD-FAIL-FAST-003
- * @implements REQ-AUTONOMOUS-DEVELOPMENT-001
- * @design DES-AUTONOMOUS-DEVELOPMENT-001
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-001 REQ-AUTONOMOUS-DEVELOPMENT-020
+ * @design DES-AUTONOMOUS-DEVELOPMENT-001 DES-AUTONOMOUS-DEVELOPMENT-017
  */
 export async function recordChangePhase(
   root: string,
@@ -146,7 +193,10 @@ export async function recordChangePhase(
   }
   const evidence = await loadChangeEvidence(root) ?? { schemaVersion: 1, changes: [] };
   if (evidence.changes.some((entry) =>
-    changePhases.some((entryPhase) => entry.phases[entryPhase] && !Number.isInteger(entry.phases[entryPhase]!.order))
+    changePhases.some((entryPhase) =>
+      entry.phases[entryPhase]
+      && !Number.isInteger(entry.phases[entryPhase]!.order)
+      && !(phase === 'quality' && entry.changeId === changeId && entryPhase === 'quality'))
     || (entry.tddBatches ?? []).some((batch) =>
       tddBatchPhases.some((batchPhase) => batch[batchPhase] && !Number.isInteger(batch[batchPhase]!.order))))) {
     throw new Error('Existing change evidence lacks monotonic order; regenerate it before recording new phases.');
@@ -160,21 +210,48 @@ export async function recordChangePhase(
   const normalizedRequirementIds = [...new Set(requirementIds)].sort();
   const isFullSet = JSON.stringify(normalizedRequirementIds) === JSON.stringify([...change.requirementIds].sort());
   const isBatchPhase = (tddBatchPhases as readonly string[]).includes(phase);
+  if (phase === 'quality') {
+    const historyIssue = qualityHistoryIssue(change);
+    if (historyIssue) throw new Error(`${historyIssue.code}: ${historyIssue.message}`);
+  }
 
   if (!isBatchPhase || isFullSet) {
-    // impact/requirements/design/quality (always), and red/implementation/green
-    // recorded with the change's exact full requirement ID set: identical,
-    // unchanged, once-per-change behavior (REQ-CHANGE-REQUIREMENT-BATCHES-002).
-    if (change.phases[phase]) throw new Error(`${changeId}:${phase} is already recorded.`);
+    // Singular phases and full-set TDD phases retain once-per-change behavior,
+    // except quality, which can be refreshed after later effective Green.
+    const currentQuality = phase === 'quality' ? change.phases.quality : undefined;
+    if (change.phases[phase] && phase !== 'quality') throw new Error(`${changeId}:${phase} is already recorded.`);
     if (phase === 'requirements' && !change.phases.impact) throw new Error('requirements requires the preceding impact phase.');
     if (phase === 'design' && !change.phases.requirements) throw new Error('design requires the preceding requirements phase.');
     if (phase === 'red' && !change.phases.design) throw new Error('red requires the preceding design phase.');
     if (phase === 'implementation' && !change.phases.red) throw new Error('implementation requires the preceding red phase.');
     if (phase === 'green' && !change.phases.implementation) throw new Error('green requires the preceding implementation phase.');
     if (phase === 'quality') {
-      const covered = new Set(effectiveBatches(change).filter((batch) => batch.green).flatMap((batch) => batch.requirementIds));
+      const greenBatches = effectiveBatches(change).filter((batch) => batch.green);
+      const covered = new Set(greenBatches.flatMap((batch) => batch.requirementIds));
       const missing = change.requirementIds.filter((id) => !covered.has(id));
       if (missing.length) throw new Error(`quality requires Green evidence covering all change requirement IDs; missing ${missing.join(', ')}.`);
+      if (currentQuality) {
+        const greatestGreenOrder = Math.max(...greenBatches.map((batch) => batch.green?.order ?? Number.NEGATIVE_INFINITY));
+        if (!Number.isInteger(currentQuality.order)) {
+          throw new Error(`CHANGE_ORDER_MIGRATION_REQUIRED: ${changeId}:quality lacks monotonic order evidence.`);
+        }
+        if (greatestGreenOrder <= currentQuality.order!) {
+          throw new Error(`CHANGE_QUALITY_REFRESH_NOT_NEEDED: ${changeId} has no effective Green evidence after its current quality checkpoint.`);
+        }
+        const order = await inspectEvidenceOrder(root);
+        if (!order.valid) {
+          throw new Error('Existing monotonic evidence order is invalid; regenerate evidence before appending.');
+        }
+        for (const checkpoint of [...(change.qualityHistory ?? []), currentQuality]) {
+          const record = evidenceOrderRecord(order.records, 'change', changeId, 'quality', {
+            ...(checkpoint.orderDetail ? { detail: checkpoint.orderDetail } : {}),
+            sequence: checkpoint.order!,
+          });
+          if (!record || record.sequence !== checkpoint.order) {
+            throw new Error(`CHANGE_QUALITY_HISTORY_ORPHAN: ${changeId} has a quality checkpoint without a matching monotonic order record.`);
+          }
+        }
+      }
     }
     if (!isFullSet) {
       throw new Error(!isBatchPhase
@@ -198,12 +275,28 @@ export async function recordChangePhase(
       fingerprints,
       ...(phase === 'requirements' && options.allowUnchanged ? { allowUnchanged: true } : {}),
     };
+    const qualityHistory = currentQuality
+      ? [...(change.qualityHistory ?? []), currentQuality]
+      : change.qualityHistory;
+    if (currentQuality) candidate.orderDetail = `quality-revision:${qualityHistory!.length}`;
     if (options.dryRun) {
       return { schemaVersion: evidence.schemaVersion, changes: evidence.changes.map((entry) =>
-        entry.changeId === changeId ? { ...entry, phases: { ...entry.phases, [phase]: candidate } } : entry) };
+        entry.changeId === changeId
+          ? {
+            ...entry,
+            phases: { ...entry.phases, [phase]: candidate },
+            ...(currentQuality ? { qualityHistory } : {}),
+          }
+          : entry) };
     }
-    const order = await appendEvidenceOrder(root, { kind: 'change', entityId: changeId, phase });
+    const order = await appendEvidenceOrder(root, {
+      kind: 'change',
+      entityId: changeId,
+      phase,
+      ...(candidate.orderDetail ? { detail: candidate.orderDetail } : {}),
+    });
     candidate.order = order.sequence;
+    if (currentQuality && qualityHistory) change.qualityHistory = qualityHistory;
     change.phases[phase] = candidate;
   } else {
     // red/implementation/green recorded with a proper, non-empty subset of the
@@ -319,8 +412,8 @@ function recordedAtOutOfOrderDiagnostics(change: ChangeRecord): Diagnostic[] {
 }
 
 /** @id CODE-CHANGE-REQUIREMENT-BATCHES-002
- * @implements REQ-AUTONOMOUS-DEVELOPMENT-001
- * @design DES-AUTONOMOUS-DEVELOPMENT-001
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-001 REQ-AUTONOMOUS-DEVELOPMENT-020
+ * @design DES-AUTONOMOUS-DEVELOPMENT-001 DES-AUTONOMOUS-DEVELOPMENT-017
  */
 export async function validateChangeEvidence(root: string): Promise<{
   present: boolean;
@@ -365,6 +458,66 @@ export async function validateChangeEvidence(root: string): Promise<{
   for (const change of evidence.changes) {
     const batches = effectiveBatches(change);
     const fullSetKey = batchKey(change.requirementIds);
+    const quality = change.phases.quality;
+    const qualityHistory = change.qualityHistory;
+    let qualityHistoryShapeValid = true;
+    if (qualityHistory !== undefined && !Array.isArray(qualityHistory)) {
+      qualityHistoryShapeValid = false;
+      diagnostics.push(error('CHANGE_QUALITY_HISTORY_SCHEMA', `${change.changeId}:qualityHistory must be an array.`));
+    }
+    const history = Array.isArray(qualityHistory) ? qualityHistory : [];
+    if (history.length && !quality) {
+      qualityHistoryShapeValid = false;
+      diagnostics.push(error(
+        'CHANGE_QUALITY_HISTORY_SCHEMA',
+        `${change.changeId}:qualityHistory requires a current quality checkpoint.`,
+      ));
+    }
+    const expectedCurrentDetail = history.length ? `quality-revision:${history.length}` : undefined;
+    if (quality && quality.orderDetail !== expectedCurrentDetail) {
+      qualityHistoryShapeValid = false;
+      diagnostics.push(error(
+        'CHANGE_QUALITY_HISTORY_SCHEMA',
+        `${change.changeId}:current quality detail must be ${expectedCurrentDetail ?? 'absent'}.`,
+      ));
+    }
+    let previousHistoryOrder = 0;
+    const historyOrders = new Set<number>();
+    const checkpointKeys = new Set<string>();
+    let qualityOrdersPresent = Number.isInteger(quality?.order);
+    const checkpointKey = (detail: string | undefined, sequence: number): string =>
+      JSON.stringify([detail ?? null, sequence]);
+    for (const [index, checkpoint] of history.entries()) {
+      const expectedDetail = index === 0 ? undefined : `quality-revision:${index}`;
+      if (!checkpoint || checkpoint.phase !== 'quality' || checkpoint.orderDetail !== expectedDetail
+        || !Number.isInteger(checkpoint.order) || checkpoint.order! < 1
+        || !isCanonicalIsoRecordedAt(checkpoint.recordedAt)
+        || !checkpoint.fingerprints || typeof checkpoint.fingerprints !== 'object') {
+        qualityHistoryShapeValid = false;
+        diagnostics.push(error('CHANGE_QUALITY_HISTORY_SCHEMA', `${change.changeId}:qualityHistory[${index}] is malformed.`));
+        continue;
+      }
+      if (historyOrders.has(checkpoint.order!)
+        || checkpoint.order! <= previousHistoryOrder
+        || (quality?.order !== undefined && checkpoint.order! >= quality.order)) {
+        diagnostics.push(error('CHANGE_QUALITY_HISTORY_ORDER', `${change.changeId}:qualityHistory[${index}] is not strictly before the current quality checkpoint.`));
+      }
+      historyOrders.add(checkpoint.order!);
+      checkpointKeys.add(checkpointKey(checkpoint.orderDetail, checkpoint.order!));
+      previousHistoryOrder = checkpoint.order!;
+      const record = evidenceOrderRecord(order.records, 'change', change.changeId, 'quality', {
+        ...(checkpoint.orderDetail ? { detail: checkpoint.orderDetail } : {}),
+        sequence: checkpoint.order!,
+      });
+      if (!record || record.sequence !== checkpoint.order) {
+        diagnostics.push(error('CHANGE_QUALITY_HISTORY_ORPHAN', `${change.changeId}:qualityHistory[${index}] has no matching monotonic order record.`));
+      }
+    }
+    if (Number.isInteger(quality?.order)) {
+      checkpointKeys.add(checkpointKey(quality?.orderDetail, quality!.order!));
+    } else if (quality) {
+      qualityOrdersPresent = false;
+    }
     for (const singularPhase of singularPhases) {
       const item = change.phases[singularPhase];
       if (!item) {
@@ -376,9 +529,27 @@ export async function validateChangeEvidence(root: string): Promise<{
           `${change.changeId}:${singularPhase} lacks monotonic order evidence; regenerate this change chronology.`,
           change.changeId, undefined, diagnosticDetail('CHANGE_ORDER_MIGRATION_REQUIRED', { phaseName: singularPhase })));
       } else if (item) {
-        const record = evidenceOrderRecord(order.records, 'change', change.changeId, singularPhase);
+        const record = evidenceOrderRecord(order.records, 'change', change.changeId, singularPhase, singularPhase === 'quality'
+          ? {
+            ...(item.orderDetail ? { detail: item.orderDetail } : {}),
+            sequence: item.order!,
+          }
+          : undefined);
         if (!record || record.sequence !== item.order) {
           diagnostics.push(error('CHANGE_ORDER_MISMATCH', `${change.changeId}:${singularPhase} does not match the monotonic evidence order log.`));
+        }
+      }
+    }
+    if (qualityHistoryShapeValid && qualityOrdersPresent) {
+      for (const record of order.records.values()) {
+        if (record.kind === 'change' && record.entityId === change.changeId && record.phase === 'quality'
+          && !checkpointKeys.has(checkpointKey(record.detail, record.sequence))) {
+          diagnostics.push({
+            code: 'CHANGE_QUALITY_ORDER_ORPHAN',
+            severity: 'warning',
+            changeId: change.changeId,
+            message: `${change.changeId}:quality order ${record.sequence} has no matching checkpoint.`,
+          });
         }
       }
     }

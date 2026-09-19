@@ -48,12 +48,14 @@ describe("candidate isolation against the recorded initialization HEAD", () => {
         "utf8",
       ),
     ) as {
-      schemaVersion: 1;
+      schemaVersion: 2;
       runBaseCommit: string;
       statusDigest: string;
       dirtyPathStates: Array<{
         path: string;
         content: string;
+        contentBase64?: string;
+        stagedContentBase64?: string;
         mode: string;
         existence: "present" | "absent";
         indexEntry: string;
@@ -68,6 +70,9 @@ describe("candidate isolation against the recorded initialization HEAD", () => {
         content: createHash("sha256")
           .update("dirty-before-initialize\n")
           .digest("hex"),
+        contentBase64: Buffer.from("dirty-before-initialize\n").toString(
+          "base64",
+        ),
         mode: "100644",
         existence: "present",
         indexEntry: spawnSync(
@@ -86,7 +91,7 @@ describe("candidate isolation against the recorded initialization HEAD", () => {
       createHash("sha256")
         .update(
           JSON.stringify({
-            schemaVersion: 1,
+            schemaVersion: 2,
             runBaseCommit: baseline.runBaseCommit,
             dirtyPathStates: baseline.dirtyPathStates,
           }),

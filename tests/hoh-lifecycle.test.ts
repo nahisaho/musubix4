@@ -1620,10 +1620,11 @@ process.exit(0);
   /** @id TEST-HOH-QA-INTEGRITY-001
    * @verifies REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-014 REQ-AUTONOMOUS-DEVELOPMENT-018
    */
-  it("TEST-HOH-QA-INTEGRITY-001 rejects QA evidence when the candidate tree changes", async () => {
+  it("TEST-HOH-QA-INTEGRITY-001 routes candidate tree mutation through blocker recovery", async () => {
     const root = await fixture();
     const store = new FileRunStore(root);
     const snapshots: CandidateSnapshot[] = [];
+    let rollbackCalls = 0;
     const services: HohServices = {
       roles: {
         planner: async (context) => {
@@ -1672,7 +1673,9 @@ process.exit(0);
           (await readFile(resolve(root, "tracked.ts"), "utf8")) === "base"
             ? "before"
             : "after",
-        rollback: async () => undefined,
+        rollback: async () => {
+          rollbackCalls += 1;
+        },
       },
     };
     const orchestrator = new HohOrchestrator(store, services);
@@ -1687,8 +1690,12 @@ process.exit(0);
     await orchestrator.resume(run.id);
     await orchestrator.resume(run.id);
     const status = await orchestrator.resume(run.id);
-    expect(status.state).toBe("failed");
-    expect(status.terminalReason).toBe("qa-tree-modified");
+    expect(status).toMatchObject({
+      state: "planned",
+      blockerRepairAttempts: 1,
+    });
+    expect(status.terminalReason).toBeUndefined();
+    expect(rollbackCalls).toBe(1);
     expect(snapshots).toHaveLength(1);
   });
 

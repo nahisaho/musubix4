@@ -396,30 +396,56 @@
       "phase": "complete",
       "status": "completed",
       "recordedAt": "2026-09-18T09:38:04.372Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-18T23:25:17.492Z"
+    },
+    {
+      "skill": "sdd-implementation",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-18T23:34:26.273Z"
+    },
+    {
+      "skill": "sdd-implementation",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-19T01:05:17.973Z"
+    },
+    {
+      "skill": "sdd-design",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "recordedAt": "2026-09-19T08:50:48.867Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "failed",
+      "reason": "Blocked by POLICY_APPROVAL_REQUIRED: current config and trusted policy-baseline changes require a reviewer-other-than-author commit before readiness can pass.",
+      "recordedAt": "2026-09-19T11:37:51.623Z"
+    },
+    {
+      "skill": "sdd-change",
+      "version": "0.1.0",
+      "provenance": "self-reported",
+      "phase": "complete",
+      "status": "completed",
+      "reason": "CHANGE-0015 and supporting CHANGE-0016 implementation, evidence, approvals, reviews, and final readiness gate completed.",
+      "recordedAt": "2026-09-19T11:54:18.733Z"
     }
-  ],
-  "verification": {
-    "mode": "strict",
-    "sourceSha256": "52589669b018754bea1afc3ebb4e1c83119098b7fb753df2ceb0a59f748577a9",
-    "transcriptSha256": "df3f84f09128a3919ca99fe48a53466d975d00f20ed465a9a472266cd1579dc3",
-    "sessionId": "b87930da-6a85-4657-a7e0-b3954e385c15",
-    "exitCode": 0,
-    "terminalAt": "2026-09-18T09:47:38.308Z",
-    "eventCount": 4,
-    "sourceBytes": 548,
-    "maxTranscriptBytes": 100000000,
-    "maximumLineBytes": 179,
-    "maxTranscriptLineBytes": 1000000,
-    "eventsSha256": "3e9f8bcc516c8e4a3c47ce23b2b5ecfc9f49578c5b44858fd38eece01a556fe4",
-    "verifiedAt": "2026-09-18T09:47:46.808Z",
-    "invocations": [
-      {
-        "skill": "sdd-quality",
-        "toolCallId": "call_rUAFESskJ6nKIfqIFydYF5xp",
-        "invokedAt": "2026-09-18T09:47:32.994Z",
-        "completedAt": "2026-09-18T09:47:33.000Z",
-        "status": "completed"
-      }
-    ]
-  }
+  ]
 }

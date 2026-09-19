@@ -22,6 +22,7 @@ import {
   extractDeclaredCommandSurface, validateStaticCommandInventory, applyApprovedCollisionInventoryAmendment,
   runMandatoryProjectChecks, validateMandatoryQaConfiguration,
   autoApproveRunBoundary, loadHohConfigFile, parseHohConfig, recordRunApproval, runBoundedProcess, summarizeHohRun, type HohConfig, type HohServices, type RunRecord, type SpecificationSource,
+  type CandidateSnapshot,
 } from '../../analysis/src/index.js';
 import { install, pluginInstall, upgradeSkills } from './install.js';
 import { findPackageRoot, readPackageVersion } from './version.js';
@@ -188,16 +189,25 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
         validateMandatoryQaConfiguration(config);
       },
       verifyBaselineOracle: async () => verifyBaselineOracle(root),
-      staticCandidateValidation: async () => {
-        const upstream = JSON.parse(await readText(root, 'tests/fixtures/musubix3-cli-surface.json')) as {
+      staticCandidateValidation: async ({ workspace }: { workspace?: { path: string } } = {}) => {
+        const candidateRoot = workspace?.path ?? root;
+        const upstream = JSON.parse(await readText(candidateRoot, 'tests/fixtures/musubix3-cli-surface.json')) as {
           commands: Array<{ path: string; options: string[] }>;
         };
-        const candidate = await extractDeclaredCommandSurface(root, 'packages/cli/src/main.ts');
+        const candidate = await extractDeclaredCommandSurface(candidateRoot, 'packages/cli/src/main.ts');
         const inventory = JSON.parse(
-          await readText(root, '.musubix/compatibility/command-collisions.json'),
+          await readText(candidateRoot, '.musubix/compatibility/command-collisions.json'),
         ) as unknown;
-        return validateStaticCommandInventory(upstream, candidate, inventory);
+        const validation = validateStaticCommandInventory(upstream, candidate, inventory);
+        return { ...validation, declaredSurfaceDigest: candidate.digest };
       },
+      candidateSurfaceDigest: async ({ workspace }: { workspace?: { path: string } }) =>
+        (
+          await extractDeclaredCommandSurface(
+            workspace?.path ?? root,
+            'packages/cli/src/main.ts',
+          )
+        ).digest,
       mandatoryChecks: async ({
         run,
         workspace,
@@ -239,6 +249,10 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
           run.id,
           run.config.candidateExtraPaths,
           run.config.dependencyProvisioning,
+          {
+            candidateBaselineMaxDirtyBytes:
+              run.config.candidateBaselineMaxDirtyBytes,
+          },
         );
         await candidate.initialize({
           ...(allowCreate === undefined ? {} : { allowCreate }),
@@ -247,8 +261,10 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
       },
       verifyIsolation: async ({
         run,
+        restoreTarget,
       }: {
         run: { id: string; config: HohConfig };
+        restoreTarget?: string;
       }) => {
         const candidate =
           candidates.get(run.id) ??
@@ -257,9 +273,14 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
             run.id,
             run.config.candidateExtraPaths,
             run.config.dependencyProvisioning,
+            {
+              candidateBaselineMaxDirtyBytes:
+                run.config.candidateBaselineMaxDirtyBytes,
+            },
           );
         candidates.set(run.id, candidate);
-        await candidate.verifyInitializationBaseline();
+        if (restoreTarget) await candidate.verifyRecoveryTarget(restoreTarget);
+        else await candidate.verifyInitializationBaseline();
       },
       snapshot: async ({ run }: { run: { id: string; iteration: number; config: HohConfig } }) => {
         const candidate = candidates.get(run.id) ?? new GitCandidateStore(
@@ -267,6 +288,10 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
           run.id,
           run.config.candidateExtraPaths,
           run.config.dependencyProvisioning,
+          {
+            candidateBaselineMaxDirtyBytes:
+              run.config.candidateBaselineMaxDirtyBytes,
+          },
         );
         candidates.set(run.id, candidate);
         return candidate.snapshotStage(`developer-${run.iteration}`);
@@ -277,6 +302,10 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
           run.id,
           run.config.candidateExtraPaths,
           run.config.dependencyProvisioning,
+          {
+            candidateBaselineMaxDirtyBytes:
+              run.config.candidateBaselineMaxDirtyBytes,
+          },
         );
         candidates.set(run.id, adapter);
         return adapter.createQaWorkspace(candidate);
@@ -294,18 +323,76 @@ export function localHohServices(root: string, store: FileRunStore): HohServices
           run.id,
           run.config.candidateExtraPaths,
           run.config.dependencyProvisioning,
+          {
+            candidateBaselineMaxDirtyBytes:
+              run.config.candidateBaselineMaxDirtyBytes,
+          },
         );
         if (!workspace) return candidate.treeDigest;
         return await adapter.verifyCandidateUnchanged(workspace, candidate) ? candidate.treeDigest : 'modified';
       },
-      rollback: async ({ run }: { run: { id: string; config: HohConfig } }) => {
+      rollback: async ({
+        run,
+        target,
+      }: {
+        run: { id: string; config: HohConfig };
+        target?: CandidateSnapshot;
+      }) => {
         const adapter = candidates.get(run.id) ?? new GitCandidateStore(
           root,
           run.id,
           run.config.candidateExtraPaths,
           run.config.dependencyProvisioning,
+          {
+            candidateBaselineMaxDirtyBytes:
+              run.config.candidateBaselineMaxDirtyBytes,
+          },
         );
-        await adapter.rollback();
+        candidates.set(run.id, adapter);
+        return await adapter.rollback(target);
+      },
+      retainRejectedCandidate: async ({
+        run,
+        candidate,
+        candidateSnapshotOrdinal,
+        rejectedCandidateCommit,
+      }: {
+        run: { id: string; config: HohConfig };
+        candidate: CandidateSnapshot;
+        candidateSnapshotOrdinal: number;
+        rejectedCandidateCommit: string;
+      }) => {
+        const adapter = candidates.get(run.id) ?? new GitCandidateStore(
+          root,
+          run.id,
+          run.config.candidateExtraPaths,
+          run.config.dependencyProvisioning,
+          {
+            candidateBaselineMaxDirtyBytes:
+              run.config.candidateBaselineMaxDirtyBytes,
+          },
+        );
+        candidates.set(run.id, adapter);
+        return adapter.retainRejectedCandidate(
+          candidate,
+          candidateSnapshotOrdinal,
+          rejectedCandidateCommit,
+        );
+      },
+      resolveCandidateCommit: async ({ candidate }: {
+        candidate: CandidateSnapshot;
+      }) => {
+        const result = await runBoundedProcess({
+          argv: ['git', 'rev-parse', '--verify', `${candidate.ref}^{commit}`],
+          cwd: root,
+          timeoutMs: 30_000,
+          maxOutputBytes: 1_048_576,
+          policy: derivePolicy('developer', {}),
+        });
+        if (result.exitCode !== 0 || !/^[0-9a-f]{40}\n?$/u.test(result.stdout)) {
+          throw new Error(`Candidate ref does not resolve to a commit: ${candidate.ref}`);
+        }
+        return result.stdout.trim();
       },
     },
     github: {
@@ -1042,6 +1129,10 @@ export function createProgram(): Command {
               runId,
               current.config.candidateExtraPaths,
               current.config.dependencyProvisioning,
+              {
+                candidateBaselineMaxDirtyBytes:
+                  current.config.candidateBaselineMaxDirtyBytes,
+              },
             ),
             runId,
             {
@@ -1066,6 +1157,10 @@ export function createProgram(): Command {
               runId,
               run.config.candidateExtraPaths,
               run.config.dependencyProvisioning,
+              {
+                candidateBaselineMaxDirtyBytes:
+                  run.config.candidateBaselineMaxDirtyBytes,
+              },
             ),
             runId,
             {

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T11:32:51.107Z",
-  "totalRequirements": 27,
+  "generatedAt": "2026-09-19T11:49:22.413Z",
+  "totalRequirements": 28,
   "modeledRequirements": 2,
-  "modeledFraction": 0.07407407407407407,
+  "modeledFraction": 0.07142857142857142,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -54,6 +54,7 @@
       "REQ-AUTONOMOUS-DEVELOPMENT-017",
       "REQ-AUTONOMOUS-DEVELOPMENT-018",
       "REQ-AUTONOMOUS-DEVELOPMENT-019",
+      "REQ-AUTONOMOUS-DEVELOPMENT-020",
       "REQ-RELEASE-V010-DOCS-001",
       "REQ-RELEASE-V010-DOCS-002",
       "REQ-RELEASE-V010-DOCS-003",
@@ -160,6 +161,11 @@
       {
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
+        "message": "REQ-AUTONOMOUS-DEVELOPMENT-020 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
         "message": "REQ-RELEASE-V010-DOCS-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       },
       {
@@ -201,7 +207,7 @@
   },
   "fingerprints": {
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/requirements.md": "3b6aea917948f72a59b832e525f31a1d0bb343f22e5e914ae4bc10702970faf4",
+    ".musubix/features/autonomous-development/requirements.md": "8e333c361e2c183faeca1422e11c4cf2886bdfb058c42675ece27e76371a8c1c",
     ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
     ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138"
   }

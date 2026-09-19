@@ -10,6 +10,7 @@ import {
   rename,
   rm,
   stat,
+  symlink,
   utimes,
   writeFile,
 } from "node:fs/promises";
@@ -61,6 +62,7 @@ export interface HohConfig {
   roleInvocationTimeoutMs: number;
   commandTimeoutMs: number;
   maxCommandOutputBytes: number;
+  candidateBaselineMaxDirtyBytes: number;
   candidateExtraPaths: string[];
   dependencyProvisioning?: {
     lockfilePath?: string;
@@ -167,6 +169,7 @@ const mandatoryQaCheckIds: MandatoryQaCheckId[] = [
 export interface CandidateSnapshot {
   ref: string;
   treeDigest: string;
+  declaredSurfaceDigest?: string;
   lockfile?: {
     path: string;
     sha256: string;
@@ -236,6 +239,7 @@ export interface StaticCommandInventoryValidation {
     argv: string[];
   }>;
   digest: string;
+  declaredSurfaceDigest?: string;
 }
 
 export class CommandInventoryError extends Error {
@@ -261,18 +265,26 @@ export class ProtectedSetError extends Error {
 }
 
 export class CandidateIsolationError extends Error {
+  readonly paths: string[];
+
   constructor(
     readonly code: string,
     message: string,
-    readonly path: string,
+    path: string | string[],
     readonly guidance: string,
+    readonly restoreTarget?: string,
   ) {
     super(message);
     this.name = "CandidateIsolationError";
+    this.paths = Array.isArray(path)
+      ? [...new Set(path.filter((entry) => entry.length > 0))]
+      : path.length > 0
+        ? [path]
+        : [];
   }
 
-  get paths(): string[] {
-    return [this.path];
+  get path(): string {
+    return this.paths[0] ?? "";
   }
 }
 
@@ -282,11 +294,20 @@ export class CandidateBaselineError extends Error {
       | "CANDIDATE_BASELINE_MISSING"
       | "CANDIDATE_BASELINE_INVALID"
       | "CANDIDATE_BASELINE_DIGEST_MISMATCH"
-      | "CANDIDATE_BASE_COMMIT_UNRESOLVABLE",
+      | "CANDIDATE_BASE_COMMIT_UNRESOLVABLE"
+      | "CANDIDATE_BASELINE_TOO_LARGE"
+      | "CANDIDATE_BASELINE_UNSUPPORTED_TYPE",
     message: string,
   ) {
     super(message);
     this.name = "CandidateBaselineError";
+  }
+}
+
+export class DeclaredSurfaceDivergenceError extends Error {
+  constructor(readonly evidence: string[] = []) {
+    super("Declared command surface diverged from the candidate implementation.");
+    this.name = "DeclaredSurfaceDivergenceError";
   }
 }
 
@@ -374,6 +395,8 @@ export interface RunRecord {
     | "none";
   offendingInventoryPaths?: string[];
   offendingCandidateIsolationPaths?: string[];
+  candidateIsolationRestoreTarget?: string;
+  blockerFailureIdentities?: string[];
   amendmentManifest?: {
     path: string;
     sha256: string;
@@ -450,6 +473,7 @@ export interface HohRunSummary {
   terminalReason: string | null;
   requiredOperatorAction: NonNullable<RunRecord["requiredOperatorAction"]>;
   offendingCandidateIsolationPaths: string[];
+  candidateIsolationRestoreTarget?: string;
 }
 
 /** @id CODE-AUTOMATIC-HOH-CODING-001
@@ -475,6 +499,12 @@ export function summarizeHohRun(run: RunRecord): HohRunSummary {
     requiredOperatorAction: run.requiredOperatorAction ?? "none",
     offendingCandidateIsolationPaths:
       run.offendingCandidateIsolationPaths ?? [],
+    ...(run.candidateIsolationRestoreTarget
+      ? {
+          candidateIsolationRestoreTarget:
+            run.candidateIsolationRestoreTarget,
+        }
+      : {}),
   };
 }
 
@@ -521,6 +551,7 @@ export interface HohServices {
     staticCandidateValidation?(
       context: unknown,
     ): Promise<StaticCommandInventoryValidation>;
+    candidateSurfaceDigest?(context: unknown): Promise<string>;
     mandatoryChecks?(context: unknown): Promise<MandatoryQaCheck[]>;
     candidateChecks(context: unknown): Promise<boolean>;
   };
@@ -530,6 +561,10 @@ export interface HohServices {
     snapshot(context: unknown): Promise<CandidateSnapshot>;
     treeDigest(context: unknown): Promise<string>;
     rollback(context: unknown): Promise<CandidateSnapshot | void>;
+    resolveCandidateCommit?(context: unknown): Promise<string>;
+    retainRejectedCandidate?(
+      context: unknown,
+    ): Promise<CandidateSnapshot>;
     createQaWorkspace?(context: unknown): Promise<{ path: string }>;
     cleanupQaWorkspace?(context: unknown): Promise<void>;
   };
@@ -1613,6 +1648,7 @@ export function parseHohConfig(input: unknown): HohConfig {
       "roleInvocationTimeoutMs",
       "commandTimeoutMs",
       "maxCommandOutputBytes",
+      "candidateBaselineMaxDirtyBytes",
       "candidateExtraPaths",
       "dependencyProvisioning",
       "permissions",
@@ -1842,6 +1878,11 @@ export function parseHohConfig(input: unknown): HohConfig {
       value.maxCommandOutputBytes,
       1_048_576,
       "hoh.maxCommandOutputBytes",
+    ),
+    candidateBaselineMaxDirtyBytes: positive(
+      value.candidateBaselineMaxDirtyBytes,
+      16_777_216,
+      "hoh.candidateBaselineMaxDirtyBytes",
     ),
     candidateExtraPaths:
       Array.isArray(value.candidateExtraPaths) &&
@@ -2828,6 +2869,8 @@ interface GitDiffNameStatusEntry {
 interface CandidateIsolationPathState {
   path: string;
   content: string;
+  contentBase64?: string;
+  stagedContentBase64?: string;
   mode: string;
   existence: "present" | "absent";
   indexEntry: string;
@@ -2835,8 +2878,17 @@ interface CandidateIsolationPathState {
   unstagedIdentity: string;
 }
 
+interface GitCandidateStoreOptions {
+  candidateBaselineMaxDirtyBytes?: number;
+  observationHooks?: {
+    statusByPath?(
+      observed: Map<string, string>,
+    ): Map<string, string> | Promise<Map<string, string>>;
+  };
+}
+
 interface CandidateIsolationBaseline {
-  schemaVersion: 1;
+  schemaVersion: 2;
   runBaseCommit: string;
   statusDigest: string;
   dirtyPathStates: CandidateIsolationPathState[];
@@ -2962,15 +3014,40 @@ function isCandidateIsolationDirtyPathState(
 function candidateIsolationBaselineDigest(
   baseline: Omit<CandidateIsolationBaseline, "statusDigest">,
 ): string {
+  const canonicalStates = [...baseline.dirtyPathStates]
+    .sort((left, right) => left.path.localeCompare(right.path))
+    .map(canonicalCandidateIsolationPathState);
   return digest(
     JSON.stringify({
       schemaVersion: baseline.schemaVersion,
       runBaseCommit: baseline.runBaseCommit,
-      dirtyPathStates: [...baseline.dirtyPathStates].sort((left, right) =>
-        left.path.localeCompare(right.path),
-      ),
+      dirtyPathStates: canonicalStates,
     }),
   );
+}
+
+/** @id CODE-HOH-CANDIDATE-BASELINE-CANONICAL-001
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-014
+ * @design DES-AUTONOMOUS-DEVELOPMENT-008
+ */
+function canonicalCandidateIsolationPathState(
+  state: CandidateIsolationPathState,
+): CandidateIsolationPathState {
+  return {
+    path: state.path,
+    content: state.content,
+    ...(state.contentBase64 === undefined
+      ? {}
+      : { contentBase64: state.contentBase64 }),
+    ...(state.stagedContentBase64 === undefined
+      ? {}
+      : { stagedContentBase64: state.stagedContentBase64 }),
+    mode: state.mode,
+    existence: state.existence,
+    indexEntry: state.indexEntry,
+    stagedIdentity: state.stagedIdentity,
+    unstagedIdentity: state.unstagedIdentity,
+  };
 }
 
 async function gitIndexSignature(root: string): Promise<string> {
@@ -2988,6 +3065,7 @@ async function readCandidateIsolationWorkspaceState(
   root: string,
   baselineRef = "HEAD",
   observedPaths: Iterable<string> = [],
+  hooks?: GitCandidateStoreOptions["observationHooks"],
 ): Promise<{
   statusByPath: Map<string, string>;
   pathStates: CandidateIsolationPathState[];
@@ -2996,17 +3074,26 @@ async function readCandidateIsolationWorkspaceState(
 }> {
   const realIndexSignature = await gitIndexSignature(root);
   return withIsolatedGitIndex(root, async (environment) => {
-    const statusByPath = await candidateIsolationStatusByPath(
+    const observedStatusByPath = await candidateIsolationStatusByPath(
       root,
       baselineRef,
       environment,
     );
+    const statusByPath = hooks?.statusByPath
+      ? await hooks.statusByPath(observedStatusByPath)
+      : observedStatusByPath;
     const paths = new Set([...statusByPath.keys(), ...observedPaths]);
     const pathStates = await Promise.all(
       [...paths]
         .sort()
         .map((path) =>
-          observeCandidateIsolationPath(root, statusByPath, path, environment),
+          observeCandidateIsolationPath(
+            root,
+            statusByPath,
+            path,
+            environment,
+            baselineRef,
+          ),
         ),
     );
     const pathStateByPath = new Map(
@@ -3043,40 +3130,177 @@ async function gitPathSignature(
   return result.stdout === "" ? null : result.stdout;
 }
 
+function parseGitLsTreeEntry(
+  entry: string | null,
+): { mode: string; objectId: string; path: string } | null {
+  const normalized = entry?.split("\0").find(Boolean) ?? "";
+  if (!normalized) return null;
+  const match =
+    /^(?<mode>\d+)\s+\S+\s+(?<objectId>[0-9a-f]+)\t(?<path>.*)$/su.exec(
+      normalized,
+    );
+  if (!match?.groups) throw new Error("Malformed git ls-tree output.");
+  return {
+    mode: match.groups.mode!,
+    objectId: match.groups.objectId!,
+    path: match.groups.path!,
+  };
+}
+
+async function gitBlobBytes(root: string, objectId: string): Promise<Buffer> {
+  const child = spawn("git", ["cat-file", "blob", objectId], {
+    cwd: root,
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  const stdout: Buffer[] = [];
+  const stderr: Buffer[] = [];
+  child.stdout.on("data", (chunk: Buffer) => stdout.push(chunk));
+  child.stderr.on("data", (chunk: Buffer) => stderr.push(chunk));
+  const exitCode = await new Promise<number | null>((accept, reject) => {
+    child.once("error", reject);
+    child.once("close", accept);
+  });
+  if (exitCode !== 0) {
+    throw new Error(
+      `git cat-file failed: ${Buffer.concat(stderr).toString("utf8").trim()}`,
+    );
+  }
+  return Buffer.concat(stdout);
+}
+
 async function worktreePathSignature(
   root: string,
   path: string,
+  indexMode?: string,
 ): Promise<{
   content: string;
+  contentBase64?: string;
   mode: string;
   existence: "present" | "absent";
+  gitBlobId: string;
 }> {
   const absolute = resolve(root, path);
   const metadata = await lstat(absolute).catch((error: NodeJS.ErrnoException) => {
     if (error.code === "ENOENT") return null;
     throw error;
   });
-  if (!metadata) return { content: "", mode: "", existence: "absent" };
+  if (!metadata) {
+    return {
+      content: "",
+      mode: "",
+      existence: "absent",
+      gitBlobId: "",
+    };
+  }
   if (metadata.isSymbolicLink()) {
     const target = await readlink(absolute, "utf8");
+    const bytes = Buffer.from(target, "utf8");
     return {
-      content: createHash("sha256").update(target).digest("hex"),
+      content: createHash("sha256").update(bytes).digest("hex"),
+      contentBase64: bytes.toString("base64"),
       mode: "120000",
       existence: "present",
+      gitBlobId: createHash("sha1")
+        .update(Buffer.concat([Buffer.from(`blob ${bytes.length}\0`), bytes]))
+        .digest("hex"),
     };
   }
   if (metadata.isFile()) {
     const bytes = await readFile(absolute);
+    const fileModeEnabled =
+      (await gitCommand(root, ["config", "--bool", "core.fileMode"], {}, true)) !==
+      "false";
+    const hashed = await gitCommand(root, [
+      "hash-object",
+      `--path=${path}`,
+      "--",
+      path,
+    ]);
     return {
       content: createHash("sha256").update(bytes).digest("hex"),
-      mode: metadata.mode & 0o111 ? "100755" : "100644",
+      contentBase64: bytes.toString("base64"),
+      mode:
+        !fileModeEnabled && (indexMode === "100644" || indexMode === "100755")
+          ? indexMode
+          : metadata.mode & 0o111
+            ? "100755"
+            : "100644",
       existence: "present",
+      gitBlobId: hashed,
     };
   }
   return {
     content: "",
     mode: metadata.mode.toString(8),
     existence: "present",
+    gitBlobId: "",
+  };
+}
+
+function parseGitLsFilesStageEntry(
+  entry: string,
+): { mode: string; objectId: string; stage: string; path: string } | null {
+  return parseGitLsFilesStageEntries(entry)[0] ?? null;
+}
+
+function parseGitLsFilesStageEntries(
+  entry: string,
+): Array<{ mode: string; objectId: string; stage: string; path: string }> {
+  return entry
+    .split("\0")
+    .filter(Boolean)
+    .map((normalized) => {
+      const match =
+        /^(?<mode>\d+)\s+(?<objectId>[0-9a-f]+)\s+(?<stage>\d+)\t(?<path>.*)$/su.exec(
+          normalized,
+        );
+      if (!match?.groups) {
+        throw new Error("Malformed git ls-files --stage output.");
+      }
+      return {
+        mode: match.groups.mode!,
+        objectId: match.groups.objectId!,
+        stage: match.groups.stage!,
+        path: match.groups.path!,
+      };
+    });
+}
+
+function normalizeCandidateIsolationPathState(input: {
+  worktree: Awaited<ReturnType<typeof worktreePathSignature>>;
+  indexEntry: string;
+  stagedIdentity: string;
+  unstagedIdentity: string;
+}): Pick<
+  CandidateIsolationPathState,
+  | "content"
+  | "contentBase64"
+  | "mode"
+  | "existence"
+  | "indexEntry"
+  | "stagedIdentity"
+  | "unstagedIdentity"
+> {
+  const index = parseGitLsFilesStageEntry(input.indexEntry);
+  const cleanAgainstIndex =
+    (index === null &&
+      input.worktree.existence === "absent" &&
+      !input.worktree.mode &&
+      !input.worktree.gitBlobId) ||
+      (index !== null &&
+        input.worktree.existence === "present" &&
+        input.worktree.mode === index.mode &&
+        input.worktree.gitBlobId === index.objectId);
+  return {
+    content: input.worktree.content,
+    ...(input.worktree.contentBase64 === undefined
+      ? {}
+      : { contentBase64: input.worktree.contentBase64 }),
+    mode: input.worktree.mode,
+    existence: input.worktree.existence,
+    indexEntry: input.indexEntry,
+    stagedIdentity: input.stagedIdentity,
+    unstagedIdentity: cleanAgainstIndex ? "" : input.unstagedIdentity,
   };
 }
 
@@ -3085,24 +3309,39 @@ async function observeCandidateIsolationPath(
   statusByPath: Map<string, string>,
   path: string,
   environment: Record<string, string> = {},
+  baselineRef = "HEAD",
 ): Promise<CandidateIsolationPathState> {
   const status = statusByPath.get(path) ?? "  ";
-  const worktree = await worktreePathSignature(root, path);
-  return {
+  const indexEntry =
+    (await gitPathSignature(
+      root,
+      ["ls-files", "--stage", "-z", "--", path],
+      environment,
+    )) ?? "";
+  const index = parseGitLsFilesStageEntry(indexEntry);
+  const worktree = await worktreePathSignature(root, path, index?.mode);
+  const headEntry = parseGitLsTreeEntry(
+    await gitPathSignature(root, ["ls-tree", "-z", baselineRef, "--", path]),
+  );
+  const stagedDiffersFromBase =
+    (index?.mode ?? "") !== (headEntry?.mode ?? "") ||
+    (index?.objectId ?? "") !== (headEntry?.objectId ?? "");
+  const stagedContentBase64 =
+    index && index.mode !== "160000" && stagedDiffersFromBase
+      ? (await gitBlobBytes(root, index.objectId)).toString("base64")
+      : undefined;
+  return canonicalCandidateIsolationPathState({
     path,
-    ...worktree,
-    indexEntry:
-      (await gitPathSignature(
-        root,
-        ["ls-files", "--stage", "-z", "--", path],
-        environment,
-      )) ??
-      "",
-    stagedIdentity: hasCandidateIsolationStageChange(status) ? "modified" : "",
-    unstagedIdentity: hasCandidateIsolationWorktreeChange(status)
-      ? "modified"
-      : "",
-  };
+    ...normalizeCandidateIsolationPathState({
+      worktree,
+      indexEntry,
+      stagedIdentity: stagedDiffersFromBase ? "modified" : "",
+      unstagedIdentity: hasCandidateIsolationWorktreeChange(status)
+        ? "modified"
+        : "",
+    }),
+    ...(stagedContentBase64 === undefined ? {} : { stagedContentBase64 }),
+  });
 }
 
 async function withIsolatedGitIndex<T>(
@@ -3174,6 +3413,47 @@ async function restorePathToCommitIndex(
   );
 }
 
+async function restorePathToIndexEntry(
+  root: string,
+  indexEntry: string,
+  path: string,
+  environment: Record<string, string>,
+): Promise<void> {
+  const entry = parseGitLsFilesStageEntry(indexEntry);
+  if (!entry) {
+    await gitCommand(
+      root,
+      ["update-index", "--force-remove", "--", path],
+      environment,
+      true,
+    );
+    return;
+  }
+  await gitCommand(
+    root,
+    ["update-index", "--add", "--cacheinfo", entry.mode, entry.objectId, entry.path],
+    environment,
+  );
+}
+
+async function restoreWorktreePathState(
+  root: string,
+  pathState: CandidateIsolationPathState,
+): Promise<void> {
+  const absolute = resolve(root, pathState.path);
+  await rm(absolute, { recursive: true, force: true });
+  if (pathState.existence === "absent") return;
+  await mkdir(dirname(absolute), { recursive: true });
+  const bytes = Buffer.from(pathState.contentBase64!, "base64");
+  if (pathState.mode === "120000") {
+    await symlink(bytes.toString("utf8"), absolute);
+    return;
+  }
+  await writeFile(absolute, bytes, { mode: 0o600 });
+  if (pathState.mode === "100755") await chmod(absolute, 0o755);
+  else if (pathState.mode === "100644") await chmod(absolute, 0o644);
+}
+
 /** @id CODE-HOH-GIT-STORE-002
  * @implements REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-009 REQ-AUTONOMOUS-DEVELOPMENT-014 REQ-AUTONOMOUS-DEVELOPMENT-016 REQ-AUTONOMOUS-DEVELOPMENT-018
  * @design DES-AUTONOMOUS-DEVELOPMENT-008
@@ -3192,6 +3472,7 @@ export class GitCandidateStore {
     readonly runId: string,
     readonly candidateExtraPaths: string[] = [],
     readonly dependencyProvisioning?: HohConfig["dependencyProvisioning"],
+    readonly options: GitCandidateStoreOptions = {},
   ) {
     this.root = resolve(root);
     this.runBase = resolve(root, ".musubix4/runs", runId);
@@ -3243,7 +3524,7 @@ export class GitCandidateStore {
       );
     }
     if (
-      value.schemaVersion !== 1 ||
+      value.schemaVersion !== 2 ||
       typeof value.runBaseCommit !== "string" ||
       typeof value.statusDigest !== "string" ||
       !Array.isArray(value.dirtyPathStates) ||
@@ -3253,11 +3534,17 @@ export class GitCandidateStore {
           typeof pathState !== "object" ||
           typeof pathState.path !== "string" ||
           typeof pathState.content !== "string" ||
+          (pathState.existence === "present"
+            ? typeof pathState.contentBase64 !== "string"
+            : pathState.contentBase64 !== undefined) ||
           typeof pathState.mode !== "string" ||
           !["present", "absent"].includes(pathState.existence ?? "") ||
           typeof pathState.indexEntry !== "string" ||
           typeof pathState.stagedIdentity !== "string" ||
-          typeof pathState.unstagedIdentity !== "string",
+          typeof pathState.unstagedIdentity !== "string" ||
+          (pathState.indexEntry && pathState.stagedIdentity
+            ? typeof pathState.stagedContentBase64 !== "string"
+            : pathState.stagedContentBase64 !== undefined),
       )
     ) {
       throw new CandidateBaselineError(
@@ -3333,8 +3620,82 @@ export class GitCandidateStore {
       this.root,
       this.baseCommit,
       this.initialDirtyPaths.keys(),
+      this.options.observationHooks,
     );
     await this.assertCandidateIsolation(workspace.pathStateByPath);
+  }
+
+  private async restoreInitializationDirtyPaths(): Promise<void> {
+    for (const pathState of this.initialDirtyPaths.values()) {
+      const entry = parseGitLsFilesStageEntry(pathState.indexEntry);
+      if (entry && pathState.stagedContentBase64 !== undefined) {
+        const blobPath = resolve(
+          this.runBase,
+          "recovery-blobs",
+          `${randomUUID()}.blob`,
+        );
+        await mkdir(dirname(blobPath), { recursive: true });
+        try {
+          await writeFile(
+            blobPath,
+            Buffer.from(pathState.stagedContentBase64, "base64"),
+            { mode: 0o600 },
+          );
+          const objectId = await gitCommand(this.root, [
+            "hash-object",
+            "-w",
+            "--no-filters",
+            "--",
+            blobPath,
+          ]);
+          await gitCommand(this.root, [
+            "update-index",
+            "--add",
+            "--cacheinfo",
+            entry.mode,
+            objectId,
+            pathState.path,
+          ]);
+        } finally {
+          await rm(blobPath, { force: true });
+        }
+      } else {
+        await restorePathToIndexEntry(
+          this.root,
+          pathState.indexEntry,
+          pathState.path,
+          {},
+        );
+      }
+      await restoreWorktreePathState(this.root, pathState);
+    }
+  }
+
+  private async verifyRestoredWorkspace(targetRef: string): Promise<void> {
+    const workspace = await readCandidateIsolationWorkspaceState(
+      this.root,
+      targetRef,
+      this.initialDirtyPaths.keys(),
+      this.options.observationHooks,
+    );
+    await this.assertCandidateIsolation(workspace.pathStateByPath);
+    const unexpectedPaths = workspace.pathStates
+      .filter(
+        (state) =>
+          !this.initialDirtyPaths.has(state.path) &&
+          isCandidateIsolationDirtyPathState(state),
+      )
+      .map((state) => state.path)
+      .sort((left, right) => left.localeCompare(right));
+    if (unexpectedPaths.length === 0) return;
+    const guidance =
+      "Restore the rejected candidate's tracked changes to the last accepted candidate or start a new run.";
+    throw new CandidateIsolationError(
+      "CANDIDATE_ISOLATION_CONFLICT",
+      `Rejected candidate changes remained in the real worktree or index after recovery: ${unexpectedPaths.join(", ")}. ${guidance}`,
+      unexpectedPaths,
+      guidance,
+    );
   }
 
   private async restoreInitiallyDirtyPaths(
@@ -3461,9 +3822,23 @@ export class GitCandidateStore {
       "--verify",
       "HEAD",
     ]);
+    const unmergedIndexEntries = await gitCommand(
+      this.root,
+      ["ls-files", "--unmerged", "-z"],
+      {},
+      true,
+    );
+    if (unmergedIndexEntries) {
+      throw new CandidateBaselineError(
+        "CANDIDATE_BASELINE_UNSUPPORTED_TYPE",
+        "Initialization-dirty index contains unresolved merge stages. Resolve the conflict and start a new run.",
+      );
+    }
     const workspaceBefore = await readCandidateIsolationWorkspaceState(
       this.root,
       baseCommit,
+      [],
+      this.options.observationHooks,
     );
     await gitCommand(this.root, [
       "update-ref",
@@ -3473,6 +3848,8 @@ export class GitCandidateStore {
     const workspaceAfter = await readCandidateIsolationWorkspaceState(
       this.root,
       baseCommit,
+      [],
+      this.options.observationHooks,
     );
     if (workspaceBefore.fingerprint !== workspaceAfter.fingerprint)
       throw new Error(
@@ -3481,11 +3858,42 @@ export class GitCandidateStore {
     const initialDirtyPathStates = workspaceBefore.pathStates.filter(
       isCandidateIsolationDirtyPathState,
     );
+    const maxDirtyBytes =
+      this.options.candidateBaselineMaxDirtyBytes ?? 16_777_216;
+    let totalDirtyBytes = 0;
+    for (const state of initialDirtyPathStates) {
+      const index = parseGitLsFilesStageEntry(state.indexEntry);
+      const indexEntries = parseGitLsFilesStageEntries(state.indexEntry);
+      if (
+        indexEntries.some((entry) => entry.stage !== "0") ||
+        index?.mode === "160000" ||
+        !["", "100644", "100755", "120000"].includes(state.mode)
+      ) {
+        throw new CandidateBaselineError(
+          "CANDIDATE_BASELINE_UNSUPPORTED_TYPE",
+          `Initialization-dirty tracked path has an unsupported type: ${state.path}. Reduce pre-existing tracked dirt and start a new run.`,
+        );
+      }
+      const pathBytes =
+        (state.contentBase64 === undefined
+          ? 0
+          : Buffer.from(state.contentBase64, "base64").length) +
+        (state.stagedContentBase64 === undefined
+          ? 0
+          : Buffer.from(state.stagedContentBase64, "base64").length);
+      totalDirtyBytes += pathBytes;
+      if (pathBytes > maxDirtyBytes || totalDirtyBytes > maxDirtyBytes) {
+        throw new CandidateBaselineError(
+          "CANDIDATE_BASELINE_TOO_LARGE",
+          `Initialization-dirty tracked bytes exceed candidateBaselineMaxDirtyBytes (${maxDirtyBytes}). Reduce pre-existing tracked dirt and start a new run.`,
+        );
+      }
+    }
     const baselineWithoutDigest: Omit<
       CandidateIsolationBaseline,
       "statusDigest"
     > = {
-      schemaVersion: 1,
+      schemaVersion: 2,
       runBaseCommit: baseCommit,
       dirtyPathStates: initialDirtyPathStates,
     };
@@ -3513,6 +3921,7 @@ export class GitCandidateStore {
       this.root,
       baseCommit,
       this.initialDirtyPaths.keys(),
+      this.options.observationHooks,
     );
     await this.assertCandidateIsolation(workspaceBefore.pathStateByPath);
     let ref = `${this.refsBase}/stages/${stage}`;
@@ -3600,6 +4009,7 @@ export class GitCandidateStore {
         this.root,
         baseCommit,
         this.initialDirtyPaths.keys(),
+        this.options.observationHooks,
       );
       if (workspaceBefore.fingerprint !== workspaceAfter.fingerprint) {
         await this.assertCandidateIsolation(workspaceAfter.pathStateByPath);
@@ -3851,7 +4261,14 @@ export class GitCandidateStore {
   async createDeveloperWorkspace(
     candidate?: CandidateSnapshot,
   ): Promise<{ path: string; candidate: CandidateSnapshot }> {
-    const selected = candidate ?? (await this.rollback());
+    if (!this.initialized) await this.initialize({ allowCreate: false });
+    const selected = candidate ?? {
+      ref: `${this.refsBase}/base`,
+      treeDigest: await gitCommand(this.root, [
+        "rev-parse",
+        `${this.refsBase}/base^{tree}`,
+      ]),
+    };
     const path = resolve(this.runBase, "developer", randomUUID());
     await mkdir(dirname(path), { recursive: true });
     await gitCommand(this.root, [
@@ -3915,13 +4332,112 @@ export class GitCandidateStore {
     await gitCommand(this.root, ["worktree", "prune"]);
   }
 
-  async rollback(candidate?: CandidateSnapshot): Promise<CandidateSnapshot> {
-    if (candidate) return candidate;
-    const ref = `${this.refsBase}/base`;
+  /** @id CODE-HOH-REJECTED-CANDIDATE-REF-001
+   * @implements REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-018
+   * @design DES-AUTONOMOUS-DEVELOPMENT-008
+   */
+  async retainRejectedCandidate(
+    candidate: CandidateSnapshot,
+    candidateSnapshotOrdinal: number,
+    expectedCommit: string,
+  ): Promise<CandidateSnapshot> {
+    if (!Number.isSafeInteger(candidateSnapshotOrdinal) || candidateSnapshotOrdinal <= 0)
+      throw new Error("Rejected candidate ordinal must be a positive integer.");
+    if (!/^[0-9a-f]{40}$/u.test(expectedCommit))
+      throw new Error("Rejected candidate requires a resolved 40-hex commit.");
+    const observedCommit = await gitCommand(this.root, [
+      "rev-parse",
+      "--verify",
+      `${candidate.ref}^{commit}`,
+    ]);
+    if (observedCommit !== expectedCommit)
+      throw new Error("Rejected candidate ref changed after snapshot binding.");
+    const ref = `${this.refsBase}/rejected/${candidateSnapshotOrdinal}`;
+    const existing = await gitCommand(
+      this.root,
+      ["rev-parse", "--verify", `${ref}^{commit}`],
+      {},
+      true,
+    );
+    if (existing && existing !== expectedCommit)
+      throw new Error(`Rejected candidate ref is immutable: ${ref}`);
+    if (!existing)
+      await gitCommand(this.root, ["update-ref", ref, expectedCommit]);
+    if (candidate.ref.startsWith(`${this.refsBase}/stages/`))
+      await this.deleteSnapshotRef(candidate.ref);
     return {
+      ...candidate,
       ref,
       treeDigest: await gitCommand(this.root, ["rev-parse", `${ref}^{tree}`]),
     };
+  }
+
+  async rollback(candidate?: CandidateSnapshot): Promise<CandidateSnapshot> {
+    if (!this.initialized) await this.initialize({ allowCreate: false });
+    const selected = candidate ?? {
+      ref: `${this.refsBase}/base`,
+      treeDigest: await gitCommand(this.root, [
+        "rev-parse",
+        `${this.refsBase}/base^{tree}`,
+      ]),
+    };
+    const workspace = await readCandidateIsolationWorkspaceState(
+      this.root,
+      selected.ref,
+      this.initialDirtyPaths.keys(),
+      this.options.observationHooks,
+    );
+    const restorePaths = workspace.pathStates
+      .filter(
+        (state) =>
+          !this.initialDirtyPaths.has(state.path) &&
+          isCandidateIsolationDirtyPathState(state),
+      )
+      .map((state) => state.path)
+      .sort((left, right) => left.localeCompare(right));
+    try {
+      if (restorePaths.length > 0) {
+        await gitCommand(this.root, [
+          "restore",
+          "--source",
+          selected.ref,
+          "--staged",
+          "--worktree",
+          "--",
+          ...restorePaths,
+        ]);
+      }
+      await this.restoreInitializationDirtyPaths();
+      await this.verifyRestoredWorkspace(selected.ref);
+    } catch (cause) {
+      if (cause instanceof CandidateIsolationError) {
+        throw new CandidateIsolationError(
+          cause.code,
+          cause.message,
+          cause.paths,
+          cause.guidance,
+          selected.ref,
+        );
+      }
+      const guidance =
+        "Restore the tracked worktree and index to the selected candidate-isolation target or start a new run.";
+      throw new CandidateIsolationError(
+        "CANDIDATE_ISOLATION_CONFLICT",
+        `Rejected-candidate recovery failed: ${cause instanceof Error ? cause.message : String(cause)}. ${guidance}`,
+        [...new Set([...restorePaths, ...this.initialDirtyPaths.keys()])].sort(
+          (left, right) => left.localeCompare(right),
+        ),
+        guidance,
+        selected.ref,
+      );
+    }
+    return selected;
+  }
+
+  async verifyRecoveryTarget(targetRef: string): Promise<void> {
+    if (!this.initialized) await this.initialize({ allowCreate: false });
+    await gitCommand(this.root, ["rev-parse", "--verify", `${targetRef}^{commit}`]);
+    await this.verifyRestoredWorkspace(targetRef);
   }
 
   async reconcileWorkspaces(): Promise<void> {
@@ -3960,7 +4476,7 @@ function processAlive(pid: number): boolean {
 }
 
 /** @id CODE-HOH-RUN-STORE-001
- * @implements REQ-AUTONOMOUS-DEVELOPMENT-004 REQ-AUTONOMOUS-DEVELOPMENT-009 REQ-AUTONOMOUS-DEVELOPMENT-010 REQ-AUTONOMOUS-DEVELOPMENT-011 REQ-AUTONOMOUS-DEVELOPMENT-012 REQ-AUTONOMOUS-DEVELOPMENT-014
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-004 REQ-AUTONOMOUS-DEVELOPMENT-007 REQ-AUTONOMOUS-DEVELOPMENT-009 REQ-AUTONOMOUS-DEVELOPMENT-010 REQ-AUTONOMOUS-DEVELOPMENT-011 REQ-AUTONOMOUS-DEVELOPMENT-012 REQ-AUTONOMOUS-DEVELOPMENT-014 REQ-AUTONOMOUS-DEVELOPMENT-018
  * @design DES-AUTONOMOUS-DEVELOPMENT-004
  */
 export class FileRunStore {
@@ -4061,6 +4577,180 @@ export class FileRunStore {
     };
     await this.save(next);
     return next;
+  }
+
+  blockerFailureIdentity(input: {
+    runId: string;
+    iteration: number;
+    candidateSnapshotOrdinal: number;
+    rejectedCandidateCommit: string;
+    kind:
+      | "candidate-checks-failed"
+      | "qa-tree-modified"
+      | "declared-surface-divergence"
+      | "claim-regression";
+  }): string {
+    if (!/^[0-9a-f]{40}$/u.test(input.rejectedCandidateCommit)) {
+      throw new Error(
+        "Blocker failure identity requires a resolved 40-hex candidate commit.",
+      );
+    }
+    return digest(
+      stableJson({
+        runId: input.runId,
+        iteration: input.iteration,
+        candidateSnapshotOrdinal: input.candidateSnapshotOrdinal,
+        rejectedCandidateCommit: input.rejectedCandidateCommit,
+        kind: input.kind,
+      }),
+    );
+  }
+
+  async openCandidateSnapshotAttempt(
+    runId: string,
+    iteration: number,
+    candidateCommit: string,
+  ): Promise<number> {
+    if (!/^[0-9a-f]{40}$/u.test(candidateCommit))
+      throw new Error("Candidate snapshot attempt requires a 40-hex commit.");
+    const run = await this.status(runId);
+    const opened = run.journal.filter(
+      (entry) => entry.event === "candidate-snapshot-attempt-opened",
+    );
+    const latest = opened.at(-1);
+    const latestOrdinal = Number(latest?.details?.candidateSnapshotOrdinal ?? 0);
+    const completed = run.journal.some(
+      (entry) =>
+        entry.event === "candidate-snapshot-attempt-completed" &&
+        entry.details?.candidateSnapshotOrdinal === latestOrdinal,
+    );
+    if (
+      latest &&
+      !completed &&
+      latest.details?.iteration === iteration &&
+      latest.details?.candidateCommit === candidateCommit
+    ) {
+      return latestOrdinal;
+    }
+    if (latest && !completed) {
+      run.journal.push({
+        sequence: run.journal.length + 1,
+        event: "candidate-snapshot-attempt-abandoned",
+        state: run.state,
+        recordedAt: new Date().toISOString(),
+        details: {
+          candidateSnapshotOrdinal: latestOrdinal,
+          iteration: latest.details?.iteration,
+          candidateCommit: latest.details?.candidateCommit,
+          replacementCandidateCommit: candidateCommit,
+          reason: "candidate-oid-mismatch",
+        },
+      });
+    }
+    const ordinal =
+      Math.max(
+        0,
+        ...opened.map((entry) =>
+          Number(entry.details?.candidateSnapshotOrdinal ?? 0),
+        ),
+      ) + 1;
+    run.journal.push({
+      sequence: run.journal.length + 1,
+      event: "candidate-snapshot-attempt-opened",
+      state: run.state,
+      recordedAt: new Date().toISOString(),
+      details: {
+        iteration,
+        candidateCommit,
+        candidateSnapshotOrdinal: ordinal,
+      },
+    });
+    await this.save(run);
+    return ordinal;
+  }
+
+  async completeCandidateSnapshotAttempt(
+    runId: string,
+    candidateSnapshotOrdinal: number,
+  ): Promise<void> {
+    const run = await this.status(runId);
+    if (
+      run.journal.some(
+        (entry) =>
+          entry.event === "candidate-snapshot-attempt-completed" &&
+          entry.details?.candidateSnapshotOrdinal === candidateSnapshotOrdinal,
+      )
+    ) {
+      return;
+    }
+    run.journal.push({
+      sequence: run.journal.length + 1,
+      event: "candidate-snapshot-attempt-completed",
+      state: run.state,
+      recordedAt: new Date().toISOString(),
+      details: { candidateSnapshotOrdinal },
+    });
+    await this.save(run);
+  }
+
+  async recordBlockerFailure(
+    runId: string,
+    input: {
+      identity: string;
+      candidateSnapshotOrdinal: number;
+      kind:
+        | "candidate-checks-failed"
+        | "qa-tree-modified"
+        | "declared-surface-divergence"
+        | "claim-regression";
+    },
+  ): Promise<number> {
+    const identity = input.identity;
+    if (!/^[0-9a-f]{64}$/u.test(identity))
+      throw new Error("Blocker failure identity requires a SHA-256 digest.");
+    const run = await this.status(runId);
+    const identities = run.blockerFailureIdentities ?? [];
+    if (identities.includes(identity)) return run.blockerRepairAttempts ?? 0;
+    const decisive = run.journal.find(
+      (entry) =>
+        entry.event === "blocker-failure-recorded" &&
+        entry.details?.candidateSnapshotOrdinal ===
+          input.candidateSnapshotOrdinal,
+    );
+    if (decisive) {
+      throw new Error(
+        `Candidate snapshot ordinal ${input.candidateSnapshotOrdinal} already has a decisive rejection.`,
+      );
+    }
+    run.blockerFailureIdentities = [...identities, identity];
+    run.blockerRepairAttempts = (run.blockerRepairAttempts ?? 0) + 1;
+    run.journal.push({
+      sequence: run.journal.length + 1,
+      event: "blocker-failure-recorded",
+      state: run.state,
+      recordedAt: new Date().toISOString(),
+      details: {
+        identity,
+        blockerRepairAttempts: run.blockerRepairAttempts,
+        candidateSnapshotOrdinal: input.candidateSnapshotOrdinal,
+        kind: input.kind,
+      },
+    });
+    await this.save(run);
+    return run.blockerRepairAttempts;
+  }
+
+  async closeBlockerRepairEpisode(runId: string, reason: string): Promise<void> {
+    const run = await this.status(runId);
+    run.blockerRepairAttempts = 0;
+    run.journal.push({
+      sequence: run.journal.length + 1,
+      event: "blocker-repair-episode-closed",
+      state: run.state,
+      recordedAt: new Date().toISOString(),
+      details: { reason },
+    });
+    await this.save(run);
   }
 
   async acquire(
@@ -4167,12 +4857,18 @@ export class FileRunStore {
       {
         code: error.code,
         offendingCandidateIsolationPaths: offendingPaths,
+        ...(error.restoreTarget
+          ? { candidateIsolationRestoreTarget: error.restoreTarget }
+          : {}),
         requiredOperatorAction: error.guidance,
       },
     );
     next.requiredOperatorAction =
       "restore-candidate-isolation-paths-or-start-new-run";
     next.offendingCandidateIsolationPaths = offendingPaths;
+    if (error.restoreTarget)
+      next.candidateIsolationRestoreTarget = error.restoreTarget;
+    else delete next.candidateIsolationRestoreTarget;
     Reflect.set(next, "terminalReason", undefined);
     await this.save(next);
     return next;
@@ -5431,6 +6127,260 @@ export class HohOrchestrator {
     private readonly services: HohServices,
   ) {}
 
+  private async verifyProtectedSetAfterRecovery(run: RunRecord): Promise<void> {
+    if (!run.protectedSetDigest) return;
+    const guidance =
+      "Restore the protected files to their approved bytes or start a new run.";
+    try {
+      const overrides: Record<string, Buffer> = {};
+      if (run.collisionInventoryOverridePath) {
+        overrides[".musubix/compatibility/command-collisions.json"] =
+          await readBaselineArtifact(
+            this.store.root,
+            run.collisionInventoryOverridePath,
+          );
+      }
+      const observed = await computeProtectedSet(
+        this.store.root,
+        run.protectedSetPaths ?? [],
+        overrides,
+      );
+      if (observed.digest === run.protectedSetDigest) return;
+    } catch (cause) {
+      throw new CandidateIsolationError(
+        "CANDIDATE_ISOLATION_CONFLICT",
+        `Protected-set verification failed after rejected-candidate recovery: ${cause instanceof Error ? cause.message : String(cause)}. ${guidance}`,
+        cause instanceof ProtectedSetError
+          ? cause.path
+          : (run.protectedSetPaths ?? []),
+        guidance,
+      );
+    }
+    throw new CandidateIsolationError(
+      "CANDIDATE_ISOLATION_CONFLICT",
+      `Protected-set digest changed after rejected-candidate recovery. ${guidance}`,
+      run.protectedSetPaths ?? [],
+      guidance,
+    );
+  }
+
+  private async persistRejectedCandidateIsolationFailure(
+    runId: string,
+    blockerRepairAttempts: number,
+    rejectedCandidates: NonNullable<RunRecord["rejectedCandidates"]>,
+    error: CandidateIsolationError,
+    started: number,
+    role: HohRole = "developer",
+  ): Promise<RunRecord> {
+    const blocked = await this.store.enterCandidateIsolationRequired(
+      runId,
+      error,
+    );
+    blocked.role = role;
+    blocked.rejectedCandidates = rejectedCandidates;
+    blocked.blockerRepairAttempts = blockerRepairAttempts;
+    blocked.activeDurationMs += Date.now() - started;
+    await this.store.save(blocked);
+    return blocked;
+  }
+
+  private async openCandidateAttempt(input: {
+    run: RunRecord;
+    candidate: CandidateSnapshot;
+  }): Promise<{
+    ordinal: number;
+    rejectedCandidateCommit: string;
+  }> {
+    const rejectedCandidateCommit = this.services.git.resolveCandidateCommit
+      ? await this.services.git.resolveCandidateCommit({
+          run: input.run,
+          candidate: input.candidate,
+        })
+      : createHash("sha1").update(input.candidate.ref).digest("hex");
+    const ordinal = await this.store.openCandidateSnapshotAttempt(
+      input.run.id,
+      input.run.iteration,
+      rejectedCandidateCommit,
+    );
+    return { ordinal, rejectedCandidateCommit };
+  }
+
+  private async rejectedCandidateIdentity(input: {
+    run: RunRecord;
+    attempt: { ordinal: number; rejectedCandidateCommit: string };
+    kind:
+      | "candidate-checks-failed"
+      | "qa-tree-modified"
+      | "declared-surface-divergence"
+      | "claim-regression";
+  }): Promise<{
+    identity: string;
+    blockerRepairAttempts: number;
+  }> {
+    const identity = this.store.blockerFailureIdentity({
+      runId: input.run.id,
+      iteration: input.run.iteration,
+      candidateSnapshotOrdinal: input.attempt.ordinal,
+      rejectedCandidateCommit: input.attempt.rejectedCandidateCommit,
+      kind: input.kind,
+    });
+    const blockerRepairAttempts = await this.store.recordBlockerFailure(
+      input.run.id,
+      {
+        identity,
+        candidateSnapshotOrdinal: input.attempt.ordinal,
+        kind: input.kind,
+      },
+    );
+    return { identity, blockerRepairAttempts };
+  }
+
+  private async recoverRejectedCandidate(input: {
+    run: RunRecord;
+    candidate: CandidateSnapshot;
+    attempt: { ordinal: number; rejectedCandidateCommit: string };
+    kind:
+      | "candidate-checks-failed"
+      | "qa-tree-modified"
+      | "declared-surface-divergence"
+      | "claim-regression";
+    evidence?: string[];
+    started: number;
+    role?: HohRole;
+    rejectedEntry?:
+      | { candidate: CandidateSnapshot; reason: string; evidence?: string[] }
+      | string;
+  }): Promise<RunRecord> {
+    const retainedCandidate = this.services.git.retainRejectedCandidate
+      ? await this.services.git.retainRejectedCandidate({
+          run: input.run,
+          candidate: input.candidate,
+          candidateSnapshotOrdinal: input.attempt.ordinal,
+          rejectedCandidateCommit: input.attempt.rejectedCandidateCommit,
+        })
+      : input.candidate;
+    const failure = await this.rejectedCandidateIdentity({
+      run: input.run,
+      attempt: input.attempt,
+      kind: input.kind,
+    });
+    const current = await this.store.status(input.run.id);
+    const rejectedCandidates = [
+      ...(current.rejectedCandidates ?? []),
+      input.rejectedEntry ?? {
+        candidate: retainedCandidate,
+        reason: input.kind,
+        ...(input.evidence ? { evidence: input.evidence } : {}),
+      },
+    ];
+    let restored: CandidateSnapshot | void;
+    try {
+      restored = await this.services.git.rollback({
+        run: current,
+        rejectedCandidate: retainedCandidate,
+        target: current.preservationCandidate,
+        reason: input.kind,
+        failureIdentity: failure.identity,
+        ...(input.evidence ? { evidence: input.evidence } : {}),
+      });
+      await this.verifyProtectedSetAfterRecovery(current);
+    } catch (cause) {
+      const target =
+        (cause instanceof CandidateIsolationError
+          ? cause.restoreTarget
+          : undefined) ??
+        current.preservationCandidate?.ref ??
+        `refs/musubix4/runs/${current.id}/base`;
+      const guidance =
+        cause instanceof CandidateIsolationError
+          ? cause.guidance
+          : "Restore the tracked worktree and index to the selected candidate-isolation target or start a new run.";
+      const error =
+        cause instanceof CandidateIsolationError
+          ? new CandidateIsolationError(
+              cause.code,
+              cause.message,
+              cause.paths,
+              guidance,
+              target,
+            )
+          : new CandidateIsolationError(
+              "CANDIDATE_ISOLATION_CONFLICT",
+              `Rejected-candidate recovery failed: ${cause instanceof Error ? cause.message : String(cause)}. ${guidance}`,
+              current.protectedSetPaths ?? [],
+              guidance,
+              target,
+            );
+      const blocked = await this.persistRejectedCandidateIsolationFailure(
+        current.id,
+        failure.blockerRepairAttempts,
+        rejectedCandidates,
+        error,
+        input.started,
+        input.role,
+      );
+      await this.store.completeCandidateSnapshotAttempt(
+        current.id,
+        input.attempt.ordinal,
+      );
+      return this.store.status(blocked.id);
+    }
+    await this.store.completeCandidateSnapshotAttempt(
+      current.id,
+      input.attempt.ordinal,
+    );
+    if (
+      failure.blockerRepairAttempts >
+      current.config.limits.blockerRepairRetryLimit
+    ) {
+      await this.store.closeBlockerRepairEpisode(
+        current.id,
+        "verified-retry-exhausted-rollback",
+      );
+      const next = await this.store.transition(
+        current.id,
+        "planned",
+        "blocker-rollback",
+        {
+          rejectedCandidateRef: retainedCandidate.ref,
+          restoredCandidate: restored,
+          blockerRepairAttempts: failure.blockerRepairAttempts,
+          reason: input.kind,
+          failureIdentity: failure.identity,
+        },
+      );
+      next.role = "developer";
+      const restoredCandidate =
+        restored && typeof restored === "object" && "ref" in restored
+          ? (restored as CandidateSnapshot)
+          : current.preservationCandidate;
+      if (restoredCandidate) next.candidate = restoredCandidate;
+      next.rejectedCandidates = rejectedCandidates;
+      next.blockerRepairAttempts = 0;
+      next.activeDurationMs += Date.now() - input.started;
+      await this.store.save(next);
+      return next;
+    }
+    const next = await this.store.transition(
+      current.id,
+      "planned",
+      "blocker-retry",
+      {
+        rejectedCandidateRef: retainedCandidate.ref,
+        blockerRepairAttempts: failure.blockerRepairAttempts,
+        retryLimit: current.config.limits.blockerRepairRetryLimit,
+        reason: input.kind,
+        failureIdentity: failure.identity,
+      },
+    );
+    next.role = "developer";
+    next.rejectedCandidates = rejectedCandidates;
+    next.blockerRepairAttempts = failure.blockerRepairAttempts;
+    next.activeDurationMs += Date.now() - input.started;
+    await this.store.save(next);
+    return next;
+  }
+
   async start(input: {
     source: SpecificationSource;
     config: HohConfig;
@@ -5563,7 +6513,12 @@ export class HohOrchestrator {
           );
         }
         try {
-          await this.services.git.verifyIsolation({ run });
+          await this.services.git.verifyIsolation({
+            run,
+            ...(run.candidateIsolationRestoreTarget
+              ? { restoreTarget: run.candidateIsolationRestoreTarget }
+              : {}),
+          });
         } catch (cause) {
           if (cause instanceof CandidateIsolationError) throw cause;
           throw cause;
@@ -5575,7 +6530,9 @@ export class HohOrchestrator {
         );
         resumed.requiredOperatorAction = "none";
         resumed.offendingCandidateIsolationPaths = [];
+        delete resumed.candidateIsolationRestoreTarget;
         await this.store.save(resumed);
+        Reflect.set(resumed, "candidateIsolationRestoreTarget", undefined);
         return resumed;
       }
       if (run.protectedSetDigest) {
@@ -5859,17 +6816,43 @@ export class HohOrchestrator {
           }
           throw cause;
         }
+        const candidateAttempt = await this.openCandidateAttempt({
+          run,
+          candidate,
+        });
         try {
-          await this.services.project.staticCandidateValidation?.({
+          const staticValidation =
+            await this.services.project.staticCandidateValidation?.({
             run,
             output,
             candidate,
           });
+          if (staticValidation)
+            candidate = {
+              ...candidate,
+              declaredSurfaceDigest:
+                staticValidation.declaredSurfaceDigest ??
+                staticValidation.digest,
+            };
         } catch (cause) {
           if (cause instanceof CommandInventoryError) {
+            await this.store.completeCandidateSnapshotAttempt(
+              runId,
+              candidateAttempt.ordinal,
+            );
             return this.store.enterAmendmentRequired(runId, {
               candidate,
               offendingPaths: cause.paths,
+            });
+          }
+          if (cause instanceof DeclaredSurfaceDivergenceError) {
+            return this.recoverRejectedCandidate({
+              run,
+              candidate,
+              attempt: candidateAttempt,
+              kind: "declared-surface-divergence",
+              evidence: cause.evidence,
+              started,
             });
           }
           throw cause;
@@ -5881,59 +6864,18 @@ export class HohOrchestrator {
             candidate,
           }))
         ) {
-          const blockerRepairAttempts = (run.blockerRepairAttempts ?? 0) + 1;
-          const rejectedCandidates = [
-            ...(run.rejectedCandidates ?? []),
-            { candidate, reason: "candidate-checks-failed" },
-          ];
-          if (
-            blockerRepairAttempts > run.config.limits.blockerRepairRetryLimit
-          ) {
-            const restored = await this.services.git.rollback({
-              run,
-              rejectedCandidate: candidate,
-              target: run.preservationCandidate,
-              reason: "blocker-retry-limit",
-            });
-            const next = await this.store.transition(
-              runId,
-              "planned",
-              "blocker-rollback",
-              {
-                rejectedCandidateRef: candidate.ref,
-                restoredCandidate: restored,
-                blockerRepairAttempts,
-              },
-            );
-            next.role = "developer";
-            const restoredCandidate =
-              restored && typeof restored === "object" && "ref" in restored
-                ? (restored as CandidateSnapshot)
-                : run.preservationCandidate;
-            if (restoredCandidate) next.candidate = restoredCandidate;
-            next.rejectedCandidates = rejectedCandidates;
-            next.blockerRepairAttempts = 0;
-            next.activeDurationMs += Date.now() - started;
-            await this.store.save(next);
-            return next;
-          }
-          const next = await this.store.transition(
-            runId,
-            "planned",
-            "blocker-retry",
-            {
-              rejectedCandidateRef: candidate.ref,
-              blockerRepairAttempts,
-              retryLimit: run.config.limits.blockerRepairRetryLimit,
-            },
-          );
-          next.role = "developer";
-          next.rejectedCandidates = rejectedCandidates;
-          next.blockerRepairAttempts = blockerRepairAttempts;
-          next.activeDurationMs += Date.now() - started;
-          await this.store.save(next);
-          return next;
+          return this.recoverRejectedCandidate({
+            run,
+            candidate,
+            attempt: candidateAttempt,
+            kind: "candidate-checks-failed",
+            started,
+          });
         }
+        await this.store.completeCandidateSnapshotAttempt(
+          runId,
+          candidateAttempt.ordinal,
+        );
         const next = await this.store.transition(
           runId,
           "candidate",
@@ -5942,12 +6884,22 @@ export class HohOrchestrator {
         );
         next.role = "developer";
         next.candidate = candidate;
-        next.blockerRepairAttempts = 0;
-        next.activeDurationMs += Date.now() - started;
         await this.store.save(next);
-        return next;
+        await this.store.closeBlockerRepairEpisode(
+          runId,
+          "candidate-accepted",
+        );
+        const accepted = await this.store.status(runId);
+        next.activeDurationMs += Date.now() - started;
+        accepted.activeDurationMs = next.activeDurationMs;
+        await this.store.save(accepted);
+        return accepted;
       }
       if (run.state === "candidate") {
+        const candidateAttempt = await this.openCandidateAttempt({
+          run,
+          candidate: run.candidate!,
+        });
         const claimMatrixDigest = digest(
           stableJson(deriveClaimMatrix(run.requirements ?? [])),
         );
@@ -5955,6 +6907,67 @@ export class HohOrchestrator {
           run,
           candidate: run.candidate,
         });
+        if (run.candidate?.declaredSurfaceDigest) {
+          if (!workspace) {
+            return this.recoverRejectedCandidate({
+              run,
+              candidate: run.candidate,
+              attempt: candidateAttempt,
+              kind: "declared-surface-divergence",
+              evidence: ["disposable QA workspace unavailable"],
+              started,
+            });
+          }
+          if (!this.services.project.candidateSurfaceDigest) {
+            await this.services.git.cleanupQaWorkspace?.({ run, workspace });
+            return this.recoverRejectedCandidate({
+              run,
+              candidate: run.candidate,
+              attempt: candidateAttempt,
+              kind: "declared-surface-divergence",
+              evidence: ["candidate surface digest service unavailable"],
+              started,
+            });
+          }
+          let observedSurfaceDigest: string;
+          try {
+            observedSurfaceDigest =
+              await this.services.project.candidateSurfaceDigest({
+                run,
+                candidate: run.candidate,
+                workspace,
+              });
+          } catch (cause) {
+            if (workspace)
+              await this.services.git.cleanupQaWorkspace?.({ run, workspace });
+            return this.recoverRejectedCandidate({
+              run,
+              candidate: run.candidate,
+              attempt: candidateAttempt,
+              kind: "declared-surface-divergence",
+              evidence: [
+                cause instanceof Error ? cause.message : String(cause),
+              ],
+              started,
+            });
+          }
+          if (observedSurfaceDigest !== run.candidate.declaredSurfaceDigest) {
+            if (workspace)
+              await this.services.git.cleanupQaWorkspace?.({ run, workspace });
+            const cause = new DeclaredSurfaceDivergenceError([
+              `expected=${run.candidate.declaredSurfaceDigest}`,
+              `observed=${observedSurfaceDigest}`,
+            ]);
+            return this.recoverRejectedCandidate({
+              run,
+              candidate: run.candidate,
+              attempt: candidateAttempt,
+              kind: "declared-surface-divergence",
+              evidence: cause.evidence,
+              started,
+            });
+          }
+        }
         let bundle: EvidenceBundle | undefined;
         let actualDigest: string | undefined;
         let mandatoryChecks: MandatoryQaCheck[] | undefined;
@@ -6039,39 +7052,13 @@ export class HohOrchestrator {
             await this.services.git.cleanupQaWorkspace?.({ run, workspace });
         }
         if (actualDigest !== run.candidate?.treeDigest) {
-          if (!workspace) {
-            const failed = await this.store.transition(
-              runId,
-              "failed",
-              "qa-tree-modified",
-            );
-            failed.role = "qa";
-            failed.terminalReason = "qa-tree-modified";
-            await this.store.save(failed);
-            return failed;
-          }
-          const blockerRepairAttempts = (run.blockerRepairAttempts ?? 0) + 1;
-          const rejectedCandidates = [
-            ...(run.rejectedCandidates ?? []),
-            run.candidate!.ref,
-          ];
-          const next = await this.store.transition(
-            runId,
-            "planned",
-            "blocker-retry",
-            {
-              rejectedCandidateRef: run.candidate!.ref,
-              blockerRepairAttempts,
-              retryLimit: run.config.limits.blockerRepairRetryLimit,
-              reason: "qa-tree-modified",
-            },
-          );
-          next.role = "developer";
-          next.rejectedCandidates = rejectedCandidates;
-          next.blockerRepairAttempts = blockerRepairAttempts;
-          next.activeDurationMs += Date.now() - started;
-          await this.store.save(next);
-          return next;
+          return this.recoverRejectedCandidate({
+            run,
+            candidate: run.candidate!,
+            attempt: candidateAttempt,
+            kind: "qa-tree-modified",
+            started,
+          });
         }
         if (!bundle)
           throw new Error(
@@ -6206,38 +7193,20 @@ export class HohOrchestrator {
         if (assessment.preservationVerified && run.candidate)
           next.preservationCandidate = run.candidate;
         if (assessment.regressions.length && run.candidate) {
-          const restored = await this.services.git.rollback({
+          return this.recoverRejectedCandidate({
             run,
-            rejectedCandidate: run.candidate,
-            target: run.preservationCandidate,
-            reason: "claim-regression",
+            candidate: run.candidate,
+            attempt: candidateAttempt,
+            kind: "claim-regression",
             evidence: assessment.regressions,
-          });
-          const restoredCandidate =
-            restored && typeof restored === "object" && "ref" in restored
-              ? (restored as CandidateSnapshot)
-              : run.preservationCandidate;
-          if (restoredCandidate) next.candidate = restoredCandidate;
-          next.rejectedCandidates = [
-            ...(run.rejectedCandidates ?? []),
-            {
-              candidate: run.candidate,
-              reason: "claim-regression",
-              evidence: assessment.regressions,
-            },
-          ];
-          next.journal.push({
-            sequence: next.journal.length + 1,
-            event: "regression-rollback",
-            state: next.state,
-            recordedAt: new Date().toISOString(),
-            details: {
-              rejectedCandidateRef: run.candidate.ref,
-              restoredCandidateRef: next.candidate?.ref,
-              claimIds: assessment.regressions,
-            },
+            started,
+            role: "qa",
           });
         }
+        await this.store.completeCandidateSnapshotAttempt(
+          runId,
+          candidateAttempt.ordinal,
+        );
         if (bundle.readiness) {
           next.journal.push({
             sequence: next.journal.length + 1,
@@ -6419,6 +7388,7 @@ export class HohOrchestrator {
         await this.store.save(blocked);
         return blocked;
       }
+      if (cause instanceof CandidateIsolationError) throw cause;
       const failed = await this.store.transition(
         runId,
         "failed",

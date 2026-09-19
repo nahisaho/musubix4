@@ -60,6 +60,10 @@ describe('QA mutation routing', () => {
         snapshot: vi.fn(),
         treeDigest: vi.fn().mockResolvedValue('b'.repeat(40)),
         rollback: vi.fn(),
+        retainRejectedCandidate: vi.fn().mockResolvedValue({
+          ref: 'refs/musubix4/runs/test/rejected/1',
+          treeDigest: candidate.treeDigest,
+        }),
         createQaWorkspace: vi.fn().mockResolvedValue({ path: root, candidate }),
         cleanupQaWorkspace: vi.fn(),
       },
@@ -73,7 +77,13 @@ describe('QA mutation routing', () => {
       blockerRepairAttempts: 1,
       iteration: 1,
       stagnantIterations: 0,
-      rejectedCandidates: [candidate.ref],
+      rejectedCandidates: [{
+        candidate: {
+          ref: 'refs/musubix4/runs/test/rejected/1',
+          treeDigest: candidate.treeDigest,
+        },
+        reason: 'qa-tree-modified',
+      }],
     });
   });
 });

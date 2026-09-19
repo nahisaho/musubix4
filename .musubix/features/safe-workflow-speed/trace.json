@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T11:32:45.678Z",
+  "generatedAt": "2026-09-19T11:49:16.512Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -87,6 +87,18 @@
       "line": 1
     },
     {
+      "id": "ADR-0013",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0013.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0014",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0014.md",
+      "line": 1
+    },
+    {
       "id": "DES-AUTOMATIC-HOH-CODING-001",
       "kind": "design",
       "path": ".musubix/features/automatic-hoh-coding/design.md",
@@ -121,85 +133,91 @@
       "id": "DES-AUTONOMOUS-DEVELOPMENT-003",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 23
+      "line": 24
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-004",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 31
+      "line": 32
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-005",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 39
+      "line": 56
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-006",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 47
+      "line": 81
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-007",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 57
+      "line": 91
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-008",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 65
+      "line": 99
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-009",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 73
+      "line": 115
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-010",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 81
+      "line": 123
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-011",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 89
+      "line": 131
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-012",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 97
+      "line": 139
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-013",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 105
+      "line": 147
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-014",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 113
+      "line": 155
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-015",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 122
+      "line": 164
     },
     {
       "id": "DES-AUTONOMOUS-DEVELOPMENT-016",
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
-      "line": 130
+      "line": 172
+    },
+    {
+      "id": "DES-AUTONOMOUS-DEVELOPMENT-017",
+      "kind": "design",
+      "path": ".musubix/features/autonomous-development/design.md",
+      "line": 180
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-001",
@@ -254,84 +272,91 @@
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-008",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 57,
+      "line": 58,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-009",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 64,
+      "line": 65,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-010",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 71,
+      "line": 72,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-011",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 78,
+      "line": 79,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-012",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 85,
+      "line": 86,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-013",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 92,
+      "line": 107,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-014",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 100,
+      "line": 115,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-015",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 107,
+      "line": 122,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-016",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 114,
+      "line": 129,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-017",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 122,
+      "line": 137,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-018",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 129,
+      "line": 144,
       "mandatory": true
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-019",
       "kind": "requirement",
       "path": ".musubix/features/autonomous-development/requirements.md",
-      "line": 136,
+      "line": 162,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "kind": "requirement",
+      "path": ".musubix/features/autonomous-development/requirements.md",
+      "line": 169,
       "mandatory": true
     },
     {
@@ -555,25 +580,25 @@
       "id": "CODE-CHANGE-REQUIREMENT-BATCHES-001",
       "kind": "code",
       "path": "packages/analysis/src/change-evidence.ts",
-      "line": 69
+      "line": 71
     },
     {
       "id": "CODE-CHANGE-EVIDENCE-WAIVER-014",
       "kind": "code",
       "path": "packages/analysis/src/change-evidence.ts",
-      "line": 89
+      "line": 91
     },
     {
       "id": "CODE-CHANGE-EVIDENCE-WAIVER-015",
       "kind": "code",
       "path": "packages/analysis/src/change-evidence.ts",
-      "line": 100
+      "line": 102
     },
     {
       "id": "CODE-CHANGE-EVIDENCE-WAIVER-016",
       "kind": "code",
       "path": "packages/analysis/src/change-evidence.ts",
-      "line": 170
+      "line": 172
     },
     {
       "id": "CODE-CHANGE-EVIDENCE-WAIVER-001",
@@ -684,40 +709,46 @@
       "line": 23
     },
     {
-      "id": "CODE-CHANGE-RECORD-FAIL-FAST-001",
+      "id": "CODE-CHANGE-QUALITY-REFRESH-001",
       "kind": "code",
       "path": "packages/analysis/src/change.ts",
       "line": 89
     },
     {
+      "id": "CODE-CHANGE-RECORD-FAIL-FAST-001",
+      "kind": "code",
+      "path": "packages/analysis/src/change.ts",
+      "line": 136
+    },
+    {
       "id": "CODE-CHANGE-RECORD-FAIL-FAST-003",
       "kind": "code",
       "path": "packages/analysis/src/change.ts",
-      "line": 128
+      "line": 175
     },
     {
       "id": "CODE-CHANGE-RECORD-RECORDEDAT-ORDER-001",
       "kind": "code",
       "path": "packages/analysis/src/change.ts",
-      "line": 260
+      "line": 353
     },
     {
       "id": "CODE-CHANGE-RECORD-RECORDEDAT-ORDER-002",
       "kind": "code",
       "path": "packages/analysis/src/change.ts",
-      "line": 268
+      "line": 361
     },
     {
       "id": "CODE-CHANGE-RECORD-RECORDEDAT-ORDER-003",
       "kind": "code",
       "path": "packages/analysis/src/change.ts",
-      "line": 299
+      "line": 392
     },
     {
       "id": "CODE-CHANGE-REQUIREMENT-BATCHES-002",
       "kind": "code",
       "path": "packages/analysis/src/change.ts",
-      "line": 321
+      "line": 414
     },
     {
       "id": "CODE-APPROVAL-DOMAIN-SCOPING-001",
@@ -789,199 +820,211 @@
       "id": "CODE-AUTOMATIC-HOH-CODING-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 455
+      "line": 479
     },
     {
       "id": "CODE-AUTOMATIC-HOH-CODING-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 487
+      "line": 517
     },
     {
       "id": "CODE-AUTONOMOUS-HISTORICAL-TRACE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 702
+      "line": 737
     },
     {
       "id": "CODE-AUTONOMOUS-ORACLE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 786
+      "line": 821
     },
     {
       "id": "CODE-AUTONOMOUS-SURFACE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 978
+      "line": 1013
     },
     {
       "id": "CODE-AUTONOMOUS-INVENTORY-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1276
+      "line": 1311
     },
     {
       "id": "CODE-AUTONOMOUS-PROTECTED-SET-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1419
+      "line": 1454
     },
     {
       "id": "CODE-HOH-PROCESS-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1480
+      "line": 1515
     },
     {
       "id": "CODE-HOH-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1595
+      "line": 1630
     },
     {
       "id": "CODE-AUTONOMOUS-HOH-CONFIG-FILE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1868
+      "line": 1909
     },
     {
       "id": "CODE-AUTONOMOUS-QA-CONFIG-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1884
+      "line": 1925
     },
     {
       "id": "CODE-HOH-POLICY-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 1902
+      "line": 1943
     },
     {
       "id": "CODE-HOH-SPECIFICATION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2055
+      "line": 2096
     },
     {
       "id": "CODE-HOH-GITHUB-ISSUE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2067
+      "line": 2108
     },
     {
       "id": "CODE-HOH-COPILOT-FINAL-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2341
+      "line": 2382
     },
     {
       "id": "CODE-AUTONOMOUS-QA-ADAPTER-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2364
+      "line": 2405
     },
     {
       "id": "CODE-HOH-COPILOT-ADAPTER-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2420
+      "line": 2461
     },
     {
       "id": "CODE-HOH-ROLE-CONTRACT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2611
+      "line": 2652
     },
     {
       "id": "CODE-HOH-EVIDENCE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2649
+      "line": 2690
     },
     {
       "id": "CODE-AUTONOMOUS-QA-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 2704
+      "line": 2745
+    },
+    {
+      "id": "CODE-HOH-CANDIDATE-BASELINE-CANONICAL-001",
+      "kind": "code",
+      "path": "packages/analysis/src/hoh.ts",
+      "line": 3029
     },
     {
       "id": "CODE-HOH-GIT-STORE-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3177
+      "line": 3457
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-GIT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3624
+      "line": 4034
+    },
+    {
+      "id": "CODE-HOH-REJECTED-CANDIDATE-REF-001",
+      "kind": "code",
+      "path": "packages/analysis/src/hoh.ts",
+      "line": 4335
     },
     {
       "id": "CODE-HOH-RUN-STORE-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 3962
+      "line": 4478
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4115
+      "line": 4805
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-CLI-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4233
+      "line": 4929
     },
     {
       "id": "CODE-HOH-LIFECYCLE-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4407
+      "line": 5103
     },
     {
       "id": "CODE-AUTONOMOUS-AMENDMENT-PROMOTION-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4464
+      "line": 5160
     },
     {
       "id": "CODE-HOH-RUN-APPROVAL-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4607
+      "line": 5303
     },
     {
       "id": "CODE-AUTOMATIC-HOH-CODING-004",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 4804
+      "line": 5500
     },
     {
       "id": "CODE-AUTONOMOUS-AUTO-APPROVAL-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 5026
+      "line": 5722
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-002",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 5233
+      "line": 5929
     },
     {
       "id": "CODE-HOH-DEPLOYMENT-RECOVERY-003",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 5336
+      "line": 6032
     },
     {
       "id": "CODE-HOH-ORCHESTRATOR-001",
       "kind": "code",
       "path": "packages/analysis/src/hoh.ts",
-      "line": 5424
+      "line": 6120
     },
     {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-024",
@@ -1011,7 +1054,7 @@
       "id": "CODE-CHANGE-EVIDENCE-WAIVER-013",
       "kind": "code",
       "path": "packages/analysis/src/order.ts",
-      "line": 75
+      "line": 71
     },
     {
       "id": "CODE-RELEASE-V010-DOCS-005",
@@ -1257,55 +1300,55 @@
       "id": "CODE-HOH-ROLE-PROMPT-001",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 50
+      "line": 51
     },
     {
       "id": "CODE-AUTOMATIC-HOH-CODING-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 119
+      "line": 120
     },
     {
       "id": "CODE-HOH-CLI-001",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 139
+      "line": 140
     },
     {
       "id": "CODE-CLI-WORKFLOW-UX-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 433
+      "line": 520
     },
     {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-023",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 670
+      "line": 757
     },
     {
       "id": "CODE-WORKFLOW-WAIVER-BULK-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 706
+      "line": 793
     },
     {
       "id": "CODE-CHANGE-RECORD-RECORDEDAT-ORDER-004",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 794
+      "line": 881
     },
     {
       "id": "CODE-CHANGE-RECORD-FAIL-FAST-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 810
+      "line": 897
     },
     {
       "id": "CODE-TDD-ADOPTION-WARNING-003",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 909
+      "line": 996
     },
     {
       "id": "CODE-RELEASE-VERSION-001",
@@ -1821,25 +1864,103 @@
       "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-003",
       "kind": "test",
       "path": "tests/autonomous-candidate-baseline-recovery.test.ts",
-      "line": 16
+      "line": 17
     },
     {
       "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-004",
       "kind": "test",
       "path": "tests/autonomous-candidate-baseline-recovery.test.ts",
-      "line": 144
+      "line": 145
     },
     {
       "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-005",
       "kind": "test",
       "path": "tests/autonomous-candidate-baseline-recovery.test.ts",
-      "line": 260
+      "line": 261
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-006",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-baseline-recovery.test.ts",
+      "line": 319
     },
     {
       "id": "TEST-AUTONOMOUS-CANDIDATE-ISOLATION-002",
       "kind": "test",
       "path": "tests/autonomous-candidate-isolation-recorded-head.test.ts",
       "line": 17
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-ISOLATION-003",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-recovery-contract.test.ts",
+      "line": 52
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-007",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-recovery-contract.test.ts",
+      "line": 104
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-recovery-contract.test.ts",
+      "line": 203
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-recovery-contract.test.ts",
+      "line": 264
+    },
+    {
+      "id": "TEST-AUTONOMOUS-BLOCKER-IDENTITY-001",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-recovery-contract.test.ts",
+      "line": 364
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-009",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-release-hardening.test.ts",
+      "line": 30
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-003",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-release-hardening.test.ts",
+      "line": 67
+    },
+    {
+      "id": "TEST-AUTONOMOUS-BLOCKER-RETRY-BOUNDARY-001",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-release-review.test.ts",
+      "line": 56
+    },
+    {
+      "id": "TEST-AUTONOMOUS-SNAPSHOT-ATTEMPT-002",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-release-review.test.ts",
+      "line": 181
+    },
+    {
+      "id": "TEST-AUTONOMOUS-REJECTED-REF-001",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-release-review.test.ts",
+      "line": 245
+    },
+    {
+      "id": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-001",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-release-review.test.ts",
+      "line": 275
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-008",
+      "kind": "test",
+      "path": "tests/autonomous-candidate-release-review.test.ts",
+      "line": 336
     },
     {
       "id": "TEST-AUTONOMOUS-INVENTORY-001",
@@ -1864,6 +1985,18 @@
       "kind": "test",
       "path": "tests/autonomous-command-surface.test.ts",
       "line": 6
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-010",
+      "kind": "test",
+      "path": "tests/autonomous-conflicted-index-baseline.test.ts",
+      "line": 17
+    },
+    {
+      "id": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-002",
+      "kind": "test",
+      "path": "tests/autonomous-declared-surface-workspace.test.ts",
+      "line": 40
     },
     {
       "id": "TEST-AUTONOMOUS-DURABILITY-001",
@@ -1894,6 +2027,30 @@
       "kind": "test",
       "path": "tests/autonomous-qa-mutation-routing.test.ts",
       "line": 11
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-004",
+      "kind": "test",
+      "path": "tests/autonomous-recovery-generic-failure.test.ts",
+      "line": 74
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-001",
+      "kind": "test",
+      "path": "tests/autonomous-recovery-generic-failure.test.ts",
+      "line": 136
+    },
+    {
+      "id": "TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-002",
+      "kind": "test",
+      "path": "tests/autonomous-recovery-generic-failure.test.ts",
+      "line": 234
+    },
+    {
+      "id": "TEST-AUTONOMOUS-REJECTED-REF-002",
+      "kind": "test",
+      "path": "tests/autonomous-rejected-ref-cleanup.test.ts",
+      "line": 14
     },
     {
       "id": "TEST-AUTONOMOUS-QA-ADAPTER-001",
@@ -2074,6 +2231,30 @@
       "kind": "test",
       "path": "tests/change-multi-requirement-test-annotation.test.ts",
       "line": 10
+    },
+    {
+      "id": "TEST-CHANGE-QUALITY-REFRESH-001",
+      "kind": "test",
+      "path": "tests/change-quality-refresh.test.ts",
+      "line": 122
+    },
+    {
+      "id": "TEST-CHANGE-QUALITY-REFRESH-002",
+      "kind": "test",
+      "path": "tests/change-quality-refresh.test.ts",
+      "line": 161
+    },
+    {
+      "id": "TEST-CHANGE-QUALITY-REFRESH-003",
+      "kind": "test",
+      "path": "tests/change-quality-refresh.test.ts",
+      "line": 195
+    },
+    {
+      "id": "TEST-CHANGE-QUALITY-REFRESH-004",
+      "kind": "test",
+      "path": "tests/change-quality-refresh.test.ts",
+      "line": 372
     },
     {
       "id": "TEST-CHANGE-RECORD-FAIL-FAST-001",
@@ -2445,7 +2626,7 @@
       "id": "TEST-HOH-RECOVERY-001",
       "kind": "test",
       "path": "tests/hoh-lifecycle.test.ts",
-      "line": 1695
+      "line": 1702
     },
     {
       "id": "TEST-CLI-COMPATIBILITY-001",
@@ -3201,6 +3382,11 @@
       "relation": "decides"
     },
     {
+      "from": "ADR-0013",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-005",
+      "relation": "decides"
+    },
+    {
       "from": "DES-AUTONOMOUS-DEVELOPMENT-005",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-003",
       "relation": "depends-on"
@@ -3432,6 +3618,11 @@
     },
     {
       "from": "ADR-0012",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-008",
+      "relation": "decides"
+    },
+    {
+      "from": "ADR-0013",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-008",
       "relation": "decides"
     },
@@ -3852,6 +4043,21 @@
     },
     {
       "from": "DES-AUTONOMOUS-DEVELOPMENT-016",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-AUTONOMOUS-DEVELOPMENT-017",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0014",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-017",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AUTONOMOUS-DEVELOPMENT-017",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "depends-on"
     },
@@ -4426,6 +4632,16 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-CHANGE-QUALITY-REFRESH-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-CHANGE-QUALITY-REFRESH-001",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-017",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-CHANGE-RECORD-FAIL-FAST-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "implements"
@@ -4442,7 +4658,17 @@
     },
     {
       "from": "CODE-CHANGE-RECORD-FAIL-FAST-003",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-CHANGE-RECORD-FAIL-FAST-003",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-CHANGE-RECORD-FAIL-FAST-003",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-017",
       "relation": "implements"
     },
     {
@@ -4482,7 +4708,17 @@
     },
     {
       "from": "CODE-CHANGE-REQUIREMENT-BATCHES-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-CHANGE-REQUIREMENT-BATCHES-002",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-CHANGE-REQUIREMENT-BATCHES-002",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-017",
       "relation": "implements"
     },
     {
@@ -5026,6 +5262,21 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-HOH-CANDIDATE-BASELINE-CANONICAL-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-CANDIDATE-BASELINE-CANONICAL-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-CANDIDATE-BASELINE-CANONICAL-001",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-008",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-HOH-GIT-STORE-002",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
       "relation": "implements"
@@ -5076,8 +5327,28 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-HOH-REJECTED-CANDIDATE-REF-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-REJECTED-CANDIDATE-REF-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-REJECTED-CANDIDATE-REF-001",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-008",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-HOH-RUN-STORE-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-RUN-STORE-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
       "relation": "implements"
     },
     {
@@ -5103,6 +5374,11 @@
     {
       "from": "CODE-HOH-RUN-STORE-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-HOH-RUN-STORE-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
       "relation": "implements"
     },
     {
@@ -5438,6 +5714,16 @@
     {
       "from": "CODE-CHANGE-EVIDENCE-WAIVER-013",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-CHANGE-EVIDENCE-WAIVER-013",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-CHANGE-EVIDENCE-WAIVER-013",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-017",
       "relation": "implements"
     },
     {
@@ -6616,6 +6902,21 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-006",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-006",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-006",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AUTONOMOUS-CANDIDATE-ISOLATION-002",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
       "relation": "verifies"
@@ -6631,6 +6932,151 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-ISOLATION-003",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-ISOLATION-003",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-007",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-007",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-011",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-BLOCKER-IDENTITY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-BLOCKER-IDENTITY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-BLOCKER-IDENTITY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-009",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-009",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-003",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-011",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-003",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-BLOCKER-RETRY-BOUNDARY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-BLOCKER-RETRY-BOUNDARY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-SNAPSHOT-ATTEMPT-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-REJECTED-REF-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-REJECTED-REF-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-008",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-008",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-AUTONOMOUS-INVENTORY-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-011",
       "relation": "verifies"
@@ -6673,6 +7119,31 @@
     {
       "from": "TEST-AUTONOMOUS-SURFACE-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-013",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-010",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-010",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-014",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
       "relation": "verifies"
     },
     {
@@ -6717,6 +7188,41 @@
     },
     {
       "from": "TEST-AUTONOMOUS-QA-MUTATION-ROUTING-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-004",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-011",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-004",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-012",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-004",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-REJECTED-REF-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-007",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-AUTONOMOUS-REJECTED-REF-002",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-018",
       "relation": "verifies"
     },
@@ -6898,6 +7404,26 @@
     {
       "from": "TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-CHANGE-QUALITY-REFRESH-001",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-CHANGE-QUALITY-REFRESH-002",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-CHANGE-QUALITY-REFRESH-003",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-CHANGE-QUALITY-REFRESH-004",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-020",
       "relation": "verifies"
     },
     {
@@ -7849,10 +8375,12 @@
     ".musubix/decisions/ADR-0010.md": "c940c11a67a27969728c7f37626a7bcf21ce9cbbd5d8200bbcdf8777a3fc81a5",
     ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
     ".musubix/decisions/ADR-0012.md": "3942519e9559db374093ba17d5874e1fd86c933d9508a86b8059a3b4513caf6d",
+    ".musubix/decisions/ADR-0013.md": "72fb5035ca7b34de79ec55fbcbd489bcbbb54219cd69ccd6d5b1115b1fe28efe",
+    ".musubix/decisions/ADR-0014.md": "6ea60b8e3f730e5967a6302e54bf55bc1d36d618c77bd41a3cac03fcb63916d5",
     ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/design.md": "7f8528d0f63d3d2eed86d23d39e89e546a294bd6b65144f934fb3d2cfaaaae39",
-    ".musubix/features/autonomous-development/requirements.md": "3b6aea917948f72a59b832e525f31a1d0bb343f22e5e914ae4bc10702970faf4",
+    ".musubix/features/autonomous-development/design.md": "641aa0541488b4bd1a444918882ab07766965d030ffea04e610db61df73b72f6",
+    ".musubix/features/autonomous-development/requirements.md": "8e333c361e2c183faeca1422e11c4cf2886bdfb058c42675ece27e76371a8c1c",
     ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
     ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
     ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
@@ -7862,20 +8390,20 @@
     "packages/analysis/src/approval-record.ts": "ad7a90015c0118f796d1d64438d832da09c8a29dbe0a3f0b553ccd6efb860ec1",
     "packages/analysis/src/approval.ts": "4d0fbcce2e03de10f168c6a6b138ee005f8308c7a5c97867326babae04301d51",
     "packages/analysis/src/attestation.ts": "9bf0edee572ee641fa8827c5dadc3c0f153b51a27b7c43dc18dc1be3a62c150f",
-    "packages/analysis/src/change-evidence.ts": "8262f5e84d51ae6efe8bcccc9cac63fe3e03d84b0596abf019f277f0f7314a76",
+    "packages/analysis/src/change-evidence.ts": "332ceb2bbf6a6144c4bcb98a09ef18a384b132c2e0f4d7a61e4643b224109208",
     "packages/analysis/src/change-waiver.ts": "04e5326000f56b96b10e932256d8a88adf3b1f2f0e01ac4c672fb6284fef6592",
-    "packages/analysis/src/change.ts": "d83fd6fd11ed54d28f3dcc6aae58c6d95a2cf75fe4b366d7b67fab4ed2e46a20",
+    "packages/analysis/src/change.ts": "3ab33ca7ccf0664b26830278eefa552a799207044970df8eff9ec3917c9cd2aa",
     "packages/analysis/src/config.ts": "bc90d02819305a9dc65c5511a10f1bfc03d20320af65f444876154d1546bd74e",
     "packages/analysis/src/files.ts": "41d5eb0092e508c73b2a98ee2443fbae996bc7b851f434c016e02e038ddcddb8",
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
     "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
-    "packages/analysis/src/hoh.ts": "89626719cfccdc2409c3b03d5a23c156bb0b91597f3f51c2d5a4d04500f2220f",
+    "packages/analysis/src/hoh.ts": "3eb44c0cc25d8b28c1a7094cd50513f8117e68575e8383cc258ba5d50d054f08",
     "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
     "packages/analysis/src/mutation.ts": "af0e81463fe75f3e368b642eac5228964ba32bd182dac9ce8d04b304ba466c5e",
-    "packages/analysis/src/order.ts": "f6e14831f6cb580d586e50f4fe72b15628b2802e8b5e0d8389787f195786fb77",
+    "packages/analysis/src/order.ts": "68a1f57c00dd201315ef0f71f55a8e84e75d9064c3e950c34f49fb064a583db4",
     "packages/analysis/src/package-version.ts": "f2ab4f6e6c571f6a50be9c80a2d7ededc49d784dd25274d3819e7035bb27f374",
     "packages/analysis/src/performance.ts": "1145c285582ff188e90263b4d9d9f28ca49104e79b8299b2ecd3e278d8ef80ac",
     "packages/analysis/src/process.ts": "8184c7f7c4c58cdc6987fd9d2ec2c02ce8557f94b6aa30853a0c6056ba79cf4a",
@@ -7887,7 +8415,7 @@
     "packages/analysis/src/workflow-waiver.ts": "d8c516747f6302c350e0647000f14a559d521e2f7615e2db5a72be59170162e2",
     "packages/analysis/src/workflow.ts": "28f1842932c479dd0055083db492e4b11473ae7376ed518907a1643cfb54e681",
     "packages/cli/src/install.ts": "0d9a177e5503106fc0c8ff8cc5c6be7b9f18523192cd71c2681d4476797198b9",
-    "packages/cli/src/main.ts": "e589dc1ef22a44f40935b81c07bc96e5a05f18d772514f3dcfda913dc76e35bd",
+    "packages/cli/src/main.ts": "ad595bef62c322ee05e1ff8cf87e2835c0158682b809c2c3927b985b7cacc997",
     "packages/cli/src/version.ts": "b0e94ab7cdc2f3632c300fb5fc4812aca1c9f6c85efc5867d25ca7c077b4935d",
     "packages/domain/src/constitution.ts": "514278499642ff46ed902864b9192f566b116b4f92eb3fafa6b62588335e170a",
     "packages/domain/src/design.ts": "80a610413a1c34f25612dd7f4e34544d374c14adecc9b2c97a867a7eba70c873",
@@ -7901,7 +8429,7 @@
     "scripts/release-publish.mjs": "be05292662e6f3a169f238231574c97dc70d41fc7a036bfe86b284e43eadaff4",
     "scripts/release-version.mjs": "c57970a5dc7e3f86437237be2dc2f430bf510b7cfd61685f84fe43b27bdf22e8",
     "scripts/run-full-tests.mjs": "dea88f204d339ff376df2246bef6fa7a21814ff285b26ad9a1e09ed73414714b",
-    "scripts/run-hoh-tdd.mjs": "c41c9f82e26ddf27747302f1773b69697d45c40834fc9e525dddc00fa05879ad",
+    "scripts/run-hoh-tdd.mjs": "48c85adcb83640555c901c0b5ef277099e75c1fc29218f825bd74323d1cb503d",
     "scripts/smoke-package.mjs": "0c07366d618477ae251a0577569cd5cd0c4ce9f9c5c7c2ea6142f2bb3dfc669c",
     "tests/adapter-integration.test.ts": "0b8974d0ca31559722d40f9e25d42e2ce3d60ef2206b77d4b000264b1eb153d1",
     "tests/adapter-pattern-recognition.test.ts": "72ca71cc538e4a56c9ce596cfe48928cd023ccc42e3e8964e157a30b340f4c15",
@@ -7938,17 +8466,24 @@
     "tests/autonomous-auto-spec-design-approval.test.ts": "07de87f8514b3a6f70a8c7e182952359aedc33694c475c7931f7c427bbf0a022",
     "tests/autonomous-auto-spec-design-manifest.test.ts": "9787604968ea346bcb45519c192010adcc77f3bc3bc3e0df7d2e4d207853e8d7",
     "tests/autonomous-baseline-oracle.test.ts": "bbcb7929781b8e00519a5bb94957efc6cd3eda10192c66e62d2950a90e24200a",
-    "tests/autonomous-candidate-baseline-recovery.test.ts": "0166742c27661a4fa5c8040c3ed108cc5ce22d2b229893123e9d9e8a977d8001",
-    "tests/autonomous-candidate-isolation-recorded-head.test.ts": "4883bf3431028dab3d1e9cc6c001e549187c339bfb14b5d3e0772a1ae7719b02",
+    "tests/autonomous-candidate-baseline-recovery.test.ts": "176495fdd4c76b9529b3fcd9ae9f2b8d7afc39a307d2ea340b11fa37afa3937d",
+    "tests/autonomous-candidate-isolation-recorded-head.test.ts": "d96e5993f602448d5503fe61bee6fe58024f6ece99fc58af82a97b6dc2ea6795",
+    "tests/autonomous-candidate-recovery-contract.test.ts": "7b04093b008d2d8e435daf0f5183f0b41990a7876f3cf47bdc450aa6c52bd713",
+    "tests/autonomous-candidate-release-hardening.test.ts": "d31982c86ec0a501d06641a60cc6f96c77233fc5ccc38a8e74b1488dcb1008f4",
+    "tests/autonomous-candidate-release-review.test.ts": "1fa3cb9335980674b110a5f224aa787f9416f571176c91194c081950f7b56f0a",
     "tests/autonomous-collision-inventory.test.ts": "41038fb8991e145c153ddb4f012a234d069a69c448149eb7f7f311a0855366b6",
     "tests/autonomous-command-surface-advanced.test.ts": "ae869bf14a4182514e3a4179f3257a92a5dc224c6e13e54d1b4b44ea21f0879d",
     "tests/autonomous-command-surface-loop.test.ts": "48ccbabb63f2776dcd7ac90a794d101c7bdbc73abc3fa0393057328bd29be7e0",
     "tests/autonomous-command-surface.test.ts": "f6e6246b9c9394e6d120e8048d34af8dd1f3169f91c54a48a2e4d24747f7966f",
+    "tests/autonomous-conflicted-index-baseline.test.ts": "b2ca8ddde27473d02a89f659323f6506ac12b60662f5b9a909baf6cd33939890",
+    "tests/autonomous-declared-surface-workspace.test.ts": "3684dc10ca76073a64f26cb1051c9d30984e973dad28af8d4f3a06e434922312",
     "tests/autonomous-durability-limits.test.ts": "0b2a9b4d69bae8d20d07ac6ac84219ddb53a70fbb42ce25d82cc6a50d1727154",
     "tests/autonomous-hoh-config-file.test.ts": "db71ba76dbbdd79b0c9cb32fe01ebd464e50bef66dba7b43ffed44e1106d8fa3",
     "tests/autonomous-protected-boundary.test.ts": "d832611d5fe78b055c15a5957ae8a837e610a24e723a1ba0394f7552a1721c33",
     "tests/autonomous-protected-set.test.ts": "c20cb8069763865940ad6fde12d1769c1aa665dddb55f8c56e5ab74c694304e7",
-    "tests/autonomous-qa-mutation-routing.test.ts": "e02ba294c7daa0bdca98e20c5446ada7e867d9684aa785199fde1f84c6bb6467",
+    "tests/autonomous-qa-mutation-routing.test.ts": "a4fa2f1ef12230ed07ec258aeaf952bece7275bdd1e686801dbbc63b907986c9",
+    "tests/autonomous-recovery-generic-failure.test.ts": "30c3f203c5606183472dd902d44ad3798816e3d2f6f24227c8d2ce9a02752769",
+    "tests/autonomous-rejected-ref-cleanup.test.ts": "70ceb2f866d0f4948a7c943ccc17a12ddfd31d7ba27e14b7cf8ef5c7c6c76d61",
     "tests/autonomous-seven-check-adapter.test.ts": "e2542751d93c33959d920f18bb340705201b8acbd222082cdbac940d919c5f66",
     "tests/autonomous-seven-check-config.test.ts": "94baa005de636d6e704144997543145e858116a73e9b1a53d669ad67b49910bb",
     "tests/autonomous-seven-check-orchestration.test.ts": "08af7fb05fa17da01e98c050a5fe4f612308b5af2fef6afc1c4025a7a7bdf4d4",
@@ -7957,6 +8492,7 @@
     "tests/change-acceptance-heuristic.test.ts": "8e6eb182982d5e69b2ec28d4fbab8825de31b7c16592337870cec326264d52fe",
     "tests/change-evidence-waiver.test.ts": "4b550aa595de7f77aa7d570ee31ea24d87c41d936d315bfb02f2d598dc018fb6",
     "tests/change-multi-requirement-test-annotation.test.ts": "da238ba8da31d4410376ccd26676b1394541478c9d30d893e692a33965b21eae",
+    "tests/change-quality-refresh.test.ts": "a73119d9d75430ae62cd106c18dc342f96ac73744442bf52036a0ad065be4301",
     "tests/change-record-fail-fast.test.ts": "feeeeb554605c822508f900017e8ab70c2afc2b9c09e64ec9c1858efec0b9fcb",
     "tests/change-record-recordedat-order.test.ts": "0c0b2247306cfa3da026273c06a1fc55044d5944d74cc6e8a19d83b5fa9fcbe7",
     "tests/change-requirement-batches.test.ts": "3a83fb3880949ed50afb74ab1fc29827cf981c9599d10183560227118c0b6600",
@@ -7970,7 +8506,7 @@
     "tests/full-v1-acceptance.test.ts": "982e14539e0df21529cbfdcc5ba27b969661f43fd4786ae3433bfd6bbe6681ea",
     "tests/gate-install.test.ts": "97d48d731b0871b42666597ad4c9a92730a217653744904c1e60aa1d00227bb7",
     "tests/helpers.ts": "031929b097a7318d83fe8024ef1ff7f4248964a5d0861e8301504f62c887f054",
-    "tests/hoh-lifecycle.test.ts": "fc8bd4eb4761f9a49fe52bc3884e4c6d2436857fc886f3af32996a8f61e7b154",
+    "tests/hoh-lifecycle.test.ts": "9a35bfdb0f0a0a35a52891d686670f0220445c14ee766ea8ba4b4e6085fd8999",
     "tests/inherited-compatibility.test.ts": "abf55f4899c5d07f6de1537db3d5de3498aa30b63d028680fce5dcfeb88bdf1d",
     "tests/model-correspondence-evidence-guidance.test.ts": "5886b128fada18690cbda5cc454193e6bb4cadc48077977d2f033659baa09b7d",
     "tests/optional-formal-gate.test.ts": "c33a55d9bb39c30227dec7540ef6185d1ddc3a8c57dba941b08da44576c8afa8",
