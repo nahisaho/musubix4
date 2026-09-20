@@ -1,6 +1,6 @@
 # musubix4
 
-**最新リリース v0.1.2 · GitHub Copilot CLI 専用 · Node.js 20以上 · TypeScript · MIT**
+**最新リリース v0.1.3 · GitHub Copilot CLI 専用 · Node.js 20以上 · TypeScript · MIT**
 
 [English](README.md) · [変更履歴](CHANGELOG.md) · [ライセンス](LICENSE)
 
@@ -36,12 +36,12 @@ musubix4は要求、設計判断、テストID、追跡可能性、リリース�
 
 プロジェクトごとに、次のSkill導入方法から1つだけ選択してください。
 
-npmおよびrepository/pluginコマンドは、v0.1.2が対応するregistryとrepositoryへ公開された後に利用可能になります。
+npmおよびrepository/pluginコマンドは、v0.1.3が対応するregistryとrepositoryへ公開された後に利用可能になります。
 
 ### npmによるプロジェクトローカル導入
 
 ```sh
-npm install --save-dev --save-exact musubix4@0.1.2
+npm install --save-dev --save-exact musubix4@0.1.3
 npx --no-install musubix4 init --dry-run
 npx --no-install musubix4 init
 copilot
@@ -146,7 +146,7 @@ npx --no-install musubix4 status --json
 
 ## 配布
 
-v0.1.2は次の配布方法をサポートします。
+v0.1.3は次の配布方法をサポートします。
 
 - `musubix4` npm packageと`npx musubix4` CLI
 - `musubix4 init`で配置するproject-local Skills

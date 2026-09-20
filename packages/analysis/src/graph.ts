@@ -1,8 +1,12 @@
 import ts from 'typescript';
+import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, isAbsolute, posix, relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { error, type Diagnostic } from '../../domain/src/index.js';
 import type { Config } from './config.js';
 import { FILE_READ_CONCURRENCY, files, isSource, isTraceSource, mapWithConcurrency, portable, readText, snapshot, writeJson } from './files.js';
+import { currentPackageVersion, findPackageRoot } from './package-version.js';
 
 export interface ImportEdge {
   from: string;
@@ -23,8 +27,9 @@ export interface CodeSymbol {
 }
 
 export interface CodeGraph {
-  schemaVersion: 1;
+  schemaVersion: 2;
   generatedAt: string;
+  producer: GraphProducer;
   files: string[];
   unsupportedFiles: string[];
   imports: ImportEdge[];
@@ -35,16 +40,213 @@ export interface CodeGraph {
   fingerprints: Record<string, string>;
 }
 
-export async function graphInputs(root: string): Promise<string[]> {
-  return (await files(root)).filter((p) => isTraceSource(p) || /(?:^|\/)(?:tsconfig[^/]*\.json|package\.json|go\.mod|pubspec\.yaml)$/.test(p));
+export interface GraphProducer {
+  packageVersion: string;
+  extractorAlgorithmVersion: 1;
+  extractorModulesSha256: string;
+  typescriptVersion: string;
 }
 
-/** @id CODE-BOUNDED-FILE-READ-CONCURRENCY-002
- * @implements REQ-AUTONOMOUS-DEVELOPMENT-001
- * @design DES-AUTONOMOUS-DEVELOPMENT-001
+export interface GraphIndexOperations {
+  typescriptProgramBuilds: number;
+}
+
+export type GraphCachePolicy = 'read-write' | 'cache-read-only' | 'refresh' | 'bypass';
+
+export interface GraphIndexOptions {
+  cachePolicy?: GraphCachePolicy;
+  operations?: GraphIndexOperations;
+}
+
+const GRAPH_CACHE_PATH = '.musubix/cache/codegraph.json';
+const LOCKFILE_PATTERN = /(?:^|\/)(?:package-lock\.json|npm-shrinkwrap\.json|pnpm-lock\.yaml|yarn\.lock|bun\.lock|bun\.lockb|Cargo\.lock|go\.sum|poetry\.lock|uv\.lock|Gemfile\.lock|composer\.lock|Package\.resolved|pubspec\.lock)$/;
+
+export async function graphInputs(root: string): Promise<string[]> {
+  return (await files(root)).filter((p) =>
+    isTraceSource(p)
+    || /(?:^|\/)(?:tsconfig[^/]*\.json|package\.json|go\.mod|pubspec\.yaml)$/.test(p)
+    || LOCKFILE_PATTERN.test(p));
+}
+
+function resolveFirstPartyModule(importer: string, specifier: string, packageRoot: string): string | null {
+  if (!specifier.startsWith('.')) return null;
+  const exact = resolve(dirname(importer), specifier);
+  const candidates = [
+    exact,
+    exact.replace(/\.js$/, '.ts'),
+    exact.replace(/\.js$/, '.tsx'),
+    exact.replace(/\.mjs$/, '.mts'),
+    exact.replace(/\.cjs$/, '.cts'),
+    `${exact}.ts`,
+    `${exact}.tsx`,
+    resolve(exact, 'index.ts'),
+    resolve(exact, 'index.js'),
+  ];
+  for (const candidate of [...new Set(candidates)]) {
+    const normalized = resolve(candidate);
+    const fromRoot = portable(relative(packageRoot, normalized));
+    if (fromRoot === '..' || fromRoot.startsWith('../') || isAbsolute(fromRoot)) {
+      throw new Error(`Graph extractor module escapes package root: ${specifier} from ${portable(relative(packageRoot, importer))}`);
+    }
+    if (existsSync(normalized)) return normalized;
+  }
+  throw new Error(`Graph extractor module is unresolved: ${specifier} from ${portable(relative(packageRoot, importer))}`);
+}
+
+function extractorModulesSha256(): string {
+  const packageRoot = findPackageRoot(import.meta.url);
+  const pending = [fileURLToPath(import.meta.url)];
+  const visited = new Map<string, Buffer>();
+  while (pending.length > 0) {
+    const path = resolve(pending.pop()!);
+    if (visited.has(path)) continue;
+    let bytes: Buffer;
+    try {
+      bytes = readFileSync(path);
+    } catch (cause) {
+      const message = cause instanceof Error ? cause.message : String(cause);
+      throw new Error(`Graph extractor module is unreadable: ${portable(relative(packageRoot, path))}: ${message}`);
+    }
+    visited.set(path, bytes);
+    const source = bytes.toString('utf8');
+    const imported = ts.preProcessFile(source, true, true).importedFiles
+      .map((entry) => entry.fileName);
+    for (const specifier of imported) {
+      const target = resolveFirstPartyModule(path, specifier, packageRoot);
+      if (target) pending.push(target);
+    }
+  }
+  const hash = createHash('sha256');
+  for (const [path, bytes] of [...visited].sort(([left], [right]) =>
+    Buffer.from(portable(relative(packageRoot, left))).compare(Buffer.from(portable(relative(packageRoot, right)))))) {
+    hash.update(portable(relative(packageRoot, path)));
+    hash.update('\0');
+    hash.update(bytes);
+    hash.update('\0');
+  }
+  return hash.digest('hex');
+}
+
+function graphProducer(): GraphProducer {
+  return {
+    packageVersion: currentPackageVersion(),
+    extractorAlgorithmVersion: 1,
+    extractorModulesSha256: extractorModulesSha256(),
+    typescriptVersion: ts.version,
+  };
+}
+
+function canonicalFingerprints(value: Record<string, string>): string {
+  return JSON.stringify(Object.entries(value).sort(([left], [right]) => left.localeCompare(right)));
+}
+
+function validGraph(value: unknown): value is CodeGraph {
+  if (!value || typeof value !== 'object') return false;
+  const graph = value as Partial<CodeGraph>;
+  const producer = graph.producer as Partial<GraphProducer> | undefined;
+  const stringArray = (candidate: unknown): candidate is string[] =>
+    Array.isArray(candidate) && candidate.every((entry) => typeof entry === 'string');
+  const record = (candidate: unknown): candidate is Record<string, unknown> =>
+    !!candidate && typeof candidate === 'object' && !Array.isArray(candidate);
+  const optionalNumber = (candidate: unknown): boolean =>
+    candidate === undefined || (Number.isInteger(candidate) && Number(candidate) >= 1);
+  return graph.schemaVersion === 2
+    && typeof graph.generatedAt === 'string'
+    && !!producer
+    && typeof producer.packageVersion === 'string'
+    && producer.extractorAlgorithmVersion === 1
+    && /^[a-f0-9]{64}$/.test(producer.extractorModulesSha256 ?? '')
+    && typeof producer.typescriptVersion === 'string'
+    && stringArray(graph.files)
+    && stringArray(graph.unsupportedFiles)
+    && Array.isArray(graph.imports)
+    && graph.imports.every((entry) => record(entry)
+      && typeof entry.from === 'string'
+      && typeof entry.to === 'string'
+      && typeof entry.specifier === 'string'
+      && ['import', 'export', 'dynamic', 'require', 'use', 'mod', 'include', 'using'].includes(String(entry.kind))
+      && Number.isInteger(entry.line)
+      && Number(entry.line) >= 1
+      && typeof entry.external === 'boolean')
+    && Array.isArray(graph.entrypoints)
+    && graph.entrypoints.every((entry) => record(entry)
+      && typeof entry.manifest === 'string'
+      && typeof entry.field === 'string'
+      && typeof entry.path === 'string')
+    && Array.isArray(graph.symbols)
+    && graph.symbols.every((entry) => record(entry)
+      && typeof entry.id === 'string'
+      && typeof entry.name === 'string'
+      && typeof entry.path === 'string'
+      && Number.isInteger(entry.line)
+      && Number(entry.line) >= 1
+      && typeof entry.kind === 'string'
+      && (entry.container === undefined || typeof entry.container === 'string'))
+    && Array.isArray(graph.calls)
+    && graph.calls.every((entry) => record(entry)
+      && typeof entry.path === 'string'
+      && Number.isInteger(entry.line)
+      && Number(entry.line) >= 1
+      && typeof entry.expression === 'string'
+      && (entry.target === null || typeof entry.target === 'string'))
+    && Array.isArray(graph.diagnostics)
+    && graph.diagnostics.every((entry) => record(entry)
+      && typeof entry.code === 'string'
+      && ['error', 'warning'].includes(String(entry.severity))
+      && typeof entry.message === 'string'
+      && (entry.path === undefined || typeof entry.path === 'string')
+      && optionalNumber(entry.line))
+    && record(graph.fingerprints)
+    && Object.entries(graph.fingerprints).every(([path, hash]) =>
+      path.length > 0 && typeof hash === 'string' && /^[a-f0-9]{64}$/.test(hash));
+}
+
+function sameProducer(left: GraphProducer, right: GraphProducer): boolean {
+  return left.packageVersion === right.packageVersion
+    && left.extractorAlgorithmVersion === right.extractorAlgorithmVersion
+    && left.extractorModulesSha256 === right.extractorModulesSha256
+    && left.typescriptVersion === right.typescriptVersion;
+}
+
+async function freshCachedGraph(
+  root: string,
+  producer: GraphProducer,
+  fingerprints: Record<string, string>,
+): Promise<CodeGraph | null> {
+  try {
+    const value = JSON.parse(await readText(root, GRAPH_CACHE_PATH)) as unknown;
+    if (!validGraph(value)) return null;
+    if (!sameProducer(value.producer, producer)) return null;
+    return canonicalFingerprints(value.fingerprints) === canonicalFingerprints(fingerprints)
+      ? value
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+/** @id CODE-SAFE-WORKFLOW-SPEED-004
+ * @implements REQ-SAFE-WORKFLOW-SPEED-003
+ * @design DES-SAFE-WORKFLOW-SPEED-004
  */
-export async function indexGraph(root: string, persist = true): Promise<CodeGraph> {
+export async function indexGraph(
+  root: string,
+  persistOrOptions: boolean | GraphIndexOptions = true,
+): Promise<CodeGraph> {
+  const options: GraphIndexOptions = typeof persistOrOptions === 'boolean'
+    ? { cachePolicy: persistOrOptions ? 'read-write' : 'cache-read-only' }
+    : persistOrOptions;
+  const cachePolicy = options.cachePolicy ?? 'read-write';
+  if (!(['read-write', 'cache-read-only', 'refresh', 'bypass'] as const).includes(cachePolicy)) {
+    throw new Error(`Unsupported graph cache policy: ${String(cachePolicy)}`);
+  }
   const paths = await graphInputs(root);
+  const fingerprints = await snapshot(root, paths);
+  const producer = graphProducer();
+  if (cachePolicy === 'read-write' || cachePolicy === 'cache-read-only') {
+    const cached = await freshCachedGraph(root, producer, fingerprints);
+    if (cached) return cached;
+  }
   const typedSources = paths.filter(isSource);
   const rustSources = paths.filter((path) => path.endsWith('.rs'));
   const pythonSources = paths.filter((path) => path.endsWith('.py'));
@@ -114,11 +316,13 @@ export async function indexGraph(root: string, persist = true): Promise<CodeGrap
     optionsCache.set(key, options);
     return options;
   }
+  if (options.operations) options.operations.typescriptProgramBuilds += 1;
   const program = ts.createProgram(typedSources.map((p) => resolve(root, p)), optionsFor('index.ts'));
   const checker = program.getTypeChecker();
   const graph: CodeGraph = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
+    producer,
     files: sources,
     unsupportedFiles,
     imports: [],
@@ -126,7 +330,7 @@ export async function indexGraph(root: string, persist = true): Promise<CodeGrap
     symbols: [],
     calls: [],
     diagnostics,
-    fingerprints: await snapshot(root, paths),
+    fingerprints,
   };
   for (const manifest of paths.filter((candidate) => candidate.endsWith('package.json'))) {
     let value: Record<string, unknown>;
@@ -345,7 +549,9 @@ export async function indexGraph(root: string, persist = true): Promise<CodeGrap
   const vbDeclarations = new Map<string, string>();
   for (const [path, text] of vbTexts) indexVbSymbols(path, text, graph, vbDeclarations);
   for (const [path, text] of vbTexts) indexVbRelations(path, text, graph, vbDeclarations);
-  if (persist) await writeJson(root, '.musubix/cache/codegraph.json', graph);
+  if (cachePolicy === 'read-write' || cachePolicy === 'refresh') {
+    await writeJson(root, GRAPH_CACHE_PATH, graph);
+  }
   return graph;
 }
 
@@ -1287,10 +1493,22 @@ function indexVbRelations(path: string, text: string, graph: CodeGraph, declarat
 }
 
 export async function loadGraph(root: string): Promise<CodeGraph> {
-  const graph = JSON.parse(await readText(root, '.musubix/cache/codegraph.json')) as CodeGraph;
-  if (graph.schemaVersion !== 1 || !Array.isArray(graph.files) || !Array.isArray(graph.imports) || !Array.isArray(graph.symbols) || !graph.fingerprints) throw new Error('Invalid graph cache; run graph index.');
+  let value: unknown;
+  try {
+    value = JSON.parse(await readText(root, GRAPH_CACHE_PATH)) as unknown;
+  } catch {
+    throw new Error('Invalid graph cache; run graph index.');
+  }
+  if (!validGraph(value)) throw new Error('Invalid graph cache; run graph index.');
+  const graph = value;
+  const producer = graphProducer();
+  if (!sameProducer(graph.producer, producer)) {
+    throw new Error('Code graph producer is incompatible; run graph index.');
+  }
   const current = await snapshot(root, await graphInputs(root));
-  if (JSON.stringify(current) !== JSON.stringify(graph.fingerprints)) throw new Error('Code graph is stale; run graph index.');
+  if (canonicalFingerprints(current) !== canonicalFingerprints(graph.fingerprints)) {
+    throw new Error('Code graph is stale; run graph index.');
+  }
   return graph;
 }
 

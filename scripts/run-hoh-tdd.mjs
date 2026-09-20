@@ -67,6 +67,7 @@ const testFiles = [
   "tests/policy-command-closed-set.test.ts",
   "tests/policy-command-optional-binding.test.ts",
   "tests/cli-package.test.ts",
+  "tests/safe-workflow-performance.test.ts",
   "tests/release-documents.test.ts",
   "tests/release-version-consistency.test.ts",
   "tests/full-v1-acceptance.test.ts",

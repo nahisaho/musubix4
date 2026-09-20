@@ -526,12 +526,18 @@ export function createProgram(): Command {
     output(impact, !!options.json, summary);
   });
 
+  /** @id CODE-SAFE-WORKFLOW-SPEED-008
+   * @implements REQ-SAFE-WORKFLOW-SPEED-003
+   * @design DES-SAFE-WORKFLOW-SPEED-004
+   */
   const graph = program.command('graph').description('Compiler-based imports, symbols, calls and architecture');
   common(graph.command('index')).option('--changed', 'Report changed files; conservatively refresh full graph')
     .action(async (options: { root: string; json?: boolean; changed?: boolean }) => {
       const root = resolve(options.root);
       const changed = options.changed ? await changedFiles(root) : null;
-      const indexed = await indexGraph(root);
+      const indexed = await indexGraph(root, options.changed
+        ? { cachePolicy: 'refresh' }
+        : { cachePolicy: 'read-write' });
       output({ ...indexed, changed }, !!options.json, `Graph: ${indexed.files.length} files, ${indexed.imports.length} imports, ${indexed.symbols.length} symbols.`);
       if (indexed.diagnostics.some((d) => d.severity === 'error')) process.exitCode = 1;
     });

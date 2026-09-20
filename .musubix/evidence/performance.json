@@ -1,7 +1,1147 @@
 {
   "schemaVersion": 2,
-  "runId": "6c9a07c4-b0f5-4aba-820e-4b00f814e4ef",
-  "generatedAt": "2026-09-20T00:42:28.899Z",
-  "executions": [],
-  "observations": []
+  "runId": "37b05054-fc0d-4f6c-9ade-a69b5966a913",
+  "generatedAt": "2026-09-20T06:27:47.932Z",
+  "executions": [
+    {
+      "runId": "37b05054-fc0d-4f6c-9ade-a69b5966a913",
+      "executionId": "7c35a5ae9815c079395f91bfdf894703065f1fcbaf62f28faf684dc365ba1fe0",
+      "commandName": "test",
+      "commandSha256": "60a1fa94edc18f010cffa4ed8d50f649272bdd8fe789f6ca9630dd0ba17b9da0",
+      "reportPath": ".musubix/evidence/full-test-results.json",
+      "sourceKind": "file",
+      "reportSha256": "bd7869ca204005d17197edee0c8a0e703c1972bb0eb5a10c003f7d04b656c957",
+      "processStatus": "completed",
+      "exitCode": 0,
+      "tests": [
+        {
+          "id": "TEST-ADAPTER-PATTERN-RECOGNITION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ADAPTER-PATTERN-RECOGNITION-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-012",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-013",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-014",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-015",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-016",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-017",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-018",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-019",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-020",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-021",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-022",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-023",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-APPROVAL-DOMAIN-SCOPING-024",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ATTESTATION-EVIDENCE-STABILITY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ATTESTATION-EVIDENCE-STABILITY-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ATTESTATION-EVIDENCE-STABILITY-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-ATTESTATION-EVIDENCE-STABILITY-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTOMATIC-HOH-CODING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTOMATIC-HOH-CODING-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTOMATIC-HOH-CODING-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-APPROVAL-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-APPROVAL-CONSUMPTION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-CLI-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-CLI-PROMOTION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-GIT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-PROMOTION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AMENDMENT-ROUTING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-AMENDMENT-APPROVAL-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-AMENDMENT-REPAIR-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-AUTHORITY-ESCALATION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-AUTHORITY-PERSISTENCE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-AUTHORITY-STICKY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-BOUNDARY-ATTEMPT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-CONFIG-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-EMPTY-MANIFEST-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-LEAST-PRIVILEGE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-MANIFEST-LIMIT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-MANUAL-REJECT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-NONCE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-REHASH-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-REPAIR-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-RETRY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-APPROVAL-REVIEWER-REQUIRED-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-RELEASE-APPROVAL-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-RELEASE-GATE-BINDING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-RELEASE-GATE-INVALIDATION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-RELEASE-MANIFEST-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-RELEASE-PROVISIONING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-RELEASE-REVIEW-REPAIR-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-RELEASE-WORKSPACE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-REQUIREMENTS-FINDINGS-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-SPEC-DESIGN-APPROVAL-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-AUTO-SPEC-DESIGN-MANIFEST-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-BLOCKER-IDENTITY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-BLOCKER-RETRY-BOUNDARY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-BASELINE-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-ISOLATION-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-ISOLATION-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CANDIDATE-RECOVERY-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-CLAIM-REGRESSION-RECOVERY-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-DECLARED-SURFACE-DIVERGENCE-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-DURABILITY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-HOH-CONFIG-FILE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-INVENTORY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-ORACLE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-ORACLE-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-ORACLE-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-ORACLE-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-ORACLE-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-ORACLE-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-PROTECTED-BOUNDARY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-PROTECTED-SET-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-QA-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-QA-ADAPTER-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-QA-CONFIG-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-QA-MUTATION-ROUTING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-QA-ORCHESTRATION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-REJECTED-REF-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-REJECTED-REF-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-SNAPSHOT-ATTEMPT-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-SURFACE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-SURFACE-ADVANCED-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-AUTONOMOUS-SURFACE-LOOP-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-BOUNDED-FILE-READ-CONCURRENCY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-BOUNDED-FILE-READ-CONCURRENCY-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-BOUNDED-FILE-READ-CONCURRENCY-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-BOUNDED-FILE-READ-CONCURRENCY-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-ACCEPTANCE-HEURISTIC-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-ACCEPTANCE-HEURISTIC-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-ACCEPTANCE-HEURISTIC-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-ACCEPTANCE-HEURISTIC-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-ACCEPTANCE-HEURISTIC-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-ACCEPTANCE-HEURISTIC-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-012",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-013",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-014",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-EVIDENCE-WAIVER-015",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-MULTI-REQUIREMENT-ANNOTATION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-QUALITY-REFRESH-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-QUALITY-REFRESH-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-QUALITY-REFRESH-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-QUALITY-REFRESH-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-FAIL-FAST-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-RECORDEDAT-ORDER-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-RECORDEDAT-ORDER-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-RECORD-RECORDEDAT-ORDER-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-REQUIREMENT-BATCHES-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-REQUIREMENT-BATCHES-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CHANGE-REQUIREMENT-BATCHES-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CLI-COMPATIBILITY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CLI-WORKFLOW-UX-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CLI-WORKFLOW-UX-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CLI-WORKFLOW-UX-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CLI-WORKFLOW-UX-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CLI-WORKFLOW-UX-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-CLI-WORKFLOW-UX-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-COMMAND-WORKING-DIRECTORY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-COMMAND-WORKING-DIRECTORY-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-COMMAND-WORKING-DIRECTORY-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-DESIGN-ADR-NONE-EXEMPTION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-DESIGN-ADR-NONE-EXEMPTION-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-DESIGN-ADR-NONE-EXEMPTION-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-EARS-ID-DIAGNOSTIC-MESSAGES-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-EARS-ID-DIAGNOSTIC-MESSAGES-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-EARS-ID-DIAGNOSTIC-MESSAGES-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-APPROVAL-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-APPROVAL-RUN-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-CONFIG-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-COPILOT-ADAPTER-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-COPILOT-ADAPTER-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-COPILOT-ADAPTER-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-COPILOT-ADAPTER-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-COPILOT-ADAPTER-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-COPILOT-ADAPTER-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-DEPLOYMENT-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-EVIDENCE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-FULL-V1-ACCEPTANCE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-GIT-DEPLOYMENT-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-GIT-STORE-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-GITHUB-ISSUE-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-INVALID-OUTPUT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-LIFECYCLE-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-POLICY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-QA-INTEGRITY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-RECOVERY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-ROLE-CONTRACT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-ROLE-PROMPT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-ROLE-PROMPT-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HOH-SPECIFICATION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-HUMAN-APPROVAL-GATES-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-MODEL-CORRESPONDENCE-EVIDENCE-GUIDANCE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-MODEL-CORRESPONDENCE-EVIDENCE-GUIDANCE-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-OPTIONAL-FORMAL-GATE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-POLICY-COMMAND-CLOSED-SET-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-POLICY-COMMAND-DEFINITION-BINDING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-POLICY-COMMAND-OPTIONAL-BINDING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-BASELINE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-CHANGELOG-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-METADATA-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-NPX-IDENTITY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-NPX-OPTIONS-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-README-EN-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-README-JA-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-SKILL-IDENTITY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-V010-WORKFLOW-VERSION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-RELEASE-VERSION-CONSISTENCY-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-SAFE-WORKFLOW-SPEED-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-SAFE-WORKFLOW-SPEED-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-SAFE-WORKFLOW-SPEED-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-SAFE-WORKFLOW-SPEED-004",
+          "status": "passed",
+          "operations": {
+            "typescriptProgramBuilds": 0
+          }
+        },
+        {
+          "id": "TEST-SAFE-WORKFLOW-SPEED-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-SESSION-SCOPED-DEVELOPMENT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-SESSION-SCOPED-DEVELOPMENT-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-STRUCTURED-FULL-TEST-REPORT-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-STRUCTURED-TEST-PATH-BINDING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-ADOPTION-WARNING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-ADOPTION-WARNING-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-012",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-CYCLE-VOID-013",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-FINGERPRINT-MIGRATION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-FINGERPRINT-MIGRATION-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-FINGERPRINT-SCOPING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-GREEN-REQUIREMENT-SCOPING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-RED-COLLECTION-GUIDANCE-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-TDD-SUPERSEDED-CYCLE-SCOPING-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-UPGRADE-WORKFLOW-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-UPGRADE-WORKFLOW-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-004",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-005",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-006",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-007",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-008",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-009",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-010",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-EVIDENCE-WAIVER-011",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-MULTI-SESSION-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-SHUTDOWN-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-WAIVER-BULK-001",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-WAIVER-BULK-002",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-WAIVER-BULK-003",
+          "status": "passed"
+        },
+        {
+          "id": "TEST-WORKFLOW-WAIVER-BULK-004",
+          "status": "passed"
+        }
+      ],
+      "recordSha256": "544f483041699125220d755d2417097c5e82c075b8909c2d8faa35e7a8ac71fb"
+    }
+  ],
+  "observations": [
+    {
+      "requirementId": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "testId": "TEST-SAFE-WORKFLOW-SPEED-004",
+      "counter": "typescriptProgramBuilds",
+      "observed": 0,
+      "maximum": 0,
+      "status": "pass",
+      "provenance": {
+        "runId": "37b05054-fc0d-4f6c-9ade-a69b5966a913",
+        "executionId": "7c35a5ae9815c079395f91bfdf894703065f1fcbaf62f28faf684dc365ba1fe0",
+        "commandName": "test",
+        "commandSha256": "60a1fa94edc18f010cffa4ed8d50f649272bdd8fe789f6ca9630dd0ba17b9da0",
+        "reportPath": ".musubix/evidence/full-test-results.json",
+        "sourceKind": "file",
+        "reportSha256": "bd7869ca204005d17197edee0c8a0e703c1972bb0eb5a10c003f7d04b656c957",
+        "testId": "TEST-SAFE-WORKFLOW-SPEED-004",
+        "testStatus": "passed",
+        "counter": "typescriptProgramBuilds",
+        "value": 0,
+        "processStatus": "completed",
+        "exitCode": 0,
+        "executionRecordSha256": "544f483041699125220d755d2417097c5e82c075b8909c2d8faa35e7a8ac71fb",
+        "recordSha256": "d2525bae3033533daad3d9449cd609379179d6d08fdad1bb39869cbe2957a2c4"
+      }
+    }
+  ]
 }

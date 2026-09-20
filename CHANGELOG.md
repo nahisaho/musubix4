@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.3 - 2026-09-20
+
+Performance and release-verification update for musubix4 version 0.1.3.
+
+### Fresh code-graph cache reuse
+
+- Reuse an identity-bound fresh code graph for repeated `graph index`, `graph
+  gate`, full `gate`, and change-impact analysis without rebuilding the
+  TypeScript Program.
+- Preserve conservative forced refresh through `graph index --changed` and
+  strict stale-cache errors for `graph impact` and `graph cycles`.
+- Invalidate cached graphs when source, manifest, compiler configuration,
+  dependency lockfile, musubix4 extractor, or TypeScript producer identity
+  changes.
+- Record deterministic compiler-operation evidence and a pinned v0.1.2
+  comparative benchmark for the release gate.
+- Schema-v1 or producer-incompatible graph caches require one `graph index`
+  before strict `graph impact` or `graph cycles` use.
+
 ## 0.1.2 - 2026-09-20
 
 Release readiness update for musubix4 version 0.1.2.

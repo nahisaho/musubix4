@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "repository": "nahisaho/musubix4",
+  "commit": "6fe062573d16ebcbf3b41fe5450b5db016a5c025",
+  "targetContentSha256": "c7379023d1c5bacbc592e1b3dd1c5dfc3adbf59a9b71fc0fbd0d744ad0c97325",
+  "targetDigestAlgorithm": "sha256-sorted-git-path-nul-blob-bytes-nul-v1",
+  "lockfilePath": "package-lock.json",
+  "lockfileSha256": "551bf0ed18e434b7d27f3592e52c9fd832575e6114917d816e07c48901e4d0db"
+}

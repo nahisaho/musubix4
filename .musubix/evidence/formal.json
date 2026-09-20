@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T00:37:51.063Z",
-  "totalRequirements": 28,
+  "generatedAt": "2026-09-20T06:23:18.394Z",
+  "totalRequirements": 29,
   "modeledRequirements": 2,
-  "modeledFraction": 0.07142857142857142,
+  "modeledFraction": 0.06896551724137931,
   "result": {
     "valid": true,
     "abstraction": "Consistency of explicit branch-scoped conditional, exact unit-normalized integer numeric, bounded temporal interval, deterministic state-transition, and controlled unconditional Boolean constraints; not implementation correctness.",
@@ -60,7 +60,8 @@
       "REQ-RELEASE-V010-DOCS-003",
       "REQ-RELEASE-V010-DOCS-004",
       "REQ-RELEASE-V010-DOCS-005",
-      "REQ-SAFE-WORKFLOW-SPEED-001"
+      "REQ-SAFE-WORKFLOW-SPEED-001",
+      "REQ-SAFE-WORKFLOW-SPEED-003"
     ],
     "diagnostics": [
       {
@@ -192,6 +193,11 @@
         "code": "FORMAL_UNSUPPORTED",
         "severity": "warning",
         "message": "REQ-SAFE-WORKFLOW-SPEED-001 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
+      },
+      {
+        "code": "FORMAL_UNSUPPORTED",
+        "severity": "warning",
+        "message": "REQ-SAFE-WORKFLOW-SPEED-003 is outside the unconditional English/Japanese Boolean abstraction; it was not checked for consistency."
       }
     ],
     "consistency": "consistent",
@@ -207,8 +213,8 @@
   },
   "fingerprints": {
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/requirements.md": "1877159cd4fcbc70e6c4ea8fc40ee0d0750cf4a11b14925cb5ccc1fa616107da",
-    ".musubix/features/release-v010-docs/requirements.md": "bf2cb139f1c8bef0053e0b0e44d36cdea392dbaf8fe6f0a41477ab5609fb3e4a",
-    ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138"
+    ".musubix/features/autonomous-development/requirements.md": "f6e8b51b9758fa8813a778fae6084c25035cded9066916ee40e09947544ef749",
+    ".musubix/features/release-v010-docs/requirements.md": "4e90ef28ab60ff8bc850589040341a17bfc00d7b2adcc5a2bc3c39c3f55e867a",
+    ".musubix/features/safe-workflow-speed/requirements.md": "be170f8d70936560b91c00145ba2ead064a2233ccf340890d0fe8137115f511f"
   }
 }

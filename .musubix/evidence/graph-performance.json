@@ -1,0 +1,1602 @@
+{
+  "schemaVersion": 2,
+  "outcome": "passed",
+  "generatedAt": "2026-09-20T05:19:30.498Z",
+  "passed": true,
+  "platform": "linux",
+  "architecture": "x64",
+  "nodeVersion": "v22.22.1",
+  "typescriptVersion": "5.9.3",
+  "pin": {
+    "schemaVersion": 1,
+    "repository": "nahisaho/musubix4",
+    "commit": "6fe062573d16ebcbf3b41fe5450b5db016a5c025",
+    "targetContentSha256": "c7379023d1c5bacbc592e1b3dd1c5dfc3adbf59a9b71fc0fbd0d744ad0c97325",
+    "targetDigestAlgorithm": "sha256-sorted-git-path-nul-blob-bytes-nul-v1",
+    "lockfilePath": "package-lock.json",
+    "lockfileSha256": "551bf0ed18e434b7d27f3592e52c9fd832575e6114917d816e07c48901e4d0db",
+    "fileSha256": "f930666b6d7d9e9f5bfa4d6a8d9c837da5b4561b362879ef753ad5bfbd4ae568"
+  },
+  "commands": [
+    {
+      "name": "requirementsValidate",
+      "args": [
+        "requirements",
+        "validate",
+        ".musubix/features/safe-workflow-speed/requirements.md"
+      ]
+    },
+    {
+      "name": "designValidate",
+      "args": [
+        "design",
+        "validate",
+        ".musubix/features/safe-workflow-speed/design.md"
+      ]
+    },
+    {
+      "name": "traceBuild",
+      "args": [
+        "trace",
+        "build"
+      ]
+    },
+    {
+      "name": "traceCheckStrict",
+      "args": [
+        "trace",
+        "check",
+        "--strict"
+      ]
+    },
+    {
+      "name": "graphIndex",
+      "args": [
+        "graph",
+        "index"
+      ]
+    },
+    {
+      "name": "graphGate",
+      "args": [
+        "graph",
+        "gate"
+      ]
+    },
+    {
+      "name": "graphImpact",
+      "args": [
+        "graph",
+        "impact",
+        "packages/analysis/src/graph.ts"
+      ]
+    },
+    {
+      "name": "status",
+      "args": [
+        "status"
+      ]
+    },
+    {
+      "name": "knowledgeBuild",
+      "args": [
+        "knowledge",
+        "build"
+      ]
+    }
+  ],
+  "warmups": {
+    "improvementReference": {
+      "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+      "args": [
+        "graph",
+        "index"
+      ],
+      "durationMs": 3021.8194010000007,
+      "exitCode": 0
+    },
+    "regressionReference": {
+      "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+      "args": [
+        "graph",
+        "index"
+      ],
+      "durationMs": 3021.8194010000007,
+      "exitCode": 0
+    },
+    "candidate": {
+      "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+      "args": [
+        "graph",
+        "index"
+      ],
+      "durationMs": 3004.242028000008,
+      "exitCode": 0
+    }
+  },
+  "setup": [
+    {
+      "build": "0.1.2",
+      "kind": "install",
+      "executable": "npm",
+      "args": [
+        "ci"
+      ],
+      "durationMs": 3751.466278,
+      "exitCode": 0
+    },
+    {
+      "build": "0.1.2",
+      "kind": "build",
+      "executable": "npm",
+      "args": [
+        "run",
+        "build"
+      ],
+      "durationMs": 2646.978566999999,
+      "exitCode": 0
+    },
+    {
+      "build": "improvementReference",
+      "kind": "target-install",
+      "executable": "npm",
+      "args": [
+        "ci"
+      ],
+      "durationMs": 3661.626806,
+      "exitCode": 0
+    },
+    {
+      "build": "candidate",
+      "kind": "target-install",
+      "executable": "npm",
+      "args": [
+        "ci"
+      ],
+      "durationMs": 3697.327724999999,
+      "exitCode": 0
+    },
+    {
+      "build": "candidate",
+      "kind": "build",
+      "executable": "npm",
+      "args": [
+        "run",
+        "build"
+      ],
+      "durationMs": 2560.4572050000024,
+      "exitCode": 0
+    }
+  ],
+  "builds": {
+    "improvementReference": {
+      "version": "0.1.2",
+      "performanceSurfaceSha256": "de0e2bb0b61b340e9e75586bc26c625e7ab1af10a74714deae0691f9c7b88d8f"
+    },
+    "regressionReference": {
+      "version": "0.1.2",
+      "performanceSurfaceSha256": "de0e2bb0b61b340e9e75586bc26c625e7ab1af10a74714deae0691f9c7b88d8f"
+    },
+    "candidate": {
+      "version": "0.1.3",
+      "performanceSurfaceSha256": "9275850b9504cce4cf57b887061c126277207c272c61bdb8c097d395dc936cf0"
+    }
+  },
+  "results": {
+    "requirementsValidate": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 313.6399229999988,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 298.39709500000026,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 332.7707169999994,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 290.81478600000264,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 306.2870830000029,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 313.6399229999988,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 298.39709500000026,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 332.7707169999994,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 290.81478600000264,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 306.2870830000029,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 296.0585250000004,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 293.3637299999973,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 295.7797879999998,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 302.84186499999487,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "requirements",
+              "validate",
+              ".musubix/features/safe-workflow-speed/requirements.md"
+            ],
+            "durationMs": 300.75654800000484,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 306.2870830000029,
+        "regressionReference": 306.2870830000029,
+        "candidate": 296.0585250000004
+      },
+      "regressionRatio": 0.9666046706905939,
+      "passed": true
+    },
+    "designValidate": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 368.56442100000277,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 381.8432979999998,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 346.7070789999998,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 375.7225780000008,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 373.120047000004,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 368.56442100000277,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 381.8432979999998,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 346.7070789999998,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 375.7225780000008,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 373.120047000004,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 386.72692599998845,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 388.86168700001144,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 373.87796399999934,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 406.66244300000835,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "design",
+              "validate",
+              ".musubix/features/safe-workflow-speed/design.md"
+            ],
+            "durationMs": 382.7403619999968,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 373.120047000004,
+        "regressionReference": 373.120047000004,
+        "candidate": 386.72692599998845
+      },
+      "regressionRatio": 1.0364678314911993,
+      "passed": true
+    },
+    "traceBuild": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 896.8812679999974,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 926.7504790000021,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 944.5792440000005,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 914.2136889999965,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 918.7637160000013,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 896.8812679999974,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 926.7504790000021,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 944.5792440000005,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 914.2136889999965,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 918.7637160000013,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 914.4610350000003,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 925.1789649999992,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 911.7419640000007,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 966.1568410000036,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "build"
+            ],
+            "durationMs": 955.3538260000059,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 918.7637160000013,
+        "regressionReference": 918.7637160000013,
+        "candidate": 925.1789649999992
+      },
+      "regressionRatio": 1.0069824797042788,
+      "passed": true
+    },
+    "traceCheckStrict": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 478.66798800000106,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 507.63921200000186,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 481.2788240000009,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 472.03700100000424,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 467.7212989999971,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 478.66798800000106,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 507.63921200000186,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 481.2788240000009,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 472.03700100000424,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 467.7212989999971,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 455.76393500000995,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 493.0067180000042,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 474.5964900000108,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 472.4502380000049,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "trace",
+              "check",
+              "--strict"
+            ],
+            "durationMs": 485.1602950000088,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 478.66798800000106,
+        "regressionReference": 478.66798800000106,
+        "candidate": 474.5964900000108
+      },
+      "regressionRatio": 0.9914941084382893,
+      "passed": true
+    },
+    "graphIndex": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 3231.378066000001,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2942.3245349999997,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2866.9266169999973,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2965.218415000003,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2994.833891000002,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 3231.378066000001,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2942.3245349999997,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2866.9266169999973,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2965.218415000003,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 2994.833891000002,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 426.9395179999992,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 439.8383380000014,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 487.85195999999996,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 438.8264179999969,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "index"
+            ],
+            "durationMs": 471.2598330000037,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 2965.218415000003,
+        "regressionReference": 2965.218415000003,
+        "candidate": 439.8383380000014
+      },
+      "improvementRatio": 0.14833252612185768,
+      "regressionRatio": 0.14833252612185768,
+      "passed": true
+    },
+    "graphGate": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2992.2515829999975,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2924.2596150000027,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2945.4514649999983,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2956.4891500000012,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2873.206521,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2992.2515829999975,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2924.2596150000027,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2945.4514649999983,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2956.4891500000012,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 2873.206521,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 430.22171399999934,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 458.9970670000039,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 429.00500599999214,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 454.9097060000058,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "gate"
+            ],
+            "durationMs": 453.9103919999907,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 2945.4514649999983,
+        "regressionReference": 2945.4514649999983,
+        "candidate": 453.9103919999907
+      },
+      "improvementRatio": 0.15410554116870873,
+      "regressionRatio": 0.15410554116870873,
+      "passed": true
+    },
+    "graphImpact": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 451.65180999999575,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 466.5338479999991,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 432.0177939999994,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 432.6201179999989,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 426.2369080000062,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 451.65180999999575,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 466.5338479999991,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 432.0177939999994,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 432.6201179999989,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 426.2369080000062,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 468.50205599999754,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 442.06867399999464,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 449.0391879999952,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 450.03689900001336,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "graph",
+              "impact",
+              "packages/analysis/src/graph.ts"
+            ],
+            "durationMs": 461.7847430000111,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 432.6201179999989,
+        "regressionReference": 432.6201179999989,
+        "candidate": 450.03689900001336
+      },
+      "regressionRatio": 1.0402588328081739,
+      "passed": true
+    },
+    "status": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1085.6370119999992,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1043.9257279999947,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1082.2113790000003,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1099.7313890000078,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1102.3963379999914,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1085.6370119999992,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1043.9257279999947,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1082.2113790000003,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1099.7313890000078,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1102.3963379999914,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1043.3771530000085,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1070.5933850000001,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1054.8536500000046,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1184.778443999996,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "status"
+            ],
+            "durationMs": 1144.3824840000016,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 1085.6370119999992,
+        "regressionReference": 1085.6370119999992,
+        "candidate": 1070.5933850000001
+      },
+      "regressionRatio": 0.9861430415196648,
+      "passed": true
+    },
+    "knowledgeBuild": {
+      "samples": {
+        "improvementReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 543.4734680000038,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 541.2495689999996,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 525.8027399999992,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 555.9681479999999,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 531.0789420000074,
+            "exitCode": 0
+          }
+        ],
+        "regressionReference": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 543.4734680000038,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 541.2495689999996,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 525.8027399999992,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 555.9681479999999,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/.test-work/graph-benchmark-39469e79-565b-4c59-9fb0-8aada00fa0c9/build-0.1.2/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 531.0789420000074,
+            "exitCode": 0
+          }
+        ],
+        "candidate": [
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 571.005256000004,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 530.9144859999942,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 545.853833000001,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 531.4393770000024,
+            "exitCode": 0
+          },
+          {
+            "executable": "/home/nahisaho/GitHub/musubix4/dist/packages/cli/src/main.js",
+            "args": [
+              "knowledge",
+              "build"
+            ],
+            "durationMs": 539.2408790000045,
+            "exitCode": 0
+          }
+        ]
+      },
+      "medians": {
+        "improvementReference": 541.2495689999996,
+        "regressionReference": 541.2495689999996,
+        "candidate": 539.2408790000045
+      },
+      "regressionRatio": 0.9962887915020305,
+      "passed": true
+    }
+  }
+}

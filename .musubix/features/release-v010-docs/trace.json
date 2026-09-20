@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T00:37:45.816Z",
+  "generatedAt": "2026-09-20T06:23:15.649Z",
   "nodes": [
     {
       "id": "CODE-SESSION-SCOPED-DEVELOPMENT-001",
@@ -102,6 +102,12 @@
       "id": "ADR-0015",
       "kind": "adr",
       "path": ".musubix/decisions/ADR-0015.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-0016",
+      "kind": "adr",
+      "path": ".musubix/decisions/ADR-0016.md",
       "line": 1
     },
     {
@@ -230,6 +236,12 @@
       "kind": "design",
       "path": ".musubix/features/autonomous-development/design.md",
       "line": 188
+    },
+    {
+      "id": "DES-AUTONOMOUS-DEVELOPMENT-019",
+      "kind": "design",
+      "path": ".musubix/features/autonomous-development/design.md",
+      "line": 196
     },
     {
       "id": "REQ-AUTONOMOUS-DEVELOPMENT-001",
@@ -396,6 +408,12 @@
       "line": 30
     },
     {
+      "id": "DES-RELEASE-V010-DOCS-005",
+      "kind": "design",
+      "path": ".musubix/features/release-v010-docs/design.md",
+      "line": 38
+    },
+    {
       "id": "REQ-RELEASE-V010-DOCS-001",
       "kind": "requirement",
       "path": ".musubix/features/release-v010-docs/requirements.md",
@@ -449,6 +467,24 @@
       "line": 22
     },
     {
+      "id": "DES-SAFE-WORKFLOW-SPEED-004",
+      "kind": "design",
+      "path": ".musubix/features/safe-workflow-speed/design.md",
+      "line": 30
+    },
+    {
+      "id": "DES-SAFE-WORKFLOW-SPEED-005",
+      "kind": "design",
+      "path": ".musubix/features/safe-workflow-speed/design.md",
+      "line": 38
+    },
+    {
+      "id": "DES-SAFE-WORKFLOW-SPEED-006",
+      "kind": "design",
+      "path": ".musubix/features/safe-workflow-speed/design.md",
+      "line": 46
+    },
+    {
       "id": "REQ-SAFE-WORKFLOW-SPEED-001",
       "kind": "requirement",
       "path": ".musubix/features/safe-workflow-speed/requirements.md",
@@ -460,6 +496,13 @@
       "kind": "requirement",
       "path": ".musubix/features/safe-workflow-speed/requirements.md",
       "line": 16,
+      "mandatory": true
+    },
+    {
+      "id": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "kind": "requirement",
+      "path": ".musubix/features/safe-workflow-speed/requirements.md",
+      "line": 23,
       "mandatory": true
     },
     {
@@ -823,10 +866,16 @@
       "line": 1181
     },
     {
-      "id": "CODE-BOUNDED-FILE-READ-CONCURRENCY-002",
+      "id": "CODE-SAFE-WORKFLOW-SPEED-006",
+      "kind": "code",
+      "path": "packages/analysis/src/graph-performance.ts",
+      "line": 238
+    },
+    {
+      "id": "CODE-SAFE-WORKFLOW-SPEED-004",
       "kind": "code",
       "path": "packages/analysis/src/graph.ts",
-      "line": 42
+      "line": 228
     },
     {
       "id": "CODE-AUTOMATIC-HOH-CODING-001",
@@ -1048,7 +1097,7 @@
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-024",
       "kind": "code",
       "path": "packages/analysis/src/index.ts",
-      "line": 20
+      "line": 21
     },
     {
       "id": "CODE-BOUNDED-FILE-READ-CONCURRENCY-003",
@@ -1339,34 +1388,40 @@
       "line": 520
     },
     {
+      "id": "CODE-SAFE-WORKFLOW-SPEED-008",
+      "kind": "code",
+      "path": "packages/cli/src/main.ts",
+      "line": 529
+    },
+    {
       "id": "CODE-WORKFLOW-EVIDENCE-WAIVER-023",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 757
+      "line": 763
     },
     {
       "id": "CODE-WORKFLOW-WAIVER-BULK-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 793
+      "line": 799
     },
     {
       "id": "CODE-CHANGE-RECORD-RECORDEDAT-ORDER-004",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 881
+      "line": 887
     },
     {
       "id": "CODE-CHANGE-RECORD-FAIL-FAST-002",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 897
+      "line": 903
     },
     {
       "id": "CODE-TDD-ADOPTION-WARNING-003",
       "kind": "code",
       "path": "packages/cli/src/main.ts",
-      "line": 996
+      "line": 1002
     },
     {
       "id": "CODE-RELEASE-VERSION-001",
@@ -1393,28 +1448,46 @@
       "line": 4
     },
     {
+      "id": "CODE-SAFE-WORKFLOW-SPEED-007",
+      "kind": "code",
+      "path": "scripts/benchmark-graph-cache.mjs",
+      "line": 48
+    },
+    {
       "id": "CODE-RELEASE-VERSION-002",
       "kind": "code",
       "path": "scripts/release-version.mjs",
-      "line": 24
+      "line": 26
     },
     {
       "id": "CODE-RELEASE-V010-DOCS-006",
       "kind": "code",
       "path": "scripts/release-version.mjs",
-      "line": 137
+      "line": 139
+    },
+    {
+      "id": "CODE-RELEASE-CHRONOLOGY-019",
+      "kind": "code",
+      "path": "scripts/release-version.mjs",
+      "line": 259
     },
     {
       "id": "CODE-RELEASE-V010-DOCS-004",
       "kind": "code",
       "path": "scripts/release-version.mjs",
-      "line": 241
+      "line": 316
     },
     {
       "id": "CODE-STRUCTURED-FULL-TEST-REPORT-001",
       "kind": "code",
       "path": "scripts/run-full-tests.mjs",
-      "line": 5
+      "line": 6
+    },
+    {
+      "id": "CODE-SAFE-WORKFLOW-SPEED-005",
+      "kind": "code",
+      "path": "scripts/run-full-tests.mjs",
+      "line": 35
     },
     {
       "id": "TEST-ADAPTER-PATTERN-RECOGNITION-001",
@@ -2734,43 +2807,55 @@
       "id": "TEST-RELEASE-V010-NPX-IDENTITY-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 245
+      "line": 246
     },
     {
       "id": "TEST-RELEASE-V010-NPX-OPTIONS-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 269
+      "line": 270
     },
     {
       "id": "TEST-RELEASE-V010-WORKFLOW-VERSION-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 293
+      "line": 294
     },
     {
       "id": "TEST-RELEASE-V010-CHANGELOG-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 312
+      "line": 313
     },
     {
       "id": "TEST-RELEASE-V010-METADATA-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 360
+      "line": 364
     },
     {
       "id": "TEST-RELEASE-V010-BASELINE-001",
       "kind": "test",
       "path": "tests/release-documents.test.ts",
-      "line": 393
+      "line": 397
     },
     {
       "id": "TEST-RELEASE-VERSION-CONSISTENCY-001",
       "kind": "test",
       "path": "tests/release-version-consistency.test.ts",
       "line": 9
+    },
+    {
+      "id": "TEST-SAFE-WORKFLOW-SPEED-004",
+      "kind": "test",
+      "path": "tests/safe-workflow-performance.test.ts",
+      "line": 16
+    },
+    {
+      "id": "TEST-SAFE-WORKFLOW-SPEED-005",
+      "kind": "test",
+      "path": "tests/safe-workflow-performance.test.ts",
+      "line": 124
     },
     {
       "id": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-001",
@@ -4111,6 +4196,21 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-AUTONOMOUS-DEVELOPMENT-019",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-019",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0010",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-019",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-AUTONOMOUS-DEVELOPMENT-019",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-016",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-RELEASE-V010-DOCS-001",
       "to": "REQ-RELEASE-V010-DOCS-001",
       "relation": "satisfies"
@@ -4191,6 +4291,41 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-RELEASE-V010-DOCS-005",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-019",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-RELEASE-V010-DOCS-005",
+      "to": "REQ-RELEASE-V010-DOCS-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "DES-RELEASE-V010-DOCS-005",
+      "to": "REQ-RELEASE-V010-DOCS-004",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0010",
+      "to": "DES-RELEASE-V010-DOCS-005",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-RELEASE-V010-DOCS-005",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-016",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-RELEASE-V010-DOCS-005",
+      "to": "DES-RELEASE-V010-DOCS-002",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-RELEASE-V010-DOCS-005",
+      "to": "DES-RELEASE-V010-DOCS-003",
+      "relation": "depends-on"
+    },
+    {
       "from": "DES-SAFE-WORKFLOW-SPEED-001",
       "to": "REQ-SAFE-WORKFLOW-SPEED-001",
       "relation": "satisfies"
@@ -4231,6 +4366,56 @@
       "relation": "depends-on"
     },
     {
+      "from": "DES-SAFE-WORKFLOW-SPEED-004",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0016",
+      "to": "DES-SAFE-WORKFLOW-SPEED-004",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-004",
+      "to": "DES-SAFE-WORKFLOW-SPEED-001",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-005",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0016",
+      "to": "DES-SAFE-WORKFLOW-SPEED-005",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-005",
+      "to": "DES-SAFE-WORKFLOW-SPEED-004",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-006",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "satisfies"
+    },
+    {
+      "from": "ADR-0016",
+      "to": "DES-SAFE-WORKFLOW-SPEED-006",
+      "relation": "decides"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-006",
+      "to": "DES-SAFE-WORKFLOW-SPEED-004",
+      "relation": "depends-on"
+    },
+    {
+      "from": "DES-SAFE-WORKFLOW-SPEED-006",
+      "to": "DES-SAFE-WORKFLOW-SPEED-005",
+      "relation": "depends-on"
+    },
+    {
       "from": "CODE-ADAPTER-PATTERN-RECOGNITION-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "implements"
@@ -4871,13 +5056,23 @@
       "relation": "implements"
     },
     {
-      "from": "CODE-BOUNDED-FILE-READ-CONCURRENCY-002",
-      "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
+      "from": "CODE-SAFE-WORKFLOW-SPEED-006",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
       "relation": "implements"
     },
     {
-      "from": "CODE-BOUNDED-FILE-READ-CONCURRENCY-002",
-      "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
+      "from": "CODE-SAFE-WORKFLOW-SPEED-006",
+      "to": "DES-SAFE-WORKFLOW-SPEED-006",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-004",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-004",
+      "to": "DES-SAFE-WORKFLOW-SPEED-004",
       "relation": "implements"
     },
     {
@@ -6281,6 +6476,16 @@
       "relation": "implements"
     },
     {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-008",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-008",
+      "to": "DES-SAFE-WORKFLOW-SPEED-004",
+      "relation": "implements"
+    },
+    {
       "from": "CODE-WORKFLOW-EVIDENCE-WAIVER-023",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "implements"
@@ -6368,6 +6573,16 @@
     {
       "from": "CODE-WORKFLOW-EVIDENCE-WAIVER-020",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-001",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-007",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-007",
+      "to": "DES-SAFE-WORKFLOW-SPEED-006",
       "relation": "implements"
     },
     {
@@ -6388,6 +6603,21 @@
     {
       "from": "CODE-RELEASE-V010-DOCS-006",
       "to": "DES-RELEASE-V010-DOCS-004",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELEASE-CHRONOLOGY-019",
+      "to": "REQ-AUTONOMOUS-DEVELOPMENT-019",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELEASE-CHRONOLOGY-019",
+      "to": "DES-AUTONOMOUS-DEVELOPMENT-019",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-RELEASE-CHRONOLOGY-019",
+      "to": "DES-RELEASE-V010-DOCS-005",
       "relation": "implements"
     },
     {
@@ -6433,6 +6663,16 @@
     {
       "from": "CODE-STRUCTURED-FULL-TEST-REPORT-001",
       "to": "DES-AUTONOMOUS-DEVELOPMENT-015",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-005",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "implements"
+    },
+    {
+      "from": "CODE-SAFE-WORKFLOW-SPEED-005",
+      "to": "DES-SAFE-WORKFLOW-SPEED-005",
       "relation": "implements"
     },
     {
@@ -8191,6 +8431,16 @@
       "relation": "verifies"
     },
     {
+      "from": "TEST-SAFE-WORKFLOW-SPEED-004",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "verifies"
+    },
+    {
+      "from": "TEST-SAFE-WORKFLOW-SPEED-005",
+      "to": "REQ-SAFE-WORKFLOW-SPEED-003",
+      "relation": "verifies"
+    },
+    {
       "from": "TEST-REQUIREMENTS-DESIGN-SCAFFOLD-001",
       "to": "REQ-AUTONOMOUS-DEVELOPMENT-001",
       "relation": "verifies"
@@ -8441,20 +8691,21 @@
     ".musubix/decisions/ADR-0007.md": "50cc6f004fe55c8223f62faa4b056ad34a625db30f84dbccdcf1618bff9273fe",
     ".musubix/decisions/ADR-0008.md": "f1ca0da57053cc29a060af8365298637e9b486e14b882860cd20227d871ad92a",
     ".musubix/decisions/ADR-0009.md": "7d35aae0fc612405fe7323048a88d0804b8134de4bedb02a997ef8f210401ffd",
-    ".musubix/decisions/ADR-0010.md": "c940c11a67a27969728c7f37626a7bcf21ce9cbbd5d8200bbcdf8777a3fc81a5",
+    ".musubix/decisions/ADR-0010.md": "64f3e51318e7aeae48b9386b44647a755c6e9ffb4bf222ab6a179a1344abbbce",
     ".musubix/decisions/ADR-0011.md": "7d95977c45548207af76648801bec4108d7dacc78ec39a07d0f87ee1d31216e4",
     ".musubix/decisions/ADR-0012.md": "3942519e9559db374093ba17d5874e1fd86c933d9508a86b8059a3b4513caf6d",
     ".musubix/decisions/ADR-0013.md": "72fb5035ca7b34de79ec55fbcbd489bcbbb54219cd69ccd6d5b1115b1fe28efe",
     ".musubix/decisions/ADR-0014.md": "6ea60b8e3f730e5967a6302e54bf55bc1d36d618c77bd41a3cac03fcb63916d5",
     ".musubix/decisions/ADR-0015.md": "6f91495a3e791dfb602b150bd1da8bc015dc6a937fee62e891d0279e30f7e4ab",
+    ".musubix/decisions/ADR-0016.md": "3aad779fce36233a36a2ed17f80ebc69877ec49debce7e60e7db10505912dd92",
     ".musubix/features/automatic-hoh-coding/design.md": "2545b66727f3e234f2710c293d1c3f1f4c5236260f1d416cbd16acc22e1787d4",
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
-    ".musubix/features/autonomous-development/design.md": "bc025359fd8d823e5bae9cc0cee79cedcab170905a27d1dc68fc2f669e91701e",
-    ".musubix/features/autonomous-development/requirements.md": "1877159cd4fcbc70e6c4ea8fc40ee0d0750cf4a11b14925cb5ccc1fa616107da",
-    ".musubix/features/release-v010-docs/design.md": "60f2db6e0ffb880f8fd5b8a77688d1534e0260e0ec7760ae95914c2615457bad",
-    ".musubix/features/release-v010-docs/requirements.md": "bf2cb139f1c8bef0053e0b0e44d36cdea392dbaf8fe6f0a41477ab5609fb3e4a",
-    ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
-    ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138",
+    ".musubix/features/autonomous-development/design.md": "b392d5ee2ffbd75648abad70f8abcd599a67d2f2b35880a4a784ce5d8b2f197a",
+    ".musubix/features/autonomous-development/requirements.md": "f6e8b51b9758fa8813a778fae6084c25035cded9066916ee40e09947544ef749",
+    ".musubix/features/release-v010-docs/design.md": "052e2460e47fa7a63469398bae4cb76fd7b8e3c1a8608757ada1dc6baeed6e60",
+    ".musubix/features/release-v010-docs/requirements.md": "4e90ef28ab60ff8bc850589040341a17bfc00d7b2adcc5a2bc3c39c3f55e867a",
+    ".musubix/features/safe-workflow-speed/design.md": "13eb992133a855494c61e59c31223012a7e1c4426d17ed74f92459acf5f5178c",
+    ".musubix/features/safe-workflow-speed/requirements.md": "be170f8d70936560b91c00145ba2ead064a2233ccf340890d0fe8137115f511f",
     "packages/analysis/src/adapters.ts": "df12f449eabf195b2b91bf5e22aaf6b77f447f33c9b71be07a8deb421348b0de",
     "packages/analysis/src/approval-domains.ts": "c540c4b251412683959c8dc5470c738021d3a9e33ce4d51f55ab71c01a6bad3d",
     "packages/analysis/src/approval-record.ts": "ad7a90015c0118f796d1d64438d832da09c8a29dbe0a3f0b553ccd6efb860ec1",
@@ -8467,9 +8718,10 @@
     "packages/analysis/src/files.ts": "41d5eb0092e508c73b2a98ee2443fbae996bc7b851f434c016e02e038ddcddb8",
     "packages/analysis/src/formal.ts": "dc26127d92356fc569944219f4ce0be982e474190f4447cdc329eb9556b015f2",
     "packages/analysis/src/gate.ts": "bf15d4ab3fa8103ab5742ca7418be15fe017ed0329dcb7f079877c9c5be81478",
-    "packages/analysis/src/graph.ts": "d49ea4082fbe481cf8a148c68ae0170f020fac9a06a3017e8653084deda62065",
+    "packages/analysis/src/graph-performance.ts": "f6d69cedba3c70832a833532b0ba5267bdb70e02ff89cd07124b42f584de8e30",
+    "packages/analysis/src/graph.ts": "f259385ecdaf8e0e2ed60399e2740e9166c813d40f8240fbcb88156ac8e5ede4",
     "packages/analysis/src/hoh.ts": "2d12e0df665963214c9582cc2bb1703a08d0249c41be828fca81e234d686a162",
-    "packages/analysis/src/index.ts": "487c3fe7de951fcbc95975bfdb1af96de5a0185c72087cbed51a81e68e9495dc",
+    "packages/analysis/src/index.ts": "30bc727af4a896a0b51c086cb9525e1260bd8b6718ace1efd6ccb304ebe66c6a",
     "packages/analysis/src/knowledge.ts": "17f689c4d85aa9821fc49d2fc289c95adedceca53c4fe37ccf9c88a9def50817",
     "packages/analysis/src/model-correspondence.ts": "220407b7b8b85bcb1ad461c1ce122c94eeb4100f4c91f34ab7047632caa1154d",
     "packages/analysis/src/mutation.ts": "af0e81463fe75f3e368b642eac5228964ba32bd182dac9ce8d04b304ba466c5e",
@@ -8485,7 +8737,7 @@
     "packages/analysis/src/workflow-waiver.ts": "d8c516747f6302c350e0647000f14a559d521e2f7615e2db5a72be59170162e2",
     "packages/analysis/src/workflow.ts": "28f1842932c479dd0055083db492e4b11473ae7376ed518907a1643cfb54e681",
     "packages/cli/src/install.ts": "0d9a177e5503106fc0c8ff8cc5c6be7b9f18523192cd71c2681d4476797198b9",
-    "packages/cli/src/main.ts": "ad595bef62c322ee05e1ff8cf87e2835c0158682b809c2c3927b985b7cacc997",
+    "packages/cli/src/main.ts": "0bd2886e139df3c19f8ab1a18ccbd01595dc38417577d5d3c32003c7893d02c9",
     "packages/cli/src/version.ts": "b0e94ab7cdc2f3632c300fb5fc4812aca1c9f6c85efc5867d25ca7c077b4935d",
     "packages/domain/src/constitution.ts": "514278499642ff46ed902864b9192f566b116b4f92eb3fafa6b62588335e170a",
     "packages/domain/src/design.ts": "80a610413a1c34f25612dd7f4e34544d374c14adecc9b2c97a867a7eba70c873",
@@ -8493,13 +8745,14 @@
     "packages/domain/src/markdown.ts": "5c6b96486a2e31944d7d128d241f1772d0926f34464fa2b59c20748a6754487a",
     "packages/domain/src/requirements.ts": "db7ef761793b1047d8e492578775d3d92fc20eb55762ea76b60a5b51117d494a",
     "packages/domain/src/types.ts": "4abf51d198404c414b7c3cf857e260abfb800633744d9709cdd53423a565201f",
+    "scripts/benchmark-graph-cache.mjs": "f5c1e7cd2eb8b60edba73562f716bcd90e6c5d38ca39a4b1a7512b1542477773",
     "scripts/check-package.mjs": "517d4cc35efcd0c30433af52edbc24d381e16ffcfb8a280dd4bf7e74a333dfeb",
     "scripts/release-attestation.mjs": "20aeee3f1123b337d552f5fd41b08080efb36465f7514784cf49c7af64acc6a9",
     "scripts/release-prepare.mjs": "61d027b308d8b094c51680aaacee0dd3ffbecbb9e34098c11f1cfc0dd2e36e30",
     "scripts/release-publish.mjs": "be05292662e6f3a169f238231574c97dc70d41fc7a036bfe86b284e43eadaff4",
-    "scripts/release-version.mjs": "c57970a5dc7e3f86437237be2dc2f430bf510b7cfd61685f84fe43b27bdf22e8",
-    "scripts/run-full-tests.mjs": "dea88f204d339ff376df2246bef6fa7a21814ff285b26ad9a1e09ed73414714b",
-    "scripts/run-hoh-tdd.mjs": "48c85adcb83640555c901c0b5ef277099e75c1fc29218f825bd74323d1cb503d",
+    "scripts/release-version.mjs": "b17e639e17558dc5f43c8f40400c9467367895821ff8ec387473f40e86365c27",
+    "scripts/run-full-tests.mjs": "49d502d1540d1da6a47981423e47dae4d3e2adf4b5eff28a149631dcd0f9133f",
+    "scripts/run-hoh-tdd.mjs": "0d0c20a92aefb388b28ad4bcf0b9fb74b81615e5fba69e913c828f081d635351",
     "scripts/smoke-package.mjs": "0c07366d618477ae251a0577569cd5cd0c4ce9f9c5c7c2ea6142f2bb3dfc669c",
     "tests/adapter-integration.test.ts": "0b8974d0ca31559722d40f9e25d42e2ce3d60ef2206b77d4b000264b1eb153d1",
     "tests/adapter-pattern-recognition.test.ts": "72ca71cc538e4a56c9ce596cfe48928cd023ccc42e3e8964e157a30b340f4c15",
@@ -8592,8 +8845,9 @@
     "tests/policy-command-closed-set.test.ts": "97779514b4c0ed61852fa15f9ffe61ee5b58cc91205a05a96b61899de77257f6",
     "tests/policy-command-definition-binding.test.ts": "a24a6003d96c86038f776191f4cf2845e417fcb1edd691e893b2ddfa33545d3b",
     "tests/policy-command-optional-binding.test.ts": "25a77fd7cc4677f607b607fea1d397e9841be5e110a8632d37edc1cae09b6acd",
-    "tests/release-documents.test.ts": "5400042878c4c52a47ff4fce3c1394dd6a3cd1b7860d01d2fc38fbd498750af2",
+    "tests/release-documents.test.ts": "7e1d405b33279c2d4a5b70e0fcfed40f08d8aa05c08ce818658278d8ec2555e8",
     "tests/release-version-consistency.test.ts": "d3f113a35c5bba5d1d4554e82199aee21ff4086dcae41c06185e769c230cbb38",
+    "tests/safe-workflow-performance.test.ts": "17de95a5e81db648db56c2caf9f32ff53199e1e872063cfee123e79204ea1c03",
     "tests/scaffold-artifact.test.ts": "7b85b9c6f912e7b83c5bf9bd01b61264aa8a460750f9e8a4e382bb91686ea090",
     "tests/setup.ts": "7bb56857a68d20180b6a81c7bdc5acea0b2bcbfb1dcc45fcf50f94db08271c75",
     "tests/structured-full-test-report.test.ts": "43f01ced1a4b046dab1ae5a95b5134199e43236e13ac284c589814e629611094",
@@ -8605,7 +8859,7 @@
     "tests/tdd-green-requirement-scoping.test.ts": "69cc8b2542829df64ced9b9ef2ad6c118174b7e0fb23effb122181c1f3ad5a6b",
     "tests/tdd-red-collection-guidance.test.ts": "313a4f651a4fcdb0c6fd8ae42ead9060f70fb0001afcfb874169b8ed7f7f03c8",
     "tests/tdd-superseded-cycle-scoping.test.ts": "70038582c0d3c574ae79650203aced9e303f6ca4e4d43370520f59e955f8b1f1",
-    "tests/trace-graph.test.ts": "23e9ee2fa9ac2f37307cdcf2f5b088007295d76379d384e9d65b380cb6ef6c7b",
+    "tests/trace-graph.test.ts": "46e4cce0e25067d2d2edc4c3bdb96cf25b699389e54c91db70139de502805eb7",
     "tests/upgrade-workflow.test.ts": "55eef37cf4c3961f74bae1f82845e5dda0aeb53e7d595bfab4647c0e625de2c9",
     "tests/workflow-evidence-waiver.test.ts": "f1f5e624edb9e1115978bb6abe31fd2aa99e53452905583e0ebe687fb3222310",
     "tests/workflow-multi-session-verification.test.ts": "1dda345b3c1c7e56109a0a9d11eb9a0d0557beba09aab7241c9abffa6d5bcd3c",

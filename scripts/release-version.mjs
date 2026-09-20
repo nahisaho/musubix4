@@ -7,9 +7,11 @@ import { fileURLToPath } from 'node:url';
 import { t as listTar } from 'tar';
 
 const SEMVER = /^(\d+)\.(\d+)\.(\d+)$/;
+const FULL_SEMVER = /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?$/;
 const RELEASE_HEADING = /^##\s+(\d+\.\d+\.\d+)(?:\s+-\s+.+)?$/;
 const DATED_RELEASE_HEADING = /^##\s+(\d+\.\d+\.\d+)\s+-\s+\S.+$/;
 const ANY_RELEASE_HEADING = /^##\s+\d+\.\d+\.\d+(?:-[^ ]+)?(?:\s+-\s+.*)?$/;
+const EXACT_RELEASE_HEADING = /^##\s+(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)\s+-\s+(\d{4}-\d{2}-\d{2})$/;
 const ENTRY_LIMIT = 1_048_576;
 const TOTAL_LIMIT = 16_777_216;
 const ARCHIVE_PATHS = [
@@ -225,6 +227,79 @@ function releaseHeadings(changelog) {
   return changelog.split('\n').filter((line) => ANY_RELEASE_HEADING.test(line));
 }
 
+function compareSemanticVersions(left, right) {
+  const a = FULL_SEMVER.exec(left);
+  const b = FULL_SEMVER.exec(right);
+  assert(a && b, `Expected semantic versions, received ${left} and ${right}`);
+  for (let index = 1; index <= 3; index += 1) {
+    const difference = Number(a[index]) - Number(b[index]);
+    if (difference !== 0) return difference;
+  }
+  const leftPre = a[4];
+  const rightPre = b[4];
+  if (leftPre === undefined) return rightPre === undefined ? 0 : 1;
+  if (rightPre === undefined) return -1;
+  const leftParts = leftPre.split('.');
+  const rightParts = rightPre.split('.');
+  for (let index = 0; index < Math.max(leftParts.length, rightParts.length); index += 1) {
+    const leftPart = leftParts[index];
+    const rightPart = rightParts[index];
+    if (leftPart === undefined) return -1;
+    if (rightPart === undefined) return 1;
+    if (leftPart === rightPart) continue;
+    const leftNumeric = /^\d+$/.test(leftPart);
+    const rightNumeric = /^\d+$/.test(rightPart);
+    if (leftNumeric && rightNumeric) return Number(leftPart) - Number(rightPart);
+    if (leftNumeric !== rightNumeric) return leftNumeric ? -1 : 1;
+    return leftPart.localeCompare(rightPart);
+  }
+  return 0;
+}
+
+/** @id CODE-RELEASE-CHRONOLOGY-019
+ * @implements REQ-AUTONOMOUS-DEVELOPMENT-019
+ * @design DES-AUTONOMOUS-DEVELOPMENT-019 DES-RELEASE-V010-DOCS-005
+ */
+export function validateReleaseHeadings(headings, version, fixture) {
+  assert(headings.length > 0, 'CHANGELOG.md has no semantic-version release headings');
+  assert(fixture.length > 0, 'Approved CHANGELOG heading fixture must not be empty');
+  assert.deepEqual(headings.slice(-fixture.length), fixture,
+    'Approved CHANGELOG headings must remain the contiguous trailing block');
+  const parsed = headings.map((heading) => {
+    const match = EXACT_RELEASE_HEADING.exec(heading);
+    assert(match, `CHANGELOG.md release heading must contain a valid semantic version and YYYY-MM-DD date: ${heading}`);
+    const date = new Date(`${match[2]}T00:00:00.000Z`);
+    assert(!Number.isNaN(date.valueOf()) && date.toISOString().slice(0, 10) === match[2],
+      `CHANGELOG.md release heading has an invalid date: ${heading}`);
+    return { heading, version: match[1], date: match[2] };
+  });
+  assert.equal(parsed[0].version, version,
+    `CHANGELOG.md first release heading version ${parsed[0].version} does not match ${version}`);
+  assert.equal(FULL_SEMVER.exec(version)?.[4], undefined,
+    'CHANGELOG.md first release heading must be a stable version');
+  const seen = new Set();
+  for (const entry of parsed) {
+    assert(!seen.has(entry.version), `CHANGELOG.md has duplicate release version ${entry.version}`);
+    seen.add(entry.version);
+  }
+  for (let index = 0; index < parsed.length - 1; index += 1) {
+    const upper = parsed[index];
+    const lower = parsed[index + 1];
+    assert(compareSemanticVersions(upper.version, lower.version) > 0,
+      `CHANGELOG.md release version ${upper.version} must be newer than ${lower.version}`);
+    assert(upper.date >= lower.date,
+      `CHANGELOG.md release date ${upper.date} for ${upper.version} must not be earlier than ${lower.date} for ${lower.version}`);
+  }
+  const baseline = parsed.at(-1);
+  assert.equal(baseline?.heading, '## 0.1.0 - 2026-09-16',
+    'CHANGELOG.md immutable baseline must be the trailing release heading');
+  for (const entry of parsed.slice(0, -1)) {
+    assert(entry.date > '2026-09-16',
+      `CHANGELOG.md post-baseline release ${entry.version} must be later than 2026-09-16`);
+  }
+  return parsed;
+}
+
 function approvedFixtureDigest(requirements) {
   const block = requirements.match(
     /## REQ-AUTONOMOUS-DEVELOPMENT-019:[\s\S]*?(?=\n## REQ-|\s*$)/,
@@ -254,18 +329,7 @@ function verifyDocuments(version, read) {
 
   const changelog = read('CHANGELOG.md');
   const headings = releaseHeadings(changelog);
-  assert.deepEqual(headings.slice(-fixture.length), fixture,
-    'Approved CHANGELOG headings must remain the contiguous trailing block');
-  const stable = headings.flatMap((heading) => {
-    const match = RELEASE_HEADING.exec(heading);
-    return match ? [match[1]] : [];
-  });
-  assert(stable.length > 0, 'CHANGELOG.md has no stable release headings');
-  assert.deepEqual([...stable].sort(compareStableVersions), stable,
-    'CHANGELOG.md stable release headings must be in descending semantic-version order');
-  const firstHeadingVersion = DATED_RELEASE_HEADING.exec(headings[0])?.[1];
-  assert(firstHeadingVersion, 'CHANGELOG.md first release heading must be a dated stable version');
-  compareVersion(firstHeadingVersion, version, 'CHANGELOG.md first release heading');
+  validateReleaseHeadings(headings, version, fixture);
 
   const readme = read('README.md');
   const readmeJa = read('README-ja.md');
@@ -368,9 +432,11 @@ export async function verifyPackedReleaseVersions(tarball, expectedVersion) {
   const changelog = read('CHANGELOG.md');
   assert(readme.includes(`**Latest release v${expectedVersion} `), 'packed README.md marker is stale');
   assert(readmeJa.includes(`**最新リリース v${expectedVersion} `), 'packed README-ja.md marker is stale');
-  const firstHeadingVersion = DATED_RELEASE_HEADING.exec(releaseHeadings(changelog)[0])?.[1];
-  assert(firstHeadingVersion, 'packed CHANGELOG.md first release heading must be a dated stable version');
-  compareVersion(firstHeadingVersion, expectedVersion, 'packed CHANGELOG.md first release heading');
+  validateReleaseHeadings(
+    releaseHeadings(changelog),
+    expectedVersion,
+    ['## 0.1.0 - 2026-09-16'],
+  );
 }
 
 function argument(name, fallback) {

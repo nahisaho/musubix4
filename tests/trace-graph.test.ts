@@ -2,8 +2,8 @@ import { unlink } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
-  buildTrace, checkTrace, cycles, defaultConfig, graphGate, graphImpact, indexGraph, loadGraph, loadTrace,
-  evidenceSnapshot, files, matchGlob, readText, traceImpact, writeText,
+  buildTrace, checkTrace, cycles, defaultConfig, graphGate, graphImpact, graphPerformanceThresholdPass, indexGraph, loadGraph, loadTrace,
+  evidenceSnapshot, files, matchGlob, readText, traceImpact, writeJson, writeText,
 } from '../packages/analysis/src/index.js';
 import { code, fixture, project } from './helpers.js';
 
@@ -769,6 +769,39 @@ describe('compiler graph', () => {
     await indexGraph(root);
     await writeText(root, 'tsconfig.json', '{}');
     await expect(loadGraph(root)).rejects.toThrow('stale');
+  });
+
+  it('rejects malformed nested graph cache entries with an actionable rebuild instruction', async () => {
+    const root = await fixture({ 'a.ts': 'export const a = 1;' });
+    const graph = await indexGraph(root);
+    await writeJson(root, '.musubix/cache/codegraph.json', {
+      ...graph,
+      imports: [null],
+    });
+    await expect(loadGraph(root)).rejects.toThrow('run graph index');
+  });
+
+  it('derives performance pass state from measured thresholds', () => {
+    expect(graphPerformanceThresholdPass('graphIndex', {
+      improvementReference: 100,
+      regressionReference: 100,
+      candidate: 80,
+    })).toBe(true);
+    expect(graphPerformanceThresholdPass('graphGate', {
+      improvementReference: 100,
+      regressionReference: 100,
+      candidate: 81,
+    })).toBe(false);
+    expect(graphPerformanceThresholdPass('status', {
+      improvementReference: 100,
+      regressionReference: 100,
+      candidate: 105,
+    })).toBe(true);
+    expect(graphPerformanceThresholdPass('status', {
+      improvementReference: 100,
+      regressionReference: 100,
+      candidate: 106,
+    })).toBe(false);
   });
 
   it.each([

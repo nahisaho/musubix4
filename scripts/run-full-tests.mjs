@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { randomUUID } from "node:crypto";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, relative, resolve } from "node:path";
 
@@ -31,9 +32,22 @@ for (let index = 0; index < args.length; index += 1) {
 if (!reportPath) throw new Error("--report is required.");
 
 const rawPath = resolve(".test-work", `full-tests-${process.pid}.vitest.json`);
+/** @id CODE-SAFE-WORKFLOW-SPEED-005
+ * @implements REQ-SAFE-WORKFLOW-SPEED-003
+ * @design DES-SAFE-WORKFLOW-SPEED-005
+ */
+const performanceTestPath = "tests/safe-workflow-performance.test.ts";
+const requiresPerformanceEvidence =
+  files.length === 0 || files.includes(performanceTestPath);
+const performanceNonce = randomUUID();
+const performanceSidecar = resolve(
+  ".test-work",
+  `graph-performance-${process.pid}-${performanceNonce}.json`,
+);
 const absoluteReport = resolve(reportPath);
 mkdirSync(dirname(rawPath), { recursive: true });
 rmSync(absoluteReport, { force: true });
+rmSync(performanceSidecar, { force: true });
 
 const result = spawnSync(
   process.platform === "win32" ? "npm.cmd" : "npm",
@@ -48,6 +62,11 @@ const result = spawnSync(
   {
     cwd: resolve("."),
     encoding: "utf8",
+    env: {
+      ...process.env,
+      MUSUBIX_GRAPH_PERFORMANCE_NONCE: performanceNonce,
+      MUSUBIX_GRAPH_PERFORMANCE_SIDECAR: performanceSidecar,
+    },
     maxBuffer: 64 * 1024 * 1024,
     stdio: ["ignore", "pipe", "pipe"],
     timeout: 270_000,
@@ -60,6 +79,7 @@ try {
   const raw = JSON.parse(readFileSync(rawPath, "utf8"));
   const testsById = new Map();
   const testFiles = {};
+  const testCounts = new Map();
   const errors = [];
   const severity = { passed: 0, skipped: 1, failed: 2, error: 3 };
 
@@ -81,6 +101,7 @@ try {
         continue;
       }
       const id = ids[0];
+      testCounts.set(id, (testCounts.get(id) ?? 0) + 1);
       const testPath = relative(resolve("."), resolve(suite.name)).replaceAll(
         "\\",
         "/",
@@ -131,6 +152,39 @@ try {
     );
   }
 
+  if (requiresPerformanceEvidence) {
+    const performanceId = "TEST-SAFE-WORKFLOW-SPEED-004";
+    const performanceEntry = testsById.get(performanceId);
+    if (!performanceEntry || testCounts.get(performanceId) !== 1) {
+      throw new Error(
+        `Performance sidecar ${performanceSidecar} requires exactly one executed ${performanceId}; regenerate with node scripts/run-full-tests.mjs --report <path>.`,
+      );
+    }
+    let sidecar;
+    try {
+      sidecar = JSON.parse(readFileSync(performanceSidecar, "utf8"));
+    } catch (cause) {
+      throw new Error(
+        `Performance sidecar ${performanceSidecar} is missing or unreadable; regenerate with node scripts/run-full-tests.mjs --report <path>. ${cause instanceof Error ? cause.message : String(cause)}`,
+      );
+    }
+    if (
+      sidecar?.schemaVersion !== 1
+      || sidecar.nonce !== performanceNonce
+      || sidecar.testId !== performanceId
+      || !sidecar.operations
+      || !Number.isInteger(sidecar.operations.typescriptProgramBuilds)
+      || sidecar.operations.typescriptProgramBuilds < 0
+    ) {
+      throw new Error(
+        `Performance sidecar ${performanceSidecar} is malformed or stale; regenerate with node scripts/run-full-tests.mjs --report <path>.`,
+      );
+    }
+    performanceEntry.operations = {
+      typescriptProgramBuilds: sidecar.operations.typescriptProgramBuilds,
+    };
+  }
+
   mkdirSync(dirname(absoluteReport), { recursive: true });
   writeFileSync(
     absoluteReport,
@@ -148,6 +202,7 @@ try {
   failure = cause;
 } finally {
   rmSync(rawPath, { force: true });
+  rmSync(performanceSidecar, { force: true });
   process.stdout.write(result.stdout ?? "");
   process.stderr.write(result.stderr ?? "");
 }

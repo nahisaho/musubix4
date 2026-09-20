@@ -3,6 +3,7 @@ export * from './config.js';
 export * from './process.js';
 export * from './trace.js';
 export * from './graph.js';
+export * from './graph-performance.js';
 export * from './knowledge.js';
 export * from './formal.js';
 export * from './workflow.js';

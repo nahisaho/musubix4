@@ -42,7 +42,7 @@ function anchoredParagraph(text: string, anchor: string): string {
   return text.slice(start, end < 0 ? undefined : end).replace(/\s+/g, ' ');
 }
 
-describe('v0.1.2 release documents', () => {
+describe('v0.1.3 release documents', () => {
   /** @id TEST-SAFE-WORKFLOW-SPEED-003
    * @verifies REQ-SAFE-WORKFLOW-SPEED-002
    */
@@ -126,9 +126,9 @@ describe('v0.1.2 release documents', () => {
     const text = read('README.md');
     const lines = text.split(/\r?\n/);
     expect(lines[0]).toBe('# musubix4');
-    expect(lines.find((line, index) => index > 0 && line.trim()) ?? '').toMatch(/^\*\*Latest release v0\.1\.2 /);
+    expect(lines.find((line, index) => index > 0 && line.trim()) ?? '').toMatch(/^\*\*Latest release v0\.1\.3 /);
     expect(releaseMarkers(text, '**Latest release v')).toEqual([
-      expect.stringMatching(/^\*\*Latest release v0\.1\.2 /),
+      expect.stringMatching(/^\*\*Latest release v0\.1\.3 /),
     ]);
     for (const token of [
       '## Why musubix4',
@@ -137,7 +137,7 @@ describe('v0.1.2 release documents', () => {
       '## Verification',
       '## Evidence reference',
       '## Limitations',
-      'npm install --save-dev --save-exact musubix4@0.1.2',
+      'npm install --save-dev --save-exact musubix4@0.1.3',
       'npx --no-install musubix4 init',
       'copilot plugin install nahisaho/musubix4',
       'requirements validate',
@@ -146,7 +146,7 @@ describe('v0.1.2 release documents', () => {
       'graph gate',
       'gate --changed',
       'approval prepare release',
-      'The npm and repository/plugin commands become usable after v0.1.2 is published to the corresponding registry and repository.',
+      'The npm and repository/plugin commands become usable after v0.1.3 is published to the corresponding registry and repository.',
       '[日本語](README-ja.md)',
       '[Changelog](CHANGELOG.md)',
       '[License](LICENSE)',
@@ -181,9 +181,9 @@ describe('v0.1.2 release documents', () => {
     const text = read('README-ja.md');
     const lines = text.split(/\r?\n/);
     expect(lines[0]).toBe('# musubix4');
-    expect(lines.find((line, index) => index > 0 && line.trim()) ?? '').toMatch(/^\*\*最新リリース v0\.1\.2 /);
+    expect(lines.find((line, index) => index > 0 && line.trim()) ?? '').toMatch(/^\*\*最新リリース v0\.1\.3 /);
     expect(releaseMarkers(text, '**最新リリース v')).toEqual([
-      expect.stringMatching(/^\*\*最新リリース v0\.1\.2 /),
+      expect.stringMatching(/^\*\*最新リリース v0\.1\.3 /),
     ]);
     for (const token of [
       '## musubix4 が必要な理由',
@@ -192,7 +192,7 @@ describe('v0.1.2 release documents', () => {
       '## 検証',
       '## 証拠リファレンス',
       '## 制限事項',
-      'npm install --save-dev --save-exact musubix4@0.1.2',
+      'npm install --save-dev --save-exact musubix4@0.1.3',
       'npx --no-install musubix4 init',
       'copilot plugin install nahisaho/musubix4',
       'requirements validate',
@@ -201,7 +201,7 @@ describe('v0.1.2 release documents', () => {
       'graph gate',
       'gate --changed',
       'approval prepare release',
-      'npmおよびrepository/pluginコマンドは、v0.1.2が対応するregistryとrepositoryへ公開された後に利用可能になります。',
+      'npmおよびrepository/pluginコマンドは、v0.1.3が対応するregistryとrepositoryへ公開された後に利用可能になります。',
       '[English](README.md)',
       '[変更履歴](CHANGELOG.md)',
       '[ライセンス](LICENSE)',
@@ -233,6 +233,7 @@ describe('v0.1.2 release documents', () => {
    * @verifies REQ-RELEASE-V010-DOCS-005
    */
   it('TEST-RELEASE-V010-SKILL-IDENTITY-001 verifies every shipped Skill uses musubix4', () => {
+    expect((JSON.parse(read('package.json')) as { version: string }).version).toBe('0.1.3');
     const paths = skillPaths();
     expect(paths.length).toBeGreaterThan(0);
     for (const path of paths) {
@@ -317,13 +318,16 @@ describe('v0.1.2 release documents', () => {
     const version = (JSON.parse(read('package.json')) as { version: string }).version;
     const releaseHeadings = text.split(/\r?\n/).filter((line) =>
       /^##\s+\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\s|$)/.test(line));
-    expect(releaseHeadings).toHaveLength(2);
+    expect(version).toBe('0.1.3');
+    expect(releaseHeadings.length).toBeGreaterThanOrEqual(3);
     expect(releaseHeadings[0]).toMatch(
       new RegExp(`^## ${version.replaceAll('.', '\\.')} - \\d{4}-\\d{2}-\\d{2}$`),
     );
-    expect(releaseHeadings[1]).toBe('## 0.1.0 - 2026-09-16');
+    expect(releaseHeadings).toContain('## 0.1.2 - 2026-09-20');
+    expect(releaseHeadings.at(-1)).toBe('## 0.1.0 - 2026-09-16');
     expect(section(text, releaseHeadings[0]!)).toMatch(/\n### .+\n/);
-    const baseline = section(text, releaseHeadings[1]!);
+    expect(section(text, releaseHeadings[0]!)).toContain('Fresh code-graph cache reuse');
+    const baseline = section(text, releaseHeadings.at(-1)!);
     const baselineParts = baseline.split('\n<!--', 2);
     expect(baselineParts).toHaveLength(2);
     const baselineHistory = baselineParts[0]!;
@@ -376,17 +380,17 @@ describe('v0.1.2 release documents', () => {
           (current, key) => (current as Record<string, unknown>)[key],
           value,
         );
-        expect(actual, `${path}#${pointer}`).toBe('0.1.2');
+        expect(actual, `${path}#${pointer}`).toBe('0.1.3');
       }
     }
     const lock = JSON.parse(read('package-lock.json')) as {
       version: string;
       packages: Record<string, { version?: string }>;
     };
-    expect(lock.version).toBe('0.1.2');
+    expect(lock.version).toBe('0.1.3');
     for (const path of ['', 'packages/analysis', 'packages/cli', 'packages/domain']) {
       expect(lock.packages[path]?.version, `package-lock.json#packages/${path}/version`)
-        .toBe('0.1.2');
+        .toBe('0.1.3');
     }
   });
 
@@ -410,6 +414,26 @@ describe('v0.1.2 release documents', () => {
       '--json',
     ], { cwd: repository, timeoutMs: 20_000 });
     expect(result.exitCode, result.stderr).toBe(0);
-    expect(JSON.parse(result.stdout).version).toBe('0.1.2');
+    expect(JSON.parse(result.stdout).version).toBe('0.1.3');
+
+    const moduleUrl = new URL('../scripts/release-version.mjs', import.meta.url).href;
+    const validate = async (headings: string[]) => runProcess(process.execPath, [
+      '--input-type=module',
+      '--eval',
+      `import { validateReleaseHeadings } from ${JSON.stringify(moduleUrl)}; validateReleaseHeadings(${JSON.stringify(headings)}, '0.1.3', ['## 0.1.0 - 2026-09-16']);`,
+    ], { cwd: repository, timeoutMs: 20_000 });
+    expect((await validate([
+      '## 0.1.3 - 2026-09-20',
+      '## 0.1.2 - 2026-09-20',
+      '## 0.1.0 - 2026-09-16',
+    ])).exitCode).toBe(0);
+    for (const headings of [
+      ['## 0.1.3 - 2026-09-19', '## 0.1.2 - 2026-09-20', '## 0.1.0 - 2026-09-16'],
+      ['## 0.1.3 - 2026-09-20', '## 0.1.3-beta.1 - 2026-09-19', '## 0.1.2 - 2026-09-20', '## 0.1.0 - 2026-09-16'],
+      ['## 0.1.3 - 2026-09-20', '## 0.1.2 - 2026-09-16', '## 0.1.0 - 2026-09-16'],
+      ['## 0.1.3 - 2026-09-20', '## 0.1.3 - 2026-09-20', '## 0.1.0 - 2026-09-16'],
+    ]) {
+      expect((await validate(headings)).exitCode).not.toBe(0);
+    }
   });
 });

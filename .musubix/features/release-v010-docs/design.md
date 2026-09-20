@@ -2,7 +2,7 @@
 schemaVersion: 1
 feature: release-v010-docs
 ---
-# v0.1.2 release documentation design / v0.1.2 リリース文書設計
+# v0.1.3 release documentation design / v0.1.3 リリース文書設計
 
 ## DES-RELEASE-V010-DOCS-001: Bilingual entry-point documents
 Responsibilities: Replace the English and Japanese README files with concise, independently readable entry points that share the same product scope, installation routes, SDD workflow, verification commands, links, and limitations while retaining their required language-specific headings and release markers.
@@ -13,17 +13,17 @@ ADRs: ADR-0010
 Depends-On: DES-RELEASE-V010-DOCS-003
 
 ## DES-RELEASE-V010-DOCS-002: Initial changelog baseline
-Responsibilities: Preserve the approved v0.1.0 release entry as the immutable trailing baseline while prepending the current v0.1.2 release heading consumed by the release verifier.
+Responsibilities: Preserve every prior release entry and the approved v0.1.0 immutable trailing baseline while prepending the current v0.1.3 release heading consumed by the release verifier.
 Interfaces: `CHANGELOG.md`; `tests/fixtures/changelog-release-headings.json`; `scripts/release-version.mjs#verifyDocuments`; `tests/release-documents.test.ts`; the approved heading-fixture SHA-256 embedded in REQ-AUTONOMOUS-DEVELOPMENT-019; the v0.1.0 baseline-section SHA-256 parsed from REQ-RELEASE-V010-DOCS-003.
-Constraints: The fixture retains `schemaVersion: 1`, the approved serialization and digest, and exactly one trailing baseline heading; repository and packed verification continue to require a dated first stable heading matching the root package authority; future releases may prepend headings but cannot silently replace the v0.1.0 baseline; version-document text is decoded as UTF-8 after removing one BOM and canonicalizing CRLF or CR to LF; the immutable baseline hash covers bytes from `## 0.1.0 - 2026-09-16` through the byte immediately before the newline introducing the required trailing `<!--` trace-metadata comment; `tests/release-documents.test.ts` shall parse exactly one approved baseline digest from REQ-RELEASE-V010-DOCS-003, assert the current first heading, the preserved trailing baseline heading and body digest, required section labels and capability terms, and that no other semantic-version or prerelease heading exists.
+Constraints: The fixture retains `schemaVersion: 1`, the approved serialization and digest, and exactly one trailing baseline heading; repository and packed verification continue to require a dated first stable heading matching the root package authority; semantic-version and release-date ordering are validated by DES-AUTONOMOUS-DEVELOPMENT-016, while this component preserves every intermediate heading and the v0.1.0 baseline. Version-document text is decoded as UTF-8 after removing one BOM and canonicalizing CRLF or CR to LF. The immutable baseline hash starts at the first `#` of `## 0.1.0 - 2026-09-16`, includes the final content newline, and excludes the additional blank-line newline immediately before the required trailing `<!--` trace-metadata comment. `tests/release-documents.test.ts` shall parse exactly one approved baseline digest from REQ-RELEASE-V010-DOCS-003, assert the current first heading, preserve every prior heading, verify the trailing baseline heading and body digest, require the current entry to contain `Fresh code-graph cache reuse`, and disclose that schema-v1 or producer-incompatible graph caches require one `graph index` before strict `graph impact` or `graph cycles` use.
 Requirements: REQ-AUTONOMOUS-DEVELOPMENT-019 REQ-RELEASE-V010-DOCS-003
 ADRs: ADR-0010
 Depends-On: DES-RELEASE-V010-DOCS-003
 
 ## DES-RELEASE-V010-DOCS-003: Release-version synchronization
-Responsibilities: Set 0.1.2 in the root package authority and every governed workspace, lockfile, plugin, and marketplace surface, then prove repository, built-CLI, and packed-archive consistency.
+Responsibilities: Set 0.1.3 in the root package authority and every governed workspace, lockfile, plugin, and marketplace surface, then prove repository, built-CLI, and packed-archive consistency.
 Interfaces: `package.json`; `package-lock.json`; `packages/*/package.json`; `plugin.json`; `.github/plugin/marketplace.json`; `packages/cli/src/version.ts`; `scripts/release-version.mjs`; `tests/release-version-consistency.test.ts`; `tests/cli-package.test.ts`.
-Constraints: Root `package.json` remains the sole runtime authority; no implementation source may introduce a second version literal except focused test fixtures that intentionally assert the immutable 0.1.0 baseline or stale 0.1.18 rejection; version metadata shall be updated with `npm version 0.1.2 --workspaces --include-workspace-root --no-git-tag-version`, and the resulting manifest/lockfile diff shall be limited to version fields; existing archive streaming, workspace set equality, CLI invocation, and README/CHANGELOG marker checks remain fail-closed; after every governed surface is final, the release approval manifest shall be independently reviewed and re-recorded before release preparation.
+Constraints: Root `package.json` remains the sole runtime authority; no implementation source may introduce a second current-version literal except focused test fixtures that intentionally assert the immutable 0.1.0 baseline or stale governed-pointer rejection; version metadata shall be updated with `npm version 0.1.3 --workspaces --include-workspace-root --no-git-tag-version`, and the resulting manifest/lockfile diff shall be limited to version fields; stale 0.1.2 detection is scoped to the governed current-version pointers enumerated by REQ-AUTONOMOUS-DEVELOPMENT-019 and does not reject historical text; existing archive streaming, workspace set equality, CLI invocation, and README/CHANGELOG marker checks remain fail-closed; after every governed surface is final, the release approval manifest shall be independently reviewed and re-recorded before release preparation.
 Requirements: REQ-AUTONOMOUS-DEVELOPMENT-019 REQ-RELEASE-V010-DOCS-004
 ADRs: ADR-0010
 
@@ -34,3 +34,11 @@ Constraints: Skill prose and commands may reference only musubix4 as the install
 Requirements: REQ-AUTONOMOUS-DEVELOPMENT-019 REQ-RELEASE-V010-DOCS-005
 ADRs: ADR-0010
 Depends-On: DES-AUTONOMOUS-DEVELOPMENT-016 DES-RELEASE-V010-DOCS-003
+
+## DES-RELEASE-V010-DOCS-005: Variable-length release-history tests
+Responsibilities: Verify the v0.1.3 release entry while preserving every intermediate stable heading and the immutable v0.1.0 trailing baseline.
+Interfaces: `tests/release-documents.test.ts`; `CHANGELOG.md`; `scripts/release-version.mjs`; `TEST-RELEASE-V010-CHANGELOG-001`; `TEST-RELEASE-V010-BASELINE-001`.
+Constraints: Rename the release-document suite to v0.1.3 and derive the expected current marker from the root package version. Parse every `##` heading whose first token is a valid stable or prerelease semantic version rather than asserting a fixed count or fixed baseline index; require the first heading to match the stable root version, the last heading to equal `## 0.1.0 - 2026-09-16`, every intermediate stable or prerelease version to represent a preserved release strictly between them in descending semantic-version order, and every prior heading including v0.1.2 to remain present. Extract the trailing baseline from its located heading through the required trace comment, verify its approved digest and required tokens, and require the current entry to contain `Fresh code-graph cache reuse`. Synthetic verifier cases shall cover a same-date v0.1.3/v0.1.2 pair as valid and reject an unrecognized or misplaced prerelease heading, a post-baseline date, adjacent-heading date, duplicate version, or semantic-version ordering violation.
+Requirements: REQ-AUTONOMOUS-DEVELOPMENT-019 REQ-RELEASE-V010-DOCS-003 REQ-RELEASE-V010-DOCS-004
+ADRs: ADR-0010
+Depends-On: DES-AUTONOMOUS-DEVELOPMENT-016 DES-RELEASE-V010-DOCS-002 DES-RELEASE-V010-DOCS-003
