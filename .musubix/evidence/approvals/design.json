@@ -22,12 +22,12 @@
     ".musubix/features/automatic-hoh-coding/requirements.md": "fe2354e80f0f7366f7990c595813ef17d618fe89c8a41ebeef2eb6ce2b8bd04f",
     ".musubix/features/autonomous-development/design.md": "bc025359fd8d823e5bae9cc0cee79cedcab170905a27d1dc68fc2f669e91701e",
     ".musubix/features/autonomous-development/requirements.md": "1877159cd4fcbc70e6c4ea8fc40ee0d0750cf4a11b14925cb5ccc1fa616107da",
-    ".musubix/features/release-v010-docs/design.md": "960c7f35acb7e817c0300d463090dc4d2a4d9817cd384d56d44e3c56a8e384f7",
-    ".musubix/features/release-v010-docs/requirements.md": "91f85860a8c78ee81ccd0c1902f0c193e62ad241218e6e2403bf4069d561163c",
+    ".musubix/features/release-v010-docs/design.md": "60f2db6e0ffb880f8fd5b8a77688d1534e0260e0ec7760ae95914c2615457bad",
+    ".musubix/features/release-v010-docs/requirements.md": "bf2cb139f1c8bef0053e0b0e44d36cdea392dbaf8fe6f0a41477ab5609fb3e4a",
     ".musubix/features/safe-workflow-speed/design.md": "2c1963af9831cc7bca7a60f99002a03880d95ca8866d8d197f144a4c01523cb5",
     ".musubix/features/safe-workflow-speed/requirements.md": "33c6823c366d89fcd1a328efaef17548abfdf1c45ba603a89b87ba097aa1c138"
   },
-  "artifactSha256": "38c2880a1e5544ee175a374fcf39ba817ab0cae5867126ecc7e09d18451b3158",
+  "artifactSha256": "420db08feca8721febf65ed8e634d2719fbbe723cdeecade79b63925df726982",
   "approver": "@nahisaho",
-  "approvedAt": "2026-09-19T13:43:43.937Z"
+  "approvedAt": "2026-09-19T23:54:49.732Z"
 }

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.2 - 2026-09-20
+
+Release readiness update for musubix4 version 0.1.2.
+
+### Release metadata
+
+- Align the root package, workspace manifests, lockfile, plugin metadata, and
+  Copilot marketplace metadata on version `0.1.2`.
+- Update the English and Japanese README release markers and install snippets
+  to the current release.
+- Preserve the approved `0.1.0` baseline heading fixture and its immutable
+  trailing-block role in release verification.
+
 ## 0.1.0 - 2026-09-16
 
 Initial public release of musubix4.

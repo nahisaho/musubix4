@@ -62,7 +62,19 @@ describe('automatic release approval manifest', () => {
       expect(boundary.manifestArtifacts.map(({ path }) => path)).toEqual(boundary.manifestPaths);
       for (const artifact of boundary.manifestArtifacts) {
         expect(artifact.sha256).toBe(createHash('sha256').update(artifact.bytes).digest('hex'));
+        expect(() => JSON.parse(artifact.bytes)).not.toThrow();
       }
+      expect(
+        JSON.parse(
+          boundary.manifestArtifacts.find(
+            ({ path }) => path === `.musubix/runs/${created.id}/deployment-config.json`,
+          )!.bytes,
+        ),
+      ).toEqual({
+        deploy: null,
+        rollback: null,
+        verify: null,
+      });
       return {
         stage: boundary.stage,
         boundaryKind: boundary.boundaryKind,

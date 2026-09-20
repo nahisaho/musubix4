@@ -1,6 +1,6 @@
 # musubix4
 
-**Latest release v0.1.0 · GitHub Copilot CLI only · Node.js 20+ · TypeScript · MIT**
+**Latest release v0.1.2 · GitHub Copilot CLI only · Node.js 20+ · TypeScript · MIT**
 
 [日本語](README-ja.md) · [Changelog](CHANGELOG.md) · [License](LICENSE)
 
@@ -37,12 +37,12 @@ Prerequisites:
 
 Choose exactly one Skill installation route for a project.
 
-The npm and repository/plugin commands become usable after v0.1.0 is published to the corresponding registry and repository.
+The npm and repository/plugin commands become usable after v0.1.2 is published to the corresponding registry and repository.
 
 ### Project-local npm installation
 
 ```sh
-npm install --save-dev --save-exact musubix4@0.1.0
+npm install --save-dev --save-exact musubix4@0.1.2
 npx --no-install musubix4 init --dry-run
 npx --no-install musubix4 init
 copilot
@@ -152,7 +152,7 @@ npx --no-install musubix4 status --json
 
 ## Distribution
 
-v0.1.0 supports:
+v0.1.2 supports:
 
 - the `musubix4` npm package and `npx musubix4` CLI;
 - project-local Skills installed with `musubix4 init`;

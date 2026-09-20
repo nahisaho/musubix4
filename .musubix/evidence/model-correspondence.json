@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "runId": "1243124f-8e61-409a-aeba-dcbc9c526966",
-  "generatedAt": "2026-09-19T22:41:42.756Z",
-  "formalEvidenceSha256": "dba4b3d62cfda0c848cfb2e18b78e3aeacf5dcbca52bfdccdc94d7c881c8ba2f",
-  "traceEvidenceSha256": "a701b3930a089bce09b9884450a9ea97810e94c54bdc6cd022d91100a4667014",
+  "runId": "6c9a07c4-b0f5-4aba-820e-4b00f814e4ef",
+  "generatedAt": "2026-09-20T00:42:29.112Z",
+  "formalEvidenceSha256": "08192e35cb0a3c56aec4adbce915a6df68a58335c79c8a6e3035abcc8d01ebc7",
+  "traceEvidenceSha256": "fbd9ae6dd935caab969018cff623ec433ca510153dc6f6cd418552cc401be58c",
   "entries": [
     {
       "requirementId": "REQ-AUTONOMOUS-DEVELOPMENT-016",
       "requirementPath": ".musubix/features/autonomous-development/requirements.md",
       "formalSha256": "c55ebcb450db388e563745d4c133b1fa3544477df520754c38b633d02f00c9f5",
       "modelSha256": "38a655bf31bff6b573a3d795bc7be91732d9c826573d747050be2e2deeb6fb0b",
-      "traceSha256": "a701b3930a089bce09b9884450a9ea97810e94c54bdc6cd022d91100a4667014",
+      "traceSha256": "fbd9ae6dd935caab969018cff623ec433ca510153dc6f6cd418552cc401be58c",
       "tests": [
         {
           "testId": "TEST-AUTONOMOUS-AMENDMENT-APPROVAL-001",
@@ -255,12 +255,12 @@
         {
           "testId": "TEST-AUTONOMOUS-AUTO-RELEASE-MANIFEST-001",
           "testPath": "tests/autonomous-auto-release-manifest.test.ts",
-          "testSha256": "444b35fcc5973456353dfd1e9cf720142b9eb153567d9aebec3e9ce02d54541c",
+          "testSha256": "4a21d4e7c2b7d29a2a62df1676cd889eb205b51c779552a2806193eb4dfd30c2",
           "commandName": "test",
           "commandSha256": "60a1fa94edc18f010cffa4ed8d50f649272bdd8fe789f6ca9630dd0ba17b9da0",
           "reportPath": ".musubix/evidence/full-test-results.json",
           "reportSha256": "419a34fe2661bb7c8648da86270b792a43fbb1074303eecc61699979fd0be380",
-          "provenanceSha256": "fee1e42c4baecede992dca13ec445845fb4252117f13e11e55987345abb53ee3"
+          "provenanceSha256": "01850a5e64a3add22ddd48c5031234fdee30f3f9b435b760ed1303529474becf"
         },
         {
           "testId": "TEST-AUTONOMOUS-AUTO-RELEASE-PROVISIONING-001",

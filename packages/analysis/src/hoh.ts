@@ -595,6 +595,7 @@ async function pathExists(path: string): Promise<boolean> {
 }
 
 function stableJson(value: unknown): string {
+  if (value === undefined) return "null";
   if (Array.isArray(value)) return `[${value.map(stableJson).join(",")}]`;
   if (value && typeof value === "object") {
     return `{${Object.entries(value as Record<string, unknown>)
